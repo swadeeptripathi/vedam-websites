@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RK Bakery Indore — Bhawrasla</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Nunito',sans-serif;background:#fff;color:#1a1a1a}
+:root{--a:#e67e22;--d:#1a1a1a;--l:#fffaf4}
+header{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,255,255,.97);padding:14px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--a)}
+.logo{font-family:'Righteous',cursive;font-size:1.7rem;color:var(--d)}.logo span{color:var(--a)}
+nav a{color:#888;text-decoration:none;margin-left:20px;font-size:.9rem;font-weight:700;transition:.3s}nav a:hover{color:var(--a)}
+@media(max-width:768px){nav{display:none}}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px;background:linear-gradient(135deg,#fff,var(--l))}
+.hero-emoji{font-size:5rem;margin-bottom:20px;animation:wob 3s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.hero h1{font-family:'Righteous',cursive;font-size:clamp(2.5rem,8vw,5.5rem);line-height:1.1;margin-bottom:15px;color:var(--d)}
+.hero h1 span{color:var(--a)}
+.hero p{color:#888;font-size:.95rem;margin-bottom:30px}
+.hero-loc{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--a);margin-bottom:25px}
+.btn{display:inline-block;padding:14px 40px;background:var(--a);color:#fff;text-decoration:none;font-weight:700;border-radius:30px;transition:.3s}
+.btn:hover{background:#d86810;transform:translateY(-2px);box-shadow:0 8px 25px rgba(230,126,34,.3)}
+section{padding:75px 20px}.container{max-width:1000px;margin:0 auto}
+.stitle{font-family:'Righteous',cursive;font-size:2.2rem;color:var(--d);text-align:center;margin-bottom:40px}
+.about{background:var(--l)}.about p{color:#666;line-height:1.9;max-width:700px;margin:0 auto 15px;text-align:center}
+.menu .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:var(--l);padding:28px;border-radius:16px;text-align:center;border:2px solid transparent;transition:.3s}
+.card:hover{border-color:var(--a);transform:translateY(-4px)}
+.card .ic{font-size:3rem;margin-bottom:12px}.card h3{font-weight:700;font-size:1rem;margin-bottom:8px}.card p{color:#888;font-size:.85rem}
+.contact{background:var(--l)}.cinfo{text-align:center}.cinfo p{color:#666;margin:10px 0}.cinfo a{color:var(--a);text-decoration:none;font-weight:700}
+footer{background:var(--d);text-align:center;padding:22px;color:#aaa;font-size:.8rem}
+.wa{position:fixed;bottom:25px;right:25px;z-index:999;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}</style></head>
+<body>
+<header><div class="logo">RK <span>BAKERY</span></div><nav><a href="#about">About</a><a href="#menu">Menu</a><a href="#contact">Visit</a></nav></header>
+<section class="hero"><div>
+<div class="hero-emoji">🍰</div>
+<div class="hero-loc">Near Aurbindo Hospital — Bhawrasla, Indore</div>
+<h1>Fresh Baked<br><span>Daily</span></h1>
+<p>Breads, cakes, pastries and more — made fresh every morning at RK Bakery.</p>
+<a href="tel:+918401977578" class="btn">Call to Order</a></div></section>
+<section class="about" id="about"><div class="container"><div class="stitle">About RK Bakery</div>
+<p>Located near Aurbindo Hospital in Bhawrasla, Indore, RK Bakery is the neighborhood's go-to for fresh daily breads, celebration cakes, and delicious baked treats at great prices.</p></div></section>
+<section class="menu" id="menu"><div class="container"><div class="stitle">Fresh Baked Daily</div><div class="grid">
+<div class="card"><div class="ic">🍞</div><h3>Fresh Breads</h3><p>White, wheat, multigrain — baked fresh daily</p></div>
+<div class="card"><div class="ic">🎂</div><h3>Cakes</h3><p>Celebration cakes for every occasion</p></div>
+<div class="card"><div class="ic">🥐</div><h3>Pastries</h3><p>Puffs, croissants, and Danish pastries</p></div>
+<div class="card"><div class="ic">🍩</div><h3>Biscuits and Cookies</h3><p>Classic biscuits and homemade cookies</p></div>
+</div></div></section>
+<section class="contact" id="contact"><div class="container"><div class="stitle">Find Us</div>
+<div class="cinfo"><p>📍 Near Aurbindo Hospital, Bhawrasla, Indore, MP</p><p>📞 <a href="tel:+918401977578">+91 84019 77578</a></p>
+<p>🕒 Open Daily: 7 AM — 9 PM</p>
+<a href="https://wa.me/918401977578" class="btn" style="margin-top:20px;display:inline-block">WhatsApp Order</a></div></div></section>
+<footer>© 2025 RK Bakery, Bhawrasla Indore | Powered by <strong style="color:var(--a)">VEDAM</strong></footer>
+<a href="https://wa.me/918401977578" class="wa">💬</a>
+</body></html>

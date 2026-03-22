@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gold's Gym Vijaynagar Indore</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto',sans-serif;background:#0d0d0d;color:#fff}
+:root{--accent:#f5c518;--dark:#0d0d0d;--mid:#161616}
+header{position:fixed;top:0;width:100%;z-index:100;background:rgba(13,13,13,.97);padding:15px 40px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:3px}
+nav a{color:#bbb;text-decoration:none;margin-left:25px;font-weight:500;transition:.3s;font-size:.9rem}
+nav a:hover{color:var(--accent)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 40px 60px;background:linear-gradient(to right,#0d0d0d 50%,#1a1500 100%)}
+.hero-left{flex:1}
+.hero h1{font-family:'Oswald',sans-serif;font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:20px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:#aaa;font-size:1.1rem;max-width:500px;line-height:1.8;margin-bottom:30px}
+.btn{display:inline-block;padding:15px 40px;background:var(--accent);color:#000;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:2px;border-radius:3px;transition:.3s}
+.btn:hover{background:#d4a800;transform:translateY(-2px)}
+.hero-badge{flex:0 0 300px;display:flex;align-items:center;justify-content:center;font-size:8rem;animation:rotate 20s linear infinite}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media(max-width:768px){.hero{flex-direction:column;text-align:center}.hero-badge{display:none}nav{display:none}}
+section{padding:80px 40px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{font-family:'Oswald',sans-serif;font-size:2.5rem;font-weight:700;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:50px}
+.about{background:var(--mid)}
+.about-content{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+@media(max-width:768px){.about-content{grid-template-columns:1fr}}
+.about-content p{color:#bbb;line-height:1.9;margin-bottom:15px}
+.highlight-box{background:#111;border-left:4px solid var(--accent);padding:25px;border-radius:0 8px 8px 0}
+.highlight-box h3{font-family:'Oswald',sans-serif;font-size:1.4rem;color:var(--accent);margin-bottom:15px}
+.highlight-box ul{list-style:none;color:#bbb}
+.highlight-box ul li{padding:6px 0;padding-left:20px;position:relative}
+.highlight-box ul li::before{content:'▶';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:9px}
+.services{background:#0d0d0d}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.service-card{background:var(--mid);padding:30px 25px;border-radius:6px;border-top:3px solid var(--accent);transition:.3s}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(245,197,24,.15)}
+.service-card .icon{font-size:2rem;margin-bottom:12px}
+.service-card h3{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:10px;text-transform:uppercase}
+.service-card p{color:#888;font-size:.9rem;line-height:1.6}
+.contact{background:var(--mid)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{background:#111;padding:35px;border-radius:8px;border-top:3px solid var(--accent)}
+.contact-card h3{font-family:'Oswald',sans-serif;font-size:1.5rem;color:var(--accent);margin-bottom:20px}
+.contact-card p{color:#bbb;margin-bottom:12px}
+.contact-card a{color:var(--accent);text-decoration:none}
+footer{background:#080808;text-align:center;padding:30px;border-top:2px solid #222;color:#555;font-size:.85rem}
+.whatsapp-float{position:fixed;bottom:25px;right:25px;z-index:999;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 5px 25px rgba(37,211,102,.5);animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Gold's Gym Vijaynagar</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Programs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-left">
+    <h1>Where <span>Champions</span><br>Are Made</h1>
+    <p>Gold's Gym Vijaynagar — Indore's most iconic fitness destination. World-class equipment, expert coaches, unstoppable community.</p>
+    <a href="tel:+919993834111" class="btn">Call to Join</a>
+  </div>
+  <div class="hero-badge">🏆</div>
+</section>
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-title">The Gold Standard</div>
+    <div class="about-content">
+      <div>
+        <p>Gold's Gym is the world's most iconic gym brand, and our Vijaynagar Indore location lives up to every bit of that legacy. We bring you world-class training in the heart of Indore.</p>
+        <p>From beginners to competitive athletes, our coaches tailor your program for maximum results. Step in, push harder, become better.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Why Gold's Gym?</h3>
+        <ul>
+          <li>World-renowned brand</li>
+          <li>Premium equipment fleet</li>
+          <li>Expert certified trainers</li>
+          <li>Nutrition guidance</li>
+          <li>Vibrant fitness community</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title">Programs</div>
+    <div class="services-grid">
+      <div class="service-card"><div class="icon">💪</div><h3>Strength Training</h3><p>Build power and mass with our premium free weights and machine zone</p></div>
+      <div class="service-card"><div class="icon">🔥</div><h3>Fat Loss Programs</h3><p>Targeted programs combining cardio and resistance training</p></div>
+      <div class="service-card"><div class="icon">🥊</div><h3>Functional Fitness</h3><p>CrossFit-style training for real-world strength and endurance</p></div>
+      <div class="service-card"><div class="icon">🥗</div><h3>Diet Counseling</h3><p>Personalized nutrition plans by our expert dieticians</p></div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-title">Contact Us</div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Visit Us</h3>
+        <p>📍 Vijaynagar, Indore, MP</p>
+        <p>📞 <a href="tel:+919993834111">+91 99938 34111</a></p>
+        <p>🕒 Mon–Sat: 5AM – 11PM</p>
+        <p>🕒 Sunday: 6AM – 9PM</p>
+        <a href="https://wa.me/919993834111" class="btn" style="margin-top:20px;display:inline-block">WhatsApp Us</a>
+      </div>
+      <div class="contact-card">
+        <h3>Membership</h3>
+        <p>Monthly, quarterly and annual plans available.</p>
+        <p>Corporate & group discounts offered.</p>
+        <p>Free trial session for new members.</p>
+        <a href="tel:+919993834111" class="btn" style="margin-top:20px;display:inline-block;background:#333;color:var(--accent)">Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><p>© 2025 Gold's Gym Vijaynagar, Indore | Powered by <strong style="color:var(--accent)">VEDAM</strong></p></footer>
+<a href="https://wa.me/919993834111" class="whatsapp-float">💬</a>
+</body>
+</html>
