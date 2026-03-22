@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A 2 Travels — Your Travel Partner in Satna</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#0369A1;--yellow:#FCD34D;--dark:#0c2d48;--light:#f0f9ff;--white:#fff;--gray:#64748b}
+body{font-family:'Figtree',sans-serif;color:#1e293b;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Outfit',sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 0;transition:all .3s}
+nav.scrolled{background:rgba(3,105,161,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.15)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:800;color:var(--yellow);text-decoration:none}
+.logo span{color:var(--white)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .3s}
+.nav-links a:hover{color:var(--yellow)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:2px;background:var(--white);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(3,105,161,.97);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--white);font-size:1.5rem;text-decoration:none;font-family:'Outfit',sans-serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(3,105,161,.85),rgba(12,45,72,.7))}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:0 20px;z-index:2}
+.hero-content p.tagline{font-size:1rem;letter-spacing:4px;text-transform:uppercase;color:var(--yellow);margin-bottom:15px;font-weight:600}
+.hero-content h1{font-size:3.5rem;font-weight:800;margin-bottom:20px;line-height:1.1}
+.hero-content h1 span{color:var(--yellow)}
+.hero-content p.sub{font-size:1.15rem;max-width:600px;opacity:.9;margin-bottom:30px}
+.hero-btns{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;font-size:1rem;transition:all .3s;border:none;cursor:pointer;font-family:'Figtree',sans-serif}
+.btn-primary{background:var(--yellow);color:var(--dark)}
+.btn-primary:hover{background:#fbbf24;transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--white);color:var(--white);background:transparent}
+.btn-outline:hover{background:var(--white);color:var(--dark)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--yellow);transform:scale(1.2)}
+
+/* ABOUT */
+.about{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2.5rem;font-weight:700;color:var(--dark)}
+.section-title p{color:var(--gray);max-width:600px;margin:10px auto 0}
+.section-title .line{width:60px;height:4px;background:var(--yellow);margin:15px auto 0;border-radius:2px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+.about-badge{position:absolute;bottom:20px;right:20px;background:var(--yellow);color:var(--dark);padding:15px 25px;border-radius:15px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.2rem}
+.about-text h3{font-size:1.8rem;margin-bottom:15px;color:var(--dark)}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:15px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+.about-feat{display:flex;align-items:center;gap:10px;font-weight:500}
+.about-feat .icon{width:40px;height:40px;background:var(--light);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.2rem;flex-shrink:0}
+
+/* SERVICES */
+.services{padding:80px 0;background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.service-card{background:var(--white);border-radius:20px;padding:35px 25px;text-align:center;transition:all .3s;border:1px solid #e2e8f0}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(3,105,161,.12)}
+.service-card .icon{width:70px;height:70px;background:linear-gradient(135deg,var(--blue),#0284c7);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;color:var(--white)}
+.service-card h3{font-size:1.2rem;margin-bottom:10px;color:var(--dark)}
+.service-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+
+/* ROUTES */
+.routes{padding:80px 0}
+.routes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.route-card{background:var(--white);border-radius:16px;padding:25px;border:2px solid #e2e8f0;transition:all .3s;position:relative;overflow:hidden}
+.route-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 10px 30px rgba(3,105,161,.1)}
+.route-card .route-icon{font-size:1.5rem;margin-bottom:10px}
+.route-card h4{font-size:1.05rem;color:var(--dark);margin-bottom:8px}
+.route-card .distance{color:var(--gray);font-size:.85rem;margin-bottom:5px}
+.route-card .fare{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:700;color:var(--blue)}
+
+/* FLEET */
+.fleet{padding:80px 0;background:var(--light)}
+.fleet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.fleet-card{background:var(--white);border-radius:20px;overflow:hidden;transition:all .3s}
+.fleet-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.fleet-card img{width:100%;height:180px;object-fit:cover}
+.fleet-card .info{padding:20px}
+.fleet-card h4{font-size:1.1rem;color:var(--dark);margin-bottom:8px}
+.fleet-card .details{display:flex;justify-content:space-between;color:var(--gray);font-size:.85rem}
+.fleet-card .rate{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--blue);margin-top:10px}
+
+/* STATS */
+.stats{padding:60px 0;background:linear-gradient(135deg,var(--blue),var(--dark));color:var(--white)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.stat-item h3{font-size:2.8rem;font-weight:800;color:var(--yellow)}
+.stat-item p{font-size:.95rem;opacity:.8;margin-top:5px}
+
+/* WHY US */
+.why-us{padding:80px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.trust-card{text-align:center;padding:30px 20px}
+.trust-card .icon{width:60px;height:60px;background:var(--light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;color:var(--blue)}
+.trust-card h4{font-size:1rem;margin-bottom:8px;color:var(--dark)}
+.trust-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* GALLERY TABS */
+.gallery{padding:80px 0;background:var(--light)}
+.tab-btns{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 25px;border-radius:50px;border:2px solid var(--blue);background:transparent;color:var(--blue);font-weight:600;cursor:pointer;transition:all .3s;font-family:'Figtree',sans-serif}
+.tab-btn.active{background:var(--blue);color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:15px;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.tab-content{display:none}
+.tab-content.active{display:grid}
+
+/* BOOKING */
+.booking{padding:80px 0}
+.booking-form{max-width:800px;margin:0 auto;background:var(--white);border-radius:20px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;margin-bottom:5px;color:var(--dark);font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:2px solid #e2e8f0;border-radius:12px;font-family:'Figtree',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue)}
+.form-full{grid-column:1/-1}
+.submit-btn{grid-column:1/-1;padding:16px;background:var(--blue);color:var(--white);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s}
+.submit-btn:hover{background:#0284c7;transform:translateY(-2px)}
+
+/* REVIEWS */
+.reviews{padding:80px 0;background:var(--light)}
+.reviews-track{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;-ms-overflow-style:none;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{min-width:350px;background:var(--white);border-radius:20px;padding:30px;scroll-snap-align:start;border:1px solid #e2e8f0}
+.review-card .stars{color:var(--yellow);font-size:1.2rem;margin-bottom:10px}
+.review-card p{color:var(--gray);line-height:1.7;margin-bottom:15px;font-style:italic}
+.review-card .author{font-weight:700;color:var(--dark)}
+
+/* CONTACT */
+.contact{padding:80px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:15px;align-items:flex-start}
+.contact-item .icon{width:50px;height:50px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--blue);flex-shrink:0}
+.contact-item h4{font-size:1rem;color:var(--dark);margin-bottom:3px}
+.contact-item p{color:var(--gray);font-size:.9rem}
+.contact-item a{color:var(--blue);text-decoration:none}
+.map-container{border-radius:20px;overflow:hidden;height:100%;min-height:350px}
+.map-container iframe{width:100%;height:100%;border:0}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--white);padding:50px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.footer-brand .logo{font-size:1.5rem}
+.footer-brand p{color:rgba(255,255,255,.6);margin-top:10px;line-height:1.7;font-size:.9rem}
+.footer-col h4{font-size:1rem;margin-bottom:15px;color:var(--yellow)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-col ul li a:hover{color:var(--yellow)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;color:rgba(255,255,255,.4);font-size:.85rem}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.fleet-grid{grid-template-columns:repeat(2,1fr)}
+.trust-grid{grid-template-columns:repeat(2,1fr)}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.hamburger{display:flex}
+.nav-links{display:none}
+.hero-content h1{font-size:2.2rem}
+.about-grid{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.form-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.fleet-grid{grid-template-columns:1fr}
+.review-card{min-width:280px}
+}
+@media(max-width:375px){
+.hero-content h1{font-size:1.8rem}
+.section-title h2{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo">A2 <span>Travels</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#routes">Routes</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+<a href="#routes" onclick="this.parentElement.classList.remove('active')">Routes</a>
+<a href="#fleet" onclick="this.parentElement.classList.remove('active')">Fleet</a>
+<a href="#booking" onclick="this.parentElement.classList.remove('active')">Book Now</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&q=80" alt="Travel Road">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80" alt="Travel Bus">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<p class="tagline">YOUR TRAVEL PARTNER IN SATNA</p>
+<h1>Safe & Comfortable <span>Travel</span> Across MP</h1>
+<p class="sub">Reliable taxi and tour services from Satna to all major destinations. Book your ride today!</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-primary">🚗 Book Now</a>
+<a href="tel:9009806666" class="btn btn-outline">📞 Call Us</a>
+</div>
+</div>
+<div class="hero-dots">
+<span class="active" onclick="goSlide(0)"></span>
+<span onclick="goSlide(1)"></span>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+<div class="section-title">
+<h2>About A 2 Travels</h2>
+<div class="line"></div>
+</div>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" alt="Satna City">
+<div class="about-badge">10+ Years</div>
+</div>
+<div class="about-text">
+<h3>Your Trusted Travel Partner Since Day One</h3>
+<p>Based in Satna, A 2 Travels has been providing reliable and comfortable travel services across Madhya Pradesh. Whether you're heading to a pilgrimage site or need airport transfers, we've got you covered.</p>
+<p>Our fleet of well-maintained vehicles and experienced drivers ensure a safe, on-time journey every time.</p>
+<div class="about-features">
+<div class="about-feat"><div class="icon">✓</div> 24/7 Availability</div>
+<div class="about-feat"><div class="icon">✓</div> GPS Tracked</div>
+<div class="about-feat"><div class="icon">✓</div> Best Rates</div>
+<div class="about-feat"><div class="icon">✓</div> Expert Drivers</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="container">
+<div class="section-title">
+<h2>Our Services</h2>
+<p>Comprehensive travel solutions for every need</p>
+<div class="line"></div>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="icon">🚕</div>
+<h3>Local Taxi</h3>
+<p>Comfortable city rides within Satna. On-demand pickup and drop across the city at affordable rates.</p>
+</div>
+<div class="service-card">
+<div class="icon">🛣️</div>
+<h3>Outstation</h3>
+<p>Long-distance travel to Rewa, Jabalpur, Panna and beyond. One-way and round-trip available.</p>
+</div>
+<div class="service-card">
+<div class="icon">🙏</div>
+<h3>Pilgrimage Tours</h3>
+<p>Special packages for Maihar Devi, Chitrakoot, and other sacred destinations near Satna.</p>
+</div>
+<div class="service-card">
+<div class="icon">✈️</div>
+<h3>Airport Transfer</h3>
+<p>Timely airport pickups and drops. Jabalpur & Prayagraj airport connections available.</p>
+</div>
+<div class="service-card">
+<div class="icon">🚐</div>
+<h3>Tempo Traveller</h3>
+<p>12-26 seater tempo travellers for group travel, weddings, and family trips.</p>
+</div>
+<div class="service-card">
+<div class="icon">🏢</div>
+<h3>Corporate Travel</h3>
+<p>Dedicated vehicles for corporate clients. Monthly packages and event transportation.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- POPULAR ROUTES -->
+<section class="routes" id="routes">
+<div class="container">
+<div class="section-title">
+<h2>Popular Routes</h2>
+<p>Most booked routes from Satna</p>
+<div class="line"></div>
+</div>
+<div class="routes-grid">
+<div class="route-card">
+<div class="route-icon">📍</div>
+<h4>Satna → Rewa</h4>
+<p class="distance">80 km · ~1.5 hrs</p>
+<div class="fare">₹1,800</div>
+</div>
+<div class="route-card">
+<div class="route-icon">🙏</div>
+<h4>Satna → Maihar</h4>
+<p class="distance">40 km · ~45 min</p>
+<div class="fare">₹1,000</div>
+</div>
+<div class="route-card">
+<div class="route-icon">🙏</div>
+<h4>Satna → Chitrakoot</h4>
+<p class="distance">75 km · ~1.5 hrs</p>
+<div class="fare">₹1,600</div>
+</div>
+<div class="route-card">
+<div class="route-icon">📍</div>
+<h4>Satna → Jabalpur</h4>
+<p class="distance">200 km · ~4 hrs</p>
+<div class="fare">₹3,500</div>
+</div>
+<div class="route-card">
+<div class="route-icon">🐯</div>
+<h4>Satna → Panna</h4>
+<p class="distance">60 km · ~1 hr</p>
+<div class="fare">₹1,400</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+<div class="container">
+<div class="section-title">
+<h2>Our Fleet</h2>
+<p>Choose the perfect vehicle for your journey</p>
+<div class="line"></div>
+</div>
+<div class="fleet-grid">
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Sedan">
+<div class="info">
+<h4>Sedan</h4>
+<div class="details"><span>4 Passengers</span><span>AC</span></div>
+<div class="rate">₹10/km</div>
+</div>
+</div>
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&q=80" alt="SUV">
+<div class="info">
+<h4>SUV</h4>
+<div class="details"><span>6 Passengers</span><span>AC</span></div>
+<div class="rate">₹14/km</div>
+</div>
+</div>
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Innova">
+<div class="info">
+<h4>Innova Crysta</h4>
+<div class="details"><span>7 Passengers</span><span>AC</span></div>
+<div class="rate">₹16/km</div>
+</div>
+</div>
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=500&q=80" alt="Tempo">
+<div class="info">
+<h4>Tempo Traveller</h4>
+<div class="details"><span>12-26 Seats</span><span>AC/Non-AC</span></div>
+<div class="rate">₹18/km</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 class="counter" data-target="5000">0</h3><p>Happy Customers</p></div>
+<div class="stat-item"><h3 class="counter" data-target="50">0</h3><p>Vehicles</p></div>
+<div class="stat-item"><h3 class="counter" data-target="10">0</h3><p>Years Experience</p></div>
+<div class="stat-item"><h3 class="counter" data-target="100">0</h3><p>Routes Covered</p></div>
+</div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+<div class="container">
+<div class="section-title">
+<h2>Why Choose Us</h2>
+<div class="line"></div>
+</div>
+<div class="trust-grid">
+<div class="trust-card">
+<div class="icon">🛡️</div>
+<h4>Safe Travel</h4>
+<p>Verified drivers and well-maintained vehicles for a worry-free journey.</p>
+</div>
+<div class="trust-card">
+<div class="icon">💰</div>
+<h4>Best Prices</h4>
+<p>Transparent pricing with no hidden charges. Best rates in Satna.</p>
+</div>
+<div class="trust-card">
+<div class="icon">⏰</div>
+<h4>On Time</h4>
+<p>Punctual pickups and timely arrivals. We value your time.</p>
+</div>
+<div class="trust-card">
+<div class="icon">🌟</div>
+<h4>24/7 Support</h4>
+<p>Round-the-clock customer support for bookings and assistance.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="section-title">
+<h2>Gallery</h2>
+<div class="line"></div>
+</div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('destinations')">Destinations</button>
+<button class="tab-btn" onclick="showTab('fleet-gallery')">Our Fleet</button>
+<button class="tab-btn" onclick="showTab('pilgrimage')">Pilgrimage</button>
+</div>
+<div class="tab-content active gallery-grid" id="destinations">
+<img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Temple">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Mountains">
+</div>
+<div class="tab-content gallery-grid" id="fleet-gallery">
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Fleet 1">
+<img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Fleet 2">
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&q=80" alt="Fleet 3">
+</div>
+<div class="tab-content gallery-grid" id="pilgrimage">
+<img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Temple 1">
+<img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1f?w=500&q=80" alt="Temple 2">
+<img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Temple 3">
+</div>
+</div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+<div class="container">
+<div class="section-title">
+<h2>Book Your Ride</h2>
+<p>Fill in the details and we'll get back to you instantly</p>
+<div class="line"></div>
+</div>
+<div class="booking-form">
+<div class="form-grid">
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+<div class="form-group"><label>Pickup Location</label><input type="text" placeholder="Enter pickup point"></div>
+<div class="form-group"><label>Drop Location</label><input type="text" placeholder="Enter destination"></div>
+<div class="form-group"><label>Travel Date</label><input type="date"></div>
+<div class="form-group"><label>Vehicle Type</label>
+<select><option>Select Vehicle</option><option>Sedan (4 Pax)</option><option>SUV (6 Pax)</option><option>Innova (7 Pax)</option><option>Tempo Traveller (12-26)</option></select>
+</div>
+<div class="form-group"><label>Passengers</label>
+<select><option>1-2</option><option>3-4</option><option>5-6</option><option>7-10</option><option>10+</option></select>
+</div>
+<div class="form-group"><label>Trip Type</label>
+<select><option>One Way</option><option>Round Trip</option><option>Local</option></select>
+</div>
+<div class="form-group form-full"><label>Special Requests</label><textarea rows="3" placeholder="Any special requirements..."></textarea></div>
+<button class="submit-btn" type="button" onclick="alert('Thank you! We will contact you shortly.')">🚗 Book Now</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+<div class="container">
+<div class="section-title">
+<h2>Customer Reviews</h2>
+<div class="line"></div>
+</div>
+<div class="reviews-track">
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p>"Excellent service! Booked a cab to Maihar Devi temple. Driver was very punctual and polite. Will use again."</p>
+<div class="author">— Rajesh Tiwari</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p>"Best travel agency in Satna. Fair prices and clean vehicles. Our family trip to Chitrakoot was wonderful."</p>
+<div class="author">— Priya Sharma</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★☆</div>
+<p>"Used A2 Travels for airport pickup. Car was on time and comfortable. Great value for money."</p>
+<div class="author">— Amit Gupta</div>
+</div>
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p>"Booked tempo traveller for wedding. Everything went smoothly. Highly recommended for group travel!"</p>
+<div class="author">— Sunita Patel</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-title">
+<h2>Contact Us</h2>
+<div class="line"></div>
+</div>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item">
+<div class="icon">📞</div>
+<div><h4>Phone</h4><p><a href="tel:9009806666">9009806666</a> / <a href="tel:07672405091">07672-405091</a></p></div>
+</div>
+<div class="contact-item">
+<div class="icon">📍</div>
+<div><h4>Address</h4><p>Bus Stand, Itama Naditir, Rampur Baghelan, Satna 485001</p></div>
+</div>
+<div class="contact-item">
+<div class="icon">⏰</div>
+<div><h4>Working Hours</h4><p>Open 24/7 — 365 Days</p></div>
+</div>
+<div class="contact-item">
+<div class="icon">💬</div>
+<div><h4>WhatsApp</h4><p><a href="https://wa.me/919009806666">Chat on WhatsApp</a></p></div>
+</div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5!2d80.83!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatna+Bus+Stand!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="#" class="logo">A2 <span>Travels</span></a>
+<p>Your trusted travel partner in Satna. Providing safe, comfortable and affordable travel services across Madhya Pradesh since years.</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#routes">Routes</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#booking">Book Now</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li><a href="#">Local Taxi</a></li>
+<li><a href="#">Outstation</a></li>
+<li><a href="#">Pilgrimage Tours</a></li>
+<li><a href="#">Airport Transfer</a></li>
+<li><a href="#">Tempo Traveller</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 A 2 Travels, Satna. All rights reserved. | Designed by VedamVision</p>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919009806666" class="whatsapp-float" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+
+// Hero slider
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+
+// Stats counter
+const counters=document.querySelectorAll('.counter');let counted=false;
+function animateCounters(){counters.forEach(c=>{const target=+c.dataset.target,inc=target/80;let val=0;const timer=setInterval(()=>{val+=inc;if(val>=target){c.textContent=target.toLocaleString()+'+';clearInterval(timer)}else{c.textContent=Math.floor(val).toLocaleString()+'+'}},20)})}
+const statsSection=document.querySelector('.stats');
+const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!counted){counted=true;animateCounters()}},{threshold:.5});
+observer.observe(statsSection);
+
+// Gallery tabs
+function showTab(id){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+</body>
+</html>

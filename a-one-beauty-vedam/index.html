@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-One Beauty Parlour | Satna's Most Trusted Beauty Destination</title>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blush:#FFF5F5;--rose:#C2185B;--pink:#F8BBD0;--dark-rose:#8e1142;--soft:#FFF0F3}
+body{font-family:'Quicksand',sans-serif;background:var(--blush);color:#444;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Marcellus',serif;color:var(--rose)}
+.navbar{position:fixed;top:0;width:100%;z-index:1000;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,245,245,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(194,24,91,0.08);transition:all .3s}
+.navbar.scrolled{background:rgba(255,245,245,0.95);box-shadow:0 2px 20px rgba(194,24,91,0.06)}
+.nav-brand{font-family:'Marcellus',serif;font-size:1.6rem;color:var(--rose);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:#888;text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--rose)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:25px;height:2px;background:var(--rose);transition:.3s}
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s;background-size:cover;background-position:center}
+.hero-slide.active{opacity:1}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,240,243,0.92) 40%,rgba(248,187,208,0.4))}
+.hero-content{position:absolute;top:50%;left:8%;transform:translateY(-50%);z-index:2;max-width:550px}
+.hero-content .badge{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:rgba(194,24,91,0.08);border:1px solid rgba(194,24,91,0.15);border-radius:30px;color:var(--rose);font-size:.75rem;font-weight:600;letter-spacing:1px;margin-bottom:16px}
+.hero-content h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.15;margin-bottom:16px;color:var(--rose)}
+.hero-content p{color:#777;font-size:1rem;line-height:1.6;margin-bottom:28px}
+.btn{display:inline-block;padding:14px 32px;background:var(--rose);color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;border-radius:30px;transition:all .3s;border:2px solid var(--rose);cursor:pointer;font-family:'Quicksand',sans-serif}
+.btn:hover{background:transparent;color:var(--rose)}
+.btn-outline{background:transparent;color:var(--rose)}
+.btn-outline:hover{background:var(--rose);color:#fff}
+section{padding:80px 5%;max-width:1400px;margin:auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:8px}
+.section-title p{color:#aaa;font-size:.9rem}
+.section-title .petal{font-size:1.5rem;margin:10px 0;color:var(--pink)}
+.stats{display:flex;justify-content:center;gap:50px;padding:50px 5%;background:linear-gradient(135deg,var(--rose),var(--dark-rose));border-radius:0}
+.stat{text-align:center}
+.stat .num{font-family:'Marcellus',serif;font-size:2.8rem;color:#fff}
+.stat p{color:rgba(255,255,255,0.7);font-size:.85rem;margin-top:4px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{width:100%;height:420px;object-fit:cover;border-radius:16px;box-shadow:0 15px 40px rgba(194,24,91,0.1)}
+.about-text p{color:#666;line-height:1.8;margin-bottom:14px}
+.rating-badge{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:rgba(194,24,91,0.06);border:1px solid rgba(194,24,91,0.12);border-radius:12px;margin-top:16px}
+.rating-badge .stars{color:var(--rose);font-size:1.2rem}
+.rating-badge span{font-weight:600;color:var(--rose)}
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.service-card{padding:30px;background:#fff;border:1px solid rgba(194,24,91,0.08);border-radius:14px;text-align:center;transition:all .3s}
+.service-card:hover{border-color:var(--rose);transform:translateY(-5px);box-shadow:0 10px 30px rgba(194,24,91,0.08)}
+.service-card .icon{font-size:2.5rem;margin-bottom:12px}
+.service-card h3{font-size:1.15rem;margin-bottom:8px}
+.service-card p{color:#888;font-size:.85rem;line-height:1.5}
+/* Bridal */
+.bridal-section{background:linear-gradient(135deg,var(--soft),#fff);border-radius:16px;padding:50px;text-align:center;border:1px solid rgba(194,24,91,0.08)}
+.bridal-packages{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px;margin-top:30px}
+.bridal-card{background:#fff;border:2px solid rgba(194,24,91,0.1);border-radius:14px;padding:30px;text-align:center;transition:all .3s;position:relative}
+.bridal-card:hover{border-color:var(--rose);transform:translateY(-4px)}
+.bridal-card.featured{border-color:var(--rose)}
+.bridal-card.featured::before{content:'MOST POPULAR';position:absolute;top:12px;right:-25px;background:var(--rose);color:#fff;padding:4px 35px;font-size:.6rem;font-weight:700;transform:rotate(45deg);letter-spacing:1px}
+.bridal-card h3{font-size:1.2rem;margin-bottom:6px}
+.bridal-card .amount{font-family:'Marcellus',serif;font-size:2.4rem;color:var(--rose);margin:12px 0}
+.bridal-card .amount small{font-size:.8rem;color:#aaa;font-family:'Quicksand',sans-serif}
+.bridal-card ul{list-style:none;text-align:left;margin:15px 0}
+.bridal-card ul li{padding:7px 0;border-bottom:1px solid #f5e8ed;color:#666;font-size:.88rem}
+.bridal-card ul li::before{content:'🌸';margin-right:8px}
+/* Pricing table */
+.pricing-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 15px rgba(194,24,91,0.04)}
+.pricing-table th{background:var(--rose);color:#fff;padding:14px 20px;text-align:left;font-weight:600;font-size:.85rem}
+.pricing-table td{padding:12px 20px;border-bottom:1px solid #f5e8ed;font-size:.88rem;color:#555}
+.pricing-table tr:hover td{background:rgba(194,24,91,0.02)}
+.pricing-table .price-col{color:var(--rose);font-weight:700;text-align:right}
+.tabs{display:flex;justify-content:center;gap:8px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border:1px solid rgba(194,24,91,0.15);background:transparent;color:#999;cursor:pointer;font-size:.8rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;transition:all .3s;border-radius:30px;font-family:'Quicksand',sans-serif}
+.tab-btn.active,.tab-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+.tab-content{display:none}.tab-content.active{display:block}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover;border-radius:14px;cursor:pointer;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.reviews-wrap{position:relative;overflow:hidden;background:#fff;border:1px solid rgba(194,24,91,0.08);border-radius:16px;padding:20px}
+.reviews-track{display:flex;transition:transform .5s}
+.review-card{min-width:100%;padding:40px;text-align:center}
+.review-card .stars{color:var(--rose);font-size:1.3rem;margin-bottom:12px}
+.review-card blockquote{font-style:italic;color:#666;font-size:1.05rem;line-height:1.7;max-width:650px;margin:0 auto 12px}
+.review-card .author{color:var(--rose);font-weight:600}
+.review-badge{text-align:center;margin-top:20px;padding:15px 25px;background:rgba(194,24,91,0.05);border:1px solid rgba(194,24,91,0.12);border-radius:12px;display:inline-block;margin-left:50%;transform:translateX(-50%)}
+.review-badge .big-star{font-size:2rem;color:var(--rose)}
+.review-badge p{font-weight:600;color:var(--rose);margin-top:4px}
+.review-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.review-nav button{width:38px;height:38px;border:1px solid var(--rose);background:transparent;color:var(--rose);cursor:pointer;border-radius:50%;font-size:1rem;transition:all .3s}
+.review-nav button:hover{background:var(--rose);color:#fff}
+/* Booking form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px;border:1px solid #eee;border-radius:10px;font-family:'Quicksand',sans-serif;font-size:.9rem;outline:none;transition:border .3s;background:#fff}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--rose)}
+.form-grid textarea{min-height:80px;resize:vertical}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.contact-info h3{margin-bottom:15px}
+.contact-info p{color:#666;margin-bottom:10px;line-height:1.6}
+.contact-info a{color:var(--rose);text-decoration:none}
+.map-wrap{width:100%;height:350px;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(194,24,91,0.06)}
+.map-wrap iframe{width:100%;height:100%;border:0}
+footer{padding:40px 5%;text-align:center;background:var(--rose);color:rgba(255,255,255,0.8);margin-top:50px}
+footer .social{display:flex;justify-content:center;gap:20px;margin:12px 0}
+footer .social a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:.85rem;transition:color .3s}
+footer .social a:hover{color:#fff}
+footer p{font-size:.8rem;color:rgba(255,255,255,0.5)}
+.whatsapp{position:fixed;bottom:25px;right:25px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .3s;text-decoration:none}
+.whatsapp:hover{transform:scale(1.1)}
+.whatsapp svg{width:28px;height:28px;fill:#fff}
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,245,245,0.98);flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}
+.stats{flex-wrap:wrap;gap:25px}
+.hero-content{left:5%;right:5%;max-width:none}
+.bridal-section{padding:30px 20px}
+.pricing-table{font-size:.8rem}
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+<a href="#" class="nav-brand">A-One Beauty</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#bridal">Bridal</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#booking">Book Now</a></li>
+</ul>
+<div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+<div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400')"></div>
+<div class="hero-content">
+<div class="badge">⭐ 4.5★ FROM 272 CUSTOMERS</div>
+<h1>Satna's Most Trusted Beauty Destination</h1>
+<p>From bridal makeovers to everyday pampering, A-One Beauty Parlour has been Satna's go-to salon for expert beauty care. Your glow-up starts here.</p>
+<a href="#booking" class="btn">Book Appointment</a>
+<a href="#services" class="btn btn-outline" style="margin-left:12px">Our Services</a>
+</div>
+</section>
+
+<div class="stats">
+<div class="stat"><div class="num" data-target="272">0</div><p>Happy Customers</p></div>
+<div class="stat"><div class="num" data-target="50">0</div><p>Services Offered</p></div>
+<div class="stat"><div class="num" data-target="10">0</div><p>Years of Trust</p></div>
+<div class="stat"><div class="num" data-target="1000">0</div><p>Bridal Makeovers</p></div>
+</div>
+
+<section id="about">
+<div class="section-title"><div class="petal">🌸</div><h2>About A-One Beauty</h2><p>Where beauty meets expertise</p></div>
+<div class="about-grid">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Salon interior" class="about-img">
+<div class="about-text">
+<p>Located in the heart of Satna at Gandhi Chowk, A-One Beauty Parlour has been transforming beauty routines for over a decade. Our skilled team of beauticians combine traditional techniques with modern trends to deliver results that make you shine.</p>
+<p>Whether you're preparing for your wedding day, heading to a party, or simply treating yourself to a self-care day — we offer a complete range of beauty services from hair care to bridal makeup, nail art to skin treatments.</p>
+<p>With a 4.5-star rating from 272 happy customers, we're proud to be Satna's most trusted beauty destination.</p>
+<div class="rating-badge"><div class="stars">★★★★½</div><span>4.5/5 from 272 reviews</span></div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-title"><div class="petal">💅</div><h2>Our Services</h2><p>Complete beauty care under one roof</p></div>
+<div class="services-grid">
+<div class="service-card"><div class="icon">💇‍♀️</div><h3>Hair Care</h3><p>Cut, Color, Keratin Treatment, Smoothening, Rebonding, Hair Spa & Deep Conditioning</p></div>
+<div class="service-card"><div class="icon">✨</div><h3>Skin Care</h3><p>Facials, Cleanup, De-Tan, Bleach, Gold & Diamond Facials, Anti-aging Treatments</p></div>
+<div class="service-card"><div class="icon">💅</div><h3>Nails</h3><p>Manicure, Pedicure, Nail Art, Gel Nails, Acrylic Extensions, Nail Polish Art</p></div>
+<div class="service-card"><div class="icon">🌿</div><h3>Hair Removal</h3><p>Full Body Waxing, Threading, Upper Lip, Arms, Legs, Rica Wax, Chocolate Wax</p></div>
+<div class="service-card"><div class="icon">👰</div><h3>Makeup</h3><p>Bridal Makeup, Party Makeup, HD Makeup, Airbrush Makeup, Engagement & Pre-wedding</p></div>
+</div>
+</section>
+
+<section id="bridal">
+<div class="bridal-section">
+<div class="section-title" style="margin-bottom:20px"><div class="petal">👰</div><h2>Bridal Packages</h2><p>Your dream look, our expertise</p></div>
+<div class="bridal-packages">
+<div class="bridal-card">
+<h3>Silver Package</h3>
+<div class="amount">₹8,999</div>
+<ul>
+<li>Bridal Makeup (HD)</li>
+<li>Hair Styling</li>
+<li>Draping Assistance</li>
+<li>Pre-bridal Facial</li>
+<li>Manicure & Pedicure</li>
+</ul>
+<a href="#booking" class="btn" style="width:100%">Book Now</a>
+</div>
+<div class="bridal-card featured">
+<h3>Gold Package</h3>
+<div class="amount">₹15,999</div>
+<ul>
+<li>Airbrush Bridal Makeup</li>
+<li>Advance Hair Styling</li>
+<li>Draping + Dupatta Setting</li>
+<li>3 Pre-bridal Facials</li>
+<li>Full Body Waxing</li>
+<li>Mani + Pedi + Nail Art</li>
+<li>Mehendi Day Makeup</li>
+</ul>
+<a href="#booking" class="btn" style="width:100%">Book Now</a>
+</div>
+<div class="bridal-card">
+<h3>Platinum Package</h3>
+<div class="amount">₹25,999</div>
+<ul>
+<li>Premium Airbrush Makeup</li>
+<li>All Events Covered (3 looks)</li>
+<li>Hair Spa + Treatments</li>
+<li>5 Pre-bridal Sessions</li>
+<li>Complete Body Polishing</li>
+<li>Gel Nail Extensions</li>
+<li>Personal Attendant</li>
+</ul>
+<a href="#booking" class="btn" style="width:100%">Book Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="section-title"><div class="petal">💰</div><h2>Service Pricing</h2><p>Transparent pricing, no surprises</p></div>
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('p',this,'hair')">Hair</button>
+<button class="tab-btn" onclick="showTab('p',this,'skin')">Skin</button>
+<button class="tab-btn" onclick="showTab('p',this,'nails')">Nails</button>
+<button class="tab-btn" onclick="showTab('p',this,'wax')">Waxing</button>
+<button class="tab-btn" onclick="showTab('p',this,'makeup')">Makeup</button>
+</div>
+<div id="p-hair" class="tab-content active">
+<table class="pricing-table">
+<tr><th>Service</th><th style="text-align:right">Price</th></tr>
+<tr><td>Hair Cut (Basic)</td><td class="price-col">₹200</td></tr>
+<tr><td>Hair Cut (Advanced/Layered)</td><td class="price-col">₹400</td></tr>
+<tr><td>Hair Color (Global)</td><td class="price-col">₹1,500+</td></tr>
+<tr><td>Hair Highlights</td><td class="price-col">₹2,000+</td></tr>
+<tr><td>Keratin Treatment</td><td class="price-col">₹4,000+</td></tr>
+<tr><td>Hair Smoothening</td><td class="price-col">₹3,500+</td></tr>
+<tr><td>Hair Spa</td><td class="price-col">₹800</td></tr>
+</table>
+</div>
+<div id="p-skin" class="tab-content">
+<table class="pricing-table">
+<tr><th>Service</th><th style="text-align:right">Price</th></tr>
+<tr><td>Basic Cleanup</td><td class="price-col">₹300</td></tr>
+<tr><td>Fruit Facial</td><td class="price-col">₹500</td></tr>
+<tr><td>Gold Facial</td><td class="price-col">₹1,200</td></tr>
+<tr><td>Diamond Facial</td><td class="price-col">₹1,500</td></tr>
+<tr><td>De-Tan Pack</td><td class="price-col">₹600</td></tr>
+<tr><td>Bleach (Face)</td><td class="price-col">₹250</td></tr>
+<tr><td>O3+ Facial</td><td class="price-col">₹1,800</td></tr>
+</table>
+</div>
+<div id="p-nails" class="tab-content">
+<table class="pricing-table">
+<tr><th>Service</th><th style="text-align:right">Price</th></tr>
+<tr><td>Basic Manicure</td><td class="price-col">₹300</td></tr>
+<tr><td>Spa Manicure</td><td class="price-col">₹500</td></tr>
+<tr><td>Basic Pedicure</td><td class="price-col">₹400</td></tr>
+<tr><td>Spa Pedicure</td><td class="price-col">₹600</td></tr>
+<tr><td>Nail Art (per nail)</td><td class="price-col">₹50</td></tr>
+<tr><td>Gel Nails</td><td class="price-col">₹1,200</td></tr>
+<tr><td>Acrylic Extensions</td><td class="price-col">₹2,000</td></tr>
+</table>
+</div>
+<div id="p-wax" class="tab-content">
+<table class="pricing-table">
+<tr><th>Service</th><th style="text-align:right">Price</th></tr>
+<tr><td>Full Arms</td><td class="price-col">₹200</td></tr>
+<tr><td>Full Legs</td><td class="price-col">₹300</td></tr>
+<tr><td>Under Arms</td><td class="price-col">₹100</td></tr>
+<tr><td>Full Body Wax</td><td class="price-col">₹1,500</td></tr>
+<tr><td>Rica Wax (Full Body)</td><td class="price-col">₹2,500</td></tr>
+<tr><td>Chocolate Wax (Full Body)</td><td class="price-col">₹3,000</td></tr>
+<tr><td>Threading (Eyebrows)</td><td class="price-col">₹30</td></tr>
+</table>
+</div>
+<div id="p-makeup" class="tab-content">
+<table class="pricing-table">
+<tr><th>Service</th><th style="text-align:right">Price</th></tr>
+<tr><td>Party Makeup</td><td class="price-col">₹2,500</td></tr>
+<tr><td>HD Makeup</td><td class="price-col">₹5,000</td></tr>
+<tr><td>Airbrush Makeup</td><td class="price-col">₹8,000</td></tr>
+<tr><td>Bridal Makeup (Basic)</td><td class="price-col">₹8,999</td></tr>
+<tr><td>Bridal Makeup (Premium)</td><td class="price-col">₹15,999</td></tr>
+<tr><td>Engagement Makeup</td><td class="price-col">₹4,000</td></tr>
+<tr><td>Saree Draping</td><td class="price-col">₹500</td></tr>
+</table>
+</div>
+</section>
+
+<section id="gallery">
+<div class="section-title"><div class="petal">📸</div><h2>Our Work</h2></div>
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('g',this,'hair2')">Hair</button>
+<button class="tab-btn" onclick="showTab('g',this,'bridal2')">Bridal</button>
+<button class="tab-btn" onclick="showTab('g',this,'nails2')">Nails</button>
+<button class="tab-btn" onclick="showTab('g',this,'skin2')">Skin</button>
+<button class="tab-btn" onclick="showTab('g',this,'interior')">Interior</button>
+</div>
+<div id="g-hair2" class="tab-content active">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="Hair 1">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400" alt="Hair 2">
+<img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400" alt="Hair 3">
+</div>
+</div>
+<div id="g-bridal2" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400" alt="Bridal 1">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400" alt="Bridal 2">
+<img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400" alt="Bridal 3">
+</div>
+</div>
+<div id="g-nails2" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="Nails 1">
+<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=400" alt="Nails 2">
+<img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400" alt="Nails 3">
+</div>
+</div>
+<div id="g-skin2" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400" alt="Skin 1">
+<img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400" alt="Skin 2">
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400" alt="Skin 3">
+</div>
+</div>
+<div id="g-interior" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400" alt="Interior 1">
+<img src="https://images.unsplash.com/photo-1633681122886-333f05cfa5f8?w=400" alt="Interior 2">
+<img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400" alt="Interior 3">
+</div>
+</div>
+</section>
+
+<section id="reviews">
+<div class="section-title"><div class="petal">💬</div><h2>Customer Reviews</h2></div>
+<div class="review-badge"><div class="big-star">★★★★½</div><p>4.5 / 5 from 272 customers</p></div>
+<div class="reviews-wrap" style="margin-top:25px">
+<div class="reviews-track" id="reviewsTrack">
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"Best parlour in Satna! My bridal makeup was absolutely stunning. Everyone was asking who did it. Thank you A-One!"</blockquote><div class="author">— Neha S.</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"I've been coming here for 3 years. The hair treatments are excellent and the staff is so friendly and professional."</blockquote><div class="author">— Ritu K.</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><blockquote>"Great nail art services! They really listen to what you want. Prices are very reasonable for the quality."</blockquote><div class="author">— Anjali P.</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">←</button><button onclick="moveReview(1)">→</button></div>
+</section>
+
+<section id="booking">
+<div class="section-title"><div class="petal">📅</div><h2>Book an Appointment</h2><p>Schedule your beauty session</p></div>
+<form class="form-grid" onsubmit="event.preventDefault();alert('Appointment booked! We will confirm via call/WhatsApp.')">
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="date" required>
+<select required><option value="">Preferred Time</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option></select>
+<select required class="full"><option value="">Select Service Category</option><option>Hair Care</option><option>Skin Care</option><option>Nails</option><option>Waxing / Hair Removal</option><option>Makeup (Party/Event)</option><option>Bridal Package</option><option>Multiple Services</option></select>
+<textarea class="full" placeholder="Describe what you need (e.g., hair color + facial, bridal consultation, etc.)"></textarea>
+<div class="full" style="text-align:center"><button type="submit" class="btn">Confirm Booking</button></div>
+</form>
+</section>
+
+<section id="contact">
+<div class="section-title"><div class="petal">📍</div><h2>Visit Us</h2></div>
+<div class="contact-grid">
+<div class="contact-info">
+<h3>A-One Beauty Parlour</h3>
+<p>📍 Gandhi Chowk, Ganpat Marg, Nazirabad, Satna</p>
+<p>📞 <a href="tel:9303959697">9303959697</a></p>
+<p>📸 <a href="https://instagram.com/a_one_beauty_parlour_satna_" target="_blank">@a_one_beauty_parlour_satna_</a></p>
+<p style="margin-top:20px;color:#888"><strong style="color:var(--rose)">Hours:</strong> 10:00 AM – 8:00 PM (Mon–Sat) | 11:00 AM – 6:00 PM (Sun)</p>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.0!2d80.83!3d24.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM0JzEyLjAiTiA4MMKwNDknNDguMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="social">
+<a href="tel:9303959697">📞 9303959697</a>
+<a href="https://instagram.com/a_one_beauty_parlour_satna_" target="_blank">📸 Instagram</a>
+</div>
+<p>© 2026 A-One Beauty Parlour, Satna. All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/919303959697" target="_blank" class="whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+let heroIdx=0;const heroSlides=document.querySelectorAll('.hero-slide');
+setInterval(()=>{heroSlides[heroIdx].classList.remove('active');heroIdx=(heroIdx+1)%heroSlides.length;heroSlides[heroIdx].classList.add('active')},5000);
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+function showTab(prefix,btn,name){const parent=btn.closest('section')||btn.closest('.tabs').parentElement;parent.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');parent.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById(prefix+'-'+name).classList.add('active')}
+let reviewIdx=0;function moveReview(dir){const track=document.getElementById('reviewsTrack');const total=track.children.length;reviewIdx=(reviewIdx+dir+total)%total;track.style.transform='translateX(-'+reviewIdx*100+'%)'}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.num').forEach(n=>{const target=+n.dataset.target;let current=0;const inc=target/60;const timer=setInterval(()=>{current+=inc;if(current>=target){n.textContent=target.toLocaleString();clearInterval(timer)}else{n.textContent=Math.floor(current).toLocaleString()}},30)});observer.disconnect()}})});
+observer.observe(document.querySelector('.stats'));
+</script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Travels — Stellar Journeys Across the Galaxy</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#1E1B4B;--purple:#A78BFA;--dark:#0f0c2e;--white:#fff;--gray:#9ca3af;--light:#2e2763;--star:#fbbf24;--cosmic:linear-gradient(135deg,#1E1B4B,#312e81,#4c1d95)}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:#e2e8f0;overflow-x:hidden;background:var(--dark)}
+h1,h2,h3,h4,h5{font-family:'Orbitron',sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* STARS BACKGROUND */
+.stars-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--dur) infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 0;transition:all .3s}
+nav.scrolled{background:rgba(15,12,46,.92);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(167,139,250,.15)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:800;color:var(--purple);text-decoration:none;letter-spacing:2px}
+.logo span{color:var(--star)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-weight:500;font-size:.9rem;transition:color .3s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--purple)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:2px;background:var(--purple)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(15,12,46,.98);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--purple);font-size:1.3rem;text-decoration:none;font-family:'Orbitron',sans-serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--purple);font-size:2rem;cursor:pointer}
+
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,12,46,.9),rgba(76,29,149,.7))}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:0 20px;z-index:2}
+.hero-content p.tagline{font-family:'Orbitron',sans-serif;font-size:.85rem;letter-spacing:6px;text-transform:uppercase;color:var(--purple);margin-bottom:15px;font-weight:600}
+.hero-content h1{font-size:3.2rem;font-weight:900;margin-bottom:20px;line-height:1.2;letter-spacing:2px}
+.hero-content h1 span{background:linear-gradient(90deg,var(--purple),var(--star));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-content p.sub{font-size:1.1rem;max-width:600px;opacity:.8;margin-bottom:30px;color:#c4b5fd}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;font-size:1rem;transition:all .3s;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#8b5cf6);color:var(--white)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(167,139,250,.4)}
+.btn-outline{border:2px solid var(--purple);color:var(--purple);background:transparent}
+.btn-outline:hover{background:var(--purple);color:var(--white)}
+.hero-btns{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(167,139,250,.3);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--purple);transform:scale(1.2);box-shadow:0 0 15px var(--purple)}
+
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2rem;font-weight:700;color:var(--purple);letter-spacing:2px}
+.section-title p{color:var(--gray);max-width:600px;margin:10px auto 0}
+.section-title .line{width:60px;height:4px;background:linear-gradient(90deg,var(--purple),var(--star));margin:15px auto 0;border-radius:2px}
+
+/* All sections relative z-index to be above stars */
+section,footer{position:relative;z-index:1}
+
+.about{padding:80px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{position:relative;border-radius:20px;overflow:hidden}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+.about-img::after{content:'🏆 Award Winning';position:absolute;bottom:20px;right:20px;background:linear-gradient(135deg,var(--star),#f59e0b);color:var(--dark);padding:12px 20px;border-radius:12px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px}
+.about-text h3{font-size:1.5rem;color:var(--purple);margin-bottom:15px;letter-spacing:1px}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:15px}
+.about-awards{display:flex;gap:15px;margin-top:20px;flex-wrap:wrap}
+.award{background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);padding:10px 20px;border-radius:50px;color:var(--purple);font-size:.85rem;font-weight:600}
+
+.services{padding:80px 0;background:rgba(167,139,250,.05)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.svc-card{background:rgba(30,27,75,.8);border:1px solid rgba(167,139,250,.2);border-radius:20px;padding:35px 25px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(167,139,250,.1) 0%,transparent 70%);opacity:0;transition:opacity .3s}
+.svc-card:hover::before{opacity:1}
+.svc-card:hover{border-color:var(--purple);transform:translateY(-5px);box-shadow:0 15px 40px rgba(167,139,250,.15)}
+.svc-card .icon{width:65px;height:65px;background:linear-gradient(135deg,rgba(167,139,250,.2),rgba(167,139,250,.1));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;border:1px solid rgba(167,139,250,.3)}
+.svc-card h3{font-size:.95rem;margin-bottom:8px;color:var(--white);letter-spacing:1px}
+.svc-card p{color:var(--gray);font-size:.85rem;line-height:1.5;position:relative;z-index:1}
+
+/* DESTINATIONS - star map layout */
+.destinations{padding:80px 0}
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.dest-card{background:rgba(30,27,75,.6);border:1px solid rgba(167,139,250,.2);border-radius:20px;overflow:hidden;transition:all .3s}
+.dest-card:hover{border-color:var(--purple);transform:translateY(-5px);box-shadow:0 15px 40px rgba(167,139,250,.15)}
+.dest-card img{width:100%;height:200px;object-fit:cover}
+.dest-card .info{padding:20px}
+.dest-card h4{font-size:.9rem;color:var(--purple);margin-bottom:5px;letter-spacing:1px}
+.dest-card .meta{color:var(--gray);font-size:.85rem;margin-bottom:8px}
+.dest-card .price{font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;color:var(--star)}
+
+/* FLEET */
+.fleet{padding:80px 0;background:rgba(167,139,250,.05)}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.fleet-card{background:rgba(30,27,75,.8);border:1px solid rgba(167,139,250,.15);border-radius:20px;overflow:hidden;transition:all .3s}
+.fleet-card:hover{border-color:var(--purple);transform:translateY(-5px)}
+.fleet-card img{width:100%;height:200px;object-fit:cover}
+.fleet-card .info{padding:20px}
+.fleet-card h4{font-size:.95rem;margin-bottom:8px;color:var(--white);letter-spacing:1px}
+.fleet-card .details{display:flex;justify-content:space-between;color:var(--gray);font-size:.85rem}
+.fleet-card .rate{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--purple);margin-top:8px}
+
+/* FLIGHT + HOTEL */
+.travel-info{padding:80px 0}
+.travel-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.travel-card{background:rgba(30,27,75,.8);border:1px solid rgba(167,139,250,.2);border-radius:20px;padding:40px;text-align:center;transition:all .3s}
+.travel-card:hover{border-color:var(--purple);box-shadow:0 10px 30px rgba(167,139,250,.1)}
+.travel-card .icon{font-size:3rem;margin-bottom:15px}
+.travel-card h3{font-size:1.1rem;color:var(--purple);margin-bottom:10px;letter-spacing:1px}
+.travel-card p{color:var(--gray);line-height:1.7}
+
+/* STATS */
+.stats{padding:60px 0;background:linear-gradient(135deg,#312e81,#4c1d95)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.stat-item h3{font-size:2.5rem;font-weight:900;color:var(--star);text-shadow:0 0 20px rgba(251,191,36,.3)}
+.stat-item p{font-size:.9rem;color:rgba(255,255,255,.6);margin-top:5px}
+
+/* GALLERY */
+.gallery{padding:80px 0}
+.tab-btns{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 25px;border-radius:50px;border:2px solid var(--purple);background:transparent;color:var(--purple);font-weight:600;cursor:pointer;transition:all .3s;font-family:'Plus Jakarta Sans',sans-serif}
+.tab-btn.active{background:var(--purple);color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:15px;transition:all .3s;border:2px solid transparent}
+.gallery-grid img:hover{transform:scale(1.03);border-color:var(--purple)}
+.tab-content{display:none}
+.tab-content.active{display:grid}
+
+/* BOOKING */
+.booking{padding:80px 0;background:rgba(167,139,250,.05)}
+.booking-form{max-width:800px;margin:0 auto;background:rgba(30,27,75,.9);border:1px solid rgba(167,139,250,.2);border-radius:24px;padding:40px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;margin-bottom:5px;color:var(--purple);font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:2px solid rgba(167,139,250,.2);border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none;background:rgba(15,12,46,.8);color:var(--white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--purple)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--gray)}
+.form-group select{color:var(--gray)}
+.form-full{grid-column:1/-1}
+.submit-btn{grid-column:1/-1;padding:16px;background:linear-gradient(135deg,var(--purple),#8b5cf6);color:var(--white);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Orbitron',sans-serif;transition:all .3s;letter-spacing:1px}
+.submit-btn:hover{box-shadow:0 10px 30px rgba(167,139,250,.4);transform:translateY(-2px)}
+
+/* REVIEWS */
+.reviews{padding:80px 0}
+.reviews-track{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{min-width:350px;background:rgba(30,27,75,.8);border:1px solid rgba(167,139,250,.2);border-radius:20px;padding:30px;scroll-snap-align:start}
+.review-card .stars{color:var(--star);font-size:1.2rem;margin-bottom:10px}
+.review-card p{color:var(--gray);line-height:1.7;margin-bottom:15px;font-style:italic}
+.review-card .author{font-weight:700;color:var(--purple)}
+
+/* CONTACT */
+.contact{padding:80px 0;background:rgba(167,139,250,.05)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:15px;align-items:flex-start}
+.contact-item .icon{width:50px;height:50px;background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-item h4{font-size:1rem;color:var(--white);margin-bottom:3px}
+.contact-item p{color:var(--gray);font-size:.9rem}
+.contact-item a{color:var(--purple);text-decoration:none}
+.map-container{border-radius:20px;overflow:hidden;height:100%;min-height:350px;border:2px solid rgba(167,139,250,.2)}
+.map-container iframe{width:100%;height:100%;border:0}
+
+footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;border-top:1px solid rgba(167,139,250,.1)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.footer-brand p{color:rgba(255,255,255,.4);margin-top:10px;line-height:1.7;font-size:.9rem}
+.footer-col h4{font-family:'Orbitron',sans-serif;font-size:.8rem;margin-bottom:15px;color:var(--purple);letter-spacing:2px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-col ul li a:hover{color:var(--purple)}
+.footer-bottom{border-top:1px solid rgba(167,139,250,.1);padding-top:20px;text-align:center;color:rgba(255,255,255,.3);font-size:.85rem}
+
+.whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+
+@media(max-width:1024px){.services-grid,.dest-grid,.fleet-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+.hamburger{display:flex}.nav-links{display:none}
+.hero-content h1{font-size:2rem}
+.about-grid,.travel-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+.services-grid,.dest-grid,.fleet-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.form-grid{grid-template-columns:1fr}
+.review-card{min-width:280px}
+}
+@media(max-width:375px){.hero-content h1{font-size:1.6rem}.section-title h2{font-size:1.5rem}}
+</style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars-bg" id="stars-bg"></div>
+
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo">GALAXY <span>✦</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#destinations">Destinations</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+<a href="#destinations" onclick="this.parentElement.classList.remove('active')">Destinations</a>
+<a href="#booking" onclick="this.parentElement.classList.remove('active')">Book Now</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&q=80" alt="Galaxy Night Sky">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80" alt="Cosmic">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<p class="tagline">STELLAR JOURNEYS ACROSS THE GALAXY</p>
+<h1>GALAXY <span>TRAVELS</span></h1>
+<p class="sub">Award-winning travel company in Satna. Car rental, flight booking, hotel booking & curated tour packages.</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-primary">✦ Book Journey</a>
+<a href="tel:9039399152" class="btn btn-outline">📞 Call Now</a>
+</div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section class="about" id="about">
+<div class="container">
+<div class="section-title"><h2>ABOUT GALAXY</h2><div class="line"></div></div>
+<div class="about-grid">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Travel"></div>
+<div class="about-text">
+<h3>AWARD-WINNING TRAVEL</h3>
+<p>Galaxy Travels is Satna's premier award-winning travel company, delivering stellar travel experiences for over a decade. From behind Chandni Talkies, we've grown to become the most trusted name in travel.</p>
+<p>We offer comprehensive travel solutions — car rentals, tempo travellers, flight bookings, hotel reservations, and expertly curated tour packages. Every journey with Galaxy is an interstellar experience.</p>
+<div class="about-awards">
+<span class="award">🏆 Best Travel Agency</span>
+<span class="award">⭐ 4.8 Rating</span>
+<span class="award">🌟 10+ Years</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="container">
+<div class="section-title"><h2>OUR SERVICES</h2><p>Complete travel solutions under one roof</p><div class="line"></div></div>
+<div class="services-grid">
+<div class="svc-card"><div class="icon">🚗</div><h3>CAR RENTAL</h3><p>Sedan, SUV, Innova — premium cars for local and outstation travel.</p></div>
+<div class="svc-card"><div class="icon">🚐</div><h3>TEMPO TRAVELLER</h3><p>12-26 seater for group travel, weddings, and corporate events.</p></div>
+<div class="svc-card"><div class="icon">✈️</div><h3>FLIGHT BOOKING</h3><p>Domestic and international flight bookings at best prices.</p></div>
+<div class="svc-card"><div class="icon">🏨</div><h3>HOTEL BOOKING</h3><p>Premium hotel reservations across India. Best deals guaranteed.</p></div>
+<div class="svc-card"><div class="icon">🗺️</div><h3>TOUR PACKAGES</h3><p>Curated packages to top destinations in MP and across India.</p></div>
+<div class="svc-card"><div class="icon">👁️</div><h3>SIGHTSEEING</h3><p>Local sightseeing tours with expert guides and comfortable transport.</p></div>
+</div>
+</div>
+</section>
+
+<section class="destinations" id="destinations">
+<div class="container">
+<div class="section-title"><h2>DESTINATIONS</h2><p>Navigate the star map of incredible destinations</p><div class="line"></div></div>
+<div class="dest-grid">
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Varanasi"><div class="info"><h4>VARANASI</h4><p class="meta">📍 350 km · 3 Days</p><div class="price">₹5,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho"><div class="info"><h4>KHAJURAHO</h4><p class="meta">📍 180 km · 2 Days</p><div class="price">₹4,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Pachmarchi"><div class="info"><h4>PACHMARCHI</h4><p class="meta">📍 350 km · 3 Days</p><div class="price">₹6,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Bandhavgarh"><div class="info"><h4>BANDHAVGARH</h4><p class="meta">📍 180 km · 2 Days</p><div class="price">₹7,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Maihar"><div class="info"><h4>MAIHAR DEVI</h4><p class="meta">📍 40 km · 1 Day</p><div class="price">₹1,200</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Ujjain"><div class="info"><h4>UJJAIN</h4><p class="meta">📍 640 km · 3 Days</p><div class="price">₹8,000</div></div></div>
+</div>
+</div>
+</section>
+
+<section class="fleet" id="fleet">
+<div class="container">
+<div class="section-title"><h2>OUR FLEET</h2><div class="line"></div></div>
+<div class="fleet-grid">
+<div class="fleet-card"><img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Sedan"><div class="info"><h4>SEDAN</h4><div class="details"><span>4 Seats</span><span>AC</span></div><div class="rate">₹10/KM</div></div></div>
+<div class="fleet-card"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Innova"><div class="info"><h4>INNOVA CRYSTA</h4><div class="details"><span>7 Seats</span><span>AC</span></div><div class="rate">₹16/KM</div></div></div>
+<div class="fleet-card"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=500&q=80" alt="Tempo"><div class="info"><h4>TEMPO TRAVELLER</h4><div class="details"><span>12-26 Seats</span><span>AC</span></div><div class="rate">₹18/KM</div></div></div>
+</div>
+</div>
+</section>
+
+<section class="travel-info">
+<div class="container">
+<div class="section-title"><h2>FLIGHT & HOTEL</h2><p>Complete travel booking services</p><div class="line"></div></div>
+<div class="travel-grid">
+<div class="travel-card">
+<div class="icon">✈️</div>
+<h3>FLIGHT BOOKING</h3>
+<p>Book domestic and international flights at the best prices. We partner with all major airlines to get you the most competitive fares. Group discounts available for 5+ passengers.</p>
+</div>
+<div class="travel-card">
+<div class="icon">🏨</div>
+<h3>HOTEL BOOKING</h3>
+<p>Premium hotel reservations across India. From budget-friendly stays to luxury resorts — we find the perfect accommodation for your trip. Corporate rates available.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 class="counter" data-target="10000">0</h3><p>Happy Travelers</p></div>
+<div class="stat-item"><h3 class="counter" data-target="60">0</h3><p>Vehicles</p></div>
+<div class="stat-item"><h3 class="counter" data-target="12">0</h3><p>Years of Excellence</p></div>
+<div class="stat-item"><h3 class="counter" data-target="150">0</h3><p>Destinations</p></div>
+</div>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="section-title"><h2>GALLERY</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('dest-g')">Destinations</button>
+<button class="tab-btn" onclick="showTab('fleet-g')">Fleet</button>
+<button class="tab-btn" onclick="showTab('travel-g')">Travel</button>
+</div>
+<div class="tab-content active gallery-grid" id="dest-g">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Dest"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Dest"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Dest">
+</div>
+<div class="tab-content gallery-grid" id="fleet-g">
+<img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Fleet"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Fleet"><img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=500&q=80" alt="Fleet">
+</div>
+<div class="tab-content gallery-grid" id="travel-g">
+<img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&q=80" alt="Travel"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&q=80" alt="Travel"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&q=80" alt="Travel">
+</div>
+</div>
+</section>
+
+<section class="booking" id="booking">
+<div class="container">
+<div class="section-title"><h2>BOOK JOURNEY</h2><p>Launch your stellar journey today</p><div class="line"></div></div>
+<div class="booking-form">
+<div class="form-grid">
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+<div class="form-group"><label>Service Type</label><select><option>Car Rental</option><option>Tour Package</option><option>Flight Booking</option><option>Hotel Booking</option><option>Tempo Traveller</option></select></div>
+<div class="form-group"><label>Destination</label><input type="text" placeholder="Where to?"></div>
+<div class="form-group"><label>Travel Date</label><input type="date"></div>
+<div class="form-group"><label>Travelers</label><select><option>1-2</option><option>3-4</option><option>5-8</option><option>8+</option></select></div>
+<div class="form-group form-full"><label>Special Requests</label><textarea rows="3" placeholder="Any special requirements..."></textarea></div>
+<button class="submit-btn" type="button" onclick="alert('✦ Thank you! Galaxy Travels will contact you shortly.')">✦ LAUNCH BOOKING</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reviews">
+<div class="container">
+<div class="section-title"><h2>REVIEWS</h2><div class="line"></div></div>
+<div class="reviews-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"Galaxy Travels is truly stellar! Best travel agency in Satna. Their flight booking got us amazing deals."</p><div class="author">— Arun Shrivastava</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"Booked a complete tour package — car, hotel, sightseeing. Everything was perfect. Award-winning for a reason!"</p><div class="author">— Neha Jaiswal</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Used their tempo traveller for a family trip. Very comfortable and driver was excellent. Will use again."</p><div class="author">— Prakash Yadav</div></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-title"><h2>CONTACT</h2><div class="line"></div></div>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:9039399152">9039399152</a> / <a href="tel:07672233360">07672-233360</a></p></div></div>
+<div class="contact-item"><div class="icon">📍</div><div><h4>Address</h4><p>Behind Chandni Talkies, Near Saheli Boutique, Satna</p></div></div>
+<div class="contact-item"><div class="icon">⏰</div><div><h4>Working Hours</h4><p>Open 24/7 — 365 Days</p></div></div>
+<div class="contact-item"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/919039399152">Chat on WhatsApp</a></p></div></div>
+</div>
+<div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5!2d80.83!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatna!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe></div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><a href="#" class="logo">GALAXY <span>✦</span></a><p>Award-winning travel company in Satna. Stellar journeys across the galaxy since over a decade. Car rental, flights, hotels & tours.</p></div>
+<div class="footer-col"><h4>LINKS</h4><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#booking">Book Now</a></li></ul></div>
+<div class="footer-col"><h4>SERVICES</h4><ul><li><a href="#">Car Rental</a></li><li><a href="#">Flight Booking</a></li><li><a href="#">Hotel Booking</a></li><li><a href="#">Tour Packages</a></li></ul></div>
+</div>
+<div class="footer-bottom"><p>© 2026 Galaxy Travels, Satna. All rights reserved. | Designed by VedamVision</p></div>
+</div>
+</footer>
+
+<a href="https://wa.me/919039399152" class="whatsapp-float" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+// Generate stars
+const starsBg=document.getElementById('stars-bg');
+for(let i=0;i<150;i++){const s=document.createElement('div');s.className='star';const size=Math.random()*3+1;s.style.cssText=`width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s`;starsBg.appendChild(s)}
+
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+const counters=document.querySelectorAll('.counter');let counted=false;
+function animateCounters(){counters.forEach(c=>{const target=+c.dataset.target,inc=target/80;let val=0;const timer=setInterval(()=>{val+=inc;if(val>=target){c.textContent=target.toLocaleString()+'+';clearInterval(timer)}else{c.textContent=Math.floor(val).toLocaleString()+'+'}},20)})}
+const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!counted){counted=true;animateCounters()}},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+function showTab(id){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+</body>
+</html>

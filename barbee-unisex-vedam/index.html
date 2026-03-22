@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barbee Unisex Salon — Modern Grooming for All | Rewa</title>
+<meta name="description" content="Barbee Unisex Salon, Rewa — Premium unisex salon for men and women. Haircuts, styling, grooming, bridal services.">
+<link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;500;600;700&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--jet:#1A1A1A;--purple:#C084FC;--silver:#E5E7EB;--dark:#0d0d0d;--gray:#9CA3AF;--purple-dark:#A855F7;--white:#fff}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',sans-serif;color:var(--jet);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fahkwang',sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,26,26,.25);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);padding:14px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Fahkwang',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:2px}
+.logo span{color:var(--purple)}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-weight:500;font-size:.88rem;transition:color .3s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--purple)}
+.menu-btn{display:none;background:none;border:none;font-size:1.5rem;color:var(--white);cursor:pointer}
+
+/* Hero */
+.hero{height:100vh;position:relative;overflow:hidden;background:var(--jet)}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;opacity:.4}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:20px}
+.hero-content h1{font-size:4rem;font-weight:700;letter-spacing:4px;margin-bottom:14px;text-transform:uppercase}
+.hero-content h1 span{color:var(--purple)}
+.hero-sub{font-size:1.1rem;letter-spacing:3px;text-transform:uppercase;opacity:.6;margin-bottom:24px}
+.btn{display:inline-block;padding:14px 34px;border-radius:4px;font-weight:600;text-decoration:none;transition:all .3s;font-size:.9rem;cursor:pointer;border:none;letter-spacing:1px;font-family:'Figtree',sans-serif}
+.btn-purple{background:var(--purple);color:var(--jet)}
+.btn-purple:hover{background:var(--purple-dark);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,132,252,.4)}
+.btn-line{border:1px solid rgba(255,255,255,.4);color:var(--white);background:transparent;margin-left:14px}
+.btn-line:hover{border-color:var(--purple);color:var(--purple)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.hero-dots span{width:40px;height:2px;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--purple)}
+
+section{padding:80px 0}
+.s-title{text-align:center;margin-bottom:50px}
+.s-title h2{font-size:2.2rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.s-title p{color:var(--gray);max-width:500px;margin:0 auto}
+.s-title .bar{width:50px;height:3px;background:var(--purple);margin:14px auto 0}
+
+/* About */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:4px}
+.about-img::after{content:'';position:absolute;top:16px;left:16px;right:-16px;bottom:-16px;border:2px solid var(--purple);border-radius:4px;z-index:-1}
+.about-text h3{font-size:1.6rem;margin-bottom:14px;letter-spacing:1px}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:14px}
+
+/* Services Split */
+.services-split{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.srv-half{padding:60px 40px}
+.srv-men{background:var(--jet);color:var(--white)}
+.srv-women{background:var(--silver)}
+.srv-half h3{font-size:1.6rem;letter-spacing:2px;margin-bottom:30px;text-transform:uppercase}
+.srv-men h3{color:var(--purple)}
+.srv-women h3{color:var(--jet)}
+.srv-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.srv-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:8px;transition:all .3s}
+.srv-men .srv-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.srv-men .srv-item:hover{border-color:var(--purple)}
+.srv-women .srv-item{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06)}
+.srv-women .srv-item:hover{border-color:var(--purple)}
+.srv-icon{font-size:1.5rem}
+.srv-info h4{font-size:1rem;margin-bottom:2px}
+.srv-info p{font-size:.85rem;color:var(--gray)}
+
+/* Pricing */
+.pricing-bg{background:var(--jet);color:var(--white)}
+.pricing-bg h2{color:var(--white)}
+.price-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.price-col{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:32px;transition:border-color .3s}
+.price-col:hover{border-color:var(--purple)}
+.price-col h3{text-align:center;font-size:1.3rem;letter-spacing:1px;margin-bottom:20px;color:var(--purple)}
+.p-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.p-item span:last-child{color:var(--purple);font-weight:600}
+
+/* Stats */
+.stats{background:linear-gradient(135deg,var(--purple),#a855f7);padding:50px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;color:var(--jet)}
+.stat-num{font-family:'Fahkwang',sans-serif;font-size:3rem;font-weight:700}
+.stat-label{font-size:.85rem;opacity:.7;margin-top:4px}
+
+/* Gallery */
+.gal-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.gal-tab{padding:10px 24px;border-radius:4px;border:1px solid var(--jet);background:transparent;color:var(--jet);cursor:pointer;font-weight:600;transition:all .3s;font-family:'Figtree',sans-serif;letter-spacing:.5px;text-transform:uppercase;font-size:.85rem}
+.gal-tab.active{background:var(--jet);color:var(--white)}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.gal-grid img{width:100%;height:240px;object-fit:cover;border-radius:4px;transition:all .3s;filter:grayscale(30%)}
+.gal-grid img:hover{filter:grayscale(0);transform:scale(1.02)}
+
+/* Reviews */
+.rev-bg{background:rgba(26,26,26,.03)}
+.rev-carousel{position:relative;overflow:hidden}
+.rev-track{display:flex;transition:transform .5s}
+.rev-card{min-width:100%;padding:40px;text-align:center}
+.rev-card .stars{color:#F59E0B;font-size:1.3rem;margin-bottom:12px}
+.rev-card blockquote{font-size:1.05rem;line-height:1.8;color:var(--gray);max-width:650px;margin:0 auto 16px;font-style:italic}
+.rev-card .name{font-weight:700;font-family:'Fahkwang',sans-serif}
+.rev-nav{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.rev-nav button{width:40px;height:40px;border-radius:4px;border:1px solid var(--jet);background:transparent;cursor:pointer;font-size:1.1rem;transition:all .3s}
+.rev-nav button:hover{background:var(--jet);color:var(--white)}
+
+/* Booking */
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.book-form{background:var(--white);border-radius:8px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.08);border:1px solid var(--silver)}
+.book-form h3{margin-bottom:24px;font-size:1.3rem;letter-spacing:1px}
+.fg{margin-bottom:16px}
+.fg label{display:block;margin-bottom:6px;font-weight:500;font-size:.88rem;letter-spacing:.5px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;border:1px solid var(--silver);border-radius:4px;font-family:'Figtree',sans-serif;font-size:.95rem;outline:none;transition:border-color .3s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--purple)}
+.fg textarea{height:80px;resize:vertical}
+.c-info{display:flex;flex-direction:column;gap:16px}
+.c-item{display:flex;align-items:center;gap:14px;padding:16px;background:rgba(26,26,26,.03);border-radius:8px;border:1px solid var(--silver)}
+.c-item .ic{width:44px;height:44px;background:var(--jet);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--purple);font-size:1.2rem;flex-shrink:0}
+.map-box{border-radius:8px;overflow:hidden;margin-top:16px}
+.map-box iframe{width:100%;height:250px;border:0}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 0;text-align:center}
+footer .brand{font-family:'Fahkwang',sans-serif;font-size:1.3rem;font-weight:700;color:var(--purple);letter-spacing:3px;margin-bottom:6px}
+footer a{color:var(--purple);text-decoration:none}
+
+.wa{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.8rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s}
+.wa:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(26,26,26,.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:14px}
+.nav-links.open{display:flex}
+.menu-btn{display:block}
+.hero-content h1{font-size:2rem;letter-spacing:2px}
+.about-split,.book-grid{grid-template-columns:1fr}
+.services-split{grid-template-columns:1fr}
+.price-compare{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<a href="#" class="logo">BAR<span>BEE</span></a>
+<button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#booking">Book Now</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&h=800&fit=crop" alt="Stylish Salon">
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=1400&h=800&fit=crop" alt="Grooming">
+</div>
+<div class="hero-content">
+<div class="hero-sub">Unisex Salon — Rewa</div>
+<h1>STYLE HAS NO <span>GENDER</span></h1>
+<p style="font-size:1rem;opacity:.6;margin-bottom:28px;max-width:500px">Premium grooming & beauty for men and women. Edgy, modern, refined.</p>
+<div><a href="#booking" class="btn btn-purple">BOOK NOW</a><a href="#services" class="btn btn-line">SERVICES</a></div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section id="about">
+<div class="container">
+<div class="s-title"><h2>About Barbee</h2><p>Where grooming meets gender-neutral excellence</p><div class="bar"></div></div>
+<div class="about-split">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&h=400&fit=crop" alt="Barbee Salon"></div>
+<div class="about-text">
+<h3>Modern. Edgy. For Everyone.</h3>
+<p>Barbee Unisex Salon in Rewa redefines grooming. We believe great style knows no gender — our expert stylists deliver precision cuts, trend-setting colors, and luxurious treatments for all.</p>
+<p>Step into our sleek, modern space and experience the Barbee difference — where craft meets creativity.</p>
+<a href="#booking" class="btn btn-purple">Book Appointment</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Split Services -->
+<section id="services">
+<div class="s-title" style="padding-top:20px"><h2>Our Services</h2><p>Tailored for him & her</p><div class="bar"></div></div>
+<div class="services-split">
+<div class="srv-half srv-men">
+<h3>👔 For Him</h3>
+<ul class="srv-list">
+<li class="srv-item"><span class="srv-icon">✂️</span><div class="srv-info"><h4>Haircut & Styling</h4><p>Classic, fade, textured — your perfect cut</p></div></li>
+<li class="srv-item"><span class="srv-icon">🧔</span><div class="srv-info"><h4>Beard Grooming</h4><p>Trim, shape, hot towel, beard oil therapy</p></div></li>
+<li class="srv-item"><span class="srv-icon">💆</span><div class="srv-info"><h4>Men's Facial</h4><p>Deep cleanse, charcoal, anti-tan facials</p></div></li>
+<li class="srv-item"><span class="srv-icon">🧖</span><div class="srv-info"><h4>Hair Spa & Treatment</h4><p>Dandruff control, smoothening, keratin</p></div></li>
+</ul>
+</div>
+<div class="srv-half srv-women">
+<h3>👗 For Her</h3>
+<ul class="srv-list">
+<li class="srv-item"><span class="srv-icon">💇</span><div class="srv-info"><h4>Haircut & Styling</h4><p>Layered, bob, bangs — trending styles</p></div></li>
+<li class="srv-item"><span class="srv-icon">💄</span><div class="srv-info"><h4>Bridal & Party Makeup</h4><p>HD, airbrush, engagement & reception looks</p></div></li>
+<li class="srv-item"><span class="srv-icon">✨</span><div class="srv-info"><h4>Facials & Skin Care</h4><p>Gold, diamond, fruit, cleanup, de-tan</p></div></li>
+<li class="srv-item"><span class="srv-icon">🌸</span><div class="srv-info"><h4>Waxing & Threading</h4><p>Full body wax, eyebrow shaping, upper lip</p></div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="pricing-bg">
+<div class="container">
+<div class="s-title"><h2 style="color:#fff">Pricing</h2><p style="color:rgba(255,255,255,.5)">Side by side — transparent rates</p><div class="bar"></div></div>
+<div class="price-compare">
+<div class="price-col">
+<h3>👔 MEN</h3>
+<div class="p-item"><span>Haircut</span><span>₹199</span></div>
+<div class="p-item"><span>Beard Trim</span><span>₹99</span></div>
+<div class="p-item"><span>Hair + Beard Combo</span><span>₹249</span></div>
+<div class="p-item"><span>Charcoal Facial</span><span>₹499</span></div>
+<div class="p-item"><span>Hair Spa</span><span>₹599</span></div>
+<div class="p-item"><span>Smoothening</span><span>₹2,999+</span></div>
+</div>
+<div class="price-col">
+<h3>👗 WOMEN</h3>
+<div class="p-item"><span>Haircut & Style</span><span>₹299</span></div>
+<div class="p-item"><span>Basic Facial</span><span>₹499</span></div>
+<div class="p-item"><span>Gold Facial</span><span>₹999</span></div>
+<div class="p-item"><span>Full Body Wax</span><span>₹1,499</span></div>
+<div class="p-item"><span>Bridal Makeup</span><span>₹5,999+</span></div>
+<div class="p-item"><span>Global Hair Color</span><span>₹2,499+</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div><div class="stat-num" data-target="3000">0</div><div class="stat-label">Clients Served</div></div>
+<div><div class="stat-num" data-target="5">0</div><div class="stat-label">Years in Rewa</div></div>
+<div><div class="stat-num" data-target="10">0</div><div class="stat-label">Expert Stylists</div></div>
+<div><div class="stat-num" data-target="300">0</div><div class="stat-label">Brides Styled</div></div>
+</div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="container">
+<div class="s-title"><h2>Gallery</h2><div class="bar"></div></div>
+<div class="gal-tabs">
+<button class="gal-tab active" onclick="fG('all',this)">All</button>
+<button class="gal-tab" onclick="fG('men',this)">Men</button>
+<button class="gal-tab" onclick="fG('women',this)">Women</button>
+<button class="gal-tab" onclick="fG('salon',this)">Salon</button>
+</div>
+<div class="gal-grid">
+<img data-cat="men" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=280&fit=crop" alt="Men's Cut">
+<img data-cat="women" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=280&fit=crop" alt="Women Hair">
+<img data-cat="salon" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&h=280&fit=crop" alt="Salon Interior">
+<img data-cat="men" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=280&fit=crop" alt="Beard Grooming">
+<img data-cat="women" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=280&fit=crop" alt="Facial">
+<img data-cat="salon" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=280&fit=crop" alt="Salon">
+</div>
+</div>
+</section>
+
+<section id="reviews" class="rev-bg">
+<div class="container">
+<div class="s-title"><h2>Client Reviews</h2><div class="bar"></div></div>
+<div class="rev-carousel"><div class="rev-track">
+<div class="rev-card"><div class="stars">★★★★★</div><blockquote>"Barbee is hands down the best unisex salon in Rewa. Clean, modern, and the stylists actually listen to what you want."</blockquote><div class="name">Rahul Mishra</div></div>
+<div class="rev-card"><div class="stars">★★★★★</div><blockquote>"Got my bridal makeup done here and it lasted the entire day! The team is so professional and talented."</blockquote><div class="name">Kavita Dubey</div></div>
+<div class="rev-card"><div class="stars">★★★★★</div><blockquote>"Best beard grooming experience. The hot towel treatment is *chef's kiss*. Highly recommend for men."</blockquote><div class="name">Aditya Pandey</div></div>
+</div></div>
+<div class="rev-nav"><button onclick="mR(-1)">‹</button><button onclick="mR(1)">›</button></div>
+</div>
+</section>
+
+<section id="booking">
+<div class="container">
+<div class="s-title"><h2>Book an Appointment</h2><div class="bar"></div></div>
+<div class="book-grid">
+<div class="book-form">
+<h3>📅 BOOKING FORM</h3>
+<form onsubmit="event.preventDefault();alert('Booked! We will confirm your appointment shortly.')">
+<div class="fg"><label>Name</label><input type="text" required placeholder="Your name"></div>
+<div class="fg"><label>Phone</label><input type="tel" required placeholder="Phone number"></div>
+<div class="fg"><label>Service For</label><select required><option value="">Select</option><option>Men's Services</option><option>Women's Services</option></select></div>
+<div class="fg"><label>Service</label><select required><option value="">Select service</option><option>Haircut</option><option>Beard Grooming</option><option>Facial</option><option>Bridal Makeup</option><option>Waxing</option><option>Hair Color</option><option>Hair Spa</option><option>Other</option></select></div>
+<div class="fg"><label>Date</label><input type="date" required></div>
+<div class="fg"><label>Notes</label><textarea placeholder="Anything specific?"></textarea></div>
+<button type="submit" class="btn btn-purple" style="width:100%">BOOK NOW</button>
+</form>
+</div>
+<div class="c-info">
+<h3 style="font-family:'Fahkwang',sans-serif;font-size:1.3rem;letter-spacing:1px;margin-bottom:12px">VISIT US</h3>
+<div class="c-item"><div class="ic">📞</div><div><strong>Phone</strong><br><a href="tel:7041506279" style="color:var(--jet)">7041506279</a></div></div>
+<div class="c-item"><div class="ic">📍</div><div><strong>Location</strong><br>Barbee Unisex Salon, Rewa, MP</div></div>
+<div class="c-item"><div class="ic">🕐</div><div><strong>Hours</strong><br>Mon–Sat: 10 AM – 9 PM<br>Sunday: 11 AM – 7 PM</div></div>
+<div class="map-box"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57864.8!2d81.28!3d24.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3984f5df1d5db66d%3A0x6a7b4b3e0f3f8c6a!2sRewa%2C%20MP!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="brand">BARBEE</div>
+<p>Unisex Salon — Rewa, Madhya Pradesh</p>
+<p style="margin-top:6px">📞 <a href="tel:7041506279">7041506279</a></p>
+<p style="margin-top:14px;font-size:.85rem">© 2026 Barbee Unisex Salon. Crafted by <a href="https://vedamvision.com">VedamVision</a></p>
+</div>
+</footer>
+
+<a href="https://wa.me/917041506279?text=Hi%20Barbee!%20I'd%20like%20to%20book%20an%20appointment." class="wa">💬</a>
+
+<script>
+let cs=0;const sl=document.querySelectorAll('.hero-slide'),dt=document.querySelectorAll('.hero-dots span');
+function goSlide(n){sl[cs].classList.remove('active');dt[cs].classList.remove('active');cs=n;sl[cs].classList.add('active');dt[cs].classList.add('active')}
+setInterval(()=>goSlide((cs+1)%sl.length),5000);
+
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){document.querySelectorAll('.stat-num').forEach(el=>{const t=+el.dataset.target;let c=0;const inc=t/60;const tm=setInterval(()=>{c+=inc;if(c>=t){el.textContent=t+'+';clearInterval(tm)}else el.textContent=Math.floor(c)},30)});obs.disconnect()}})},{threshold:.5});
+document.querySelector('.stats')&&obs.observe(document.querySelector('.stats'));
+
+function fG(cat,btn){document.querySelectorAll('.gal-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.gal-grid img').forEach(img=>{img.style.display=(cat==='all'||img.dataset.cat===cat)?'block':'none'})}
+
+let ri=0;const trk=document.querySelector('.rev-track');
+function mR(d){const cards=document.querySelectorAll('.rev-card');ri=Math.max(0,Math.min(ri+d,cards.length-1));trk.style.transform=`translateX(-${ri*100}%)`}
+</script>
+</body>
+</html>

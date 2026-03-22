@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shan E Rewa — Royal Restaurant, Rewa</title>
+<meta name="description" content="Shan E Rewa - Pride of Rewa. Authentic North Indian, Chinese & more. Dhaba-meets-fine-dining experience in the heart of Rewa.">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--terra:#7C2D12;--warm:#FFF7ED;--gold:#F59E0B;--dark:#3B1106;--text:#4A3728}
+body{font-family:'Mulish',sans-serif;color:var(--text);background:var(--warm);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Yeseva One',serif;color:var(--terra)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Navbar */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:12px 0;transition:all .3s}
+nav.scrolled{background:rgba(124,45,18,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.15)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Yeseva One',serif;font-size:1.6rem;color:#fff;text-decoration:none;text-shadow:1px 1px 4px rgba(0,0,0,.3)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:26px;height:3px;background:#fff;border-radius:2px;transition:all .3s}
+/* Hero */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;display:flex;align-items:center;justify-content:center}
+.hero-slide.active{opacity:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,17,6,.8),rgba(124,45,18,.5))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content h1{font-size:3.5rem;margin-bottom:16px;text-shadow:2px 2px 8px rgba(0,0,0,.4)}
+.hero-content p{font-size:1.2rem;max-width:600px;margin:0 auto 24px;opacity:.9}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.95rem;cursor:pointer;border:none}
+.btn-primary{background:var(--gold);color:var(--dark)}
+.btn-primary:hover{background:#D97706;transform:translateY(-2px)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--terra)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--gold);transform:scale(1.2)}
+/* Sections */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:2.4rem;margin-bottom:8px}
+.section-title .line{width:60px;height:4px;background:var(--gold);margin:12px auto;border-radius:2px}
+.section-title p{color:#7a6a5a;max-width:500px;margin:0 auto}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(124,45,18,.15)}
+.about-img img{width:100%;height:400px;object-fit:cover}
+.about-text h3{color:var(--gold);font-family:'Mulish',sans-serif;font-weight:700;margin-bottom:8px;font-size:1rem;text-transform:uppercase;letter-spacing:2px}
+.about-text p{line-height:1.8;margin-bottom:16px}
+/* Menu Tabs */
+.menu-section{background:var(--terra);color:#fff;padding:80px 0}
+.menu-section .section-title h2{color:#fff}
+.menu-section .section-title p{color:rgba(255,255,255,.7)}
+.tab-btns{display:flex;justify-content:center;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border-radius:50px;border:2px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer;font-family:'Mulish',sans-serif;font-weight:600;transition:all .3s}
+.tab-btn.active,.tab-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.menu-item{background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.1);transition:transform .3s}
+.menu-item:hover{transform:translateY(-4px)}
+.menu-item h4{font-family:'Mulish',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:4px;color:#fff}
+.menu-item .price{color:var(--gold);font-weight:700;font-size:1.1rem}
+.menu-item p{font-size:.85rem;opacity:.7;margin-top:4px}
+/* Signature */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.sig-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);background:#fff;transition:transform .3s}
+.sig-card:hover{transform:translateY(-6px)}
+.sig-card img{width:100%;height:200px;object-fit:cover}
+.sig-card .info{padding:16px}
+.sig-card h4{margin-bottom:4px}
+.sig-card .price{color:var(--gold);font-weight:700}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+/* Stats */
+.stats{background:linear-gradient(135deg,var(--terra),var(--dark));padding:60px 0;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-num{font-size:2.8rem;font-family:'Yeseva One',serif;color:var(--gold)}
+.stat-label{font-size:.9rem;opacity:.8;margin-top:4px}
+/* Reviews */
+.reviews-wrap{position:relative;overflow:hidden;max-width:700px;margin:0 auto}
+.review-track{display:flex;transition:transform .5s ease}
+.review-card{min-width:100%;padding:32px;text-align:center}
+.review-card .stars{color:var(--gold);font-size:1.3rem;margin-bottom:12px}
+.review-card p{font-style:italic;line-height:1.7;margin-bottom:16px;font-size:1.05rem}
+.review-card .name{font-weight:700;color:var(--terra)}
+.review-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.review-nav button{width:40px;height:40px;border-radius:50%;border:2px solid var(--terra);background:transparent;color:var(--terra);cursor:pointer;font-size:1.1rem;transition:all .3s}
+.review-nav button:hover{background:var(--terra);color:#fff}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px;border:2px solid #e8d5c4;border-radius:10px;font-family:'Mulish',sans-serif;font-size:.95rem;background:var(--warm);transition:border .3s;outline:none}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--gold)}
+.contact-form textarea{height:120px;resize:vertical}
+.form-group{margin-bottom:16px}
+.contact-info-box{background:var(--terra);border-radius:16px;padding:32px;color:#fff}
+.contact-info-box h3{color:var(--gold);margin-bottom:20px}
+.contact-info-box .info-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.contact-info-box .info-item .icon{font-size:1.3rem}
+.map-wrap{border-radius:12px;overflow:hidden;margin-top:20px}
+.map-wrap iframe{width:100%;height:250px;border:0}
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,.7);text-align:center;padding:32px 0;font-size:.85rem}
+footer a{color:var(--gold);text-decoration:none}
+/* WhatsApp Float */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+/* Mobile */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(124,45,18,.95);backdrop-filter:blur(16px);flex-direction:column;padding:20px;gap:16px}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.hero-content h1{font-size:2.2rem}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+.sig-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:375px){
+.hero-content h1{font-size:1.8rem}
+.sig-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo">Shan E <span>Rewa</span></a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#signature">Signature</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=1400&q=80" alt="Royal food culture">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>The Royal Taste of Rewa</h1>
+<p>Where heritage meets flavour. Experience the pride of Rewa's culinary legacy — from rustic dhaba charm to fine-dining elegance.</p>
+<div class="hero-btns">
+<a href="#menu" class="btn btn-primary">Explore Menu</a>
+<a href="https://wa.me/917509414133" class="btn btn-outline">Book a Table</a>
+</div>
+</div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1400&q=80" alt="Signature dish">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>Signature Flavours, Timeless Recipes</h1>
+<p>Handcrafted dishes bursting with spice, warmth, and soul — every plate tells a story of Rewa's rich culinary tradition.</p>
+<div class="hero-btns">
+<a href="#signature" class="btn btn-primary">Our Specials</a>
+<a href="tel:+917509414133" class="btn btn-outline">Call Now</a>
+</div>
+</div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section id="about">
+<div class="container">
+<div class="section-title"><h2>Pride of Rewa</h2><div class="line"></div><p>A culinary journey rooted in heritage</p></div>
+<div class="about-grid">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80" alt="Restaurant interior"></div>
+<div class="about-text">
+<h3>Our Story</h3>
+<h2>Where Dhaba Meets Fine Dining</h2>
+<p>Shan E Rewa is more than a restaurant — it's the pride of Rewa. Born from a deep love for authentic North Indian flavours and the rich culinary heritage of the Vindhya region, we bring together the warmth of a traditional dhaba with the elegance of fine dining.</p>
+<p>Every dish is prepared with hand-ground spices, time-honoured recipes passed down through generations, and the freshest local ingredients. From sizzling tandoori platters to aromatic biryanis, each meal is a celebration of Rewa's royal food culture.</p>
+<p>Whether you're here for a family feast, a romantic dinner, or a quick meal with friends — Shan E Rewa welcomes you home.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="menu" class="menu-section">
+<div class="container">
+<div class="section-title"><h2>Our Menu</h2><div class="line"></div><p>Curated flavours for every palate</p></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('north')">North Indian</button>
+<button class="tab-btn" onclick="showTab('chinese')">Chinese</button>
+<button class="tab-btn" onclick="showTab('starters')">Starters</button>
+<button class="tab-btn" onclick="showTab('thalis')">Thalis</button>
+<button class="tab-btn" onclick="showTab('bev')">Beverages</button>
+</div>
+<div id="north" class="tab-content active">
+<div class="menu-grid">
+<div class="menu-item"><h4>Paneer Butter Masala</h4><span class="price">₹220</span><p>Creamy tomato-cashew gravy with soft paneer cubes</p></div>
+<div class="menu-item"><h4>Dal Makhani</h4><span class="price">₹180</span><p>Slow-cooked black lentils in buttery cream</p></div>
+<div class="menu-item"><h4>Mutton Rogan Josh</h4><span class="price">₹320</span><p>Tender mutton in aromatic Kashmiri spices</p></div>
+<div class="menu-item"><h4>Chicken Biryani</h4><span class="price">₹260</span><p>Fragrant basmati rice with succulent chicken</p></div>
+<div class="menu-item"><h4>Tandoori Roti</h4><span class="price">₹20</span><p>Fresh clay-oven baked wheat bread</p></div>
+<div class="menu-item"><h4>Shahi Paneer</h4><span class="price">₹240</span><p>Rich royal gravy with aromatic spices</p></div>
+</div>
+</div>
+<div id="chinese" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><h4>Veg Manchurian</h4><span class="price">₹180</span><p>Crispy veggie balls in tangy Manchurian sauce</p></div>
+<div class="menu-item"><h4>Chicken Chilli</h4><span class="price">₹220</span><p>Spicy dry chicken with peppers & onions</p></div>
+<div class="menu-item"><h4>Veg Fried Rice</h4><span class="price">₹160</span><p>Wok-tossed rice with fresh vegetables</p></div>
+<div class="menu-item"><h4>Hakka Noodles</h4><span class="price">₹170</span><p>Stir-fried noodles with crunchy veggies</p></div>
+<div class="menu-item"><h4>Spring Rolls</h4><span class="price">₹150</span><p>Crispy rolls stuffed with seasoned vegetables</p></div>
+</div>
+</div>
+<div id="starters" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><h4>Paneer Tikka</h4><span class="price">₹200</span><p>Chargrilled marinated paneer cubes</p></div>
+<div class="menu-item"><h4>Tandoori Chicken</h4><span class="price">₹280</span><p>Classic smoky clay-oven chicken</p></div>
+<div class="menu-item"><h4>Aloo Tikki Chaat</h4><span class="price">₹120</span><p>Crispy potato patties with tangy chutneys</p></div>
+<div class="menu-item"><h4>Fish Amritsari</h4><span class="price">₹250</span><p>Batter-fried fish with Amritsari spices</p></div>
+</div>
+</div>
+<div id="thalis" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><h4>Veg Royal Thali</h4><span class="price">₹250</span><p>Dal, paneer, 2 sabzi, rice, roti, raita, dessert</p></div>
+<div class="menu-item"><h4>Non-Veg Maharaja Thali</h4><span class="price">₹350</span><p>Chicken curry, mutton, dal, rice, roti, raita, dessert</p></div>
+<div class="menu-item"><h4>Mini Thali</h4><span class="price">₹150</span><p>Dal, 1 sabzi, rice, 2 roti, papad</p></div>
+</div>
+</div>
+<div id="bev" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><h4>Masala Chai</h4><span class="price">₹40</span><p>Authentic spiced Indian tea</p></div>
+<div class="menu-item"><h4>Mango Lassi</h4><span class="price">₹80</span><p>Thick creamy mango yogurt drink</p></div>
+<div class="menu-item"><h4>Fresh Lime Soda</h4><span class="price">₹60</span><p>Sweet or salted — your choice</p></div>
+<div class="menu-item"><h4>Cold Coffee</h4><span class="price">₹100</span><p>Chilled creamy coffee shake</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="signature">
+<div class="container">
+<div class="section-title"><h2>Signature Dishes</h2><div class="line"></div><p>Chef's pride — must-try specialties</p></div>
+<div class="sig-grid">
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&q=80" alt="Biryani"><div class="info"><h4>Shan E Rewa Special Biryani</h4><span class="price">₹300</span></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&q=80" alt="Paneer Tikka"><div class="info"><h4>Royal Paneer Tikka Platter</h4><span class="price">₹260</span></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1610057099443-fde6c99db9e0?w=500&q=80" alt="Butter Chicken"><div class="info"><h4>Makhani Butter Chicken</h4><span class="price">₹280</span></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=80" alt="Thali"><div class="info"><h4>Maharaja Grand Thali</h4><span class="price">₹380</span></div></div>
+</div>
+</div>
+</section>
+
+<div class="stats">
+<div class="container">
+<div class="stats-grid">
+<div><div class="stat-num" data-target="8">0</div><div class="stat-label">Years Serving Rewa</div></div>
+<div><div class="stat-num" data-target="50">0</div><div class="stat-label">Menu Items</div></div>
+<div><div class="stat-num" data-target="25000">0</div><div class="stat-label">Happy Customers</div></div>
+<div><div class="stat-num" data-target="15">0</div><div class="stat-label">Expert Chefs</div></div>
+</div>
+</div>
+</div>
+
+<section id="gallery">
+<div class="container">
+<div class="section-title"><h2>Gallery</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showGallery('food')">Food</button>
+<button class="tab-btn" onclick="showGallery('interior')">Interior</button>
+<button class="tab-btn" onclick="showGallery('events')">Events</button>
+</div>
+<div id="food" class="gallery-tab active">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1606491956689-2ea866880049?w=500&q=80" alt="Food 1">
+<img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&q=80" alt="Food 2">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80" alt="Food 3">
+<img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" alt="Food 4">
+<img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&q=80" alt="Food 5">
+<img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=500&q=80" alt="Food 6">
+</div>
+</div>
+<div id="interior" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&q=80" alt="Interior 1">
+<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=80" alt="Interior 2">
+<img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&q=80" alt="Interior 3">
+</div>
+</div>
+<div id="events" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&q=80" alt="Event 1">
+<img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500&q=80" alt="Event 2">
+<img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=500&q=80" alt="Event 3">
+</div>
+</div>
+</div>
+</section>
+
+<section id="reviews" style="background:#fff">
+<div class="container">
+<div class="section-title"><h2>What Our Guests Say</h2><div class="line"></div></div>
+<div class="reviews-wrap">
+<div class="review-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"Best biryani in Rewa, hands down! The ambiance is perfect for family dinners. We come here every weekend."</p><div class="name">Rahul Sharma</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"The Maharaja Thali is absolutely royal. Generous portions, authentic taste — just like ghar ka khana but better!"</p><div class="name">Priya Tiwari</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"Came for a birthday party and was blown away. The staff is warm, food is outstanding, and the live cooking station was a hit!"</p><div class="name">Amit Patel</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Love the dhaba vibe with fine-dining quality. Paneer tikka and dal makhani are must-tries. Will visit again soon!"</p><div class="name">Sneha Dubey</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">‹</button><button onclick="moveReview(1)">›</button></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="section-title"><h2>Get in Touch</h2><div class="line"></div></div>
+<div class="contact-grid">
+<form class="contact-form" onsubmit="event.preventDefault();alert('Thank you! We will get back to you shortly.')">
+<div class="form-group"><input type="text" placeholder="Your Name" required></div>
+<div class="form-group"><input type="tel" placeholder="Phone Number" required></div>
+<div class="form-group"><input type="email" placeholder="Email (optional)"></div>
+<div class="form-group"><select><option>Table Reservation</option><option>Party Booking</option><option>Catering Inquiry</option><option>Feedback</option></select></div>
+<div class="form-group"><textarea placeholder="Your Message"></textarea></div>
+<button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+<div>
+<div class="contact-info-box">
+<h3>Visit Shan E Rewa</h3>
+<div class="info-item"><span class="icon">📍</span><div>Rewa, Madhya Pradesh, India</div></div>
+<div class="info-item"><span class="icon">📞</span><div><a href="tel:+917509414133" style="color:#fff">+91 7509414133</a></div></div>
+<div class="info-item"><span class="icon">📸</span><div><a href="https://instagram.com/shan_e_rewa_dhaba_restro" target="_blank" style="color:#fff">@shan_e_rewa_dhaba_restro</a></div></div>
+<div class="info-item"><span class="icon">🕐</span><div>Open Daily: 11:00 AM – 11:00 PM</div></div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116834.77972693498!2d81.2!3d24.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39845a011ed6e317%3A0x724b8459a6e7bdd0!2sRewa%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>© 2025 Shan E Rewa Restaurant, Rewa. All rights reserved. | Made with ❤️ by <a href="#">VedamVision</a></p>
+</div>
+</footer>
+
+<a href="https://wa.me/917509414133" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<svg viewBox="0 0 32 32"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.907 15.907 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.338 22.594c-.39 1.1-1.932 2.012-3.162 2.278-.844.18-1.946.322-5.656-1.216-4.746-1.966-7.804-6.792-8.038-7.108-.226-.316-1.9-2.53-1.9-4.828s1.2-3.428 1.628-3.896c.39-.426.922-.622 1.234-.622.15 0 .284.008.406.014.428.018.642.042.924.714.352.836 1.212 2.952 1.316 3.168.106.216.212.502.07.802-.134.306-.25.496-.466.762-.216.266-.426.47-.642.676-.216.208-.44.432-.19.848.252.416 1.12 1.846 2.404 2.99 1.65 1.472 3.042 1.928 3.474 2.144.332.166.6.14.822-.084.278-.284.602-.752.932-1.214.236-.33.532-.37.89-.222.362.144 2.288 1.078 2.68 1.274.39.196.652.292.748.458.094.166.094.954-.296 2.054z"/></svg>
+</a>
+
+<script>
+// Hero slider
+let cs=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[cs].classList.remove('active');dots[cs].classList.remove('active');cs=n;slides[cs].classList.add('active');dots[cs].classList.add('active')}
+setInterval(()=>goSlide((cs+1)%slides.length),5000);
+// Navbar scroll
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+// Menu tabs
+function showTab(id){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('#menu .tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+// Gallery tabs
+function showGallery(id){document.querySelectorAll('.gallery-tab').forEach(t=>t.style.display='none');document.querySelectorAll('#gallery .tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).style.display='block';event.target.classList.add('active')}
+// Stats counter
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.stat-num').forEach(el=>{const t=+el.dataset.target;let c=0;const step=Math.ceil(t/60);const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}el.textContent=c.toLocaleString()},30)});observer.disconnect()}})},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+// Reviews carousel
+let ri=0;const track=document.querySelector('.review-track'),cards=document.querySelectorAll('.review-card');
+function moveReview(d){ri=Math.max(0,Math.min(ri+d,cards.length-1));track.style.transform=`translateX(-${ri*100}%)`}
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.querySelector('.nav-links').classList.remove('open')}));
+</script>
+</body>
+</html>

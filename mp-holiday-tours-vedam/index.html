@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP Holiday Tours — Discover Madhya Pradesh</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#059669;--warm:#FFFBEB;--dark:#064e3b;--white:#fff;--gray:#6b7280;--light:#ecfdf5;--emerald-light:#d1fae5;--amber:#f59e0b}
+body{font-family:'Inter',sans-serif;color:#1f2937;overflow-x:hidden;background:var(--warm)}
+h1,h2,h3,h4,h5{font-family:'Lexend',sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 0;transition:all .3s}
+nav.scrolled{background:rgba(5,150,105,.88);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(5,150,105,.2)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Lexend',sans-serif;font-size:1.6rem;font-weight:800;color:var(--white);text-decoration:none}
+.logo span{color:var(--amber)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .3s}
+.nav-links a:hover{color:var(--amber)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:2px;background:var(--white)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(6,78,59,.97);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--white);font-size:1.5rem;text-decoration:none;font-family:'Lexend',sans-serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer}
+
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,78,59,.8),rgba(5,150,105,.6))}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:0 20px;z-index:2}
+.hero-content p.tagline{font-size:1rem;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:15px;font-weight:600}
+.hero-content h1{font-size:3.5rem;font-weight:800;margin-bottom:20px;line-height:1.1}
+.hero-content h1 span{color:var(--amber)}
+.hero-content p.sub{font-size:1.15rem;max-width:600px;opacity:.9;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;font-size:1rem;transition:all .3s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-primary{background:var(--amber);color:var(--dark)}
+.btn-primary:hover{background:#d97706;transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--white);color:var(--white);background:transparent}
+.btn-outline:hover{background:var(--white);color:var(--dark)}
+.hero-btns{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--amber);transform:scale(1.2)}
+
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2.5rem;font-weight:700;color:var(--dark)}
+.section-title p{color:var(--gray);max-width:600px;margin:10px auto 0}
+.section-title .line{width:60px;height:4px;background:var(--green);margin:15px auto 0;border-radius:2px}
+
+.about{padding:80px 0;background:var(--white)}
+.about-flex{display:flex;gap:50px;align-items:center}
+.about-flex>div{flex:1}
+.about-flex img{width:100%;height:400px;object-fit:cover;border-radius:24px}
+.about-text h3{font-size:1.8rem;margin-bottom:15px;color:var(--dark)}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:15px}
+.about-stats{display:flex;gap:25px;margin-top:20px}
+.about-stat{text-align:center}
+.about-stat h4{font-size:2rem;font-weight:800;color:var(--green)}
+.about-stat p{font-size:.8rem;color:var(--gray)}
+
+.services{padding:80px 0;background:var(--light)}
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.svc-card{background:var(--white);border-radius:20px;padding:30px 20px;text-align:center;transition:all .3s;border:2px solid transparent}
+.svc-card:hover{border-color:var(--green);transform:translateY(-5px);box-shadow:0 15px 35px rgba(5,150,105,.1)}
+.svc-card .icon{width:60px;height:60px;background:var(--emerald-light);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem}
+.svc-card h3{font-size:1rem;margin-bottom:8px;color:var(--dark)}
+.svc-card p{color:var(--gray);font-size:.82rem;line-height:1.5}
+
+/* DESTINATIONS CAROUSEL */
+.destinations{padding:80px 0;background:var(--white)}
+.dest-track{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;scrollbar-width:none}
+.dest-track::-webkit-scrollbar{display:none}
+.dest-card{min-width:280px;background:var(--white);border-radius:20px;overflow:hidden;scroll-snap-align:start;box-shadow:0 5px 20px rgba(0,0,0,.08);transition:all .3s;flex-shrink:0}
+.dest-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(5,150,105,.15)}
+.dest-card img{width:100%;height:200px;object-fit:cover}
+.dest-card .info{padding:20px}
+.dest-card h4{font-size:1.1rem;color:var(--dark);margin-bottom:5px}
+.dest-card .meta{display:flex;justify-content:space-between;color:var(--gray);font-size:.85rem;margin-bottom:10px}
+.dest-card .price{font-family:'Lexend',sans-serif;font-size:1.3rem;font-weight:700;color:var(--green)}
+.dest-card .price small{font-weight:400;font-size:.8rem;color:var(--gray)}
+
+/* WILDLIFE */
+.wildlife{padding:80px 0;background:linear-gradient(135deg,var(--dark),#065f46);color:var(--white)}
+.wildlife-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.wildlife-text h3{font-size:2rem;margin-bottom:15px}
+.wildlife-text p{opacity:.8;line-height:1.8;margin-bottom:15px}
+.wildlife-features{display:flex;flex-wrap:wrap;gap:10px}
+.wf-badge{background:rgba(255,255,255,.15);padding:8px 18px;border-radius:50px;font-size:.85rem}
+.wildlife-img{border-radius:20px;overflow:hidden}
+.wildlife-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+
+/* HERITAGE */
+.heritage{padding:80px 0;background:var(--warm)}
+.heritage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.heritage-card{background:var(--white);border-radius:20px;overflow:hidden;transition:all .3s}
+.heritage-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.heritage-card img{width:100%;height:220px;object-fit:cover}
+.heritage-card .info{padding:20px}
+.heritage-card h4{font-size:1.1rem;margin-bottom:5px;color:var(--dark)}
+.heritage-card p{color:var(--gray);font-size:.85rem;line-height:1.5}
+
+/* STATS */
+.stats{padding:60px 0;background:var(--green)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;color:var(--white)}
+.stat-item h3{font-size:2.8rem;font-weight:800;color:var(--amber)}
+.stat-item p{font-size:.95rem;opacity:.8;margin-top:5px}
+
+/* GALLERY */
+.gallery{padding:80px 0;background:var(--white)}
+.tab-btns{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 25px;border-radius:50px;border:2px solid var(--green);background:transparent;color:var(--green);font-weight:600;cursor:pointer;transition:all .3s;font-family:'Inter',sans-serif}
+.tab-btn.active{background:var(--green);color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:15px;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.tab-content{display:none}
+.tab-content.active{display:grid}
+
+/* BOOKING */
+.booking{padding:80px 0;background:var(--light)}
+.booking-form{max-width:800px;margin:0 auto;background:var(--white);border-radius:24px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;margin-bottom:5px;color:var(--dark);font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:2px solid var(--emerald-light);border-radius:12px;font-family:'Inter',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green)}
+.form-full{grid-column:1/-1}
+.submit-btn{grid-column:1/-1;padding:16px;background:var(--green);color:var(--white);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Lexend',sans-serif;transition:all .3s}
+.submit-btn:hover{background:#047857;transform:translateY(-2px)}
+
+/* REVIEWS */
+.reviews{padding:80px 0;background:var(--white)}
+.reviews-track{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{min-width:350px;background:var(--light);border-radius:20px;padding:30px;scroll-snap-align:start}
+.review-card .stars{color:var(--amber);font-size:1.2rem;margin-bottom:10px}
+.review-card p{color:var(--gray);line-height:1.7;margin-bottom:15px;font-style:italic}
+.review-card .author{font-weight:700;color:var(--dark)}
+
+/* CONTACT */
+.contact{padding:80px 0;background:var(--warm)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:15px;align-items:flex-start}
+.contact-item .icon{width:50px;height:50px;background:var(--emerald-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-item h4{font-size:1rem;color:var(--dark);margin-bottom:3px}
+.contact-item p{color:var(--gray);font-size:.9rem}
+.contact-item a{color:var(--green);text-decoration:none}
+.map-container{border-radius:20px;overflow:hidden;height:100%;min-height:350px}
+.map-container iframe{width:100%;height:100%;border:0}
+
+footer{background:var(--dark);color:var(--white);padding:50px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.footer-brand p{color:rgba(255,255,255,.6);margin-top:10px;line-height:1.7;font-size:.9rem}
+.footer-col h4{font-size:1rem;margin-bottom:15px;color:var(--amber)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-col ul li a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;color:rgba(255,255,255,.4);font-size:.85rem}
+
+.whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+
+@media(max-width:1024px){
+.services-grid{grid-template-columns:repeat(3,1fr)}
+.heritage-grid{grid-template-columns:repeat(2,1fr)}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.hamburger{display:flex}
+.nav-links{display:none}
+.hero-content h1{font-size:2.2rem}
+.about-flex{flex-direction:column}
+.services-grid{grid-template-columns:1fr}
+.wildlife-grid{grid-template-columns:1fr}
+.heritage-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.form-grid{grid-template-columns:1fr}
+.contact-grid,.footer-grid{grid-template-columns:1fr}
+.review-card{min-width:280px}
+.dest-card{min-width:250px}
+}
+@media(max-width:375px){.hero-content h1{font-size:1.8rem}.section-title h2{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo">MP <span>Holiday Tours</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#destinations">Destinations</a></li>
+<li><a href="#wildlife">Wildlife</a></li>
+<li><a href="#heritage">Heritage</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#destinations" onclick="this.parentElement.classList.remove('active')">Destinations</a>
+<a href="#wildlife" onclick="this.parentElement.classList.remove('active')">Wildlife</a>
+<a href="#booking" onclick="this.parentElement.classList.remove('active')">Book Now</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80" alt="MP Landscape">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1600&q=80" alt="Nature">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<p class="tagline">DISCOVER MADHYA PRADESH</p>
+<h1>Explore the <span>Heart</span> of India</h1>
+<p class="sub">From wildlife sanctuaries to ancient temples — experience the magic of Madhya Pradesh with expert guided tours.</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-primary">🌿 Explore Tours</a>
+<a href="tel:8085524472" class="btn btn-outline">📞 Call Us</a>
+</div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section class="about" id="about">
+<div class="container">
+<div class="section-title"><h2>About MP Holiday Tours</h2><div class="line"></div></div>
+<div class="about-flex">
+<div><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=800&q=80" alt="MP Tourism"></div>
+<div class="about-text">
+<h3>Your Gateway to Madhya Pradesh</h3>
+<p>Based in Satna, MP Holiday Tours specializes in curated travel experiences across Madhya Pradesh — the Heart of India. From the tiger reserves of Kanha and Bandhavgarh to the ancient temples of Khajuraho, we bring you the best of MP.</p>
+<p>Our expert guides and comfortable vehicles make every trip memorable. Whether it's a weekend getaway or a week-long adventure, we've got you covered.</p>
+<div class="about-stats">
+<div class="about-stat"><h4>50+</h4><p>Destinations</p></div>
+<div class="about-stat"><h4>3000+</h4><p>Happy Travelers</p></div>
+<div class="about-stat"><h4>8+</h4><p>Years</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="container">
+<div class="section-title"><h2>Our Services</h2><p>Everything you need for a perfect MP adventure</p><div class="line"></div></div>
+<div class="services-grid">
+<div class="svc-card"><div class="icon">🗺️</div><h3>MP Tour Packages</h3><p>Curated packages across all MP destinations.</p></div>
+<div class="svc-card"><div class="icon">🐯</div><h3>Wildlife Safari</h3><p>Tiger safaris at Kanha, Bandhavgarh & Panna.</p></div>
+<div class="svc-card"><div class="icon">🏛️</div><h3>Heritage Tours</h3><p>Khajuraho, Orchha, Mandu historical tours.</p></div>
+<div class="svc-card"><div class="icon">🏕️</div><h3>Weekend Getaways</h3><p>Quick escapes to Pachmarchi & hill stations.</p></div>
+<div class="svc-card"><div class="icon">🚗</div><h3>Car Rental</h3><p>Self-drive and chauffeur car rental service.</p></div>
+</div>
+</div>
+</section>
+
+<section class="destinations" id="destinations">
+<div class="container">
+<div class="section-title"><h2>MP Destinations</h2><p>Explore the jewels of Madhya Pradesh</p><div class="line"></div></div>
+<div class="dest-track">
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Pachmarchi"><div class="info"><h4>Pachmarchi</h4><div class="meta"><span>3 Days / 2 Nights</span></div><div class="price">₹6,500 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Kanha"><div class="info"><h4>Kanha National Park</h4><div class="meta"><span>3 Days / 2 Nights</span></div><div class="price">₹8,500 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?w=500&q=80" alt="Bandhavgarh"><div class="info"><h4>Bandhavgarh</h4><div class="meta"><span>3 Days / 2 Nights</span></div><div class="price">₹9,000 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho"><div class="info"><h4>Khajuraho</h4><div class="meta"><span>2 Days / 1 Night</span></div><div class="price">₹5,000 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Orchha"><div class="info"><h4>Orchha</h4><div class="meta"><span>2 Days / 1 Night</span></div><div class="price">₹4,500 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&q=80" alt="Bhopal"><div class="info"><h4>Bhopal</h4><div class="meta"><span>2 Days / 1 Night</span></div><div class="price">₹5,500 <small>/person</small></div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Mandu"><div class="info"><h4>Mandu</h4><div class="meta"><span>2 Days / 1 Night</span></div><div class="price">₹4,000 <small>/person</small></div></div></div>
+</div>
+</div>
+</section>
+
+<section class="wildlife" id="wildlife">
+<div class="container">
+<div class="wildlife-grid">
+<div class="wildlife-text">
+<h3>🐯 Wildlife Safari Adventures</h3>
+<p>Madhya Pradesh is home to some of India's most famous tiger reserves. Experience the thrill of spotting Royal Bengal Tigers in their natural habitat at Kanha, Bandhavgarh, and Panna National Parks.</p>
+<p>Our safari packages include comfortable stays, expert naturalists, and guaranteed jeep safaris in the best zones.</p>
+<div class="wildlife-features">
+<span class="wf-badge">🐯 Tiger Spotting</span>
+<span class="wf-badge">🦌 Bird Watching</span>
+<span class="wf-badge">📸 Photography Tours</span>
+<span class="wf-badge">🏕️ Jungle Camps</span>
+<span class="wf-badge">🚙 Jeep Safari</span>
+</div>
+</div>
+<div class="wildlife-img"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=800&q=80" alt="Wildlife Safari"></div>
+</div>
+</div>
+</section>
+
+<section class="heritage" id="heritage">
+<div class="container">
+<div class="section-title"><h2>Heritage Tours</h2><p>Walk through centuries of history</p><div class="line"></div></div>
+<div class="heritage-grid">
+<div class="heritage-card"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho"><div class="info"><h4>Khajuraho Temples</h4><p>UNESCO World Heritage Site with stunning medieval temples dating back to 950 AD.</p></div></div>
+<div class="heritage-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Orchha"><div class="info"><h4>Orchha Fort Complex</h4><p>16th-century Bundela dynasty palaces and temples on the banks of Betwa river.</p></div></div>
+<div class="heritage-card"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Mandu"><div class="info"><h4>Mandu — City of Joy</h4><p>Ancient hilltop fortress city with romantic ruins and stunning Afghan architecture.</p></div></div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 class="counter" data-target="3000">0</h3><p>Happy Travelers</p></div>
+<div class="stat-item"><h3 class="counter" data-target="50">0</h3><p>Destinations</p></div>
+<div class="stat-item"><h3 class="counter" data-target="8">0</h3><p>Years Experience</p></div>
+<div class="stat-item"><h3 class="counter" data-target="500">0</h3><p>Tours Completed</p></div>
+</div>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="section-title"><h2>Gallery</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('wildlife-g')">Wildlife</button>
+<button class="tab-btn" onclick="showTab('heritage-g')">Heritage</button>
+<button class="tab-btn" onclick="showTab('nature-g')">Nature</button>
+</div>
+<div class="tab-content active gallery-grid" id="wildlife-g">
+<img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Tiger"><img src="https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=500&q=80" alt="Wildlife"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=500&q=80" alt="Safari">
+</div>
+<div class="tab-content gallery-grid" id="heritage-g">
+<img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Heritage"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Temple"><img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Fort">
+</div>
+<div class="tab-content gallery-grid" id="nature-g">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Mountains"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=500&q=80" alt="Valley"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&q=80" alt="Forest">
+</div>
+</div>
+</section>
+
+<section class="booking" id="booking">
+<div class="container">
+<div class="section-title"><h2>Book Your Tour</h2><p>Start your MP adventure today</p><div class="line"></div></div>
+<div class="booking-form">
+<div class="form-grid">
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+<div class="form-group"><label>Tour Type</label><select><option>Wildlife Safari</option><option>Heritage Tour</option><option>Weekend Getaway</option><option>Custom Package</option></select></div>
+<div class="form-group"><label>Destination</label><select><option>Pachmarchi</option><option>Kanha</option><option>Bandhavgarh</option><option>Khajuraho</option><option>Orchha</option><option>Mandu</option><option>Bhopal</option></select></div>
+<div class="form-group"><label>Travel Date</label><input type="date"></div>
+<div class="form-group"><label>Travelers</label><select><option>1-2</option><option>3-4</option><option>5-8</option><option>8+</option></select></div>
+<div class="form-group form-full"><label>Special Requests</label><textarea rows="3" placeholder="Any preferences..."></textarea></div>
+<button class="submit-btn" type="button" onclick="alert('Thank you! We will plan your perfect MP trip.')">🌿 Book Tour</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="reviews">
+<div class="container">
+<div class="section-title"><h2>Traveler Reviews</h2><div class="line"></div></div>
+<div class="reviews-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"Amazing Kanha safari trip! Spotted 2 tigers. The guide was incredible and the lodge was perfect."</p><div class="author">— Vikram Singh</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"Khajuraho trip was beautifully planned. Every detail was taken care of. Highly recommend MP Holiday Tours!"</p><div class="author">— Anita Verma</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Great Pachmarchi weekend getaway. Good hotel, comfortable travel. Will book again for Bandhavgarh."</p><div class="author">— Rohit Jain</div></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-title"><h2>Contact Us</h2><div class="line"></div></div>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:8085524472">8085524472</a></p></div></div>
+<div class="contact-item"><div class="icon">📍</div><div><h4>Address</h4><p>Mukesh Market, Behari Chowk, Satna</p></div></div>
+<div class="contact-item"><div class="icon">⏰</div><div><h4>Working Hours</h4><p>Mon-Sat: 9 AM - 8 PM | Sun: 10 AM - 5 PM</p></div></div>
+<div class="contact-item"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/918085524472">Chat on WhatsApp</a></p></div></div>
+</div>
+<div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5!2d80.83!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatna!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe></div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><a href="#" class="logo">MP <span>Holiday Tours</span></a><p>Your gateway to Madhya Pradesh — the Heart of India. Expert-guided tours to wildlife reserves, heritage sites, and hidden gems of MP.</p></div>
+<div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#wildlife">Wildlife</a></li><li><a href="#booking">Book Tour</a></li></ul></div>
+<div class="footer-col"><h4>Top Destinations</h4><ul><li><a href="#">Pachmarchi</a></li><li><a href="#">Kanha</a></li><li><a href="#">Khajuraho</a></li><li><a href="#">Bandhavgarh</a></li></ul></div>
+</div>
+<div class="footer-bottom"><p>© 2026 MP Holiday Tours, Satna. All rights reserved. | Designed by VedamVision</p></div>
+</div>
+</footer>
+
+<a href="https://wa.me/918085524472" class="whatsapp-float" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+const counters=document.querySelectorAll('.counter');let counted=false;
+function animateCounters(){counters.forEach(c=>{const target=+c.dataset.target,inc=target/80;let val=0;const timer=setInterval(()=>{val+=inc;if(val>=target){c.textContent=target.toLocaleString()+'+';clearInterval(timer)}else{c.textContent=Math.floor(val).toLocaleString()+'+'}},20)})}
+const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!counted){counted=true;animateCounters()}},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+function showTab(id){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+</body>
+</html>

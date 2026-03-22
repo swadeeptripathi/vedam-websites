@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubh Yatra Tours N Travels — Your Journey Begins Here</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ocean:#1B4965;--sunset:#F4A261;--cream:#FFF8F0;--dark:#0e1a24;--light:#f9f5f0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans Pro',sans-serif;color:#444;background:var(--cream);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);text-align:center;margin-bottom:.5rem;color:var(--ocean)}
+.section-title span{color:var(--sunset)}
+.section-sub{text-align:center;color:#888;max-width:550px;margin:0 auto 3rem;font-size:.95rem}
+section{padding:80px 5%}
+.container{max-width:1200px;margin:0 auto}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(255,248,240,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(27,73,101,0.08);transition:all .3s}
+nav.scrolled{background:rgba(255,248,240,0.95);box-shadow:0 2px 20px rgba(0,0,0,0.05)}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--ocean)}
+.logo span{color:var(--sunset)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:#666;text-decoration:none;font-size:.9rem;transition:color .3s;font-weight:600}
+.nav-links a:hover{color:var(--sunset)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--ocean)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,248,240,0.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--ocean);font-size:1.3rem;text-decoration:none;font-family:'Playfair Display',serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--ocean);font-size:2rem;cursor:pointer}
+
+/* Hero */
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s}
+.hero-slide.active{opacity:1}
+.hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,73,101,0.4),rgba(14,26,36,0.7));z-index:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px}
+.hero-content h1{font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;line-height:1.15;margin-bottom:15px}
+.hero-content h1 span{color:var(--sunset)}
+.hero-content p{font-size:1.1rem;color:rgba(255,255,255,0.85);margin-bottom:30px;max-width:500px}
+.btn{display:inline-block;padding:14px 35px;background:var(--sunset);color:#fff;text-decoration:none;font-family:'Source Sans Pro',sans-serif;font-size:.95rem;font-weight:700;border-radius:50px;transition:all .3s;border:2px solid var(--sunset)}
+.btn:hover{background:transparent;color:#fff;border-color:#fff}
+.btn-dark{background:var(--ocean);border-color:var(--ocean);color:#fff}
+.btn-dark:hover{background:var(--sunset);border-color:var(--sunset)}
+.hero-dots{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dots span{width:12px;height:12px;border:2px solid #fff;border-radius:50%;cursor:pointer;transition:all .3s;background:transparent}
+.hero-dots span.active{background:var(--sunset);border-color:var(--sunset)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{position:relative;border-radius:20px;overflow:hidden}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+.about-text h2{font-size:2.2rem;color:var(--ocean);margin-bottom:15px}
+.about-text h2 span{color:var(--sunset)}
+.about-text p{color:#666;line-height:1.8;margin-bottom:12px}
+
+/* Services Grid */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.service-card{background:#fff;border-radius:16px;padding:30px 20px;text-align:center;transition:all .3s;box-shadow:0 2px 15px rgba(0,0,0,0.04);border:1px solid rgba(27,73,101,0.05)}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.08);border-color:var(--sunset)}
+.service-card .icon{font-size:2rem;margin-bottom:12px}
+.service-card h3{font-size:1rem;color:var(--ocean);margin-bottom:6px;font-family:'Source Sans Pro',sans-serif;font-weight:700}
+.service-card p{color:#999;font-size:.85rem;line-height:1.5}
+
+/* Destinations Carousel */
+.dest-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:10px 0;scrollbar-width:none}
+.dest-track::-webkit-scrollbar{display:none}
+.dest-card{min-width:280px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;height:380px;flex-shrink:0;cursor:pointer}
+.dest-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.dest-card:hover img{transform:scale(1.05)}
+.dest-card .overlay{position:absolute;bottom:0;left:0;right:0;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:#fff}
+.dest-card h3{font-size:1.3rem;margin-bottom:4px}
+.dest-card p{font-size:.85rem;color:rgba(255,255,255,0.8)}
+
+/* Tour Packages */
+.packages-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:30px}
+.package-tab{padding:10px 25px;border:2px solid var(--ocean);border-radius:50px;cursor:pointer;font-size:.9rem;transition:all .3s;background:transparent;color:var(--ocean);font-weight:600}
+.package-tab.active,.package-tab:hover{background:var(--sunset);border-color:var(--sunset);color:#fff}
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.package-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 15px rgba(0,0,0,0.04);transition:all .3s}
+.package-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+.package-card img{width:100%;height:200px;object-fit:cover}
+.package-card .info{padding:22px}
+.package-card h3{color:var(--ocean);font-size:1.15rem;margin-bottom:8px}
+.package-card .duration{color:var(--sunset);font-weight:600;font-size:.85rem;margin-bottom:8px}
+.package-card p{color:#888;font-size:.9rem;line-height:1.6;margin-bottom:12px}
+.package-card .price-tag{font-size:1.3rem;font-weight:700;color:var(--ocean);font-family:'Playfair Display',serif}
+.packages-content{display:none}
+.packages-content.active{display:grid}
+
+/* Why Choose Us */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why-card{text-align:center;padding:25px}
+.why-card .icon{width:60px;height:60px;background:var(--sunset);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem;color:#fff}
+.why-card h3{font-size:1rem;color:var(--ocean);margin-bottom:6px;font-family:'Source Sans Pro',sans-serif;font-weight:700}
+.why-card p{color:#888;font-size:.85rem;line-height:1.5}
+
+/* Gallery */
+.gallery-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
+.gallery-tab{padding:10px 22px;border:2px solid var(--ocean);border-radius:50px;cursor:pointer;font-size:.88rem;transition:all .3s;background:transparent;color:var(--ocean);font-weight:600}
+.gallery-tab.active,.gallery-tab:hover{background:var(--sunset);border-color:var(--sunset);color:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:12px;transition:all .3s}
+.gallery-grid img:hover{transform:scale(1.02)}
+.gallery-content{display:none}
+.gallery-content.active{display:grid}
+
+/* Testimonials */
+.testimonial-section{background:var(--ocean);color:#fff;border-radius:0}
+.testimonial-section .section-title{color:#fff}
+.testimonial-section .section-title span{color:var(--sunset)}
+.testimonial-slider{max-width:650px;margin:0 auto;overflow:hidden}
+.testimonial-track{display:flex;transition:transform .5s}
+.testimonial-item{min-width:100%;padding:40px;text-align:center}
+.testimonial-item p{font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.8;font-style:italic;margin-bottom:20px}
+.testimonial-item h4{color:var(--sunset);font-family:'Playfair Display',serif;font-size:1.1rem}
+.testimonial-item span{color:rgba(255,255,255,0.5);font-size:.85rem}
+.t-nav{display:flex;justify-content:center;gap:8px;margin-top:15px}
+.t-nav button{width:10px;height:10px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);background:transparent;cursor:pointer;transition:all .3s}
+.t-nav button.active{background:var(--sunset);border-color:var(--sunset)}
+
+/* Inquiry Form */
+.inquiry-section{background:#fff}
+.inquiry-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.inquiry-form input,.inquiry-form textarea,.inquiry-form select{width:100%;padding:14px 18px;background:var(--cream);border:1px solid rgba(27,73,101,0.1);border-radius:10px;color:#333;font-family:'Source Sans Pro',sans-serif;font-size:.95rem;margin-bottom:12px;transition:border .3s}
+.inquiry-form input:focus,.inquiry-form textarea:focus,.inquiry-form select:focus{outline:none;border-color:var(--sunset)}
+.inquiry-form textarea{height:110px;resize:vertical}
+.inquiry-form h3{font-size:1.5rem;color:var(--ocean);margin-bottom:20px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:15px}
+.contact-info-item{display:flex;gap:12px;align-items:flex-start}
+.contact-info-item .icon{width:42px;height:42px;background:var(--sunset);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;color:#fff}
+.contact-info-item h4{font-size:.9rem;color:var(--ocean);margin-bottom:2px;font-family:'Source Sans Pro',sans-serif;font-weight:700}
+.contact-info-item p,.contact-info-item a{color:#888;font-size:.9rem;text-decoration:none}
+.map-container{border-radius:16px;overflow:hidden;height:300px;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.map-container iframe{width:100%;height:100%;border:0}
+
+/* Footer */
+footer{background:var(--dark);padding:40px 5%;text-align:center;color:#999}
+footer .social-links{display:flex;gap:12px;justify-content:center;margin-bottom:15px}
+footer .social-links a{width:40px;height:40px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#ccc;text-decoration:none;transition:all .3s;font-size:1rem}
+footer .social-links a:hover{border-color:var(--sunset);color:var(--sunset)}
+footer p{font-size:.82rem}
+
+.whatsapp-btn{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .3s;text-decoration:none;font-size:1.8rem;color:#fff}
+.whatsapp-btn:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+.nav-links{display:none}.hamburger{display:flex}
+.about-grid,.inquiry-grid,.contact-grid{grid-template-columns:1fr}
+.services-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:375px){
+section{padding:50px 4%}
+.services-grid,.why-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="logo">Shubh <span>Yatra</span></div>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#destinations">Destinations</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#inquiry">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+<a href="#destinations" onclick="this.parentElement.classList.remove('active')">Destinations</a>
+<a href="#gallery" onclick="this.parentElement.classList.remove('active')">Gallery</a>
+<a href="#inquiry" onclick="this.parentElement.classList.remove('active')">Book Now</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1400&q=80" alt="Beach">
+<div class="hero-content">
+<h1>Your Journey <span>Begins Here</span></h1>
+<p>Discover the world with Rewa's most trusted travel partner</p>
+<a href="#inquiry" class="btn">Plan Your Trip</a>
+</div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=80" alt="Mountains">
+<div class="hero-content">
+<h1>Explore <span>Beyond Borders</span></h1>
+<p>Domestic & international packages tailored to your dreams</p>
+<a href="#destinations" class="btn">View Destinations</a>
+</div>
+</div>
+<div class="hero-dots">
+<span class="active" onclick="goSlide(0)"></span>
+<span onclick="goSlide(1)"></span>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=700&q=80" alt="Travel">
+</div>
+<div class="about-text">
+<h2>Welcome to <span>Shubh Yatra</span></h2>
+<p>Located in the heart of Rewa on University Road, Shubh Yatra Tours N Travels has been helping families, couples, and corporate groups create unforgettable travel experiences.</p>
+<p>From pilgrimage tours to exotic international getaways, we handle every detail — flights, hotels, visas, and insurance — so you can focus on making memories.</p>
+<a href="#inquiry" class="btn-dark btn" style="margin-top:15px">Book a Consultation</a>
+</div>
+</div>
+</section>
+
+<!-- Services Grid -->
+<section id="services" style="background:#fff">
+<div class="container">
+<h2 class="section-title">Our <span>Services</span></h2>
+<p class="section-sub">Complete travel solutions under one roof</p>
+<div class="services-grid">
+<div class="service-card"><div class="icon">✈️</div><h3>Flight Booking</h3><p>Best fares on domestic & international flights</p></div>
+<div class="service-card"><div class="icon">🏨</div><h3>Hotel Reservations</h3><p>Handpicked stays for every budget</p></div>
+<div class="service-card"><div class="icon">📦</div><h3>Tour Packages</h3><p>Curated packages for all destinations</p></div>
+<div class="service-card"><div class="icon">🙏</div><h3>Pilgrimage Tours</h3><p>Sacred journeys to spiritual destinations</p></div>
+<div class="service-card"><div class="icon">👥</div><h3>Group Tours</h3><p>Fun-filled group travel experiences</p></div>
+<div class="service-card"><div class="icon">💼</div><h3>Corporate Travel</h3><p>Business travel management</p></div>
+<div class="service-card"><div class="icon">📄</div><h3>Visa Assistance</h3><p>Hassle-free visa processing</p></div>
+<div class="service-card"><div class="icon">🛡️</div><h3>Travel Insurance</h3><p>Peace of mind on every trip</p></div>
+</div>
+</div>
+</section>
+
+<!-- Destinations -->
+<section id="destinations">
+<div class="container">
+<h2 class="section-title">Popular <span>Destinations</span></h2>
+<p class="section-sub">Dream destinations handpicked for you</p>
+<div class="dest-track">
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80" alt="Goa"><div class="overlay"><h3>Goa</h3><p>Beaches, nightlife & heritage</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="Rajasthan"><div class="overlay"><h3>Rajasthan</h3><p>Royal palaces & desert safaris</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80" alt="Kashmir"><div class="overlay"><h3>Kashmir</h3><p>Paradise on earth</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80" alt="Kerala"><div class="overlay"><h3>Kerala</h3><p>Backwaters & spice gardens</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai"><div class="overlay"><h3>Dubai</h3><p>Luxury & adventure</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&q=80" alt="Thailand"><div class="overlay"><h3>Thailand</h3><p>Temples, beaches & food</p></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80" alt="Singapore"><div class="overlay"><h3>Singapore</h3><p>Garden city wonders</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- Tour Packages -->
+<section style="background:#fff">
+<div class="container">
+<h2 class="section-title">Tour <span>Packages</span></h2>
+<p class="section-sub">Carefully crafted packages for every type of traveler</p>
+<div class="packages-tabs">
+<button class="package-tab active" onclick="switchPackage('domestic')">Domestic</button>
+<button class="package-tab" onclick="switchPackage('international')">International</button>
+</div>
+<div class="packages-content packages-grid active" data-pkg="domestic">
+<div class="package-card"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80" alt="Goa"><div class="info"><h3>Goa Beach Bliss</h3><div class="duration">4 Nights / 5 Days</div><p>Beach hopping, water sports, nightlife, and Old Goa heritage walk.</p><div class="price-tag">From ₹12,999/person</div></div></div>
+<div class="package-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="Rajasthan"><div class="info"><h3>Royal Rajasthan</h3><div class="duration">6 Nights / 7 Days</div><p>Jaipur, Udaipur, Jodhpur — palaces, forts, and desert safari.</p><div class="price-tag">From ₹18,999/person</div></div></div>
+<div class="package-card"><img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80" alt="Kashmir"><div class="info"><h3>Kashmir Paradise</h3><div class="duration">5 Nights / 6 Days</div><p>Srinagar, Gulmarg, Pahalgam — shikara rides and snow peaks.</p><div class="price-tag">From ₹15,999/person</div></div></div>
+</div>
+<div class="packages-content packages-grid" data-pkg="international">
+<div class="package-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai"><div class="info"><h3>Dubai Dazzle</h3><div class="duration">4 Nights / 5 Days</div><p>Burj Khalifa, desert safari, Marina cruise, and shopping.</p><div class="price-tag">From ₹45,999/person</div></div></div>
+<div class="package-card"><img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&q=80" alt="Thailand"><div class="info"><h3>Thailand Explorer</h3><div class="duration">5 Nights / 6 Days</div><p>Bangkok, Pattaya, Phi Phi Islands — temples, beaches & markets.</p><div class="price-tag">From ₹35,999/person</div></div></div>
+<div class="package-card"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80" alt="Singapore"><div class="info"><h3>Singapore Delight</h3><div class="duration">4 Nights / 5 Days</div><p>Sentosa, Gardens by the Bay, Universal Studios & Chinatown.</p><div class="price-tag">From ₹55,999/person</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- Why Choose Us -->
+<section>
+<div class="container">
+<h2 class="section-title">Why Choose <span>Us</span></h2>
+<p class="section-sub">What makes Shubh Yatra your perfect travel partner</p>
+<div class="why-grid">
+<div class="why-card"><div class="icon">💰</div><h3>Best Prices</h3><p>Competitive pricing with no hidden charges</p></div>
+<div class="why-card"><div class="icon">🤝</div><h3>Personalized</h3><p>Trips customized to your preferences</p></div>
+<div class="why-card"><div class="icon">📞</div><h3>24/7 Support</h3><p>Round-the-clock assistance during your trip</p></div>
+<div class="why-card"><div class="icon">⭐</div><h3>Trusted</h3><p>Hundreds of happy travelers from Rewa</p></div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" style="background:#fff">
+<div class="container">
+<h2 class="section-title">Travel <span>Gallery</span></h2>
+<p class="section-sub">Moments from our travelers' adventures</p>
+<div class="gallery-tabs">
+<button class="gallery-tab active" onclick="switchGallery('domestic')">Domestic</button>
+<button class="gallery-tab" onclick="switchGallery('international')">International</button>
+<button class="gallery-tab" onclick="switchGallery('pilgrimage')">Pilgrimage</button>
+</div>
+<div class="gallery-content gallery-grid active" data-tab="domestic">
+<img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="">
+</div>
+<div class="gallery-content gallery-grid" data-tab="international">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="">
+</div>
+<div class="gallery-content gallery-grid" data-tab="pilgrimage">
+<img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1f?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1591018653302-5d42e9578a77?w=600&q=80" alt="">
+</div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonial-section">
+<div class="container">
+<h2 class="section-title">Traveler <span>Stories</span></h2>
+<div class="testimonial-slider">
+<div class="testimonial-track">
+<div class="testimonial-item"><p>"Shubh Yatra made our Goa trip absolutely perfect. Every detail was taken care of. Best travel agency in Rewa!"</p><h4>Amit & Neha Sharma</h4><span>Family Trip, Dec 2024</span></div>
+<div class="testimonial-item"><p>"Our Dubai honeymoon was a dream come true. They got us amazing deals on flights and hotels. Highly recommended!"</p><h4>Rajesh & Pooja Tiwari</h4><span>Honeymoon, Jan 2025</span></div>
+<div class="testimonial-item"><p>"The Kashmir tour was breathtaking. Shubh Yatra handled everything from start to finish. Will definitely book again."</p><h4>Sandeep Agrawal</h4><span>Group Tour, Mar 2025</span></div>
+</div>
+<div class="t-nav">
+<button class="active" onclick="goTestimonial(0)"></button>
+<button onclick="goTestimonial(1)"></button>
+<button onclick="goTestimonial(2)"></button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Inquiry Form -->
+<section id="inquiry" class="inquiry-section">
+<div class="container">
+<h2 class="section-title">Book Your <span>Trip</span></h2>
+<p class="section-sub">Fill in your travel details and we'll craft the perfect itinerary</p>
+<div class="inquiry-grid">
+<form class="inquiry-form" onsubmit="event.preventDefault();alert('Thank you! Our travel expert will contact you within 24 hours.')">
+<h3>Travel Inquiry Form</h3>
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="email" placeholder="Email Address">
+<select><option>Select Destination</option><option>Goa</option><option>Rajasthan</option><option>Kashmir</option><option>Kerala</option><option>Dubai</option><option>Thailand</option><option>Singapore</option><option>Other</option></select>
+<input type="date" placeholder="Travel Date">
+<select><option>Number of Travelers</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option></select>
+<select><option>Trip Type</option><option>Family</option><option>Honeymoon</option><option>Group</option><option>Corporate</option><option>Pilgrimage</option><option>Solo</option></select>
+<textarea placeholder="Any special requirements or preferences?"></textarea>
+<button type="submit" class="btn" style="width:100%;cursor:pointer;border-radius:10px">Submit Inquiry</button>
+</form>
+<div style="display:flex;flex-direction:column;justify-content:center;gap:20px">
+<div style="background:var(--cream);padding:30px;border-radius:16px">
+<h3 style="font-family:'Playfair Display',serif;color:var(--ocean);margin-bottom:15px;font-size:1.3rem">Why Book With Us?</h3>
+<ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:#666"><span style="color:var(--sunset);font-size:1.2rem">✓</span> Free consultation & itinerary planning</li>
+<li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:#666"><span style="color:var(--sunset);font-size:1.2rem">✓</span> Best price guarantee</li>
+<li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:#666"><span style="color:var(--sunset);font-size:1.2rem">✓</span> Complete visa assistance</li>
+<li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:#666"><span style="color:var(--sunset);font-size:1.2rem">✓</span> 24/7 on-trip support</li>
+<li style="display:flex;align-items:center;gap:10px;font-size:.95rem;color:#666"><span style="color:var(--sunset);font-size:1.2rem">✓</span> Flexible payment options</li>
+</ul>
+</div>
+<div style="background:var(--ocean);padding:25px;border-radius:16px;color:#fff;text-align:center">
+<h4 style="font-family:'Playfair Display',serif;margin-bottom:8px;font-size:1.2rem">Quick Inquiry?</h4>
+<p style="color:rgba(255,255,255,0.7);margin-bottom:15px;font-size:.9rem">Call us directly for instant booking</p>
+<a href="tel:9755599785" style="color:var(--sunset);font-size:1.5rem;font-weight:700;text-decoration:none;font-family:'Playfair Display',serif">📞 9755599785</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Contact <span>Us</span></h2>
+<p class="section-sub">Visit us or reach out online</p>
+<div class="contact-grid">
+<div>
+<div class="contact-info">
+<div class="contact-info-item"><div class="icon">📍</div><div><h4>Address</h4><p>Lotus Tower F-6, Fourth Floor, University Road, near Subhash Chowk, Rewa 486001</p></div></div>
+<div class="contact-info-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:9755599785">9755599785</a></p></div></div>
+<div class="contact-info-item"><div class="icon">✉️</div><div><h4>Email</h4><p><a href="mailto:shubhyatra.rewa@gmail.com">shubhyatra.rewa@gmail.com</a></p></div></div>
+<div class="contact-info-item"><div class="icon">📸</div><div><h4>Instagram</h4><p><a href="https://instagram.com/shubh_yatra_travels_agency" target="_blank" style="color:var(--sunset)">@shubh_yatra_travels_agency</a></p></div></div>
+<div class="contact-info-item"><div class="icon">📘</div><div><h4>Facebook</h4><p><a href="https://facebook.com/shubhyatratours" target="_blank" style="color:var(--sunset)">Shubh Yatra Tours</a></p></div></div>
+</div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3643.8!2d81.3!3d24.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDMxJzQ4LjAiTiA4McKwMTgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="social-links">
+<a href="https://instagram.com/shubh_yatra_travels_agency" target="_blank">📸</a>
+<a href="https://facebook.com/shubhyatratours" target="_blank">📘</a>
+<a href="mailto:shubhyatra.rewa@gmail.com">✉️</a>
+<a href="https://wa.me/919755599785" target="_blank">💬</a>
+</div>
+<p>© 2026 Shubh Yatra Tours N Travels, Rewa. All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/919755599785" target="_blank" class="whatsapp-btn">💬</a>
+
+<script>
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>goSlide((currentSlide+1)%slides.length),5000);
+
+function switchGallery(tab){document.querySelectorAll('.gallery-content').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));document.querySelector(`[data-tab="${tab}"]`).classList.add('active');event.target.classList.add('active')}
+
+function switchPackage(pkg){document.querySelectorAll('.packages-content').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.package-tab').forEach(t=>t.classList.remove('active'));document.querySelector(`[data-pkg="${pkg}"]`).classList.add('active');event.target.classList.add('active')}
+
+let ct=0;const trk=document.querySelector('.testimonial-track'),td=document.querySelectorAll('.t-nav button');
+function goTestimonial(n){ct=n;trk.style.transform=`translateX(-${n*100}%)`;td.forEach(d=>d.classList.remove('active'));td[n].classList.add('active')}
+setInterval(()=>goTestimonial((ct+1)%3),4000);
+
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
+</script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maa Durga Services — Blessed Journeys, Trusted Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#DC2626;--cream:#FEF3C7;--dark:#1a0a0a;--maroon:#7f1d1d;--white:#fff;--gray:#6b7280;--light-red:#fef2f2;--gold:#f59e0b}
+body{font-family:'Manrope',sans-serif;color:#1f2937;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Syne',sans-serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 0;transition:all .3s}
+nav.scrolled{background:rgba(220,38,38,.9);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(220,38,38,.2)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--cream);text-decoration:none}
+.logo .om{color:var(--gold);font-size:1.3rem}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .3s}
+.nav-links a:hover{color:var(--cream)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:25px;height:2px;background:var(--white);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(127,29,29,.97);z-index:999;flex-direction:column;justify-content:center;align-items:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--cream);font-size:1.5rem;text-decoration:none;font-family:'Syne',sans-serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(127,29,29,.85),rgba(220,38,38,.6))}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:0 20px;z-index:2}
+.hero-content .om-symbol{font-size:3rem;color:var(--gold);margin-bottom:10px}
+.hero-content p.tagline{font-size:1rem;letter-spacing:5px;text-transform:uppercase;color:var(--cream);margin-bottom:15px;font-weight:600}
+.hero-content h1{font-size:3.5rem;font-weight:800;margin-bottom:20px;line-height:1.1}
+.hero-content h1 span{color:var(--gold)}
+.hero-content p.sub{font-size:1.15rem;max-width:600px;opacity:.9;margin-bottom:30px}
+.hero-btns{display:flex;gap:15px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;font-size:1rem;transition:all .3s;border:none;cursor:pointer;font-family:'Manrope',sans-serif}
+.btn-primary{background:var(--gold);color:var(--dark)}
+.btn-primary:hover{background:#d97706;transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--cream);color:var(--cream);background:transparent}
+.btn-outline:hover{background:var(--cream);color:var(--dark)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--gold);transform:scale(1.2)}
+
+/* SECTIONS */
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2.5rem;font-weight:700;color:var(--dark)}
+.section-title p{color:var(--gray);max-width:600px;margin:10px auto 0}
+.section-title .line{width:60px;height:4px;background:var(--red);margin:15px auto 0;border-radius:2px}
+.section-title .om-dec{color:var(--gold);font-size:1.5rem}
+
+/* ABOUT */
+.about{padding:80px 0;background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+.about-img .badge{position:absolute;top:20px;left:20px;background:var(--red);color:var(--white);padding:12px 20px;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700}
+.about-text h3{font-size:1.8rem;margin-bottom:15px;color:var(--maroon)}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:15px}
+.about-highlights{display:flex;flex-wrap:wrap;gap:12px;margin-top:15px}
+.highlight-badge{background:var(--light-red);color:var(--red);padding:8px 18px;border-radius:50px;font-weight:600;font-size:.85rem}
+
+/* SERVICES */
+.services{padding:80px 0}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.service-card{display:flex;gap:20px;background:var(--white);border-radius:20px;padding:30px;border:1px solid #fecaca;transition:all .3s}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(220,38,38,.1)}
+.service-card .icon{width:65px;height:65px;background:linear-gradient(135deg,var(--red),var(--maroon));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.service-card h3{font-size:1.1rem;margin-bottom:8px;color:var(--dark)}
+.service-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+
+/* PILGRIMAGE PACKAGES */
+.packages{padding:80px 0;background:var(--cream)}
+.packages-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.package-card{background:var(--white);border-radius:20px;overflow:hidden;transition:all .3s;border:2px solid transparent}
+.package-card:hover{border-color:var(--red);transform:translateY(-5px);box-shadow:0 15px 35px rgba(220,38,38,.1)}
+.package-card img{width:100%;height:200px;object-fit:cover}
+.package-card .info{padding:20px}
+.package-card h4{font-size:1.1rem;color:var(--dark);margin-bottom:5px}
+.package-card .loc{color:var(--gray);font-size:.85rem;margin-bottom:10px}
+.package-card .price{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--red)}
+.package-card .price small{font-size:.8rem;font-weight:400;color:var(--gray)}
+.package-card .features{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.package-card .feat{background:var(--cream);padding:4px 10px;border-radius:20px;font-size:.75rem;color:var(--maroon)}
+
+/* FLEET */
+.fleet{padding:80px 0}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.fleet-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.05);transition:all .3s}
+.fleet-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.1)}
+.fleet-card img{width:100%;height:200px;object-fit:cover}
+.fleet-card .info{padding:20px}
+.fleet-card h4{font-size:1.1rem;margin-bottom:8px}
+.fleet-card .meta{display:flex;justify-content:space-between;color:var(--gray);font-size:.85rem}
+.fleet-card .rate{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--red);margin-top:8px}
+
+/* STATS */
+.stats{padding:60px 0;background:linear-gradient(135deg,var(--maroon),var(--red))}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;color:var(--white)}
+.stat-item h3{font-size:2.8rem;font-weight:800;color:var(--gold)}
+.stat-item p{font-size:.95rem;opacity:.8;margin-top:5px}
+
+/* WHY US */
+.why-us{padding:80px 0;background:var(--cream)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+.trust-card{text-align:center;padding:30px 20px;background:var(--white);border-radius:20px;transition:all .3s}
+.trust-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,38,38,.08)}
+.trust-card .icon{width:60px;height:60px;background:var(--light-red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;font-size:1.5rem}
+.trust-card h4{font-size:1rem;margin-bottom:8px;color:var(--dark)}
+.trust-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* GALLERY */
+.gallery{padding:80px 0}
+.tab-btns{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 25px;border-radius:50px;border:2px solid var(--red);background:transparent;color:var(--red);font-weight:600;cursor:pointer;transition:all .3s;font-family:'Manrope',sans-serif}
+.tab-btn.active{background:var(--red);color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:15px;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.tab-content{display:none}
+.tab-content.active{display:grid}
+
+/* BOOKING */
+.booking{padding:80px 0;background:var(--cream)}
+.booking-form{max-width:800px;margin:0 auto;background:var(--white);border-radius:20px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;margin-bottom:5px;color:var(--dark);font-size:.9rem}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:2px solid #fecaca;border-radius:12px;font-family:'Manrope',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red)}
+.form-full{grid-column:1/-1}
+.submit-btn{grid-column:1/-1;padding:16px;background:var(--red);color:var(--white);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .3s}
+.submit-btn:hover{background:#b91c1c;transform:translateY(-2px)}
+
+/* REVIEWS */
+.reviews{padding:80px 0}
+.reviews-track{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 0;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{min-width:350px;background:var(--white);border-radius:20px;padding:30px;scroll-snap-align:start;border:2px solid #fecaca}
+.review-card .stars{color:var(--gold);font-size:1.2rem;margin-bottom:10px}
+.review-card p{color:var(--gray);line-height:1.7;margin-bottom:15px;font-style:italic}
+.review-card .author{font-weight:700;color:var(--dark)}
+
+/* CONTACT */
+.contact{padding:80px 0;background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:15px;align-items:flex-start}
+.contact-item .icon{width:50px;height:50px;background:var(--light-red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.contact-item h4{font-size:1rem;color:var(--dark);margin-bottom:3px}
+.contact-item p{color:var(--gray);font-size:.9rem}
+.contact-item a{color:var(--red);text-decoration:none}
+.map-container{border-radius:20px;overflow:hidden;height:100%;min-height:350px}
+.map-container iframe{width:100%;height:100%;border:0}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--white);padding:50px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.footer-brand .logo{font-size:1.5rem}
+.footer-brand p{color:rgba(255,255,255,.6);margin-top:10px;line-height:1.7;font-size:.9rem}
+.footer-col h4{font-size:1rem;margin-bottom:15px;color:var(--gold)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-col ul li a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;color:rgba(255,255,255,.4);font-size:.85rem}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 15px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:32px;height:32px;fill:white}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.packages-grid{grid-template-columns:repeat(2,1fr)}
+.trust-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}
+.fleet-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.hamburger{display:flex}
+.nav-links{display:none}
+.hero-content h1{font-size:2.2rem}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.services-grid,.fleet-grid{grid-template-columns:1fr}
+.packages-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.form-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.review-card{min-width:280px}
+}
+@media(max-width:375px){
+.hero-content h1{font-size:1.8rem}
+.section-title h2{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo"><span class="om">🙏</span> Maa Durga Services</a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+<a href="#packages" onclick="this.parentElement.classList.remove('active')">Packages</a>
+<a href="#fleet" onclick="this.parentElement.classList.remove('active')">Fleet</a>
+<a href="#booking" onclick="this.parentElement.classList.remove('active')">Book Now</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1591018653367-5a1d890c88ee?w=1600&q=80" alt="Pilgrimage">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1600&q=80" alt="Happy Travelers">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<div class="om-symbol">🙏</div>
+<p class="tagline">BLESSED JOURNEYS, TRUSTED SERVICE</p>
+<h1>Maa Durga <span>Services</span></h1>
+<p class="sub">Trusted pilgrimage & travel services from Satna. Serving devotees with faith and dedication.</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-primary">🙏 Book Pilgrimage</a>
+<a href="tel:9827090728" class="btn btn-outline">📞 Call Now</a>
+</div>
+</div>
+<div class="hero-dots">
+<span class="active" onclick="goSlide(0)"></span>
+<span onclick="goSlide(1)"></span>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+<div class="section-title">
+<div class="om-dec">🙏</div>
+<h2>About Maa Durga Services</h2>
+<div class="line"></div>
+</div>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=800&q=80" alt="Temple">
+<div class="badge">Trusted Since Years</div>
+</div>
+<div class="about-text">
+<h3>Blessed with Maa Durga's Grace</h3>
+<p>Maa Durga Services is Satna's trusted pilgrimage and travel partner. Named after the divine Maa Durga, we carry forward the values of trust, devotion, and service in every journey.</p>
+<p>From the sacred steps of Maihar Devi to the holy banks of Chitrakoot, we ensure your spiritual journey is comfortable, safe, and blessed.</p>
+<div class="about-highlights">
+<span class="highlight-badge">🙏 Pilgrimage Experts</span>
+<span class="highlight-badge">🛡️ Safe Travel</span>
+<span class="highlight-badge">💰 Fair Prices</span>
+<span class="highlight-badge">⏰ 24/7 Service</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="container">
+<div class="section-title">
+<h2>Our Services</h2>
+<p>Complete travel solutions with devotional care</p>
+<div class="line"></div>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="icon">🙏</div>
+<div><h3>Pilgrimage Tours</h3><p>Dedicated pilgrimage packages to Maihar, Chitrakoot, Amarkantak and other sacred sites.</p></div>
+</div>
+<div class="service-card">
+<div class="icon">🚕</div>
+<div><h3>Local Taxi</h3><p>Comfortable and affordable city rides within Satna. Quick pickup guaranteed.</p></div>
+</div>
+<div class="service-card">
+<div class="icon">🛣️</div>
+<div><h3>Outstation Travel</h3><p>Long-distance taxi service to Rewa, Jabalpur, Allahabad and beyond.</p></div>
+</div>
+<div class="service-card">
+<div class="icon">👨‍👩‍👧‍👦</div>
+<div><h3>Group Travel</h3><p>Tempo travellers and buses for family trips, weddings and group pilgrimages.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PILGRIMAGE PACKAGES -->
+<section class="packages" id="packages">
+<div class="container">
+<div class="section-title">
+<h2>Pilgrimage Packages</h2>
+<p>Sacred journeys at blessed prices</p>
+<div class="line"></div>
+</div>
+<div class="packages-grid">
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Maihar">
+<div class="info">
+<h4>Maihar Devi Darshan</h4>
+<p class="loc">📍 Maihar, MP · 40 km</p>
+<div class="price">₹1,200 <small>/person</small></div>
+<div class="features"><span class="feat">AC Vehicle</span><span class="feat">1 Day</span><span class="feat">Guide</span></div>
+</div>
+</div>
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Chitrakoot">
+<div class="info">
+<h4>Chitrakoot Parikrama</h4>
+<p class="loc">📍 Chitrakoot · 75 km</p>
+<div class="price">₹2,000 <small>/person</small></div>
+<div class="features"><span class="feat">AC Vehicle</span><span class="feat">1 Day</span><span class="feat">Meals</span></div>
+</div>
+</div>
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Amarkantak">
+<div class="info">
+<h4>Amarkantak Yatra</h4>
+<p class="loc">📍 Amarkantak · 230 km</p>
+<div class="price">₹3,500 <small>/person</small></div>
+<div class="features"><span class="feat">AC Vehicle</span><span class="feat">2 Days</span><span class="feat">Hotel</span></div>
+</div>
+</div>
+<div class="package-card">
+<img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1f?w=500&q=80" alt="Ujjain">
+<div class="info">
+<h4>Ujjain Mahakal</h4>
+<p class="loc">📍 Ujjain · 640 km</p>
+<div class="price">₹5,500 <small>/person</small></div>
+<div class="features"><span class="feat">AC Vehicle</span><span class="feat">3 Days</span><span class="feat">Hotel+Meals</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+<div class="container">
+<div class="section-title">
+<h2>Our Fleet</h2>
+<div class="line"></div>
+</div>
+<div class="fleet-grid">
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Sedan">
+<div class="info"><h4>Sedan (Swift/Dzire)</h4><div class="meta"><span>4 Seats</span><span>AC</span></div><div class="rate">₹10/km</div></div>
+</div>
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Innova">
+<div class="info"><h4>Innova Crysta</h4><div class="meta"><span>7 Seats</span><span>AC</span></div><div class="rate">₹16/km</div></div>
+</div>
+<div class="fleet-card">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=500&q=80" alt="Tempo">
+<div class="info"><h4>Tempo Traveller</h4><div class="meta"><span>12-17 Seats</span><span>AC/Non-AC</span></div><div class="rate">₹18/km</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 class="counter" data-target="8000">0</h3><p>Happy Devotees</p></div>
+<div class="stat-item"><h3 class="counter" data-target="35">0</h3><p>Vehicles</p></div>
+<div class="stat-item"><h3 class="counter" data-target="15">0</h3><p>Years of Service</p></div>
+<div class="stat-item"><h3 class="counter" data-target="200">0</h3><p>Pilgrimages Completed</p></div>
+</div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+<div class="container">
+<div class="section-title">
+<h2>Why Choose Us</h2>
+<div class="line"></div>
+</div>
+<div class="trust-grid">
+<div class="trust-card"><div class="icon">🙏</div><h4>Devotional Trust</h4><p>Named after Maa Durga, we serve with faith and devotion in every journey.</p></div>
+<div class="trust-card"><div class="icon">🛡️</div><h4>Safe & Secure</h4><p>Verified drivers, GPS tracking, and well-maintained vehicles for safety.</p></div>
+<div class="trust-card"><div class="icon">💰</div><h4>Honest Pricing</h4><p>No hidden charges. Transparent and fair rates for all services.</p></div>
+<div class="trust-card"><div class="icon">⏰</div><h4>Always Available</h4><p>24/7 booking and support. We're here whenever you need us.</p></div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+<div class="container">
+<div class="section-title"><h2>Gallery</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showTab('pilgrim')">Pilgrimages</button>
+<button class="tab-btn" onclick="showTab('vehicles')">Our Vehicles</button>
+<button class="tab-btn" onclick="showTab('happy')">Happy Travelers</button>
+</div>
+<div class="tab-content active gallery-grid" id="pilgrim">
+<img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Temple">
+<img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Temple 2">
+<img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Temple 3">
+</div>
+<div class="tab-content gallery-grid" id="vehicles">
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?w=500&q=80" alt="Vehicle">
+<img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500&q=80" alt="Vehicle 2">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=500&q=80" alt="Vehicle 3">
+</div>
+<div class="tab-content gallery-grid" id="happy">
+<img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&q=80" alt="Travelers">
+<img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&q=80" alt="Road">
+<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Landscape">
+</div>
+</div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+<div class="container">
+<div class="section-title"><h2>Book Your Journey</h2><p>Start your blessed journey today</p><div class="line"></div></div>
+<div class="booking-form">
+<div class="form-grid">
+<div class="form-group"><label>Your Name</label><input type="text" placeholder="Full Name"></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+<div class="form-group"><label>Journey Type</label>
+<select><option>Pilgrimage Tour</option><option>Local Taxi</option><option>Outstation</option><option>Group Travel</option></select></div>
+<div class="form-group"><label>Destination</label>
+<select><option>Maihar Devi</option><option>Chitrakoot</option><option>Amarkantak</option><option>Ujjain</option><option>Other</option></select></div>
+<div class="form-group"><label>Travel Date</label><input type="date"></div>
+<div class="form-group"><label>Passengers</label>
+<select><option>1-2</option><option>3-4</option><option>5-7</option><option>8-15</option><option>15+</option></select></div>
+<div class="form-group form-full"><label>Special Requests</label><textarea rows="3" placeholder="Any special requirements..."></textarea></div>
+<button class="submit-btn" type="button" onclick="alert('🙏 Jai Maa Durga! We will contact you shortly.')">🙏 Book Now</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+<div class="container">
+<div class="section-title"><h2>What Devotees Say</h2><div class="line"></div></div>
+<div class="reviews-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"Wonderful pilgrimage to Maihar Devi. The driver was respectful and the vehicle was very comfortable. Jai Maa Durga!"</p><div class="author">— Kavita Mishra</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"Booked Chitrakoot trip for my parents. They were very happy with the service. Very trustworthy agency."</p><div class="author">— Rahul Dwivedi</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Good service, fair prices. Used for Amarkantak yatra. Driver was knowledgeable about the route and stops."</p><div class="author">— Meena Gupta</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"Best travel service in Satna for pilgrimage. They understand the devotional needs. Highly recommended!"</p><div class="author">— Suresh Pandey</div></div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-title"><h2>Contact Us</h2><div class="line"></div></div>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:9827090728">9827090728</a> / <a href="tel:9425868667">9425868667</a> / <a href="tel:07672225667">07672-225667</a></p></div></div>
+<div class="contact-item"><div class="icon">📍</div><div><h4>Address</h4><p>Shop No 7, KB Complex, Rewa Road, Near Bus Stand, Opp Chaurasia Petrol Pump, Satna</p></div></div>
+<div class="contact-item"><div class="icon">⏰</div><div><h4>Working Hours</h4><p>Open 24/7 — 365 Days</p></div></div>
+<div class="contact-item"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/919827090728">Chat on WhatsApp</a></p></div></div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5!2d80.83!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatna!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<a href="#" class="logo"><span class="om">🙏</span> Maa Durga Services</a>
+<p>Blessed journeys with trusted service. Satna's premier pilgrimage and travel partner since years. Jai Maa Durga!</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#booking">Book Now</a></li></ul>
+</div>
+<div class="footer-col">
+<h4>Pilgrimages</h4>
+<ul><li><a href="#">Maihar Devi</a></li><li><a href="#">Chitrakoot</a></li><li><a href="#">Amarkantak</a></li><li><a href="#">Ujjain</a></li></ul>
+</div>
+</div>
+<div class="footer-bottom"><p>© 2026 Maa Durga Services, Satna. All rights reserved. | Designed by VedamVision</p></div>
+</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919827090728" class="whatsapp-float" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+const counters=document.querySelectorAll('.counter');let counted=false;
+function animateCounters(){counters.forEach(c=>{const target=+c.dataset.target,inc=target/80;let val=0;const timer=setInterval(()=>{val+=inc;if(val>=target){c.textContent=target.toLocaleString()+'+';clearInterval(timer)}else{c.textContent=Math.floor(val).toLocaleString()+'+'}},20)})}
+const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!counted){counted=true;animateCounters()}},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+function showTab(id){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');event.target.classList.add('active')}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+</body>
+</html>

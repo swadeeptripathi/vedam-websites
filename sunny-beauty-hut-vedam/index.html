@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunny Beauty Hut — Salon, Satna</title>
+<meta name="description" content="Sunny Beauty Hut Salon Satna — Haircuts, facials, bridal packages, waxing, threading, mehendi & more. Your beauty destination.">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Raleway:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--corn:#FFF8DC;--coral:#FF6B6B;--teal:#4ECDC4;--dark:#2C3E50;--text:#555;--white:#fff}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:var(--corn);overflow-x:hidden}
+h1,h2,h3{font-family:'Raleway',sans-serif;font-weight:800;color:var(--dark)}
+.accent{font-family:'Dancing Script',cursive}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:12px 0;transition:all .3s}
+nav.scrolled{background:rgba(255,248,220,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+nav.scrolled .logo,nav.scrolled .nav-links a{color:var(--dark)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Raleway',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;text-decoration:none}
+.logo span{color:var(--coral)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--coral)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:26px;height:3px;background:#fff;border-radius:2px;transition:background .3s}
+nav.scrolled .hamburger span{background:var(--dark)}
+/* Hero */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;display:flex;align-items:center;justify-content:center}
+.hero-slide.active{opacity:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(78,205,196,.6),rgba(255,107,107,.4))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-content .tagline{font-family:'Dancing Script',cursive;font-size:1.4rem;margin-bottom:8px;opacity:.9}
+.hero-content h1{font-size:3.5rem;margin-bottom:16px;line-height:1.1;color:#fff}
+.hero-content p{font-size:1.1rem;max-width:550px;margin:0 auto 28px;opacity:.9}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.95rem;cursor:pointer;border:none}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:#E85555;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,107,.3)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#3DBDB5;transform:translateY(-2px)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--coral)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--coral)}
+/* Sections */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:2.4rem;margin-bottom:4px}
+.section-title .sub{font-family:'Dancing Script',cursive;color:var(--coral);font-size:1.2rem;margin-bottom:8px}
+.section-title .line{width:50px;height:4px;background:linear-gradient(90deg,var(--coral),var(--teal));margin:12px auto;border-radius:2px}
+.section-title p{color:var(--text);max-width:480px;margin:0 auto}
+.bg-white{background:#fff}
+.bg-teal{background:var(--teal);color:#fff}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.about-img img{width:100%;height:400px;object-fit:cover}
+.about-text p{line-height:1.8;margin-bottom:16px}
+.about-text .highlight{display:inline-block;background:linear-gradient(135deg,var(--coral),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;font-size:1.1rem}
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+.svc-card{background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.04);border:2px solid transparent;transition:all .3s}
+.svc-card:hover{border-color:var(--coral);transform:translateY(-6px)}
+.svc-card .icon{font-size:2.5rem;margin-bottom:12px}
+.svc-card h4{margin-bottom:6px;font-size:1rem}
+.svc-card p{font-size:.85rem;color:var(--text)}
+/* Bridal */
+.bridal-section{background:linear-gradient(135deg,var(--coral),#FF8E8E);padding:80px 0;color:#fff;position:relative;overflow:hidden}
+.bridal-section::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:rgba(255,255,255,.05);border-radius:50%}
+.bridal-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.bridal-text h2{color:#fff;margin-bottom:20px}
+.bridal-text p{opacity:.9;line-height:1.8;margin-bottom:16px}
+.bridal-packages{display:flex;flex-direction:column;gap:16px}
+.bridal-pkg{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,.2)}
+.bridal-pkg h4{margin-bottom:8px;font-size:1.1rem}
+.bridal-pkg .price{font-family:'Raleway',sans-serif;font-weight:800;font-size:1.6rem}
+.bridal-pkg ul{list-style:none;margin-top:8px}
+.bridal-pkg li{padding:3px 0;font-size:.9rem;opacity:.9}
+.bridal-pkg li::before{content:'✨ '}
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.price-item{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.04);transition:all .3s}
+.price-item:hover{box-shadow:0 4px 20px rgba(255,107,107,.1);transform:translateY(-2px)}
+.price-item h4{font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem}
+.price-item .price{color:var(--coral);font-weight:700;font-size:1.1rem}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover;border-radius:14px;transition:all .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.tab-btns{display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.tab-btn{padding:10px 22px;border-radius:50px;border:2px solid #E5E7EB;background:transparent;color:var(--dark);cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;transition:all .3s}
+.tab-btn.active,.tab-btn:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+/* Stats */
+.stats{background:linear-gradient(135deg,var(--teal),#3DBDB5);padding:60px 0;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-num{font-size:2.8rem;font-family:'Raleway',sans-serif;font-weight:800}
+.stat-label{font-size:.9rem;opacity:.8;margin-top:4px}
+/* Reviews */
+.reviews-wrap{max-width:680px;margin:0 auto;overflow:hidden}
+.review-track{display:flex;transition:transform .5s}
+.review-card{min-width:100%;padding:32px;text-align:center}
+.review-card .stars{color:var(--coral);font-size:1.3rem;margin-bottom:12px}
+.review-card p{font-style:italic;line-height:1.7;margin-bottom:16px;font-size:1.05rem}
+.review-card .name{font-weight:700;color:var(--teal)}
+.review-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.review-nav button{width:40px;height:40px;border-radius:50%;border:2px solid var(--coral);background:transparent;color:var(--coral);cursor:pointer;font-size:1.1rem;transition:all .3s}
+.review-nav button:hover{background:var(--coral);color:#fff}
+/* Booking */
+.booking-section{background:linear-gradient(135deg,#FFF8DC,#FFF0E0)}
+.booking-form{max-width:600px;margin:0 auto;background:#fff;border-radius:20px;padding:40px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.booking-form input,.booking-form textarea,.booking-form select{width:100%;padding:14px;border:2px solid #E5E7EB;border-radius:12px;font-family:'Nunito',sans-serif;font-size:.95rem;background:#FAFAFA;transition:border .3s;outline:none}
+.booking-form input:focus,.booking-form textarea:focus{border-color:var(--coral)}
+.booking-form textarea{height:100px;resize:vertical}
+.form-group{margin-bottom:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.contact-card h3{color:var(--coral);margin-bottom:20px}
+.contact-card .item{display:flex;gap:12px;margin-bottom:16px}
+.contact-card .item .icon{font-size:1.3rem}
+.map-wrap{border-radius:14px;overflow:hidden}
+.map-wrap iframe{width:100%;height:300px;border:0}
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:32px 0;font-size:.85rem}
+footer a{color:var(--coral);text-decoration:none}
+/* WhatsApp */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(255,248,220,.97);backdrop-filter:blur(16px);flex-direction:column;padding:20px;gap:16px}
+.nav-links.open{display:flex}
+.nav-links a{color:var(--dark)}
+.hamburger{display:flex}
+.hero-content h1{font-size:2.2rem}
+.about-grid,.contact-grid,.bridal-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.form-row{grid-template-columns:1fr}
+}
+@media(max-width:375px){.hero-content h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo">Sunny <span>Beauty Hut</span></a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#bridal">Bridal</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=80" alt="Salon interior">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="tagline">✨ Where Beauty Meets Warmth</div>
+<h1>Sunny Beauty Hut</h1>
+<p>Satna's favourite salon — where every visit leaves you feeling radiant, confident, and beautifully you.</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-coral">Book Appointment</a>
+<a href="#services" class="btn btn-outline">Our Services</a>
+</div>
+</div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1400&q=80" alt="Happy client">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="tagline">💖 Your Glow-Up Awaits</div>
+<h1>Bridal & Beauty Experts</h1>
+<p>From everyday pampering to dream bridal looks — our expert beauticians craft magic that makes you shine on your special day.</p>
+<div class="hero-btns">
+<a href="#bridal" class="btn btn-coral">Bridal Packages</a>
+<a href="tel:+919584721180" class="btn btn-outline">Call: 9584721180</a>
+</div>
+</div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section id="about" class="bg-white">
+<div class="container">
+<div class="section-title"><div class="sub">Our Story</div><h2>About Sunny Beauty Hut</h2><div class="line"></div></div>
+<div class="about-grid">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1633681122956-cdce3dbf1329?w=700&q=80" alt="Salon"></div>
+<div class="about-text">
+<h2>Your Beauty, Our Passion</h2>
+<p>Sunny Beauty Hut is Satna's warm, welcoming beauty destination — a place where you can relax, rejuvenate, and rediscover your confidence. Founded with a love for making people look and feel their best, we've been serving Satna's beauty needs with care and expertise.</p>
+<p>Our team of skilled beauticians brings together years of experience in haircare, skincare, bridal makeup, and traditional beauty treatments. We use quality products, follow the latest trends, and treat every client like family.</p>
+<p>Whether it's a quick threading session, a complete bridal transformation, or a relaxing facial — <span class="highlight">at Sunny Beauty Hut, you're always in good hands.</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+<div class="section-title"><div class="sub">What We Offer</div><h2>Our Services</h2><div class="line"></div></div>
+<div class="services-grid">
+<div class="svc-card"><div class="icon">✂️</div><h4>Haircut & Styling</h4><p>Trendy cuts, blowouts, and styling for every occasion</p></div>
+<div class="svc-card"><div class="icon">✨</div><h4>Facial Treatments</h4><p>Deep cleansing, anti-aging, brightening, and glow facials</p></div>
+<div class="svc-card"><div class="icon">🌸</div><h4>Waxing</h4><p>Full body, arms, legs — smooth, gentle, and lasting</p></div>
+<div class="svc-card"><div class="icon">👰</div><h4>Bridal Makeup</h4><p>Complete bridal packages for your dream look</p></div>
+<div class="svc-card"><div class="icon">🧵</div><h4>Threading</h4><p>Precise eyebrow & facial threading for clean lines</p></div>
+<div class="svc-card"><div class="icon">🌿</div><h4>Mehendi</h4><p>Traditional & modern henna designs for all occasions</p></div>
+</div>
+</div>
+</section>
+
+<section id="bridal" class="bridal-section">
+<div class="container">
+<div class="bridal-grid">
+<div class="bridal-text">
+<div class="accent" style="font-size:1.3rem;opacity:.9">For Your Special Day</div>
+<h2>Bridal Packages</h2>
+<p>Your wedding day deserves perfection. Our bridal packages are carefully designed to make you look absolutely stunning — from the engagement to the reception and beyond.</p>
+<p>Every package includes a personal consultation, trial session, and premium products to ensure you look and feel like a queen on your big day.</p>
+</div>
+<div class="bridal-packages">
+<div class="bridal-pkg">
+<h4>Silver Glow</h4>
+<div class="price">₹8,000</div>
+<ul><li>Bridal makeup</li><li>Hair styling</li><li>Basic facial</li><li>Mehendi (both hands)</li></ul>
+</div>
+<div class="bridal-pkg">
+<h4>Gold Radiance</h4>
+<div class="price">₹15,000</div>
+<ul><li>HD bridal makeup</li><li>Advanced hair styling</li><li>Premium facial</li><li>Full body waxing</li><li>Mehendi (hands + feet)</li><li>Trial session included</li></ul>
+</div>
+<div class="bridal-pkg">
+<h4>Platinum Queen</h4>
+<div class="price">₹25,000</div>
+<ul><li>Airbrush bridal makeup</li><li>Designer hair styling</li><li>Luxury facial treatment</li><li>Full body spa + waxing</li><li>Elaborate mehendi</li><li>2 trial sessions</li><li>Engagement + Reception looks</li></ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="bg-white">
+<div class="container">
+<div class="section-title"><div class="sub">Transparent Pricing</div><h2>Price List</h2><div class="line"></div></div>
+<div class="pricing-grid">
+<div class="price-item"><h4>Haircut (Women)</h4><span class="price">₹200+</span></div>
+<div class="price-item"><h4>Hair Spa Treatment</h4><span class="price">₹500+</span></div>
+<div class="price-item"><h4>Basic Facial</h4><span class="price">₹400</span></div>
+<div class="price-item"><h4>Gold/Diamond Facial</h4><span class="price">₹800+</span></div>
+<div class="price-item"><h4>Full Arms Waxing</h4><span class="price">₹250</span></div>
+<div class="price-item"><h4>Full Legs Waxing</h4><span class="price">₹350</span></div>
+<div class="price-item"><h4>Threading (Eyebrows)</h4><span class="price">₹30</span></div>
+<div class="price-item"><h4>Upper Lip Threading</h4><span class="price">₹20</span></div>
+<div class="price-item"><h4>Party Makeup</h4><span class="price">₹2,000+</span></div>
+<div class="price-item"><h4>Hair Colour</h4><span class="price">₹500+</span></div>
+<div class="price-item"><h4>Mehendi (Simple)</h4><span class="price">₹500</span></div>
+<div class="price-item"><h4>Mehendi (Bridal)</h4><span class="price">₹2,000+</span></div>
+</div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="container">
+<div class="section-title"><div class="sub">Our Work</div><h2>Gallery</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showGallery('gsal')">Salon</button>
+<button class="tab-btn" onclick="showGallery('gbride')">Bridal</button>
+<button class="tab-btn" onclick="showGallery('gmake')">Makeover</button>
+</div>
+<div id="gsal" class="gallery-tab">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80" alt="Salon">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=80" alt="Hair">
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80" alt="Styling">
+<img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=500&q=80" alt="Beauty">
+</div>
+</div>
+<div id="gbride" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=500&q=80" alt="Bridal">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&q=80" alt="Bridal makeup">
+<img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&q=80" alt="Mehendi">
+</div>
+</div>
+<div id="gmake" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=500&q=80" alt="Makeover">
+<img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?w=500&q=80" alt="Makeup">
+<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80" alt="Facial">
+</div>
+</div>
+</div>
+</section>
+
+<div class="stats">
+<div class="container">
+<div class="stats-grid">
+<div><div class="stat-num" data-target="5000">0</div><div class="stat-label">Happy Clients</div></div>
+<div><div class="stat-num" data-target="6">0</div><div class="stat-label">Years of Service</div></div>
+<div><div class="stat-num" data-target="200">0</div><div class="stat-label">Bridal Makeovers</div></div>
+<div><div class="stat-num" data-target="15">0</div><div class="stat-label">Beauty Experts</div></div>
+</div>
+</div>
+</div>
+
+<section id="reviews" class="bg-white">
+<div class="container">
+<div class="section-title"><div class="sub">Client Love</div><h2>What They Say</h2><div class="line"></div></div>
+<div class="reviews-wrap">
+<div class="review-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"My bridal makeup was absolutely stunning! Everyone at the wedding kept asking who did my makeup. Sunny Beauty Hut is magical!"</p><div class="name">Anita Sharma</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"I've been coming here for 3 years. The facials are so relaxing and my skin always looks amazing after. Best salon in Satna!"</p><div class="name">Ritu Gupta</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"The mehendi designs here are gorgeous! Got it done for my sister's wedding and received so many compliments. Highly recommend."</p><div class="name">Priya Jain</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Clean, hygienic, and the staff is very friendly. Love the warm atmosphere. Pricing is also very reasonable for the quality."</p><div class="name">Kavita Pandey</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">‹</button><button onclick="moveReview(1)">›</button></div>
+</div>
+</section>
+
+<section id="booking" class="booking-section">
+<div class="container">
+<div class="section-title"><div class="sub">Schedule a Visit</div><h2>Book Appointment</h2><div class="line"></div></div>
+<form class="booking-form" onsubmit="event.preventDefault();alert('Appointment booked! We\'ll confirm via call shortly. 💖')">
+<div class="form-row">
+<div class="form-group"><input type="text" placeholder="Your Name" required></div>
+<div class="form-group"><input type="tel" placeholder="Phone Number" required></div>
+</div>
+<div class="form-group"><select>
+<option>Select Service</option>
+<option>Haircut & Styling</option>
+<option>Facial Treatment</option>
+<option>Waxing</option>
+<option>Bridal Makeup</option>
+<option>Threading</option>
+<option>Mehendi</option>
+<option>Party Makeup</option>
+<option>Hair Spa/Colour</option>
+<option>Bridal Package — Silver</option>
+<option>Bridal Package — Gold</option>
+<option>Bridal Package — Platinum</option>
+</select></div>
+<div class="form-row">
+<div class="form-group"><input type="date" required></div>
+<div class="form-group"><input type="time" required></div>
+</div>
+<div class="form-group"><textarea placeholder="Any special requests?"></textarea></div>
+<button type="submit" class="btn btn-coral" style="width:100%">Book Now ✨</button>
+</form>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="section-title"><div class="sub">Find Us</div><h2>Contact</h2><div class="line"></div></div>
+<div class="contact-grid">
+<div class="contact-card">
+<h3>Visit Sunny Beauty Hut</h3>
+<div class="item"><span class="icon">📍</span><div>Satna, Madhya Pradesh, India</div></div>
+<div class="item"><span class="icon">📞</span><div><a href="tel:+919584721180" style="color:var(--coral)">+91 9584721180</a></div></div>
+<div class="item"><span class="icon">🕐</span><div>Mon-Sat: 10:00 AM – 8:00 PM<br>Sunday: By Appointment Only</div></div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117047.63!2d80.8!3d24.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3982e103a5e5ef31%3A0x95a157e0b2e98cfe!2sSatna%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p class="accent" style="font-size:1.2rem;color:var(--coral);margin-bottom:8px">Your Beauty, Our Passion 💖</p>
+<p>© 2025 Sunny Beauty Hut, Satna. All rights reserved. | Made with love by <a href="#">VedamVision</a></p>
+</div>
+</footer>
+
+<a href="https://wa.me/919584721180" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<svg viewBox="0 0 32 32"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.907 15.907 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.338 22.594c-.39 1.1-1.932 2.012-3.162 2.278-.844.18-1.946.322-5.656-1.216-4.746-1.966-7.804-6.792-8.038-7.108-.226-.316-1.9-2.53-1.9-4.828s1.2-3.428 1.628-3.896c.39-.426.922-.622 1.234-.622.15 0 .284.008.406.014.428.018.642.042.924.714.352.836 1.212 2.952 1.316 3.168.106.216.212.502.07.802-.134.306-.25.496-.466.762-.216.266-.426.47-.642.676-.216.208-.44.432-.19.848.252.416 1.12 1.846 2.404 2.99 1.65 1.472 3.042 1.928 3.474 2.144.332.166.6.14.822-.084.278-.284.602-.752.932-1.214.236-.33.532-.37.89-.222.362.144 2.288 1.078 2.68 1.274.39.196.652.292.748.458.094.166.094.954-.296 2.054z"/></svg>
+</a>
+
+<script>
+let cs=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[cs].classList.remove('active');dots[cs].classList.remove('active');cs=n;slides[cs].classList.add('active');dots[cs].classList.add('active')}
+setInterval(()=>goSlide((cs+1)%slides.length),5000);
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+function showGallery(id){document.querySelectorAll('.gallery-tab').forEach(t=>t.style.display='none');document.querySelectorAll('#gallery .tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).style.display='block';event.target.classList.add('active')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.stat-num').forEach(el=>{const t=+el.dataset.target;let c=0;const step=Math.ceil(t/60);const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}el.textContent=c.toLocaleString()},30)});observer.disconnect()}})},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+let ri=0;const track=document.querySelector('.review-track'),cards=document.querySelectorAll('.review-card');
+function moveReview(d){ri=Math.max(0,Math.min(ri+d,cards.length-1));track.style.transform=`translateX(-${ri*100}%)`}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.querySelector('.nav-links').classList.remove('open')}));
+</script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YFC Gym — Your Fitness Club, Your Rules</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0F0F0F;--neon:#00FF88;--dark:#0a0a0a;--glow:0 0 20px rgba(0,255,136,0.3)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#c0c0c0;background:var(--dark);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);text-align:center;margin-bottom:.5rem}
+.section-title span{color:var(--neon);text-shadow:var(--glow)}
+.section-sub{text-align:center;color:#666;max-width:550px;margin:0 auto 3rem;font-size:.95rem}
+section{padding:80px 5%}
+.container{max-width:1200px;margin:0 auto}
+.neon-line{width:50px;height:2px;background:var(--neon);margin:12px auto 0;box-shadow:var(--glow)}
+
+/* Nav */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.5);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border-bottom:1px solid rgba(0,255,136,0.08);transition:all .3s}
+nav.scrolled{background:rgba(10,10,10,0.95)}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:#fff}
+.logo span{color:var(--neon);text-shadow:var(--glow)}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:#888;text-decoration:none;font-size:.88rem;transition:color .3s;font-weight:500}
+.nav-links a:hover{color:var(--neon)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--neon)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,0.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--neon);font-size:1.3rem;text-decoration:none;font-family:'Space Grotesk',sans-serif}
+.mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--neon);font-size:2rem;cursor:pointer}
+
+/* Hero */
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-slide::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.85),rgba(15,15,15,0.7));z-index:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px}
+.hero-content h1{font-size:clamp(2.5rem,7vw,5rem);color:#fff;line-height:1.1;margin-bottom:15px}
+.hero-content h1 span{color:var(--neon);text-shadow:0 0 30px rgba(0,255,136,0.5)}
+.hero-content p{font-size:1.1rem;color:#888;margin-bottom:30px;max-width:480px}
+.btn{display:inline-block;padding:14px 35px;background:var(--neon);color:var(--black);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;border-radius:50px;transition:all .3s;border:2px solid var(--neon)}
+.btn:hover{background:transparent;color:var(--neon);box-shadow:var(--glow)}
+.hero-dots{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dots span{width:35px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--neon);box-shadow:var(--glow)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{position:relative;border-radius:20px;overflow:hidden}
+.about-img img{width:100%;height:420px;object-fit:cover;border-radius:20px}
+.about-img::after{content:'';position:absolute;inset:0;border:2px solid rgba(0,255,136,0.15);border-radius:20px;pointer-events:none}
+.about-text h2{font-size:2rem;margin-bottom:15px}
+.about-text h2 span{color:var(--neon);text-shadow:var(--glow)}
+.about-text p{color:#999;line-height:1.8;margin-bottom:12px}
+.cert-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);padding:10px 18px;border-radius:50px;margin-top:10px;font-size:.9rem;color:var(--neon)}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.service-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:30px 22px;transition:all .3s}
+.service-card:hover{border-color:var(--neon);box-shadow:0 0 30px rgba(0,255,136,0.08)}
+.service-card .icon{font-size:2rem;margin-bottom:12px}
+.service-card h3{font-size:1.05rem;margin-bottom:8px;color:#fff}
+.service-card p{color:#777;font-size:.88rem;line-height:1.6}
+
+/* Transformations */
+.transform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.transform-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:16px;overflow:hidden;transition:all .3s}
+.transform-card:hover{border-color:var(--neon)}
+.transform-imgs{display:grid;grid-template-columns:1fr 1fr;position:relative}
+.transform-imgs img{width:100%;height:250px;object-fit:cover}
+.transform-imgs::after{content:'→';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--neon);color:var(--black);width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.transform-card .info{padding:18px;text-align:center}
+.transform-card h4{color:var(--neon);font-size:.95rem}
+.transform-card p{color:#888;font-size:.85rem}
+
+/* Equipment */
+.equip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px}
+.equip-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:12px;padding:25px;text-align:center;transition:all .3s}
+.equip-item:hover{border-color:var(--neon)}
+.equip-item .icon{font-size:2rem;margin-bottom:10px}
+.equip-item h4{font-size:.95rem;color:#fff}
+
+/* Gallery */
+.gallery-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:30px;flex-wrap:wrap}
+.gallery-tab{padding:10px 22px;border:1px solid rgba(255,255,255,0.08);border-radius:50px;cursor:pointer;font-size:.88rem;transition:all .3s;background:transparent;color:#888;font-family:'DM Sans',sans-serif}
+.gallery-tab.active,.gallery-tab:hover{background:var(--neon);border-color:var(--neon);color:var(--black)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover;border-radius:12px;transition:all .3s}
+.gallery-grid img:hover{transform:scale(1.02);box-shadow:0 0 20px rgba(0,255,136,0.1)}
+.gallery-content{display:none}
+.gallery-content.active{display:grid}
+
+/* Stats */
+.stats-section{background:rgba(0,255,136,0.03);border-top:1px solid rgba(0,255,136,0.15);border-bottom:1px solid rgba(0,255,136,0.15)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.stat-item h3{font-size:clamp(2rem,5vw,3.2rem);color:var(--neon);text-shadow:var(--glow)}
+.stat-item p{color:#666;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;margin-top:5px}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pricing-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:35px 25px;text-align:center;transition:all .3s}
+.pricing-card:hover,.pricing-card.neon{border-color:var(--neon);box-shadow:0 0 40px rgba(0,255,136,0.08)}
+.pricing-card.neon{position:relative}
+.pricing-card.neon::before{content:'⚡ POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--neon);color:var(--black);padding:5px 20px;border-radius:50px;font-size:.75rem;font-weight:700;font-family:'Space Grotesk',sans-serif}
+.pricing-card h3{font-size:1.2rem;margin-bottom:10px;color:#fff}
+.pricing-card .price{font-size:2.8rem;color:var(--neon);font-family:'Space Grotesk',sans-serif;margin-bottom:5px;text-shadow:var(--glow)}
+.pricing-card .period{color:#666;font-size:.85rem;margin-bottom:20px}
+.pricing-card ul{list-style:none;text-align:left;margin-bottom:25px}
+.pricing-card li{padding:8px 0;color:#aaa;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,0.03)}
+.pricing-card li::before{content:'✓';color:var(--neon);margin-right:8px;font-weight:700}
+
+/* Testimonials */
+.testimonial-slider{max-width:650px;margin:0 auto;overflow:hidden}
+.testimonial-track{display:flex;transition:transform .5s}
+.testimonial-item{min-width:100%;padding:40px;text-align:center}
+.testimonial-item p{font-size:1.05rem;color:#bbb;line-height:1.8;font-style:italic;margin-bottom:20px}
+.testimonial-item h4{color:var(--neon);font-size:1rem;font-family:'Space Grotesk',sans-serif}
+.testimonial-item span{color:#666;font-size:.85rem}
+.t-nav{display:flex;justify-content:center;gap:8px;margin-top:15px}
+.t-nav button{width:30px;height:3px;border-radius:2px;border:none;background:rgba(255,255,255,0.1);cursor:pointer;transition:all .3s}
+.t-nav button.active{background:var(--neon);width:45px;box-shadow:var(--glow)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.95rem;margin-bottom:12px;transition:border .3s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--neon);box-shadow:0 0 10px rgba(0,255,136,0.1)}
+.contact-form textarea{height:110px;resize:vertical}
+.contact-info{display:flex;flex-direction:column;gap:15px}
+.contact-info-item{display:flex;gap:12px;align-items:flex-start}
+.contact-info-item .icon{width:42px;height:42px;background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-info-item h4{font-size:.9rem;margin-bottom:2px;color:#fff}
+.contact-info-item p,.contact-info-item a{color:#888;font-size:.9rem;text-decoration:none}
+.map-container{margin-top:15px;border-radius:12px;overflow:hidden;height:220px;border:1px solid rgba(0,255,136,0.08)}
+.map-container iframe{width:100%;height:100%;border:0}
+
+footer{background:#060606;padding:35px 5%;text-align:center;border-top:1px solid rgba(0,255,136,0.08)}
+footer .social-links{display:flex;gap:12px;justify-content:center;margin-bottom:12px}
+footer .social-links a{width:38px;height:38px;border:1px solid rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#aaa;text-decoration:none;transition:all .3s;font-size:1rem}
+footer .social-links a:hover{border-color:var(--neon);color:var(--neon)}
+footer p{color:#444;font-size:.82rem}
+
+.whatsapp-btn{position:fixed;bottom:25px;right:25px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .3s;text-decoration:none;font-size:1.8rem;color:#fff}
+.whatsapp-btn:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+.nav-links{display:none}.hamburger{display:flex}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.pricing-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:375px){section{padding:50px 4%}.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="logo">YFC <span>GYM</span></div>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
+<a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+<a href="#gallery" onclick="this.parentElement.classList.remove('active')">Gallery</a>
+<a href="#pricing" onclick="this.parentElement.classList.remove('active')">Pricing</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1400&q=80" alt="YFC Gym">
+<div class="hero-content">
+<h1>YOUR FITNESS CLUB <span>YOUR RULES</span></h1>
+<p>Singrauli's most futuristic fitness destination. MIFI certified. Results guaranteed.</p>
+<a href="#pricing" class="btn">Start Training</a>
+</div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=1400&q=80" alt="Equipment">
+<div class="hero-content">
+<h1>NEXT LEVEL <span>FITNESS</span></h1>
+<p>State-of-the-art equipment. Certified trainers. Neon energy.</p>
+<a href="#services" class="btn">Explore</a>
+</div>
+</div>
+<div class="hero-dots">
+<span class="active" onclick="goSlide(0)"></span>
+<span onclick="goSlide(1)"></span>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=700&q=80" alt="Meraj Sheikh">
+</div>
+<div class="about-text">
+<h2>Meet <span>Meraj Sheikh</span></h2>
+<p>Founder of YFC Gym — Yusuf Fitness Club — in Waidhan, Singrauli. A MIFI Academy certified fitness professional who turned his passion for fitness into Singrauli's premier training facility.</p>
+<p>With cutting-edge equipment and a team of certified trainers, YFC Gym delivers results through science-backed training methods and personalized attention.</p>
+<div class="cert-badge">🏅 MIFI Academy Certified Trainers</div>
+</div>
+</div>
+</section>
+
+<!-- Services -->
+<section id="services" style="background:rgba(255,255,255,0.01)">
+<div class="container">
+<h2 class="section-title">Our <span>Services</span></h2>
+<div class="neon-line"></div>
+<p class="section-sub">Everything you need to level up your fitness game</p>
+<div class="services-grid">
+<div class="service-card"><div class="icon">🏋️</div><h3>Gym</h3><p>Full-floor gym with premium machines and free weights.</p></div>
+<div class="service-card"><div class="icon">⚡</div><h3>CrossFit</h3><p>High-intensity functional training for total-body fitness.</p></div>
+<div class="service-card"><div class="icon">❤️‍🔥</div><h3>Cardio</h3><p>Modern cardio zone with treadmills, bikes, and more.</p></div>
+<div class="service-card"><div class="icon">💪</div><h3>Strength Training</h3><p>Progressive overload programs for max gains.</p></div>
+<div class="service-card"><div class="icon">🔥</div><h3>Fat Loss</h3><p>Targeted programs for sustainable fat loss.</p></div>
+<div class="service-card"><div class="icon">📈</div><h3>Muscle Gain</h3><p>Hypertrophy-focused training for size and strength.</p></div>
+<div class="service-card"><div class="icon">🎯</div><h3>Personal Training</h3><p>1-on-1 coaching with MIFI certified trainers.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Transformations -->
+<section>
+<div class="container">
+<h2 class="section-title">Real <span>Transformations</span></h2>
+<div class="neon-line"></div>
+<p class="section-sub">Our members' incredible journeys</p>
+<div class="transform-grid">
+<div class="transform-card">
+<div class="transform-imgs">
+<img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" alt="Before">
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80" alt="After">
+</div>
+<div class="info"><h4>12 Week Transformation</h4><p>Lost 18kg • Gained confidence</p></div>
+</div>
+<div class="transform-card">
+<div class="transform-imgs">
+<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Before">
+<img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&q=80" alt="After">
+</div>
+<div class="info"><h4>16 Week Transformation</h4><p>Gained 10kg muscle • Competition ready</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Equipment -->
+<section style="background:rgba(255,255,255,0.01)">
+<div class="container">
+<h2 class="section-title">Equipment <span>Showcase</span></h2>
+<div class="neon-line"></div>
+<p class="section-sub">Premium equipment for premium results</p>
+<div class="equip-grid">
+<div class="equip-item"><div class="icon">🏋️</div><h4>Power Racks</h4></div>
+<div class="equip-item"><div class="icon">🦵</div><h4>Leg Press</h4></div>
+<div class="equip-item"><div class="icon">🔄</div><h4>Cable Machines</h4></div>
+<div class="equip-item"><div class="icon">🏃</div><h4>Treadmills</h4></div>
+<div class="equip-item"><div class="icon">🚴</div><h4>Exercise Bikes</h4></div>
+<div class="equip-item"><div class="icon">💪</div><h4>Dumbbells</h4></div>
+<div class="equip-item"><div class="icon">⚖️</div><h4>Smith Machine</h4></div>
+<div class="equip-item"><div class="icon">🎯</div><h4>Functional Zone</h4></div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+<div class="container">
+<h2 class="section-title">The <span>Gallery</span></h2>
+<div class="neon-line"></div>
+<div class="gallery-tabs">
+<button class="gallery-tab active" onclick="switchGallery('gym')">Gym Floor</button>
+<button class="gallery-tab" onclick="switchGallery('training')">Training</button>
+<button class="gallery-tab" onclick="switchGallery('vibes')">Vibes</button>
+</div>
+<div class="gallery-content gallery-grid active" data-tab="gym">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="">
+</div>
+<div class="gallery-content gallery-grid" data-tab="training">
+<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="">
+</div>
+<div class="gallery-content gallery-grid" data-tab="vibes">
+<img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="">
+<img src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=600&q=80" alt="">
+</div>
+</div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><h3 class="counter" data-target="3000">0</h3><p>Members</p></div>
+<div class="stat-item"><h3 class="counter" data-target="3">0</h3><p>Years Strong</p></div>
+<div class="stat-item"><h3 class="counter" data-target="30">0</h3><p>Equipment</p></div>
+<div class="stat-item"><h3 class="counter" data-target="6">0</h3><p>Trainers</p></div>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+<div class="container">
+<h2 class="section-title">Choose Your <span>Plan</span></h2>
+<div class="neon-line"></div>
+<p class="section-sub">Flexible plans for every fitness journey</p>
+<div class="pricing-grid">
+<div class="pricing-card">
+<h3>Starter</h3>
+<div class="price">₹799</div>
+<div class="period">per month</div>
+<ul><li>Full Gym Access</li><li>Locker Facility</li><li>Group Sessions</li></ul>
+<a href="#contact" class="btn" style="width:100%">Get Started</a>
+</div>
+<div class="pricing-card neon">
+<h3>Pro</h3>
+<div class="price">₹1,999</div>
+<div class="period">per quarter</div>
+<ul><li>Everything in Starter</li><li>Personal Training 2x/week</li><li>Diet Planning</li><li>Body Analysis</li></ul>
+<a href="#contact" class="btn" style="width:100%">Get Started</a>
+</div>
+<div class="pricing-card">
+<h3>Elite</h3>
+<div class="price">₹5,999</div>
+<div class="period">per year</div>
+<ul><li>Everything in Pro</li><li>Unlimited PT</li><li>Supplement Guidance</li><li>Free Merch</li><li>Guest Passes</li></ul>
+<a href="#contact" class="btn" style="width:100%">Get Started</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section style="background:rgba(255,255,255,0.01)">
+<div class="container">
+<h2 class="section-title">Member <span>Stories</span></h2>
+<div class="neon-line"></div>
+<div class="testimonial-slider">
+<div class="testimonial-track">
+<div class="testimonial-item"><p>"YFC completely changed my fitness game. Meraj and his team are incredibly knowledgeable. The neon vibes make every workout electric!"</p><h4>Aditya Kumar</h4><span>Member since 2023</span></div>
+<div class="testimonial-item"><p>"Best gym in Singrauli, no cap. MIFI certified trainers who actually know their stuff. Lost 12kg in 3 months!"</p><h4>Priyanka Verma</h4><span>Member since 2024</span></div>
+<div class="testimonial-item"><p>"The personal training here is on another level. Meraj bhai personally ensures everyone gets results."</p><h4>Ravi Pandey</h4><span>Member since 2023</span></div>
+</div>
+<div class="t-nav">
+<button class="active" onclick="goTestimonial(0)"></button>
+<button onclick="goTestimonial(1)"></button>
+<button onclick="goTestimonial(2)"></button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Get In <span>Touch</span></h2>
+<div class="neon-line"></div>
+<p class="section-sub">Ready to start? Drop us a message</p>
+<div class="contact-grid">
+<form class="contact-form" onsubmit="event.preventDefault();alert('Thanks! We\'ll contact you soon.')">
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="email" placeholder="Email (optional)">
+<select><option>Select Goal</option><option>Fat Loss</option><option>Muscle Gain</option><option>CrossFit</option><option>Strength Training</option><option>Personal Training</option><option>General</option></select>
+<textarea placeholder="Your Message"></textarea>
+<button type="submit" class="btn" style="width:100%;cursor:pointer;border-radius:10px">Send Message</button>
+</form>
+<div>
+<div class="contact-info">
+<div class="contact-info-item"><div class="icon">📍</div><div><h4>Address</h4><p>Waidhan, Singrauli, MP</p></div></div>
+<div class="contact-info-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:6265196428">6265196428</a></p></div></div>
+<div class="contact-info-item"><div class="icon">📸</div><div><h4>Instagram</h4><p><a href="https://instagram.com/yfc_gym_waidhan" target="_blank" style="color:var(--neon)">@yfc_gym_waidhan</a></p></div></div>
+<div class="contact-info-item"><div class="icon">👤</div><div><h4>Owner</h4><p><a href="https://instagram.com/meraj_sheikh_007" target="_blank" style="color:var(--neon)">@meraj_sheikh_007</a></p></div></div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.0!2d82.67!3d24.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA2JzAwLjAiTiA4MsKwNDAnMTIuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="social-links">
+<a href="https://instagram.com/yfc_gym_waidhan" target="_blank">📸</a>
+<a href="tel:6265196428">📞</a>
+<a href="https://wa.me/916265196428" target="_blank">💬</a>
+</div>
+<p>© 2026 YFC Gym — Yusuf Fitness Club, Singrauli. All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/916265196428" target="_blank" class="whatsapp-btn">💬</a>
+
+<script>
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>goSlide((currentSlide+1)%slides.length),5000);
+
+function switchGallery(tab){document.querySelectorAll('.gallery-content').forEach(g=>g.classList.remove('active'));document.querySelectorAll('.gallery-tab').forEach(t=>t.classList.remove('active'));document.querySelector(`[data-tab="${tab}"]`).classList.add('active');event.target.classList.add('active')}
+
+const counters=document.querySelectorAll('.counter');
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const c=entry.target,t=+c.dataset.target,dur=2000,s=performance.now();const a=now=>{const p=Math.min((now-s)/dur,1);c.textContent=Math.floor(p*t).toLocaleString()+'+';if(p<1)requestAnimationFrame(a)};requestAnimationFrame(a);observer.unobserve(c)}})},{threshold:.5});
+counters.forEach(c=>observer.observe(c));
+
+let ct=0;const trk=document.querySelector('.testimonial-track'),td=document.querySelectorAll('.t-nav button');
+function goTestimonial(n){ct=n;trk.style.transform=`translateX(-${n*100}%)`;td.forEach(d=>d.classList.remove('active'));td[n].classList.add('active')}
+setInterval(()=>goTestimonial((ct+1)%3),4000);
+
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
+</script>
+</body>
+</html>

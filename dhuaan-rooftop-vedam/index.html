@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhuaan Rooftop Restaurant | Rewa's Finest Rooftop Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--charcoal:#1C1C1C;--amber:#E8A838;--dark:#111;--smoke:rgba(28,28,28,0.85)}
+body{font-family:'Nunito Sans',sans-serif;background:var(--charcoal);color:#f0f0f0;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;color:var(--amber)}
+/* Navbar */
+.navbar{position:fixed;top:0;width:100%;z-index:1000;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(28,28,28,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,168,56,0.15);transition:all .3s}
+.navbar.scrolled{background:rgba(17,17,17,0.95);padding:10px 40px}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--amber);font-weight:700;text-decoration:none;letter-spacing:2px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:#ccc;text-decoration:none;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--amber)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:25px;height:2px;background:var(--amber);transition:.3s}
+/* Hero */
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center}
+.hero-slide.active{opacity:1}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.5),rgba(28,28,28,0.9))}
+.hero-content{position:absolute;bottom:20%;left:50%;transform:translateX(-50%);text-align:center;z-index:2;width:90%}
+.hero-content h1{font-size:clamp(2.5rem,6vw,5rem);letter-spacing:6px;margin-bottom:12px;text-shadow:0 0 40px rgba(232,168,56,0.4)}
+.hero-content p{font-size:1.1rem;color:#ccc;letter-spacing:3px;margin-bottom:30px}
+.btn{display:inline-block;padding:14px 36px;border:1px solid var(--amber);color:var(--amber);text-decoration:none;text-transform:uppercase;font-size:.8rem;letter-spacing:2px;transition:all .3s;background:transparent;cursor:pointer}
+.btn:hover{background:var(--amber);color:var(--charcoal)}
+.btn-fill{background:var(--amber);color:var(--charcoal)}
+.btn-fill:hover{background:transparent;color:var(--amber)}
+/* Smoke effect */
+.smoke-overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(232,168,56,0.03)" d="M0,96L48,112C96,128,192,160,288,176C384,192,480,192,576,170.7C672,149,768,107,864,96C960,85,1056,107,1152,133.3C1248,160,1344,192,1392,208L1440,224L1440,320L0,320Z"/></svg>') repeat-x;animation:smokeFloat 20s linear infinite}
+@keyframes smokeFloat{0%{background-position:0 0}100%{background-position:1440px 0}}
+/* Sections */
+section{padding:80px 5%;max-width:1400px;margin:auto}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:10px}
+.section-title p{color:#888;font-size:.95rem;letter-spacing:1px}
+.section-title .line{width:60px;height:2px;background:var(--amber);margin:15px auto}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{width:100%;height:400px;object-fit:cover;border-radius:4px;border:1px solid rgba(232,168,56,0.2)}
+.about-text p{color:#bbb;line-height:1.8;margin-bottom:16px}
+/* Stats */
+.stats{display:flex;justify-content:center;gap:60px;padding:50px 5%;background:rgba(232,168,56,0.05);border-top:1px solid rgba(232,168,56,0.1);border-bottom:1px solid rgba(232,168,56,0.1)}
+.stat{text-align:center}
+.stat .num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--amber)}
+.stat p{color:#888;font-size:.85rem;letter-spacing:1px;margin-top:5px}
+/* Tabs */
+.tabs{display:flex;justify-content:center;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab-btn{padding:10px 22px;border:1px solid rgba(232,168,56,0.3);background:transparent;color:#999;cursor:pointer;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s;font-family:'Nunito Sans',sans-serif}
+.tab-btn.active,.tab-btn:hover{background:var(--amber);color:var(--charcoal);border-color:var(--amber)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.menu-item{padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(232,168,56,0.1);border-radius:4px;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
+.menu-item:hover{border-color:var(--amber);background:rgba(232,168,56,0.05)}
+.menu-item h4{color:#eee;font-family:'Nunito Sans',sans-serif;font-weight:600}
+.menu-item .price{color:var(--amber);font-weight:700;font-size:1.1rem}
+.menu-item .desc{color:#777;font-size:.8rem;margin-top:4px}
+/* Signature Dishes */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}
+.sig-card{position:relative;height:320px;overflow:hidden;border-radius:4px;cursor:pointer}
+.sig-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.sig-card:hover img{transform:scale(1.1)}
+.sig-card .overlay{position:absolute;bottom:0;left:0;right:0;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,0.9))}
+.sig-card .overlay h3{color:#fff;font-size:1.3rem}
+.sig-card .overlay .price{color:var(--amber);font-size:1.1rem}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:4px;cursor:pointer;transition:transform .3s;border:1px solid rgba(232,168,56,0.1)}
+.gallery-grid img:hover{transform:scale(1.03)}
+/* Reviews */
+.reviews-wrap{position:relative;overflow:hidden}
+.reviews-track{display:flex;transition:transform .5s}
+.review-card{min-width:100%;padding:40px;text-align:center}
+.review-card .stars{color:var(--amber);font-size:1.4rem;margin-bottom:15px}
+.review-card blockquote{font-style:italic;color:#bbb;font-size:1.1rem;line-height:1.7;max-width:700px;margin:0 auto 15px}
+.review-card .author{color:var(--amber);font-weight:600}
+.ta-badge{text-align:center;margin-top:20px;padding:15px;background:rgba(0,175,80,0.1);border:1px solid rgba(0,175,80,0.3);border-radius:8px;display:inline-block;margin-left:50%;transform:translateX(-50%)}
+.ta-badge span{color:#00af50;font-weight:700;font-size:1.1rem}
+.review-nav{display:flex;justify-content:center;gap:15px;margin-top:20px}
+.review-nav button{width:40px;height:40px;border:1px solid var(--amber);background:transparent;color:var(--amber);cursor:pointer;font-size:1.2rem;transition:all .3s}
+.review-nav button:hover{background:var(--amber);color:var(--charcoal)}
+/* Reservation */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:700px;margin:auto}
+.form-grid .full{grid-column:1/-1}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%;padding:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(232,168,56,0.2);color:#eee;font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border .3s}
+.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:var(--amber)}
+.form-grid textarea{min-height:100px;resize:vertical}
+.form-grid select option{background:var(--charcoal)}
+/* Events */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px}
+.event-card{padding:30px;background:rgba(255,255,255,0.03);border:1px solid rgba(232,168,56,0.15);border-radius:4px;text-align:center;transition:all .3s}
+.event-card:hover{border-color:var(--amber);transform:translateY(-4px)}
+.event-card .icon{font-size:2.5rem;margin-bottom:15px}
+.event-card h3{margin-bottom:10px;font-size:1.3rem}
+.event-card p{color:#888;font-size:.9rem;line-height:1.6}
+/* Location */
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.loc-info h3{margin-bottom:15px}
+.loc-info p{color:#bbb;margin-bottom:10px;line-height:1.6}
+.loc-info .hours{margin-top:20px}
+.loc-info .hours li{list-style:none;padding:8px 0;border-bottom:1px solid rgba(232,168,56,0.1);display:flex;justify-content:space-between;color:#bbb;font-size:.9rem}
+.map-wrap{width:100%;height:350px;border:1px solid rgba(232,168,56,0.2);border-radius:4px;overflow:hidden}
+.map-wrap iframe{width:100%;height:100%;border:0}
+/* Footer */
+footer{padding:40px 5%;text-align:center;border-top:1px solid rgba(232,168,56,0.1);margin-top:40px}
+footer p{color:#666;font-size:.85rem}
+footer .social{margin:15px 0;display:flex;justify-content:center;gap:20px}
+footer .social a{color:#888;text-decoration:none;font-size:.85rem;transition:color .3s}
+footer .social a:hover{color:var(--amber)}
+/* WhatsApp */
+.whatsapp{position:fixed;bottom:25px;right:25px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .3s;text-decoration:none}
+.whatsapp:hover{transform:scale(1.1)}
+.whatsapp svg{width:28px;height:28px;fill:#fff}
+/* Responsive */
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(17,17,17,0.98);flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.about-grid,.location-grid{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}
+.stats{flex-wrap:wrap;gap:30px}
+.hero-content h1{letter-spacing:3px}
+}
+@media(max-width:375px){
+section{padding:50px 4%}
+.navbar{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+<a href="#" class="nav-brand">DHUAAN</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#about">About</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#signature">Specials</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#reserve">Reserve</a></li>
+<li><a href="#location">Visit</a></li>
+</ul>
+<div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+<span></span><span></span><span></span>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400')"></div>
+<div class="smoke-overlay"></div>
+<div class="hero-content">
+<p style="color:var(--amber);letter-spacing:4px;font-size:.85rem;margin-bottom:8px">★ #1 RATED ON TRIPADVISOR IN REWA ★</p>
+<h1>DHUAAN</h1>
+<p>REWA'S FINEST ROOFTOP DINING</p>
+<a href="#reserve" class="btn">Reserve a Table</a>
+</div>
+</section>
+
+<!-- Stats -->
+<div class="stats">
+<div class="stat"><div class="num" data-target="5">0</div><p>Years of Excellence</p></div>
+<div class="stat"><div class="num" data-target="50000">0</div><p>Happy Diners</p></div>
+<div class="stat"><div class="num" data-target="150">0</div><p>Menu Items</p></div>
+<div class="stat"><div class="num" data-target="1">0</div><p>#1 on TripAdvisor</p></div>
+</div>
+
+<!-- About -->
+<section id="about">
+<div class="section-title"><h2>Our Story</h2><div class="line"></div><p>WHERE SMOKE MEETS SOPHISTICATION</p></div>
+<div class="about-grid">
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" alt="Dhuaan interior" class="about-img">
+<div class="about-text">
+<p>Perched atop the skyline of Rewa, Dhuaan Rooftop Restaurant is more than a dining destination — it's an experience. The name "Dhuaan" (smoke) captures our essence: bold flavors kissed by flame, served under open skies with the city lights below.</p>
+<p>Our chefs blend traditional North Indian recipes with global influences, crafting dishes that tell stories of spice, fire, and passion. From sizzling kebabs to aromatic biryanis, every plate is a celebration.</p>
+<p>Whether you're here for a romantic dinner, a family gathering, or a private celebration, Dhuaan promises an evening you won't forget.</p>
+</div>
+</div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+<div class="section-title"><h2>Our Menu</h2><div class="line"></div><p>NORTH INDIAN • CHINESE • CONTINENTAL</p></div>
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('menu',this,'starters')">Starters</button>
+<button class="tab-btn" onclick="showTab('menu',this,'maincourse')">Main Course</button>
+<button class="tab-btn" onclick="showTab('menu',this,'chinese')">Chinese</button>
+<button class="tab-btn" onclick="showTab('menu',this,'continental')">Continental</button>
+<button class="tab-btn" onclick="showTab('menu',this,'beverages')">Beverages</button>
+<button class="tab-btn" onclick="showTab('menu',this,'desserts')">Desserts</button>
+</div>
+<div id="menu-starters" class="tab-content active">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Murgh Masala Tikka</h4><div class="desc">Char-grilled chicken in house masala</div></div><div class="price">₹455</div></div>
+<div class="menu-item"><div><h4>Hara Bhara Kebab</h4><div class="desc">Spinach & peas patties, mint chutney</div></div><div class="price">₹215</div></div>
+<div class="menu-item"><div><h4>Cheese Balls</h4><div class="desc">Crispy golden cheese bites</div></div><div class="price">₹259</div></div>
+<div class="menu-item"><div><h4>Curd Kabab</h4><div class="desc">Hung curd kebabs, spiced & grilled</div></div><div class="price">₹249</div></div>
+<div class="menu-item"><div><h4>French Fries</h4><div class="desc">Classic seasoned fries</div></div><div class="price">₹209</div></div>
+<div class="menu-item"><div><h4>Paneer Tikka</h4><div class="desc">Tandoor-grilled cottage cheese</div></div><div class="price">₹285</div></div>
+</div>
+</div>
+<div id="menu-maincourse" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Butter Chicken</h4><div class="desc">Creamy tomato-based curry</div></div><div class="price">₹395</div></div>
+<div class="menu-item"><div><h4>Dal Makhani</h4><div class="desc">Slow-cooked black lentils</div></div><div class="price">₹265</div></div>
+<div class="menu-item"><div><h4>Mutton Rogan Josh</h4><div class="desc">Kashmiri-style lamb curry</div></div><div class="price">₹485</div></div>
+<div class="menu-item"><div><h4>Paneer Butter Masala</h4><div class="desc">Rich & creamy paneer curry</div></div><div class="price">₹295</div></div>
+<div class="menu-item"><div><h4>Hyderabadi Biryani</h4><div class="desc">Fragrant dum biryani</div></div><div class="price">₹355</div></div>
+<div class="menu-item"><div><h4>Naan Basket</h4><div class="desc">Assorted fresh breads</div></div><div class="price">₹120</div></div>
+</div>
+</div>
+<div id="menu-chinese" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Chinese Bhel</h4><div class="desc">Crispy noodles tossed in sauces</div></div><div class="price">₹299</div></div>
+<div class="menu-item"><div><h4>Hakka Noodles</h4><div class="desc">Stir-fried with vegetables</div></div><div class="price">₹245</div></div>
+<div class="menu-item"><div><h4>Manchurian Dry</h4><div class="desc">Crispy veg balls in spicy sauce</div></div><div class="price">₹235</div></div>
+<div class="menu-item"><div><h4>Chilli Chicken</h4><div class="desc">Indo-Chinese spicy chicken</div></div><div class="price">₹345</div></div>
+</div>
+</div>
+<div id="menu-continental" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Grilled Chicken Steak</h4><div class="desc">With mashed potatoes & gravy</div></div><div class="price">₹425</div></div>
+<div class="menu-item"><div><h4>Pasta Alfredo</h4><div class="desc">Creamy white sauce pasta</div></div><div class="price">₹295</div></div>
+<div class="menu-item"><div><h4>Garlic Bread</h4><div class="desc">Toasted with herb butter</div></div><div class="price">₹175</div></div>
+</div>
+</div>
+<div id="menu-beverages" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Cold Coffee</h4><div class="desc">Blended with ice cream</div></div><div class="price">₹175</div></div>
+<div class="menu-item"><div><h4>Fresh Lime Soda</h4><div class="desc">Sweet / Salt / Mixed</div></div><div class="price">₹99</div></div>
+<div class="menu-item"><div><h4>Virgin Mojito</h4><div class="desc">Mint, lime & soda</div></div><div class="price">₹165</div></div>
+<div class="menu-item"><div><h4>Mango Shake</h4><div class="desc">Seasonal fresh mango</div></div><div class="price">₹185</div></div>
+</div>
+</div>
+<div id="menu-desserts" class="tab-content">
+<div class="menu-grid">
+<div class="menu-item"><div><h4>Gulab Jamun</h4><div class="desc">Warm milk-solid dumplings</div></div><div class="price">₹135</div></div>
+<div class="menu-item"><div><h4>Brownie with Ice Cream</h4><div class="desc">Chocolate brownie, vanilla scoop</div></div><div class="price">₹215</div></div>
+<div class="menu-item"><div><h4>Rasmalai</h4><div class="desc">Saffron-infused cottage cheese</div></div><div class="price">₹155</div></div>
+</div>
+</div>
+</section>
+
+<!-- Signature Dishes -->
+<section id="signature">
+<div class="section-title"><h2>Signature Dishes</h2><div class="line"></div><p>CHEF'S PRIDE — THE DISHES THAT DEFINE US</p></div>
+<div class="sig-grid">
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500" alt="Tikka"><div class="overlay"><h3>Murgh Masala Tikka</h3><div class="price">₹455</div></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=500" alt="Kebab"><div class="overlay"><h3>Hara Bhara Kebab</h3><div class="price">₹215</div></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500" alt="Chinese Bhel"><div class="overlay"><h3>Chinese Bhel</h3><div class="price">₹299</div></div></div>
+<div class="sig-card"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500" alt="Cheese Balls"><div class="overlay"><h3>Cheese Balls</h3><div class="price">₹259</div></div></div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+<div class="section-title"><h2>Gallery</h2><div class="line"></div></div>
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('gal',this,'rooftop')">Rooftop</button>
+<button class="tab-btn" onclick="showTab('gal',this,'food')">Food</button>
+<button class="tab-btn" onclick="showTab('gal',this,'events')">Events</button>
+<button class="tab-btn" onclick="showTab('gal',this,'interior')">Interior</button>
+</div>
+<div id="gal-rooftop" class="tab-content active">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400" alt="Rooftop view">
+<img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400" alt="Rooftop dining">
+<img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400" alt="Rooftop ambience">
+</div>
+</div>
+<div id="gal-food" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Food 1">
+<img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400" alt="Food 2">
+<img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=400" alt="Food 3">
+</div>
+</div>
+<div id="gal-events" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400" alt="Event 1">
+<img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400" alt="Event 2">
+<img src="https://images.unsplash.com/photo-1496843916299-590492c751f4?w=400" alt="Event 3">
+</div>
+</div>
+<div id="gal-interior" class="tab-content">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="Interior 1">
+<img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400" alt="Interior 2">
+<img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400" alt="Interior 3">
+</div>
+</div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+<div class="section-title"><h2>What Our Guests Say</h2><div class="line"></div></div>
+<div class="ta-badge">🏆 <span>#1 Rated Restaurant in Rewa on TripAdvisor</span></div>
+<div class="reviews-wrap" style="margin-top:30px">
+<div class="reviews-track" id="reviewsTrack">
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"The rooftop ambience is absolutely magical. Best dining experience in Rewa — the Murgh Masala Tikka is to die for!"</blockquote><div class="author">— Priya S., TripAdvisor</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"Perfect place for a family dinner. The food quality and service are consistently excellent. We come back every weekend!"</blockquote><div class="author">— Rajesh K., Google Reviews</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"Celebrated our anniversary here and it was unforgettable. The staff arranged everything perfectly. Highly recommended!"</blockquote><div class="author">— Anita M., TripAdvisor</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">←</button><button onclick="moveReview(1)">→</button></div>
+</section>
+
+<!-- Reservation -->
+<section id="reserve">
+<div class="section-title"><h2>Reserve a Table</h2><div class="line"></div><p>BOOK YOUR ROOFTOP EXPERIENCE</p></div>
+<form class="form-grid" onsubmit="event.preventDefault();alert('Reservation request sent! We will confirm shortly.')">
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="date" required>
+<select required><option value="">Select Time</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option><option>9:00 PM</option><option>10:00 PM</option></select>
+<select required><option value="">Number of Guests</option><option>1-2</option><option>3-4</option><option>5-6</option><option>7-10</option><option>10+</option></select>
+<select><option value="">Occasion (Optional)</option><option>Birthday</option><option>Anniversary</option><option>Date Night</option><option>Business Dinner</option><option>Other</option></select>
+<textarea class="full" placeholder="Special Requests (dietary needs, seating preference...)"></textarea>
+<div class="full" style="text-align:center"><button type="submit" class="btn btn-fill">Confirm Reservation</button></div>
+</form>
+</section>
+
+<!-- Events -->
+<section id="events">
+<div class="section-title"><h2>Events & Private Dining</h2><div class="line"></div></div>
+<div class="events-grid">
+<div class="event-card"><div class="icon">🎂</div><h3>Birthday Celebrations</h3><p>Custom decorations, cake arrangements, and dedicated staff for your special day under the stars.</p></div>
+<div class="event-card"><div class="icon">💍</div><h3>Anniversary Dinners</h3><p>Romantic rooftop setup with candles, flowers, and a curated multi-course meal for two.</p></div>
+<div class="event-card"><div class="icon">🎉</div><h3>Private Parties</h3><p>Exclusive rooftop booking for corporate events, kitty parties, and group celebrations up to 80 guests.</p></div>
+</div>
+</section>
+
+<!-- Location -->
+<section id="location">
+<div class="section-title"><h2>Find Us</h2><div class="line"></div></div>
+<div class="location-grid">
+<div class="loc-info">
+<h3>📍 Location</h3>
+<p>Allahabad Road, Rewa, Madhya Pradesh</p>
+<p>📞 <a href="tel:9826811719" style="color:var(--amber);text-decoration:none">9826811719</a></p>
+<p>📸 <a href="https://instagram.com/dhuaanrooftoprestaurant" target="_blank" style="color:var(--amber);text-decoration:none">@dhuaanrooftoprestaurant</a></p>
+<div class="hours">
+<h3 style="margin-top:25px">🕐 Hours</h3>
+<ul>
+<li><span>Monday – Thursday</span><span>12:00 PM – 11:00 PM</span></li>
+<li><span>Friday – Saturday</span><span>12:00 PM – 11:30 PM</span></li>
+<li><span>Sunday</span><span>11:30 AM – 11:00 PM</span></li>
+</ul>
+</div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.0!2d81.3!3d24.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDMxJzQ4LjAiTiA4McKwMTgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="social">
+<a href="tel:9826811719">📞 9826811719</a>
+<a href="https://instagram.com/dhuaanrooftoprestaurant" target="_blank">📸 Instagram</a>
+<a href="https://www.tripadvisor.com" target="_blank">🏆 TripAdvisor</a>
+</div>
+<p>© 2026 Dhuaan Rooftop Restaurant, Rewa. All rights reserved.</p>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/919826811719" target="_blank" class="whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<script>
+// Hero slider
+let heroIdx=0;const heroSlides=document.querySelectorAll('.hero-slide');
+setInterval(()=>{heroSlides[heroIdx].classList.remove('active');heroIdx=(heroIdx+1)%heroSlides.length;heroSlides[heroIdx].classList.add('active')},5000);
+
+// Navbar scroll
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+
+// Tabs
+function showTab(prefix,btn,name){
+const parent=btn.closest('section')||btn.closest('.tabs').parentElement;
+parent.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+parent.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+document.getElementById(prefix+'-'+name).classList.add('active');
+}
+
+// Reviews carousel
+let reviewIdx=0;
+function moveReview(dir){
+const track=document.getElementById('reviewsTrack');
+const total=track.children.length;
+reviewIdx=(reviewIdx+dir+total)%total;
+track.style.transform='translateX(-'+reviewIdx*100+'%)';
+}
+
+// Stats counter
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.num').forEach(n=>{const target=+n.dataset.target;let current=0;const inc=target/60;const timer=setInterval(()=>{current+=inc;if(current>=target){n.textContent=target.toLocaleString();clearInterval(timer)}else{n.textContent=Math.floor(current).toLocaleString()}},30)});observer.disconnect()}})});
+observer.observe(document.querySelector('.stats'));
+</script>
+</body>
+</html>

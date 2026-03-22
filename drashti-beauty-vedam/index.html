@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drashti Beauty Parlour — Vision of Beauty | Satna</title>
+<meta name="description" content="Drashti Beauty Parlour, Satna — Premium beauty services, bridal makeup, facials, hair care. Where vision meets beauty.">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--purple:#581C87;--lavender:#F3E8FF;--fuchsia:#D946EF;--dark:#2D0A4E;--white:#fff;--gray:#6B7280}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:#1a1a1a;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Crimson Pro',serif;color:var(--purple)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* Navbar */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(88,28,135,.15);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.18);padding:12px 0;transition:all .3s}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Crimson Pro',serif;font-size:1.6rem;font-weight:700;color:var(--purple);text-decoration:none}
+.logo span{color:var(--fuchsia)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--purple);font-weight:500;font-size:.9rem;transition:color .3s}
+.nav-links a:hover{color:var(--fuchsia)}
+.menu-btn{display:none;background:none;border:none;font-size:1.5rem;color:var(--purple);cursor:pointer}
+
+/* Hero */
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(88,28,135,.85),rgba(217,70,239,.4))}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:var(--white);padding:20px}
+.hero-content h1{font-size:3.5rem;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero-content p{font-size:1.2rem;max-width:600px;margin-bottom:24px;opacity:.9}
+.btn{display:inline-block;padding:14px 32px;border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s;font-size:.95rem;cursor:pointer;border:none}
+.btn-primary{background:var(--fuchsia);color:var(--white)}
+.btn-primary:hover{background:#c026d3;transform:translateY(-2px);box-shadow:0 8px 25px rgba(217,70,239,.4)}
+.btn-outline{border:2px solid var(--white);color:var(--white);background:transparent;margin-left:12px}
+.btn-outline:hover{background:var(--white);color:var(--purple)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--fuchsia);transform:scale(1.3)}
+
+/* Sections */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title h2{font-size:2.5rem;margin-bottom:10px}
+.section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+.section-title .line{width:60px;height:3px;background:var(--fuchsia);margin:12px auto 0;border-radius:2px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
+.about-badge{position:absolute;bottom:-20px;right:20px;background:var(--fuchsia);color:var(--white);padding:16px 24px;border-radius:16px;font-weight:600;font-size:1.1rem;box-shadow:0 8px 30px rgba(217,70,239,.3)}
+.about-text h3{font-size:1.8rem;margin-bottom:16px}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:16px}
+
+/* Services */
+.services-bg{background:var(--lavender)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+.service-card{background:var(--white);border-radius:16px;padding:32px 24px;text-align:center;transition:all .3s;border:1px solid rgba(88,28,135,.08)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(88,28,135,.12)}
+.service-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--purple),var(--fuchsia));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{color:var(--gray);font-size:.9rem;line-height:1.6}
+
+/* Bridal */
+.bridal{background:linear-gradient(135deg,var(--purple),var(--dark));color:var(--white);text-align:center}
+.bridal h2{color:var(--white)}
+.bridal p{color:rgba(255,255,255,.8)}
+.bridal-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}
+.bridal-feat{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,.15)}
+.bridal-feat h4{color:var(--fuchsia);margin:12px 0 8px}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.price-card{background:var(--white);border-radius:16px;padding:32px;border:2px solid var(--lavender);transition:all .3s}
+.price-card:hover{border-color:var(--fuchsia)}
+.price-card h3{font-size:1.3rem;margin-bottom:16px}
+.price-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(88,28,135,.15)}
+.price-item span:last-child{font-weight:600;color:var(--purple)}
+
+/* Stats */
+.stats{background:var(--purple);color:var(--white);padding:60px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-num{font-family:'Crimson Pro',serif;font-size:3rem;font-weight:700;color:var(--fuchsia)}
+.stat-label{font-size:.9rem;opacity:.8;margin-top:4px}
+
+/* Gallery */
+.gallery-tabs{display:flex;justify-content:center;gap:12px;margin-bottom:30px;flex-wrap:wrap}
+.gallery-tab{padding:10px 24px;border-radius:50px;border:2px solid var(--purple);background:transparent;color:var(--purple);cursor:pointer;font-weight:500;transition:all .3s;font-family:'Outfit',sans-serif}
+.gallery-tab.active{background:var(--purple);color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.gallery-grid img{width:100%;height:250px;object-fit:cover;border-radius:12px;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+/* Reviews */
+.reviews-bg{background:var(--lavender)}
+.reviews-carousel{position:relative;overflow:hidden}
+.reviews-track{display:flex;transition:transform .5s ease}
+.review-card{min-width:100%;padding:40px;text-align:center}
+.review-card .stars{color:#F59E0B;font-size:1.3rem;margin-bottom:12px}
+.review-card blockquote{font-size:1.1rem;line-height:1.8;color:var(--gray);max-width:700px;margin:0 auto 16px;font-style:italic}
+.review-card .reviewer{font-weight:600;color:var(--purple)}
+.review-nav{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.review-nav button{width:40px;height:40px;border-radius:50%;border:2px solid var(--purple);background:transparent;color:var(--purple);cursor:pointer;font-size:1.1rem;transition:all .3s}
+.review-nav button:hover{background:var(--purple);color:var(--white)}
+
+/* Form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.form-card{background:var(--white);border-radius:20px;padding:40px;box-shadow:0 10px 40px rgba(88,28,135,.1)}
+.form-card h3{margin-bottom:24px;font-size:1.5rem}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;margin-bottom:6px;font-weight:500;font-size:.9rem;color:var(--purple)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid var(--lavender);border-radius:12px;font-family:'Outfit',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--fuchsia)}
+.form-group textarea{height:100px;resize:vertical}
+
+/* Contact */
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;align-items:center;gap:16px;padding:16px;background:var(--lavender);border-radius:12px}
+.contact-item .icon{width:48px;height:48px;background:var(--purple);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;flex-shrink:0}
+.map-wrap{border-radius:16px;overflow:hidden;margin-top:20px}
+.map-wrap iframe{width:100%;height:250px;border:0}
+
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,.7);padding:40px 0;text-align:center}
+footer a{color:var(--fuchsia);text-decoration:none}
+
+/* WhatsApp */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.8rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s}
+.whatsapp-float:hover{transform:scale(1.1)}
+
+/* Mobile */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(243,232,255,.98);backdrop-filter:blur(20px);flex-direction:column;padding:20px;gap:16px}
+.nav-links.open{display:flex}
+.menu-btn{display:block}
+.hero-content h1{font-size:2rem}
+.about-grid,.form-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.price-grid{grid-template-columns:1fr}
+}
+@media(max-width:375px){
+.hero-content h1{font-size:1.6rem}
+.section-title h2{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+<a href="#" class="logo">Drashti<span>.</span></a>
+<button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#bridal">Bridal</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#booking">Book Now</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&h=800&fit=crop" alt="Elegant Salon">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1400&h=800&fit=crop" alt="Bridal Makeup">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<h1>Vision of Beauty</h1>
+<p>Drashti — where every glance reflects elegance. Premium beauty services in the heart of Satna.</p>
+<div><a href="#booking" class="btn btn-primary">Book Appointment</a><a href="#services" class="btn btn-outline">Our Services</a></div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container">
+<div class="section-title"><h2>About Drashti</h2><div class="line"></div></div>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=400&fit=crop" alt="Drashti Salon">
+<div class="about-badge">✨ Vision of Beauty</div>
+</div>
+<div class="about-text">
+<h3>Drashti = Vision</h3>
+<p>At Drashti Beauty Parlour, we believe true beauty begins with vision — the vision to see your best self. Located in Satna, we've been transforming looks and boosting confidence with our premium beauty treatments.</p>
+<p>From everyday glow-ups to your most special day, our skilled beauticians bring artistry, care, and the latest techniques to every service.</p>
+<a href="#booking" class="btn btn-primary">Book Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Services -->
+<section id="services" class="services-bg">
+<div class="container">
+<div class="section-title"><h2>Our Services</h2><p>Complete beauty care for every occasion</p><div class="line"></div></div>
+<div class="services-grid">
+<div class="service-card"><div class="service-icon">💆</div><h3>Facials</h3><p>Deep cleansing, gold, diamond, and fruit facials for radiant, glowing skin.</p></div>
+<div class="service-card"><div class="service-icon">✨</div><h3>Cleanup</h3><p>Professional skin cleanup to remove impurities and refresh your complexion.</p></div>
+<div class="service-card"><div class="service-icon">💇</div><h3>Hair Care</h3><p>Haircuts, styling, smoothening, keratin treatments and hair spa.</p></div>
+<div class="service-card"><div class="service-icon">👰</div><h3>Bridal Makeup</h3><p>Complete bridal packages — engagement, mehendi, reception looks.</p></div>
+<div class="service-card"><div class="service-icon">🌸</div><h3>Waxing</h3><p>Full body waxing with premium wax for smooth, lasting results.</p></div>
+<div class="service-card"><div class="service-icon">✂️</div><h3>Threading</h3><p>Precise eyebrow shaping, upper lip, and full face threading.</p></div>
+<div class="service-card"><div class="service-icon">🎨</div><h3>Hair Coloring</h3><p>Global color, highlights, balayage — trendy shades & techniques.</p></div>
+<div class="service-card"><div class="service-icon">💅</div><h3>Manicure & Pedicure</h3><p>Spa manicure & pedicure for beautiful, pampered hands and feet.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Bridal -->
+<section id="bridal" class="bridal">
+<div class="container">
+<div class="section-title"><h2>Bridal Packages</h2><p>Your dream bridal look, crafted with love</p><div class="line"></div></div>
+<div class="bridal-features">
+<div class="bridal-feat"><div style="font-size:2.5rem">💍</div><h4>Engagement Look</h4><p>Subtle elegance for your ring ceremony.</p></div>
+<div class="bridal-feat"><div style="font-size:2.5rem">🌺</div><h4>Mehendi Ceremony</h4><p>Fresh, floral looks for your mehendi night.</p></div>
+<div class="bridal-feat"><div style="font-size:2.5rem">👰</div><h4>Wedding Day</h4><p>Show-stopping bridal makeup with HD finish.</p></div>
+<div class="bridal-feat"><div style="font-size:2.5rem">🎉</div><h4>Reception Glam</h4><p>Glamorous party-ready look for your reception.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+<div class="container">
+<div class="section-title"><h2>Pricing</h2><p>Transparent pricing, no hidden charges</p><div class="line"></div></div>
+<div class="price-grid">
+<div class="price-card">
+<h3>💆 Skin Care</h3>
+<div class="price-item"><span>Basic Facial</span><span>₹499</span></div>
+<div class="price-item"><span>Gold Facial</span><span>₹999</span></div>
+<div class="price-item"><span>Diamond Facial</span><span>₹1,499</span></div>
+<div class="price-item"><span>Cleanup</span><span>₹349</span></div>
+<div class="price-item"><span>De-Tan</span><span>₹599</span></div>
+</div>
+<div class="price-card">
+<h3>💇 Hair Care</h3>
+<div class="price-item"><span>Haircut & Style</span><span>₹299</span></div>
+<div class="price-item"><span>Hair Spa</span><span>₹799</span></div>
+<div class="price-item"><span>Smoothening</span><span>₹3,999+</span></div>
+<div class="price-item"><span>Global Color</span><span>₹2,499+</span></div>
+<div class="price-item"><span>Highlights</span><span>₹1,499+</span></div>
+</div>
+<div class="price-card">
+<h3>👰 Bridal</h3>
+<div class="price-item"><span>Engagement Makeup</span><span>₹2,999</span></div>
+<div class="price-item"><span>Bridal Package</span><span>₹8,999+</span></div>
+<div class="price-item"><span>Pre-Bridal (7 days)</span><span>₹4,999</span></div>
+<div class="price-item"><span>Reception Makeup</span><span>₹3,499</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div><div class="stat-num" data-target="2500">0</div><div class="stat-label">Happy Clients</div></div>
+<div><div class="stat-num" data-target="8">0</div><div class="stat-label">Years Experience</div></div>
+<div><div class="stat-num" data-target="500">0</div><div class="stat-label">Brides Styled</div></div>
+<div><div class="stat-num" data-target="15">0</div><div class="stat-label">Expert Beauticians</div></div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+<div class="container">
+<div class="section-title"><h2>Gallery</h2><p>A glimpse of our work</p><div class="line"></div></div>
+<div class="gallery-tabs">
+<button class="gallery-tab active" onclick="filterGallery('all',this)">All</button>
+<button class="gallery-tab" onclick="filterGallery('services',this)">Services</button>
+<button class="gallery-tab" onclick="filterGallery('bridal',this)">Bridal</button>
+<button class="gallery-tab" onclick="filterGallery('results',this)">Results</button>
+</div>
+<div class="gallery-grid">
+<img data-cat="services" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=300&fit=crop" alt="Facial Treatment">
+<img data-cat="bridal" src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400&h=300&fit=crop" alt="Bridal Makeup">
+<img data-cat="results" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop" alt="Makeover Result">
+<img data-cat="services" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=300&fit=crop" alt="Hair Styling">
+<img data-cat="bridal" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&h=300&fit=crop" alt="Bridal Look">
+<img data-cat="results" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=300&fit=crop" alt="Beauty Result">
+</div>
+</div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews" class="reviews-bg">
+<div class="container">
+<div class="section-title"><h2>What Our Clients Say</h2><div class="line"></div></div>
+<div class="reviews-carousel">
+<div class="reviews-track">
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"Drashti transformed my bridal look completely! Everyone at the wedding kept complimenting my makeup. Absolutely the best in Satna!"</blockquote><div class="reviewer">— Priya Sharma</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"I've been coming here for over 3 years. The facials are amazing, and the staff is so friendly and professional."</blockquote><div class="reviewer">— Neha Gupta</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><blockquote>"Best hair coloring experience! They understood exactly what I wanted. The balayage came out perfect."</blockquote><div class="reviewer">— Anjali Tiwari</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">‹</button><button onclick="moveReview(1)">›</button></div>
+</div>
+</section>
+
+<!-- Booking -->
+<section id="booking">
+<div class="container">
+<div class="section-title"><h2>Book an Appointment</h2><p>Reserve your slot today</p><div class="line"></div></div>
+<div class="form-grid">
+<div class="form-card">
+<h3>📅 Booking Form</h3>
+<form onsubmit="event.preventDefault();alert('Thank you! We will contact you shortly to confirm your appointment.')">
+<div class="form-group"><label>Your Name</label><input type="text" required placeholder="Enter your name"></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" required placeholder="Your phone number"></div>
+<div class="form-group"><label>Service</label>
+<select required><option value="">Select a service</option><option>Facial</option><option>Hair Cut & Style</option><option>Bridal Makeup</option><option>Hair Coloring</option><option>Waxing</option><option>Threading</option><option>Manicure/Pedicure</option><option>Other</option></select></div>
+<div class="form-group"><label>Preferred Date</label><input type="date" required></div>
+<div class="form-group"><label>Message (Optional)</label><textarea placeholder="Any special requests?"></textarea></div>
+<button type="submit" class="btn btn-primary" style="width:100%">Book Appointment</button>
+</form>
+</div>
+<div class="contact-info">
+<h3 style="font-size:1.5rem;margin-bottom:16px">📍 Visit Us</h3>
+<div class="contact-item"><div class="icon">📞</div><div><strong>Phone</strong><br><a href="tel:9926400062" style="color:var(--purple)">9926400062</a></div></div>
+<div class="contact-item"><div class="icon">📍</div><div><strong>Address</strong><br>Drashti Beauty Parlour, Satna, Madhya Pradesh</div></div>
+<div class="contact-item"><div class="icon">🕐</div><div><strong>Hours</strong><br>Mon–Sat: 10:00 AM – 8:00 PM<br>Sunday: By Appointment</div></div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58543.45!2d80.82!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398437e0e2f5e5e5%3A0x5e5e5e5e5e5e5e5e!2sSatna%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p style="font-family:'Crimson Pro',serif;font-size:1.4rem;color:var(--fuchsia);margin-bottom:8px">Drashti Beauty Parlour</p>
+<p>Vision of Beauty — Satna, Madhya Pradesh</p>
+<p style="margin-top:8px">📞 <a href="tel:9926400062">9926400062</a></p>
+<p style="margin-top:16px;font-size:.85rem">© 2026 Drashti Beauty Parlour. Crafted by <a href="https://vedamvision.com">VedamVision</a></p>
+</div>
+</footer>
+
+<a href="https://wa.me/919926400062?text=Hi%20Drashti!%20I'd%20like%20to%20book%20an%20appointment." class="whatsapp-float" aria-label="WhatsApp">💬</a>
+
+<script>
+// Hero slider
+let cs=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[cs].classList.remove('active');dots[cs].classList.remove('active');cs=n;slides[cs].classList.add('active');dots[cs].classList.add('active')}
+setInterval(()=>goSlide((cs+1)%slides.length),5000);
+
+// Stats counter
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.stat-num').forEach(el=>{const t=+el.dataset.target;let c=0;const inc=t/60;const timer=setInterval(()=>{c+=inc;if(c>=t){el.textContent=t+'+';clearInterval(timer)}else{el.textContent=Math.floor(c)}},30)});observer.disconnect()}})},{threshold:.5});
+document.querySelector('.stats')&&observer.observe(document.querySelector('.stats'));
+
+// Gallery filter
+function filterGallery(cat,btn){document.querySelectorAll('.gallery-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.gallery-grid img').forEach(img=>{img.style.display=(cat==='all'||img.dataset.cat===cat)?'block':'none'})}
+
+// Reviews carousel
+let ri=0;const track=document.querySelector('.reviews-track');
+function moveReview(d){const cards=document.querySelectorAll('.review-card');ri=Math.max(0,Math.min(ri+d,cards.length-1));track.style.transform=`translateX(-${ri*100}%)`}
+</script>
+</body>
+</html>

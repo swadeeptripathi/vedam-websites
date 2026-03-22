@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fitness Hero's Unisex Gym — Singrauli</title>
+<meta name="description" content="Fitness Hero's Unisex Gym Singrauli — Everyone's a Hero! Weight training, cardio, yoga, crossfit & personal training for all.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--slate:#1F2937;--orange:#F97316;--white:#FFFFFF;--dark:#111827;--gray:#9CA3AF;--light:#F9FAFB}
+body{font-family:'Open Sans',sans-serif;color:var(--slate);background:var(--white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:800}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+/* Nav */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:12px 0;transition:all .3s}
+nav.scrolled{background:rgba(31,41,55,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 20px rgba(0,0,0,.2)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.5rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .shield{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transform:rotate(-5deg)}
+.logo .hero-text{color:var(--orange)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:#fff;text-decoration:none;font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+.nav-links a:hover{color:var(--orange)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{width:26px;height:3px;background:#fff;border-radius:2px}
+/* Hero */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;display:flex;align-items:center;justify-content:center}
+.hero-slide.active{opacity:1}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,24,39,.85),rgba(31,41,55,.6))}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:20px}
+.hero-badge{display:inline-block;background:var(--orange);color:#fff;padding:8px 20px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;margin-bottom:16px;text-transform:uppercase}
+.hero-content h1{font-size:3.5rem;margin-bottom:16px;line-height:1.1;text-transform:uppercase}
+.hero-content h1 span{color:var(--orange);display:block;font-size:4.5rem}
+.hero-content p{font-size:1.1rem;max-width:560px;margin:0 auto 28px;opacity:.85}
+.btn{display:inline-block;padding:14px 32px;border-radius:8px;font-weight:700;text-decoration:none;transition:all .3s;font-size:.95rem;cursor:pointer;border:none;text-transform:uppercase;letter-spacing:1px}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:#EA580C;transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.35)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--slate)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dots span{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s}
+.hero-dots span.active{background:var(--orange);box-shadow:0 0 12px var(--orange)}
+/* Sections */
+section{padding:80px 0}
+.section-title{text-align:center;margin-bottom:48px}
+.section-title h2{font-size:2.4rem;text-transform:uppercase;margin-bottom:8px}
+.section-title .line{width:50px;height:4px;background:var(--orange);margin:12px auto;border-radius:2px}
+.section-title p{color:var(--gray);max-width:480px;margin:0 auto}
+.bg-dark{background:var(--dark);color:#fff}
+.bg-light{background:var(--light)}
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{border-radius:16px;overflow:hidden;position:relative}
+.about-img img{width:100%;height:420px;object-fit:cover}
+.about-img .hero-shield{position:absolute;top:20px;left:20px;width:70px;height:70px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:#fff;box-shadow:0 4px 20px rgba(249,115,22,.4);border:3px solid #fff}
+.about-text .sub{color:var(--orange);font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.about-text p{line-height:1.8;margin-bottom:16px;color:#6B7280}
+.about-text .unisex-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.1);border:2px solid var(--orange);border-radius:50px;padding:10px 24px;color:var(--orange);font-weight:700;font-size:.95rem}
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.service-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;text-align:center;transition:all .3s}
+.service-card:hover{transform:translateY(-6px);border-color:var(--orange);box-shadow:0 8px 30px rgba(249,115,22,.15)}
+.service-card .icon{font-size:2.5rem;margin-bottom:12px}
+.service-card h4{margin-bottom:8px;font-size:1.05rem}
+.service-card p{font-size:.85rem;color:var(--gray)}
+/* Schedule */
+.schedule-table{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden}
+.schedule-table th{background:var(--orange);color:#fff;padding:14px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:1px}
+.schedule-table td{padding:12px;text-align:center;border-bottom:1px solid #E5E7EB;font-size:.9rem}
+.schedule-table tr:nth-child(even){background:var(--light)}
+.schedule-table tr:hover{background:rgba(249,115,22,.05)}
+/* Trainers */
+.trainers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.trainer-card{text-align:center;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .3s}
+.trainer-card:hover{transform:translateY(-6px)}
+.trainer-card img{width:100%;height:280px;object-fit:cover}
+.trainer-card .info{padding:16px}
+.trainer-card h4{margin-bottom:4px}
+.trainer-card .role{color:var(--orange);font-weight:600;font-size:.85rem}
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.price-card{background:#fff;border-radius:16px;padding:32px;text-align:center;border:2px solid #E5E7EB;transition:all .3s;position:relative}
+.price-card:hover,.price-card.featured{border-color:var(--orange);transform:translateY(-6px)}
+.price-card.featured{box-shadow:0 8px 30px rgba(249,115,22,.2)}
+.price-card .popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;padding:4px 20px;border-radius:50px;font-size:.8rem;font-weight:700}
+.price-card h3{margin-bottom:4px}
+.price-card .amount{font-size:2.8rem;color:var(--orange);font-family:'Montserrat',sans-serif;font-weight:900;margin:16px 0}
+.price-card .amount small{font-size:1rem;color:var(--gray);font-weight:400}
+.price-card ul{list-style:none;text-align:left;margin:20px 0}
+.price-card li{padding:8px 0;border-bottom:1px solid #f3f4f6;color:#6B7280;font-size:.9rem}
+.price-card li::before{content:'✓';color:var(--orange);font-weight:700;margin-right:8px}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover;border-radius:10px;transition:all .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.tab-btns{display:flex;justify-content:center;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.tab-btn{padding:10px 22px;border-radius:8px;border:2px solid #E5E7EB;background:transparent;color:var(--slate);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;transition:all .3s}
+.tab-btn.active,.tab-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+/* Stats */
+.stats{background:linear-gradient(135deg,var(--dark),var(--slate));padding:70px 0;color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-item{position:relative}
+.stat-num{font-size:3rem;font-family:'Montserrat',sans-serif;font-weight:900;color:var(--orange)}
+.stat-label{font-size:.85rem;opacity:.7;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+/* Reviews */
+.reviews-wrap{max-width:680px;margin:0 auto;overflow:hidden}
+.review-track{display:flex;transition:transform .5s}
+.review-card{min-width:100%;padding:32px;text-align:center}
+.review-card .stars{color:var(--orange);font-size:1.3rem;margin-bottom:12px}
+.review-card p{font-style:italic;line-height:1.7;margin-bottom:16px;font-size:1.05rem;color:#6B7280}
+.review-card .name{font-weight:700;color:var(--slate)}
+.review-nav{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.review-nav button{width:42px;height:42px;border-radius:8px;border:2px solid var(--slate);background:transparent;color:var(--slate);cursor:pointer;font-size:1.1rem;transition:all .3s}
+.review-nav button:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px;border:2px solid #E5E7EB;border-radius:10px;font-family:'Open Sans',sans-serif;font-size:.95rem;background:#fff;transition:border .3s;outline:none}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--orange)}
+.contact-form textarea{height:120px;resize:vertical}
+.form-group{margin-bottom:14px}
+.contact-info-box{background:var(--dark);border-radius:16px;padding:32px;color:#fff}
+.contact-info-box h3{color:var(--orange);margin-bottom:20px}
+.contact-info-box .item{display:flex;gap:12px;margin-bottom:16px;color:rgba(255,255,255,.8)}
+.contact-info-box .item .icon{font-size:1.3rem}
+.map-wrap{border-radius:12px;overflow:hidden;margin-top:20px}
+.map-wrap iframe{width:100%;height:250px;border:0}
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:32px 0;font-size:.85rem}
+footer a{color:var(--orange);text-decoration:none}
+/* WhatsApp */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:transform .3s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:rgba(31,41,55,.95);backdrop-filter:blur(16px);flex-direction:column;padding:20px;gap:16px}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.hero-content h1{font-size:2.2rem}
+.hero-content h1 span{font-size:2.8rem}
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.schedule-table{font-size:.8rem}
+.schedule-table th,.schedule-table td{padding:8px}
+}
+@media(max-width:375px){.hero-content h1{font-size:1.8rem}.hero-content h1 span{font-size:2.2rem}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<div class="container">
+<a href="#" class="logo"><div class="shield">⚡</div>Fitness <span class="hero-text">HERO's</span></a>
+<button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80" alt="Gym action">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-badge">⚡ Singrauli's #1 Unisex Gym</div>
+<h1>UNLEASH YOUR INNER<span>HERO</span></h1>
+<p>Fitness Hero's Unisex Gym — where everyone's a hero. Men, women, beginners, pros — your transformation starts here.</p>
+<div class="hero-btns">
+<a href="#pricing" class="btn btn-orange">Join Now</a>
+<a href="tel:+919685950069" class="btn btn-outline">Call: 9685950069</a>
+</div>
+</div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=80" alt="Empowerment">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-badge">💪 Everyone's A Hero</div>
+<h1>STRONGER EVERY<span>DAY</span></h1>
+<p>World-class equipment, expert trainers, and an inclusive community that lifts you up — literally and figuratively.</p>
+<div class="hero-btns">
+<a href="#services" class="btn btn-orange">Our Programs</a>
+<a href="https://wa.me/919685950069" class="btn btn-outline">WhatsApp Us</a>
+</div>
+</div>
+</div>
+<div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
+</section>
+
+<section id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=700&q=80" alt="Gym interior">
+<div class="hero-shield">FH</div>
+</div>
+<div class="about-text">
+<div class="sub">Our Mission</div>
+<h2>Everyone's a Hero</h2>
+<p>Fitness Hero's is Singrauli's premier unisex gym — built on the belief that fitness has no gender. Whether you're a woman stepping into the gym for the first time or a seasoned athlete pushing your limits, this is your space.</p>
+<p>We've created an environment that's inclusive, motivating, and equipped with everything you need to become the best version of yourself. Our certified trainers are here to guide, support, and challenge you — because every hero needs a coach.</p>
+<p>From weight training to yoga, from intense crossfit sessions to calming stretches — we've got something for every body and every goal.</p>
+<div class="unisex-tag">🦸 Unisex • Inclusive • For Everyone</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services" class="bg-dark">
+<div class="container">
+<div class="section-title"><h2>Our Programs</h2><div class="line"></div><p>Train like a hero — pick your path</p></div>
+<div class="services-grid">
+<div class="service-card"><div class="icon">🏋️</div><h4>Weight Training</h4><p>Full range of free weights and machines for strength building</p></div>
+<div class="service-card"><div class="icon">🏃</div><h4>Cardio Zone</h4><p>Treadmills, cycles, ellipticals — get your heart pumping</p></div>
+<div class="service-card"><div class="icon">🧘</div><h4>Yoga & Flexibility</h4><p>Find your balance with guided yoga sessions for all levels</p></div>
+<div class="service-card"><div class="icon">💥</div><h4>CrossFit</h4><p>High-intensity functional training for the brave-hearted</p></div>
+<div class="service-card"><div class="icon">🎯</div><h4>Personal Training</h4><p>1-on-1 coaching tailored to your specific fitness goals</p></div>
+</div>
+</div>
+</section>
+
+<section id="schedule" class="bg-light">
+<div class="container">
+<div class="section-title"><h2>Class Schedule</h2><div class="line"></div></div>
+<table class="schedule-table">
+<thead><tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></tr></thead>
+<tbody>
+<tr><td><strong>6:00 AM</strong></td><td>Yoga</td><td>CrossFit</td><td>Yoga</td><td>CrossFit</td><td>Yoga</td><td>Open Gym</td></tr>
+<tr><td><strong>7:00 AM</strong></td><td>Cardio Blast</td><td>Weight Training</td><td>Cardio Blast</td><td>Weight Training</td><td>Cardio Blast</td><td>HIIT</td></tr>
+<tr><td><strong>9:00 AM</strong></td><td>Personal Training</td><td>Yoga</td><td>Personal Training</td><td>Yoga</td><td>Personal Training</td><td>Stretch</td></tr>
+<tr><td><strong>5:00 PM</strong></td><td>Weight Training</td><td>CrossFit</td><td>Weight Training</td><td>CrossFit</td><td>Weight Training</td><td>Open Gym</td></tr>
+<tr><td><strong>7:00 PM</strong></td><td>HIIT</td><td>Cardio</td><td>HIIT</td><td>Cardio</td><td>HIIT</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="trainers">
+<div class="container">
+<div class="section-title"><h2>Our Trainers</h2><div class="line"></div><p>Certified coaches who live & breathe fitness</p></div>
+<div class="trainers-grid">
+<div class="trainer-card"><img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80" alt="Trainer"><div class="info"><h4>Rahul Singh</h4><div class="role">Head Trainer • Weight & Strength</div></div></div>
+<div class="trainer-card"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="Trainer"><div class="info"><h4>Priya Verma</h4><div class="role">Yoga & Flexibility Coach</div></div></div>
+<div class="trainer-card"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80" alt="Trainer"><div class="info"><h4>Vikram Yadav</h4><div class="role">CrossFit & HIIT Specialist</div></div></div>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="bg-light">
+<div class="container">
+<div class="section-title"><h2>Pricing Plans</h2><div class="line"></div><p>Invest in yourself — choose your hero plan</p></div>
+<div class="pricing-grid">
+<div class="price-card">
+<h3>Starter</h3>
+<p style="color:var(--gray)">Perfect for beginners</p>
+<div class="amount">₹800<small>/month</small></div>
+<ul>
+<li>Full gym access</li>
+<li>Cardio zone included</li>
+<li>Locker facility</li>
+<li>Basic fitness assessment</li>
+</ul>
+<a href="https://wa.me/919685950069?text=Hi! I'm interested in the Starter plan" class="btn btn-orange" style="width:100%">Get Started</a>
+</div>
+<div class="price-card featured">
+<div class="popular">⭐ MOST POPULAR</div>
+<h3>Hero</h3>
+<p style="color:var(--gray)">Best value for results</p>
+<div class="amount">₹1,500<small>/month</small></div>
+<ul>
+<li>Everything in Starter</li>
+<li>All group classes</li>
+<li>Diet consultation</li>
+<li>Personal training (2x/week)</li>
+<li>Progress tracking</li>
+</ul>
+<a href="https://wa.me/919685950069?text=Hi! I'm interested in the Hero plan" class="btn btn-orange" style="width:100%">Become a Hero</a>
+</div>
+<div class="price-card">
+<h3>Super Hero</h3>
+<p style="color:var(--gray)">Maximum transformation</p>
+<div class="amount">₹2,500<small>/month</small></div>
+<ul>
+<li>Everything in Hero</li>
+<li>Unlimited personal training</li>
+<li>Custom nutrition plan</li>
+<li>Body composition analysis</li>
+<li>Premium supplements guidance</li>
+<li>Priority scheduling</li>
+</ul>
+<a href="https://wa.me/919685950069?text=Hi! I'm interested in the Super Hero plan" class="btn btn-orange" style="width:100%">Go Super</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="container">
+<div class="section-title"><h2>Gallery</h2><div class="line"></div></div>
+<div class="tab-btns">
+<button class="tab-btn active" onclick="showGallery('ggym')">Gym</button>
+<button class="tab-btn" onclick="showGallery('gtrain')">Training</button>
+<button class="tab-btn" onclick="showGallery('gevt')">Events</button>
+</div>
+<div id="ggym" class="gallery-tab">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80" alt="Gym">
+<img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=500&q=80" alt="Equipment">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80" alt="Weights">
+<img src="https://images.unsplash.com/photo-1570829460005-c840387bb1ca?w=500&q=80" alt="Gym floor">
+</div>
+</div>
+<div id="gtrain" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80" alt="Training">
+<img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=500&q=80" alt="Workout">
+<img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&q=80" alt="Yoga">
+</div>
+</div>
+<div id="gevt" class="gallery-tab" style="display:none">
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500&q=80" alt="Event">
+<img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=500&q=80" alt="Competition">
+<img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500&q=80" alt="Group">
+</div>
+</div>
+</div>
+</section>
+
+<div class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item"><div class="stat-num" data-target="500">0</div><div class="stat-label">Active Members</div></div>
+<div class="stat-item"><div class="stat-num" data-target="8">0</div><div class="stat-label">Expert Trainers</div></div>
+<div class="stat-item"><div class="stat-num" data-target="5">0</div><div class="stat-label">Years Strong</div></div>
+<div class="stat-item"><div class="stat-num" data-target="1200">0</div><div class="stat-label">Classes Monthly</div></div>
+</div>
+</div>
+</div>
+
+<section id="reviews">
+<div class="container">
+<div class="section-title"><h2>Hero Stories</h2><div class="line"></div></div>
+<div class="reviews-wrap">
+<div class="review-track">
+<div class="review-card"><div class="stars">★★★★★</div><p>"Lost 15kg in 4 months! The trainers here actually care about your progress. Best gym in Singrauli, no question."</p><div class="name">Ankita Pandey</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"As a woman, I was hesitant about joining a gym. Fitness Hero's made me feel welcome from day one. The yoga classes are amazing!"</p><div class="name">Saumya Gupta</div></div>
+<div class="review-card"><div class="stars">★★★★★</div><p>"The CrossFit sessions are killer! Great equipment, clean facilities, and Vikram sir pushes you beyond your limits. Love it."</p><div class="name">Ravi Kumar</div></div>
+<div class="review-card"><div class="stars">★★★★☆</div><p>"Affordable plans and professional trainers. The Hero plan is worth every rupee. My whole family trains here now."</p><div class="name">Deepak Tiwari</div></div>
+</div>
+</div>
+<div class="review-nav"><button onclick="moveReview(-1)">‹</button><button onclick="moveReview(1)">›</button></div>
+</div>
+</section>
+
+<section id="contact" class="bg-light">
+<div class="container">
+<div class="section-title"><h2>Contact Us</h2><div class="line"></div></div>
+<div class="contact-grid">
+<form class="contact-form" onsubmit="event.preventDefault();alert('Thanks Hero! We\'ll get back to you soon.')">
+<div class="form-group"><input type="text" placeholder="Your Name" required></div>
+<div class="form-group"><input type="tel" placeholder="Phone Number" required></div>
+<div class="form-group"><input type="email" placeholder="Email (optional)"></div>
+<div class="form-group"><select style="width:100%;padding:14px;border:2px solid #E5E7EB;border-radius:10px;font-family:'Open Sans',sans-serif;font-size:.95rem"><option>Membership Inquiry</option><option>Personal Training</option><option>Group Classes</option><option>Other</option></select></div>
+<div class="form-group"><textarea placeholder="Your Message"></textarea></div>
+<button type="submit" class="btn btn-orange" style="width:100%">Send Message</button>
+</form>
+<div>
+<div class="contact-info-box">
+<h3>Visit Fitness Hero's</h3>
+<div class="item"><span class="icon">📍</span><div>Singrauli, Madhya Pradesh, India</div></div>
+<div class="item"><span class="icon">📞</span><div><a href="tel:+919685950069" style="color:#fff">+91 9685950069</a></div></div>
+<div class="item"><span class="icon">🕐</span><div>Mon-Sat: 5:30 AM – 9:30 PM<br>Sunday: 7:00 AM – 12:00 PM</div></div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116527.79!2d82.6!3d24.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398f5a5e6c40c5b5%3A0x8a2e0d83b56e7f17!2sSingrauli%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--orange);font-size:1.1rem;margin-bottom:8px">⚡ EVERYONE'S A HERO</p>
+<p>© 2025 Fitness Hero's Unisex Gym, Singrauli. All rights reserved. | Built by <a href="#">VedamVision</a></p>
+</div>
+</footer>
+
+<a href="https://wa.me/919685950069" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<svg viewBox="0 0 32 32"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.907 15.907 0 0016.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.338 22.594c-.39 1.1-1.932 2.012-3.162 2.278-.844.18-1.946.322-5.656-1.216-4.746-1.966-7.804-6.792-8.038-7.108-.226-.316-1.9-2.53-1.9-4.828s1.2-3.428 1.628-3.896c.39-.426.922-.622 1.234-.622.15 0 .284.008.406.014.428.018.642.042.924.714.352.836 1.212 2.952 1.316 3.168.106.216.212.502.07.802-.134.306-.25.496-.466.762-.216.266-.426.47-.642.676-.216.208-.44.432-.19.848.252.416 1.12 1.846 2.404 2.99 1.65 1.472 3.042 1.928 3.474 2.144.332.166.6.14.822-.084.278-.284.602-.752.932-1.214.236-.33.532-.37.89-.222.362.144 2.288 1.078 2.68 1.274.39.196.652.292.748.458.094.166.094.954-.296 2.054z"/></svg>
+</a>
+
+<script>
+let cs=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[cs].classList.remove('active');dots[cs].classList.remove('active');cs=n;slides[cs].classList.add('active');dots[cs].classList.add('active')}
+setInterval(()=>goSlide((cs+1)%slides.length),5000);
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50));
+function showGallery(id){document.querySelectorAll('.gallery-tab').forEach(t=>t.style.display='none');document.querySelectorAll('#gallery .tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).style.display='block';event.target.classList.add('active')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.stat-num').forEach(el=>{const t=+el.dataset.target;let c=0;const step=Math.ceil(t/60);const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}el.textContent=c.toLocaleString()},30)});observer.disconnect()}})},{threshold:.5});
+observer.observe(document.querySelector('.stats'));
+let ri=0;const track=document.querySelector('.review-track'),cards=document.querySelectorAll('.review-card');
+function moveReview(d){ri=Math.max(0,Math.min(ri+d,cards.length-1));track.style.transform=`translateX(-${ri*100}%)`}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});document.querySelector('.nav-links').classList.remove('open')}));
+</script>
+</body>
+</html>

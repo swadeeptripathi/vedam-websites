@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAA Sharda Travels — Journeys Blessed by Maa Sharda | Satna</title>
+<meta name="description" content="MAA Sharda Travels Satna — Pilgrimage tours, local taxi, outstation cabs. Blessed journeys to Maihar Sharda Devi & Chitrakoot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#B45309;--primary-dark:#92400E;--cream:#FFFBEB;--text:#1a1a1a;--text-light:#6b5a3e;--white:#fff;--glass:rgba(255,251,235,0.7)}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 2rem;transition:all .3s}
+.navbar.scrolled{background:rgba(180,83,9,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.6rem 2rem;box-shadow:0 4px 30px rgba(0,0,0,.15)}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:var(--cream);text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:#fbbf24}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:.9rem;font-weight:500;opacity:.9;transition:.3s}
+.nav-links a:hover{opacity:1;color:#fbbf24}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:25px;height:2px;background:var(--cream);transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(180,83,9,0.97);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-size:1.5rem;font-family:'Outfit',sans-serif;font-weight:600}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(180,83,9,0.8)0%,rgba(146,64,14,0.6)50%,rgba(0,0,0,0.4)100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem;z-index:2}
+.hero-badge{display:inline-block;padding:.5rem 1.5rem;border:1px solid rgba(255,251,235,.4);border-radius:50px;color:var(--cream);font-size:.8rem;letter-spacing:3px;margin-bottom:1.5rem;backdrop-filter:blur(10px);background:rgba(255,255,255,.1)}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;color:var(--cream);line-height:1.05;margin-bottom:1rem;letter-spacing:-2px}
+.hero h1 span{color:#fbbf24}
+.hero p{color:rgba(255,251,235,.85);font-size:clamp(1rem,2vw,1.25rem);max-width:600px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{padding:.9rem 2.2rem;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary{background:#fbbf24;color:var(--primary-dark)}
+.btn-primary:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.btn-outline{border:2px solid var(--cream);color:var(--cream);background:transparent}
+.btn-outline:hover{background:var(--cream);color:var(--primary)}
+.hero-dots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:3}
+.hero-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.3s}
+.hero-dots span.active{background:#fbbf24;width:30px;border-radius:5px}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-size:.8rem;letter-spacing:3px;color:var(--primary);text-transform:uppercase;font-weight:600;margin-bottom:.5rem}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text);margin-bottom:1rem;letter-spacing:-1px}
+.section-desc{color:var(--text-light);max-width:600px;line-height:1.7;font-size:1.05rem}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.about-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img::after{content:'';position:absolute;inset:0;border:3px solid var(--primary);border-radius:20px;transform:translate(15px,15px);z-index:-1}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.about-feat{padding:1rem;border-radius:12px;background:var(--cream)}
+.about-feat h4{font-size:.9rem;font-weight:700;color:var(--primary);margin-bottom:.25rem}
+.about-feat p{font-size:.8rem;color:var(--text-light)}
+
+/* SERVICES */
+.services{background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:3rem}
+.service-card{background:var(--white);border-radius:16px;padding:2rem;transition:all .3s;border:1px solid rgba(180,83,9,.08)}
+.service-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(180,83,9,.1);border-color:var(--primary)}
+.service-icon{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#d97706);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
+.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.6}
+
+/* PILGRIMAGE */
+.pilgrimage{background:linear-gradient(135deg,var(--primary),#92400E);color:var(--cream);position:relative;overflow:hidden}
+.pilgrimage::before{content:'🙏';position:absolute;right:-50px;top:-50px;font-size:300px;opacity:.05}
+.pilgrimage .section-label{color:#fbbf24}
+.pilgrimage .section-title{color:var(--cream)}
+.pilgrimage .section-desc{color:rgba(255,251,235,.8)}
+.pilgrimage-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+.pilgrim-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:2rem;transition:.3s}
+.pilgrim-card:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
+.pilgrim-card h3{font-size:1.3rem;font-weight:700;margin-bottom:.5rem;color:#fbbf24}
+.pilgrim-card p{color:rgba(255,251,235,.8);font-size:.9rem;line-height:1.7}
+.pilgrim-card .price{margin-top:1rem;font-size:1.5rem;font-weight:800;font-family:'Outfit',sans-serif}
+
+/* FLEET */
+.fleet{background:var(--white)}
+.fleet-tabs{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap}
+.fleet-tab{padding:.7rem 1.5rem;border-radius:50px;border:2px solid var(--primary);color:var(--primary);font-weight:600;cursor:pointer;transition:.3s;background:transparent;font-family:'Outfit',sans-serif}
+.fleet-tab.active,.fleet-tab:hover{background:var(--primary);color:var(--cream)}
+.fleet-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.fleet-item{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/10;cursor:pointer}
+.fleet-item img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.fleet-item:hover img{transform:scale(1.05)}
+.fleet-item .fleet-label{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,.8));color:var(--cream)}
+.fleet-label h4{font-family:'Outfit',sans-serif;font-weight:700}
+.fleet-label p{font-size:.85rem;opacity:.8}
+
+/* STATS */
+.stats{background:var(--primary);padding:3rem 2rem}
+.stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-item h3{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;color:#fbbf24;font-family:'Outfit',sans-serif}
+.stat-item p{color:rgba(255,251,235,.8);font-size:.9rem;margin-top:.25rem}
+
+/* BOOKING FORM */
+.booking{background:var(--cream)}
+.booking-form{background:var(--white);border-radius:20px;padding:3rem;margin-top:2rem;box-shadow:0 10px 40px rgba(180,83,9,.08)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;font-size:.85rem;margin-bottom:.5rem;color:var(--primary)}
+.form-group input,.form-group select,.form-group textarea{padding:.9rem 1.2rem;border:2px solid rgba(180,83,9,.15);border-radius:12px;font-family:'Noto Sans',sans-serif;font-size:.95rem;transition:.3s;background:var(--cream)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);background:var(--white)}
+.form-group.full{grid-column:1/-1}
+.form-submit{grid-column:1/-1;display:flex;justify-content:center;margin-top:1rem}
+
+/* REVIEWS */
+.reviews{background:var(--white)}
+.reviews-track{display:flex;gap:1.5rem;margin-top:2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-ms-overflow-style:none;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{min-width:350px;max-width:400px;background:var(--cream);border-radius:16px;padding:2rem;scroll-snap-align:start;flex-shrink:0}
+.review-stars{color:#fbbf24;font-size:1.1rem;margin-bottom:.75rem}
+.review-card p{color:var(--text-light);font-size:.95rem;line-height:1.7;font-style:italic;margin-bottom:1rem}
+.review-author{font-weight:700;font-size:.9rem;color:var(--primary)}
+
+/* CONTACT */
+.contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
+.contact-item .ci-icon{width:45px;height:45px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.contact-item h4{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.contact-item p{font-size:.9rem;color:var(--text-light)}
+.contact-item a{color:var(--primary);text-decoration:none;font-weight:600}
+.map-container{border-radius:16px;overflow:hidden;min-height:350px}
+.map-container iframe{width:100%;height:100%;border:none;min-height:350px}
+
+/* FOOTER */
+footer{background:var(--primary-dark);color:var(--cream);padding:3rem 2rem;text-align:center}
+footer p{opacity:.7;font-size:.9rem}
+footer .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1rem;flex-wrap:wrap}
+footer .footer-links a{color:var(--cream);text-decoration:none;font-size:.9rem;opacity:.7;transition:.3s}
+footer .footer-links a:hover{opacity:1}
+
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:998;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:.3s;cursor:pointer;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.6)}
+.whatsapp-float svg{width:30px;height:30px;fill:white}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.form-grid{grid-template-columns:1fr}
+.hero h1{font-size:2.5rem}
+.review-card{min-width:280px}
+section{padding:3.5rem 1.25rem}
+}
+@media(max-width:375px){
+.hero h1{font-size:2rem}
+.stats-grid{grid-template-columns:1fr 1fr}
+.pilgrimage-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="#" class="nav-logo">Maa <span>Sharda</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#pilgrimage">Pilgrimage</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#booking">Book Now</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about" onclick="toggleMenu()">About</a>
+<a href="#services" onclick="toggleMenu()">Services</a>
+<a href="#pilgrimage" onclick="toggleMenu()">Pilgrimage</a>
+<a href="#fleet" onclick="toggleMenu()">Fleet</a>
+<a href="#booking" onclick="toggleMenu()">Book Now</a>
+<a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-slide active">
+<img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80" alt="Travel">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-slide">
+<img src="https://images.unsplash.com/photo-1609766418204-a45ddba24fbc?w=1600&q=80" alt="Temple">
+<div class="hero-overlay"></div>
+</div>
+<div class="hero-content">
+<div class="hero-badge">🙏 BLESSED JOURNEYS SINCE 2005</div>
+<h1>Maa <span>Sharda</span> Travels</h1>
+<p>Journeys blessed by Maa Sharda — Pilgrimage tours, local taxi & outstation cabs from Satna with devotion and care.</p>
+<div class="hero-btns">
+<a href="#booking" class="btn btn-primary">🚕 Book Your Ride</a>
+<a href="tel:+919425394411" class="btn btn-outline">📞 Call Now</a>
+</div>
+</div>
+<div class="hero-dots">
+<span class="active" onclick="goSlide(0)"></span>
+<span onclick="goSlide(1)"></span>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+<div class="about-grid">
+<div>
+<div class="section-label">About Us</div>
+<h2 class="section-title">Journeys Blessed by Maa Sharda</h2>
+<p class="section-desc">Rooted in faith and driven by service, MAA Sharda Travels has been Satna's most trusted travel partner for over 18 years. Named after the revered Maa Sharda of Maihar, we bring devotion to every journey — from daily commutes to sacred pilgrimages.</p>
+<div class="about-features">
+<div class="about-feat"><h4>🙏 Faith-Driven</h4><p>Named after Maa Sharda — every trip is blessed</p></div>
+<div class="about-feat"><h4>🚗 18+ Years</h4><p>Trusted by thousands of families across MP</p></div>
+<div class="about-feat"><h4>📍 All India</h4><p>Local, outstation & pilgrimage routes</p></div>
+<div class="about-feat"><h4>💯 Safe & Clean</h4><p>Well-maintained fleet, verified drivers</p></div>
+</div>
+</div>
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=800&q=80" alt="Temple pilgrimage">
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="container">
+<div class="section-label">Our Services</div>
+<h2 class="section-title">Travel Solutions for Every Need</h2>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🚕</div>
+<h3>Local Taxi</h3>
+<p>Comfortable city rides across Satna. Quick pickups, clean cars, and professional drivers at your doorstep.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🛣️</div>
+<h3>Outstation Cabs</h3>
+<p>Travel to Rewa, Jabalpur, Prayagraj, Bhopal and beyond with fixed pricing and zero hidden charges.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🙏</div>
+<h3>Pilgrimage Tours</h3>
+<p>Specialized pilgrimage packages to Maihar Sharda Devi, Chitrakoot, Prayagraj and other sacred destinations.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">📦</div>
+<h3>Tour Packages</h3>
+<p>Curated multi-day tour packages for families and groups — covering MP, UP, and Rajasthan circuits.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">👥</div>
+<h3>Group Travel</h3>
+<p>Tempo Travellers and mini-buses for group pilgrimages, weddings, and corporate outings.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PILGRIMAGE -->
+<section class="pilgrimage" id="pilgrimage">
+<div class="container">
+<div class="section-label">Pilgrimage Packages</div>
+<h2 class="section-title">Sacred Journeys, Divine Blessings</h2>
+<p class="section-desc">Experience spiritually enriching pilgrimages with comfortable travel and experienced guides.</p>
+<div class="pilgrimage-cards">
+<div class="pilgrim-card">
+<h3>🕉️ Maihar Sharda Devi</h3>
+<p>Visit the sacred hilltop temple of Maa Sharda in Maihar — just 40 km from Satna. Includes ropeway assistance and darshan coordination.</p>
+<div class="price">₹1,500 <span style="font-size:.8rem;font-weight:400">/ round trip</span></div>
+</div>
+<div class="pilgrim-card">
+<h3>🙏 Chitrakoot Dham</h3>
+<p>The land of Lord Ram's exile. Visit Kamadgiri, Ram Ghat, Sati Anusuya and other sacred sites with our guided pilgrimage.</p>
+<div class="price">₹2,500 <span style="font-size:.8rem;font-weight:400">/ person</span></div>
+</div>
+<div class="pilgrim-card">
+<h3>✨ Prayagraj Sangam</h3>
+<p>Holy dip at the Triveni Sangam. Complete Prayagraj darshan including Hanuman Mandir, Akshay Vat, and Allahabad Fort.</p>
+<div class="price">₹4,000 <span style="font-size:.8rem;font-weight:400">/ person</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="stats-grid">
+<div class="stat-item"><h3><span class="counter" data-target="18">0</span>+</h3><p>Years of Service</p></div>
+<div class="stat-item"><h3><span class="counter" data-target="25000">0</span>+</h3><p>Happy Travellers</p></div>
+<div class="stat-item"><h3><span class="counter" data-target="50">0</span>+</h3><p>Vehicles in Fleet</p></div>
+<div class="stat-item"><h3><span class="counter" data-target="500">0</span>+</h3><p>Pilgrimages Completed</p></div>
+</div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet" id="fleet">
+<div class="container">
+<div class="section-label">Our Fleet</div>
+<h2 class="section-title">Well-Maintained & Comfortable</h2>
+<div class="fleet-tabs">
+<button class="fleet-tab active" onclick="filterFleet('all',this)">All</button>
+<button class="fleet-tab" onclick="filterFleet('sedan',this)">Sedans</button>
+<button class="fleet-tab" onclick="filterFleet('suv',this)">SUVs</button>
+<button class="fleet-tab" onclick="filterFleet('tempo',this)">Tempo Traveller</button>
+</div>
+<div class="fleet-gallery">
+<div class="fleet-item" data-cat="sedan">
+<img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0abb?w=600&q=80" alt="Sedan">
+<div class="fleet-label"><h4>Swift Dzire / Etios</h4><p>4+1 Seater • AC • Perfect for city rides</p></div>
+</div>
+<div class="fleet-item" data-cat="suv">
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80" alt="SUV">
+<div class="fleet-label"><h4>Innova / Ertiga</h4><p>6+1 Seater • AC • Family & outstation</p></div>
+</div>
+<div class="fleet-item" data-cat="tempo">
+<img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=80" alt="Tempo">
+<div class="fleet-label"><h4>Tempo Traveller</h4><p>12-17 Seater • AC • Group pilgrimages</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+<div class="container">
+<div class="section-label">Book Now</div>
+<h2 class="section-title">Start Your Journey</h2>
+<div class="booking-form">
+<form class="form-grid" onsubmit="submitForm(event)">
+<div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+<div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your phone" required></div>
+<div class="form-group"><label>Pickup Location</label><input type="text" placeholder="From where?"></div>
+<div class="form-group"><label>Drop Location</label><input type="text" placeholder="Where to?"></div>
+<div class="form-group"><label>Travel Date</label><input type="date" required></div>
+<div class="form-group"><label>Vehicle Type</label>
+<select><option>Sedan (4 Seater)</option><option>SUV (6-7 Seater)</option><option>Tempo Traveller</option><option>Mini Bus</option></select>
+</div>
+<div class="form-group full"><label>Special Requirements</label><textarea rows="3" placeholder="Pilgrimage details, extra stops, etc."></textarea></div>
+<div class="form-submit"><button type="submit" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 3rem">🙏 Submit Booking Request</button></div>
+</form>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+<div class="container">
+<div class="section-label">Testimonials</div>
+<h2 class="section-title">What Our Travellers Say</h2>
+<div class="reviews-track">
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<p>"Booked for Maihar darshan — the driver was on time, car was spotless. Maa Sharda Travels truly lives up to its name. Blessed experience!"</p>
+<div class="review-author">— Rajesh Tiwari</div>
+</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<p>"Family trip to Chitrakoot was beautifully organized. Kids loved the comfortable Innova. Will book again for our Prayagraj trip!"</p>
+<div class="review-author">— Sunita Shukla</div>
+</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<p>"Best taxi service in Satna. Reasonable prices, polite drivers, and they handle group pilgrimages so well. Highly recommended."</p>
+<div class="review-author">— Amit Pandey</div>
+</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<p>"Used them for airport transfer to Jabalpur and then a Maihar pilgrimage. Both trips were flawless. Great communication too."</p>
+<div class="review-author">— Priya Dwivedi</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container">
+<div class="section-label">Contact Us</div>
+<h2 class="section-title">Get In Touch</h2>
+<div class="contact-grid">
+<div class="contact-info">
+<div class="contact-item">
+<div class="ci-icon">📍</div>
+<div><h4>Our Office</h4><p>Shop No 7, Near Bus Stand, Opp Gopal Complex, Satna, MP</p></div>
+</div>
+<div class="contact-item">
+<div class="ci-icon">📞</div>
+<div><h4>Phone (Primary)</h4><a href="tel:+919425394411">+91 94253 94411</a></div>
+</div>
+<div class="contact-item">
+<div class="ci-icon">📞</div>
+<div><h4>Phone (Alternate)</h4><a href="tel:+919424673000">+91 94246 73000</a></div>
+</div>
+<div class="contact-item">
+<div class="ci-icon">⏰</div>
+<div><h4>Working Hours</h4><p>24/7 — Available round the clock</p></div>
+</div>
+</div>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3629.5!2d80.832!3d24.579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM0JzQ0LjQiTiA4MMKwNDknNTUuMiJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-links">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#pilgrimage">Pilgrimage</a>
+<a href="#booking">Book Now</a>
+<a href="#contact">Contact</a>
+</div>
+<p>© 2025 MAA Sharda Travels, Satna. All rights reserved. | Journeys Blessed by Maa Sharda 🙏</p>
+</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919425394411?text=Namaste!%20I%20want%20to%20book%20a%20ride%20with%20Maa%20Sharda%20Travels." class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+
+// Mobile menu
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('active')}
+
+// Hero slider
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+
+// Counter animation
+const counters=document.querySelectorAll('.counter');
+const counterObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const counter=entry.target;const target=+counter.dataset.target;const duration=2000;const start=performance.now();const animate=(now)=>{const elapsed=now-start;const progress=Math.min(elapsed/duration,1);counter.textContent=Math.floor(progress*target).toLocaleString();if(progress<1)requestAnimationFrame(animate)};requestAnimationFrame(animate);counterObserver.unobserve(counter)}})},{threshold:.5});
+counters.forEach(c=>counterObserver.observe(c));
+
+// Fleet filter
+function filterFleet(cat,btn){
+document.querySelectorAll('.fleet-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+document.querySelectorAll('.fleet-item').forEach(item=>{item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none'});
+}
+
+// Form submit
+function submitForm(e){e.preventDefault();const phone='919425394411';const name=e.target.querySelector('input[type=text]').value;window.open('https://wa.me/'+phone+'?text=Namaste! Booking request from '+encodeURIComponent(name),'_blank');alert('🙏 Thank you! Redirecting to WhatsApp...')}
+</script>
+</body>
+</html>
