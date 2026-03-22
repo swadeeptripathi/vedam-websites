@@ -1,179 +1,570 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS Fitness Club | Gwalior</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@300;400;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Ss Fitness Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --primary: #1a1a2e;
-    --accent: #e94560;
-    --accent2: #f5a623;
-    --bg: #0f0f0f;
-    --text: #ffffff;
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Open Sans', 'Open Sans', sans-serif; overflow-x: hidden; }
-  
-  /* NAV */
-  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-  .nav-logo { font-family: 'Oswald', serif; font-size: 1.4rem; color: var(--accent); letter-spacing: 1px; }
-  .nav-phone { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.95rem; }
-  .nav-phone:hover { color: white; }
-  
-  /* HERO */
-  .hero { min-height: 100vh; background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 60%); pointer-events: none; }
-  .hero-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 50px; margin-bottom: 1.5rem; }
-  .hero h1 { font-family: 'Oswald', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
-  .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 1.2rem; opacity: 0.85; max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
-  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: var(--accent); color: #fff; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-  .btn-outline { border: 2px solid var(--accent); color: var(--accent); padding: 0.85rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; font-size: 1rem; transition: all 0.2s; }
-  .btn-outline:hover { background: var(--accent); color: #fff; }
-  
-  /* ANIMATED SHAPES */
-  .shape { position: absolute; border-radius: 50%; opacity: 0.07; animation: float 8s ease-in-out infinite; }
-  .shape-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; right: -100px; animation-delay: 0s; }
-  .shape-2 { width: 250px; height: 250px; background: var(--accent2); bottom: -50px; left: -50px; animation-delay: 3s; }
-  @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-  
-  /* STATS STRIP */
-  .stats { background: var(--primary); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 2rem; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
-  .stat { text-align: center; }
-  .stat-num { font-family: 'Oswald', serif; font-size: 2.2rem; font-weight: 700; color: var(--accent); }
-  .stat-label { font-size: 0.85rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; }
-  
-  /* SERVICES */
-  .services { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .section-title { text-align: center; font-family: 'Oswald', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; }
-  .section-sub { text-align: center; opacity: 0.6; margin-bottom: 3rem; font-size: 1.05rem; }
-  .section-line { width: 60px; height: 3px; background: var(--accent); margin: 0.8rem auto 3rem; border-radius: 2px; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-  .service-card { background: var(--primary); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 2rem; text-align: center; transition: transform 0.3s, border-color 0.3s; }
-  .service-card:hover { transform: translateY(-6px); border-color: var(--accent); }
-  .service-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; }
-  .service-card h3 { font-size: 1.05rem; font-weight: 600; }
-  
-  /* WHY US */
-  .why { padding: 5rem 2rem; background: var(--primary); }
-  .why-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-  .why-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
-  .why-point { padding: 1.5rem; }
-  .why-point-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-  .why-point h4 { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; }
-  .why-point p { font-size: 0.9rem; opacity: 0.7; line-height: 1.6; }
-  
-  /* CONTACT */
-  .contact { padding: 6rem 2rem; max-width: 700px; margin: 0 auto; text-align: center; }
-  .contact-card { background: var(--primary); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem 2rem; margin-top: 2rem; }
-  .contact-item { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.2rem 0; font-size: 1.05rem; }
-  .contact-icon { font-size: 1.3rem; }
-  .contact-item a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  .contact-item a:hover { text-decoration: underline; }
-  .cta-wa { display: inline-flex; align-items: center; gap: 0.7rem; background: #25D366; color: white; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; text-decoration: none; margin-top: 2rem; font-size: 1.05rem; transition: transform 0.2s, box-shadow 0.2s; }
-  .cta-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
-  
-  /* FOOTER */
-  footer { background: #000; padding: 2rem; text-align: center; font-size: 0.85rem; opacity: 0.5; }
-  .powered-by { background: var(--primary); text-align: center; padding: 1rem; font-size: 0.8rem; opacity: 0.6; letter-spacing: 1px; }
-  
-  /* WHATSAPP FLOAT */
-  .whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); z-index: 9999; transition: transform 0.3s; animation: pulse-wa 2.5s infinite; }
-  .whatsapp-float:hover { transform: scale(1.1); }
-  @keyframes pulse-wa { 0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); } 50% { box-shadow: 0 4px 35px rgba(37,211,102,0.8); } }
-  
-  @media(max-width: 600px) {
-    .stats { gap: 2rem; }
-    nav { padding: 0.8rem 1.2rem; }
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#1a1a1a;--accent:#FF4500;--text:#ffffff;--subtext:rgba(255,255,255,0.75);--card:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.1);--font1:'Plus Jakarta Sans',serif;--font2:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font2);overflow-x:hidden;}
+/* NAVBAR */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:65px;}
+.logo{font-family:var(--font1);font-size:1.5rem;font-weight:700;color:var(--accent);text-decoration:none;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:var(--text);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:var(--accent);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:25px;height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+.mobile-menu{display:none;position:fixed;top:65px;left:0;width:100%;background:var(--bg);padding:20px 5%;border-bottom:1px solid var(--border);}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:12px 0;color:var(--text);text-decoration:none;font-size:1rem;border-bottom:1px solid var(--border);}
+/* HERO */
+.hero{height:100vh;position:relative;overflow:hidden;}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity 1s ease;opacity:0;}
+.hero-slide.active{opacity:1;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 100%);}
+.hero-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 8%;max-width:800px;}
+.hero-tag{background:var(--accent);color:#fff;padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;display:inline-block;}
+.hero-content h1{font-family:var(--font1);font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.1;margin-bottom:20px;color:#fff;}
+.hero-content p{font-size:1.15rem;line-height:1.7;color:rgba(255,255,255,.85);margin-bottom:35px;max-width:600px;}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;transition:transform .3s,box-shadow .3s;display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3);}
+.btn-outline{border:2px solid #fff;color:#fff;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;display:inline-block;margin-left:12px;}
+.btn-outline:hover{background:#fff;color:var(--bg);}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.3s;}
+.hero-dot.active{background:var(--accent);width:28px;border-radius:5px;}
+/* SECTIONS */
+section{padding:90px 8%;}
+.section-tag{color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.section-title{font-family:var(--font1);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:16px;}
+.section-subtitle{color:var(--subtext);font-size:1rem;line-height:1.7;max-width:600px;}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px;}
+.about-img{border-radius:16px;overflow:hidden;height:420px;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-text h2{font-family:var(--font1);font-size:2.2rem;font-weight:700;margin-bottom:20px;}
+.about-text p{color:var(--subtext);line-height:1.8;margin-bottom:16px;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
+.about-stat{text-align:center;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;}
+.about-stat .num{font-family:var(--font1);font-size:2rem;font-weight:800;color:var(--accent);}
+.about-stat .lbl{font-size:.85rem;color:var(--subtext);}
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:50px;}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px;transition:transform .3s,border-color .3s;}
+.service-card:hover{transform:translateY(-6px);border-color:var(--accent);}
+.service-icon{width:52px;height:52px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;}
+.service-card h3{font-family:var(--font1);font-size:1.2rem;font-weight:600;margin-bottom:10px;}
+.service-card p{color:var(--subtext);font-size:.9rem;line-height:1.7;}
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px;margin-top:50px;}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s;}
+.team-card:hover{transform:translateY(-6px);}
+.team-photo{height:240px;overflow:hidden;}
+.team-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.team-card:hover .team-photo img{transform:scale(1.05);}
+.team-info{padding:20px;}
+.team-info h3{font-family:var(--font1);font-size:1.1rem;font-weight:600;margin-bottom:6px;}
+.team-info p{color:var(--accent);font-size:.85rem;font-weight:500;}
+/* SCHEDULE */
+.schedule-wrap{margin-top:50px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+table th{background:var(--accent);color:#fff;padding:14px 20px;text-align:left;font-size:.9rem;}
+table td{padding:13px 20px;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--subtext);}
+table tr:nth-child(even){background:var(--card);}
+/* GALLERY */
+.gallery-tabs{display:flex;gap:12px;margin:40px 0 30px;}
+.gallery-tab{padding:10px 24px;border-radius:24px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;font-size:.9rem;transition:.3s;}
+.gallery-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.gallery-pane{display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.gallery-pane.active{display:grid;}
+.gallery-pane img{width:100%;height:200px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .3s;}
+.gallery-pane img:hover{transform:scale(1.04);}
+/* STATS */
+.stats-section{background:var(--accent);padding:70px 8%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}
+.stat-item .counter{font-family:var(--font1);font-size:3rem;font-weight:800;color:#fff;}
+.stat-item p{color:rgba(255,255,255,.85);font-size:.9rem;margin-top:6px;}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px;}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;transition:.3s;}
+.price-card.featured{border-color:var(--accent);background:var(--accent);transform:scale(1.04);}
+.price-card h3{font-family:var(--font1);font-size:1.3rem;font-weight:700;margin-bottom:12px;}
+.price-card .price{font-size:2.8rem;font-weight:800;color:var(--accent);margin:16px 0;}
+.price-card.featured .price{color:#fff;}
+.price-card ul{list-style:none;margin:20px 0;text-align:left;}
+.price-card ul li{padding:8px 0;color:var(--subtext);font-size:.9rem;display:flex;align-items:center;gap:8px;}
+.price-card ul li::before{content:"âœ“";color:var(--accent);font-weight:700;}
+.price-card.featured ul li{color:rgba(255,255,255,.9);}
+.price-card.featured ul li::before{color:#fff;}
+/* TESTIMONIALS */
+.testimonial-wrap{position:relative;margin-top:50px;overflow:hidden;}
+.testimonial-track{display:flex;transition:transform .5s;}
+.testimonial-card{min-width:100%;padding:40px;background:var(--card);border:1px solid var(--border);border-radius:16px;}
+.testimonial-card .stars{color:#FFD700;font-size:1.2rem;margin-bottom:16px;}
+.testimonial-card p{font-size:1.05rem;line-height:1.8;font-style:italic;margin-bottom:24px;color:var(--text);}
+.testimonial-card .reviewer{display:flex;align-items:center;gap:14px;}
+.reviewer-photo{width:50px;height:50px;border-radius:50%;object-fit:cover;}
+.reviewer-info h4{font-weight:600;font-size:.95rem;}
+.reviewer-info span{font-size:.8rem;color:var(--subtext);}
+.testimonial-nav{display:flex;gap:10px;margin-top:24px;justify-content:center;}
+.testimonial-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;color:var(--text);font-size:1rem;transition:.3s;}
+.testimonial-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:50px;}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:.9rem;font-weight:500;margin-bottom:8px;color:var(--subtext);}
+.form-group input,.form-group textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:var(--font2);font-size:.95rem;transition:.3s;}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group textarea{height:120px;resize:none;}
+.contact-info h3{font-family:var(--font1);font-size:1.8rem;margin-bottom:24px;}
+.info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.info-icon{width:44px;height:44px;min-width:44px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.info-item p{color:var(--subtext);font-size:.95rem;line-height:1.6;}
+.map-wrap{border-radius:12px;overflow:hidden;margin-top:24px;height:200px;}
+.map-wrap iframe{width:100%;height:100%;border:none;}
+/* FOOTER */
+footer{background:var(--card);border-top:1px solid var(--border);padding:50px 8% 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand p{color:var(--subtext);font-size:.9rem;line-height:1.7;margin-top:12px;}
+.footer-col h4{font-family:var(--font1);font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--accent);}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul a{color:var(--subtext);text-decoration:none;font-size:.9rem;transition:.3s;}
+.footer-col ul a:hover{color:var(--accent);}
+.footer-bottom{text-align:center;color:var(--subtext);font-size:.85rem;padding-top:20px;border-top:1px solid var(--border);}
+/* WHATSAPP */
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff;}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}.pricing-grid .price-card.featured{transform:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .nav-links{display:none;}.hamburger{display:flex;}
+  section{padding:70px 5%;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .hero-content{padding:0 5%;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-  <div class="nav-logo">SS Fitness Club</div>
-  <a href="tel:+917974213019" class="nav-phone">+917974213019</a>
-</nav>
-
-<section class="hero">
-  <div class="shape shape-1"></div>
-  <div class="shape shape-2"></div>
-  <div>
-    <div class="hero-badge">Gym & Fitness</div>
-    <h1>SS Fitness Club</h1>
-    <p>Transform Your Body. Transform Your Life.</p>
-    <div class="hero-cta">
-      <a href="tel:+917974213019" class="btn-primary">📞 Call Now</a>
-      <a href="https://wa.me/917974213019?text=Hello%2C%20I%20found%20you%20on%20VEDAM%20and%20would%20like%20to%20enquire." target="_blank" class="btn-outline">💬 WhatsApp</a>
-    </div>
+  <div class="nav-inner">
+    <a href="#" class="logo">Ss Fitness Club</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-</section>
-
-<div class="stats">
-  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Clients</div></div>
-  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
-  <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Google Rating</div></div>
-  <div class="stat"><div class="stat-num">Gwalior</div><div class="stat-label">City, M.P.</div></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#team" onclick="toggleMenu()">Team</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
 
-<section class="services">
-  <h2 class="section-title">Our Services</h2>
-  <p class="section-sub">Everything you need, under one roof</p>
-  <div class="section-line"></div>
-  <div class="services-grid">
-    <div class="service-card"><div class="service-icon">✦</div><h3>Personal Training</h3></div><div class="service-card"><div class="service-icon">✦</div><h3>Group Classes</h3></div><div class="service-card"><div class="service-icon">✦</div><h3>Weight Training</h3></div><div class="service-card"><div class="service-icon">✦</div><h3>Cardio Zone</h3></div><div class="service-card"><div class="service-icon">✦</div><h3>Nutrition Counseling</h3></div><div class="service-card"><div class="service-icon">✦</div><h3>Yoga & Flexibility</h3></div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Welcome to Ss Fitness Club</span>
+    <h1>Excellence<br>Redefined</h1>
+    <p>Your ultimate fitness destination. State-of-the-art equipment, expert trainers, and a community that pushes you to your best.</p>
+    <div>
+      <a href="#contact" class="btn-primary">Book Now</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <div class="hero-dot active" onclick="goToSlide(0)"></div>
+    <div class="hero-dot" onclick="goToSlide(1)"></div>
   </div>
 </section>
 
-<section class="why">
-  <div class="why-inner">
-    <h2 class="section-title">Why Choose Us?</h2>
-    <div class="section-line"></div>
-    <div class="why-points">
-      <div class="why-point">
-        <div class="why-point-icon">🏆</div>
-        <h4>Trusted Experts</h4>
-        <p>Years of experience serving Gwalior with excellence and dedication.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-point-icon">💯</div>
-        <h4>Quality First</h4>
-        <p>We never compromise on the quality of our service or products.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-point-icon">🤝</div>
-        <h4>Client Focused</h4>
-        <p>Your satisfaction is our priority. We go the extra mile for you.</p>
-      </div>
-      <div class="why-point">
-        <div class="why-point-icon">⚡</div>
-        <h4>Quick Response</h4>
-        <p>Reach us anytime. We're always available to help you promptly.</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About Us</div>
+  <div class="about-grid">
+    <div class="about-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="About Ss Fitness Club" loading="lazy"></div>
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>Ss Fitness Club has been serving our community with dedication, passion, and excellence. We believe every client deserves the best, and our team works tirelessly to deliver outstanding results.</p>
+      <p>Founded with a mission to raise the bar in our industry, we combine expertise with heartfelt service. Our state-of-the-art facilities and trained professionals ensure you always leave satisfied.</p>
+      <div class="about-stats">
+        <div class="about-stat"><div class="num" data-target="5000">0</div><div class="lbl">Happy Clients</div></div>
+        <div class="about-stat"><div class="num" data-target="10">0</div><div class="lbl">Years Experience</div></div>
+        <div class="about-stat"><div class="num" data-target="25">0</div><div class="lbl">Expert Staff</div></div>
+        <div class="about-stat"><div class="num" data-target="98">0</div><div class="lbl">% Satisfaction</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="contact">
-  <h2 class="section-title">Get In Touch</h2>
-  <div class="section-line"></div>
-  <div class="contact-card">
-    <div class="contact-item"><span class="contact-icon">📞</span><a href="tel:+917974213019">+917974213019</a></div>
-<div class="contact-item"><span class="contact-icon">📍</span><span>Gwalior, Madhya Pradesh</span></div>
-    <a href="https://wa.me/917974213019?text=Hello%2C%20I%20found%20you%20on%20VEDAM%20and%20would%20like%20to%20enquire." target="_blank" class="cta-wa"><svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Chat on WhatsApp</a>
+<!-- SERVICES -->
+<section id="services" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-tag">What We Offer</div>
+  <h2 class="section-title">Our Services</h2>
+  <p class="section-subtitle">Comprehensive solutions designed to meet your every need with quality and care.</p>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">â­</div><h3>Strength Training</h3><p>Professional Strength Training services delivered by our expert team with precision and care.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸ†</div><h3>Cardio Zone</h3><p>Experience top-tier Cardio Zone designed to exceed your expectations every time.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸ’Ž</div><h3>CrossFit Classes</h3><p>Premium CrossFit Classes experience tailored to your specific needs and goals.</p></div>
+    <div class="service-card"><div class="service-icon">âœ¨</div><h3>Yoga & Flexibility</h3><p>Transformative Yoga & Flexibility that delivers real, measurable results you can see.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸŽ¯</div><h3>Personal Training</h3><p>Dedicated Personal Training with personalised attention and expert guidance.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸ”¥</div><h3>Nutrition Guidance</h3><p>Comprehensive Nutrition Guidance support to complement your journey with us.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸ’ª</div><h3>Group Fitness</h3><p>Energetic Group Fitness in a supportive, motivating environment for all levels.</p></div>
+    <div class="service-card"><div class="service-icon">ðŸŒŸ</div><h3>Zumba Classes</h3><p>Exciting Zumba Classes options to keep your experience fresh and rewarding.</p></div>
   </div>
 </section>
 
-<div class="powered-by">Powered by <strong>VEDAM</strong> · Professional Web Presence</div>
-<footer>© 2025 SS Fitness Club · Gwalior, Madhya Pradesh · All Rights Reserved</footer>
+<!-- TEAM -->
+<section id="team">
+  <div class="section-tag">Our Expert Trainers</div>
+  <h2 class="section-title">Meet Our Team</h2>
+  <p class="section-subtitle">Passionate professionals dedicated to delivering excellence in everything they do.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-photo"><img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&q=80" alt="Team member" loading="lazy"></div>
+      <div class="team-info"><h3>Rajesh Sharma</h3><p>Senior Specialist</p></div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Team member" loading="lazy"></div>
+      <div class="team-info"><h3>Priya Verma</h3><p>Lead Expert</p></div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Team member" loading="lazy"></div>
+      <div class="team-info"><h3>Amit Gupta</h3><p>Senior Consultant</p></div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Team member" loading="lazy"></div>
+      <div class="team-info"><h3>Neha Singh</h3><p>Specialist</p></div>
+    </div>
+  </div>
+</section>
 
-<a href="https://wa.me/917974213019?text=Hello%2C%20I%20found%20you%20on%20VEDAM%20and%20would%20like%20to%20enquire." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
+<!-- SCHEDULE -->
+<section id="schedule" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-tag">Class Schedule</div>
+  <h2 class="section-title">Class Schedule</h2>
+  <p class="section-subtitle">Plan your visit and make the most of our services and offerings.</p>
+  <div class="schedule-wrap">
+    <table>
+      <thead><tr><th>Day</th><th>Morning</th><th>Afternoon</th><th>Evening</th><th>Timing</th></tr></thead>
+      <tbody>
+        <tr><td>Monday</td><td>Strength Training</td><td>Cardio Zone</td><td>CrossFit Classes</td><td>9 AM â€“ 8 PM</td></tr>
+        <tr><td>Tuesday</td><td>Yoga & Flexibility</td><td>Personal Training</td><td>Nutrition Guidance</td><td>9 AM â€“ 8 PM</td></tr>
+        <tr><td>Wednesday</td><td>Strength Training</td><td>CrossFit Classes</td><td>Group Fitness</td><td>9 AM â€“ 8 PM</td></tr>
+        <tr><td>Thursday</td><td>Cardio Zone</td><td>Yoga & Flexibility</td><td>Zumba Classes</td><td>9 AM â€“ 8 PM</td></tr>
+        <tr><td>Friday</td><td>Personal Training</td><td>Nutrition Guidance</td><td>Strength Training</td><td>9 AM â€“ 8 PM</td></tr>
+        <tr><td>Saturday</td><td>CrossFit Classes</td><td>Group Fitness</td><td>Zumba Classes</td><td>9 AM â€“ 9 PM</td></tr>
+        <tr><td>Sunday</td><td>Cardio Zone</td><td>Yoga & Flexibility</td><td>Nutrition Guidance</td><td>10 AM â€“ 6 PM</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-tag">Our Work</div>
+  <h2 class="section-title">Gallery</h2>
+  <p class="section-subtitle">A glimpse of our space, work, and the experiences we create.</p>
+  <div class="gallery-tabs">
+    <button class="gallery-tab active" onclick="showTab('tab1',this)">Interior</button>
+    <button class="gallery-tab" onclick="showTab('tab2',this)">Work</button>
+    <button class="gallery-tab" onclick="showTab('tab3',this)">Events</button>
+  </div>
+  <div id="tab1" class="gallery-pane active">
+    <img src="https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1560185127-6a17789e3e32?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Gallery" loading="lazy">
+  </div>
+  <div id="tab2" class="gallery-pane">
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Gallery" loading="lazy">
+  </div>
+  <div id="tab3" class="gallery-pane">
+    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80" alt="Gallery" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Gallery" loading="lazy">
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item"><div class="counter" data-target="5000">0</div><p>Happy Clients</p></div>
+    <div class="stat-item"><div class="counter" data-target="10">0</div><p>Years in Business</p></div>
+    <div class="stat-item"><div class="counter" data-target="25">0</div><p>Team Members</p></div>
+    <div class="stat-item"><div class="counter" data-target="98">0</div><p>% Satisfaction Rate</p></div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag">Plans & Packages</div>
+  <h2 class="section-title">Pricing</h2>
+  <p class="section-subtitle">Transparent, value-packed plans for every need and budget.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Basic</h3>
+      <div class="price">&#8377;999</div>
+      <ul>
+        <li>Access to Strength Training</li>
+        <li>Cardio Zone</li>
+        <li>Basic support</li>
+        <li>Online booking</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Get Started</a>
+    </div>
+    <div class="price-card featured">
+      <h3>Pro â­</h3>
+      <div class="price">&#8377;1999</div>
+      <ul>
+        <li>Everything in Basic</li>
+        <li>CrossFit Classes</li>
+        <li>Yoga & Flexibility</li>
+        <li>Priority booking</li>
+        <li>Personalised care</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="background:#fff;color:var(--accent);">Most Popular</a>
+    </div>
+    <div class="price-card">
+      <h3>Elite</h3>
+      <div class="price">&#8377;3499</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>Personal Training</li>
+        <li>Nutrition Guidance</li>
+        <li>VIP treatment</li>
+        <li>Exclusive benefits</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-tag">Client Stories</div>
+  <h2 class="section-title">Testimonials</h2>
+  <p class="section-subtitle">What our valued clients say about their experience with us.</p>
+  <div class="testimonial-wrap">
+    <div class="testimonial-track" id="testimonialTrack">
+      <div class="testimonial-card">
+        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+        <p>"Absolutely fantastic experience! The team at Ss Fitness Club truly went above and beyond. I couldn't be happier with the results and will definitely be back."</p>
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" class="reviewer-photo" alt="Reviewer">
+          <div class="reviewer-info"><h4>Anjali Mehta</h4><span>Regular Client</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+        <p>"Ss Fitness Club has completely transformed my expectations. The staff is professional, the environment is welcoming, and the quality is unmatched in the city."</p>
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" class="reviewer-photo" alt="Reviewer">
+          <div class="reviewer-info"><h4>Vikram Patel</h4><span>Loyal Member</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+        <p>"I've been coming to Ss Fitness Club for over two years now. Every single visit is a delight. They know what you need before you even ask. Highly recommended!"</p>
+        <div class="reviewer">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" class="reviewer-photo" alt="Reviewer">
+          <div class="reviewer-info"><h4>Kavya Nair</h4><span>Happy Customer</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-nav">
+      <button class="testimonial-btn" onclick="moveTestimonial(-1)">&#8592;</button>
+      <button class="testimonial-btn" onclick="moveTestimonial(1)">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">Contact Us</h2>
+  <p class="section-subtitle">We'd love to hear from you. Reach out and we'll get back to you promptly.</p>
+  <div class="contact-grid">
+    <div class="contact-form">
+      <h3 style="font-family:var(--font1);margin-bottom:24px;">Send a Message</h3>
+      <form onsubmit="handleForm(event)">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your name" required></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help you..."></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%;border:none;cursor:pointer;">Send Message</button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h3>Visit Us</h3>
+      <div class="info-item">
+        <div class="info-icon">ðŸ“</div>
+        <div><strong>Address</strong><p>Near Main Square, City Centre<br>Madhya Pradesh, India</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">ðŸ“ž</div>
+        <div><strong>Phone</strong><p><a href="tel:+917974213019" style="color:var(--accent);text-decoration:none;">+91 7974213019</a></p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">ðŸ•</div>
+        <div><strong>Hours</strong><p>Monâ€“Sat: 9 AM â€“ 8 PM<br>Sunday: 10 AM â€“ 6 PM</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">âœ‰ï¸</div>
+        <div><strong>Email</strong><p>hello@ss-fitness-club.com</p></div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14444.35!2d77.4126!3d23.1765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDEwJzM1LjQiTiA3N8KwMjQnNDUuNCJF!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Ss Fitness Club</a>
+      <p>Your trusted destination for quality, care, and excellence. We are committed to delivering the best experience every time you visit us.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Strength Training</a></li>
+        <li><a href="#services">Cardio Zone</a></li>
+        <li><a href="#services">CrossFit Classes</a></li>
+        <li><a href="#services">Yoga & Flexibility</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+917974213019">+91 7974213019</a></li>
+        <li><a href="#contact">Get Directions</a></li>
+        <li><a href="#contact">Book Appointment</a></li>
+        <li><a href="#contact">Send Message</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Â© 2025 Ss Fitness Club. All rights reserved. | Designed with â¤ï¸ in India</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/917974213019" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+// Hero slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Gallery tabs
+function showTab(id, el) {
+  document.querySelectorAll('.gallery-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// Testimonials slider
+let tIdx = 0;
+const tTrack = document.getElementById('testimonialTrack');
+const tCards = tTrack.querySelectorAll('.testimonial-card');
+function moveTestimonial(dir) {
+  tIdx = (tIdx + dir + tCards.length) % tCards.length;
+  tTrack.style.transform = 'translateX(-' + (tIdx * 100) + '%)';
+}
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.getAttribute('data-target');
+    const inc = target / 80;
+    let current = 0;
+    const update = () => {
+      current += inc;
+      if (current < target) { el.textContent = Math.ceil(current); requestAnimationFrame(update); }
+      else { el.textContent = target; }
+    };
+    update();
+  });
+}
+const statsSection = document.querySelector('.stats-section');
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateCounters(); observer.disconnect(); }
+});
+observer.observe(statsSection);
+
+// Form handler
+function handleForm(e) {
+  e.preventDefault();
+  alert('Thank you! We will contact you shortly.');
+  e.target.reset();
+}
+</script>
 </body>
 </html>

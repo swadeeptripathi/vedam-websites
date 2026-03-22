@@ -3,253 +3,447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virmani Classes Jabalpur | Jabalpur</title>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Virmani Classes - Jabalpur | VEDAM</title>
+<meta name="description" content="Virmani Classes in Jabalpur. Coaching Institute services. Call +919893901113 for appointments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #0a1628;
-    --accent: #c5a030;
-    --accent2: #f0c040;
-    --text: #e8e8f0;
-    --card-bg: #0f1e3a;
-    --hero-grad: linear-gradient(135deg, #0a1628 0%, #0f2040 50%, #1a3060 100%);
-    --font1: 'Merriweather', serif;
-    --font2: 'Source Sans Pro', sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--primary); color: var(--text); font-family: var(--font2); overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D1B2A;--accent:#F4C430;--text:#ffffff;--muted:rgba(255,255,255,0.7);--card:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Montserrat',serif}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
-    padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--accent);
-  }
-  .nav-brand { font-family: var(--font1); font-size: 1.3rem; color: var(--accent); }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-cta {
-    background: var(--accent); color: #fff; padding: 0.5rem 1.2rem;
-    border-radius: 4px; font-size: 0.85rem; font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .nav-cta:hover { background: var(--accent2); transform: translateY(-2px); }
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.35);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Montserrat',serif;font-size:1.5rem;font-weight:700;color:var(--text);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:10px 22px;border-radius:25px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:opacity .3s}
+.nav-cta:hover{opacity:0.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:.3s}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;width:100%;background:var(--bg);padding:20px 5%;border-bottom:1px solid var(--border);z-index:999}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:12px 0;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);font-size:1rem}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    background: var(--hero-grad); position: relative; overflow: hidden; padding-top: 70px;
-  }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 700px; padding: 3rem 2rem; }
-  .hero-badge {
-    display: inline-block; background: var(--accent); color: #fff;
-    padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem;
-    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem;
-  }
-  .hero h1 {
-    font-family: var(--font1); font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.1; margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2rem; line-height: 1.7; max-width: 500px; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--accent); color: #fff; padding: 0.9rem 2rem;
-    border-radius: 6px; font-weight: 700; font-size: 1rem;
-    transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
-  }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-  .btn-outline {
-    border: 2px solid var(--accent); color: var(--accent); padding: 0.9rem 2rem;
-    border-radius: 6px; font-weight: 600; transition: all 0.3s;
-  }
-  .btn-outline:hover { background: var(--accent); color: #fff; }
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 20px;max-width:800px}
+.hero-badge{display:inline-block;background:var(--accent);color:#fff;padding:6px 18px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:20px;letter-spacing:1px}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:700;margin-bottom:16px;line-height:1.1;color:#fff}
+.hero p{font-size:clamp(1rem,2.5vw,1.3rem);color:rgba(255,255,255,0.85);margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 32px;border-radius:30px;text-decoration:none;font-weight:700;font-size:1rem;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.4)}
+.btn-outline{border:2px solid rgba(255,255,255,0.7);color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:1rem;transition:.3s}
+.btn-outline:hover{background:rgba(255,255,255,0.1)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:.3s}
+.hero-dot.active{background:var(--accent);width:26px;border-radius:5px}
 
-  /* Animated BG shapes */
-  .bg-shape {
-    position: absolute; border-radius: 50%;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.08; animation: pulse 6s infinite;
-  }
-  .bg-shape-1 { width: 600px; height: 600px; right: -100px; top: -100px; }
-  .bg-shape-2 { width: 300px; height: 300px; right: 200px; bottom: 50px; animation-delay: 3s; }
-  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.08; } 50% { transform: scale(1.1); opacity: 0.12; } }
+section{padding:80px 5%}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{display:inline-block;color:var(--accent);font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:16px}
+.section-header p{color:var(--muted);max-width:600px;margin:0 auto;font-size:1.05rem}
 
-  /* SECTIONS */
-  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .section-title { text-align: center; margin-bottom: 3rem; }
-  .section-title h2 { font-family: var(--font1); font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.5rem; }
-  .section-title h2 span { color: var(--accent); }
-  .section-title p { opacity: 0.7; font-size: 1rem; }
-  .divider { width: 60px; height: 3px; background: var(--accent); margin: 0.8rem auto 1.5rem; border-radius: 2px; }
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:16px;overflow:hidden}
+.about-img img{width:100%;height:450px;object-fit:cover;transition:transform .4s}
+.about-img:hover img{transform:scale(1.03)}
+.about-text h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:20px}
+.about-text h2 span{color:var(--accent)}
+.about-text p{color:var(--muted);margin-bottom:20px;font-size:1.05rem}
+.about-features{list-style:none;margin-top:28px}
+.about-features li{padding:8px 0;color:var(--muted);display:flex;align-items:center;gap:10px;font-size:0.95rem}
+.about-features li::before{content:"&#10003;";color:var(--accent);font-weight:800;font-size:1rem}
+.about-cta{display:inline-block;margin-top:28px;background:var(--accent);color:#fff;padding:13px 30px;border-radius:25px;text-decoration:none;font-weight:600;transition:opacity .3s}
+.about-cta:hover{opacity:0.85}
 
-  /* SERVICES */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-  .service-card {
-    background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px; padding: 2rem; transition: all 0.3s;
-    opacity: 0; animation: fadeUp 0.6s forwards;
-  }
-  .service-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-  .svc-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-  .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; font-family: var(--font1); }
-  .service-card p { font-size: 0.9rem; opacity: 0.7; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.bento-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.bento-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:transform .3s,border-color .3s}
+.bento-card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.bento-icon{font-size:2.2rem;margin-bottom:14px}
+.bento-card h3{font-size:1.05rem;font-weight:600;color:var(--text)}
 
-  /* WHY US */
-  .why-section { background: var(--card-bg); border-radius: 16px; padding: 3rem; margin: 0 auto 2rem; max-width: 1100px; }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
-  .why-item .num { font-size: 3rem; font-family: var(--font1); color: var(--accent); font-weight: 700; }
-  .why-item p { opacity: 0.8; font-size: 0.95rem; }
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s}
+.team-card:hover{transform:translateY(-5px)}
+.team-card img{width:100%;height:260px;object-fit:cover}
+.team-info{padding:20px}
+.team-info h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.team-info p{color:var(--accent);font-size:0.9rem;font-weight:600}
 
-  /* CONTACT */
-  .contact-wrapper { background: var(--card-bg); border-radius: 16px; padding: 3rem; max-width: 600px; margin: 0 auto; text-align: center; }
-  .contact-info { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
-  .contact-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; font-size: 1.1rem; }
-  .contact-row span:first-child { font-size: 1.5rem; }
+.schedule-table{width:100%;border-collapse:collapse}
+.schedule-table th,.schedule-table td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border)}
+.schedule-table th{color:var(--accent);font-weight:700;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px}
+.schedule-table td{color:var(--muted);font-size:0.95rem}
+.schedule-table tr:last-child td{border-bottom:none}
+.schedule-table tbody tr:hover{background:var(--card)}
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
 
-  /* FOOTER */
-  footer {
-    background: rgba(0,0,0,0.5); text-align: center; padding: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7;
-  }
-  footer span { color: var(--accent); }
+.gallery-tabs{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.tab-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:10px 24px;border-radius:25px;cursor:pointer;font-size:0.9rem;font-weight:600;transition:.3s}
+.tab-btn.active,.tab-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.gallery-panel{display:none;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gallery-panel.active{display:grid}
+.gallery-panel img{width:100%;height:220px;object-fit:cover;border-radius:12px;transition:transform .3s;cursor:pointer}
+.gallery-panel img:hover{transform:scale(1.03)}
 
-  /* WHATSAPP FLOAT */
-  .wa-float {
-    position: fixed; bottom: 24px; right: 24px; z-index: 999;
-    background: #25d366; border-radius: 50%; width: 60px; height: 60px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.5); animation: bounce 2s infinite;
-    text-decoration: none;
-  }
-  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
-  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.stats-bar{background:var(--accent);padding:60px 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center}
+.stat-item .stat-num{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;font-family:'Montserrat',serif}
+.stat-item .stat-label{color:rgba(255,255,255,0.85);font-size:0.95rem;margin-top:6px;font-weight:500}
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero-content { padding: 2rem 1.5rem; }
-    section { padding: 3rem 1.5rem; }
-    .why-section { padding: 2rem 1.5rem; }
-    .contact-wrapper { padding: 2rem 1.5rem; }
-  }
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;align-items:start}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;transition:transform .3s}
+.price-card:hover{transform:translateY(-5px)}
+.price-card.featured{border-color:var(--accent);position:relative}
+.price-card.featured::before{content:'POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:4px 20px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:1px}
+.price-plan{font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:12px}
+.price-amount{font-size:2rem;font-weight:800;font-family:'Montserrat',serif;margin-bottom:24px;color:var(--text)}
+.price-card ul{list-style:none;margin-bottom:28px;text-align:left}
+.price-card li{padding:8px 0;border-bottom:1px solid var(--border);color:var(--muted);font-size:0.9rem}
+.price-card li:last-child{border-bottom:none}
+.btn-cta{display:block;background:var(--accent);color:#fff;padding:13px;border-radius:25px;text-decoration:none;font-weight:700;transition:opacity .3s}
+.btn-cta:hover{opacity:0.85}
+
+.testi-wrap{max-width:700px;margin:0 auto;text-align:center}
+.testi-slide{padding:40px 20px;display:none}
+.testi-slide.active{display:block}
+.testi-stars{color:var(--accent);font-size:1.4rem;margin-bottom:16px;letter-spacing:4px}
+.testi-text{font-size:1.1rem;font-style:italic;color:var(--text);line-height:1.8;margin-bottom:20px}
+.testi-author{color:var(--accent);font-weight:700}
+.testi-nav{display:flex;justify-content:center;gap:10px;margin-top:30px}
+.testi-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;border:none;transition:.3s}
+.testi-dot.active{background:var(--accent)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:var(--muted);font-size:0.9rem;margin-bottom:8px;font-weight:600}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:13px 16px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.95rem;font-family:'Roboto',sans-serif;transition:.3s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
+.form-group textarea{height:120px;resize:vertical}
+.form-submit{width:100%;background:var(--accent);color:#fff;border:none;padding:15px;border-radius:25px;font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .3s}
+.form-submit:hover{opacity:0.85}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px}
+.info-icon{font-size:1.8rem;flex-shrink:0}
+.info-card h4{font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:6px;font-weight:700}
+.info-card p,.info-card a{color:var(--muted);font-size:0.95rem;text-decoration:none}
+.info-card a:hover{color:var(--accent)}
+.map-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-top:24px}
+
+footer{background:rgba(0,0,0,0.5);border-top:1px solid var(--border);padding:40px 5%;text-align:center}
+footer p{color:var(--muted);font-size:0.9rem}
+footer a{color:var(--accent);text-decoration:none}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:20px;flex-wrap:wrap}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:.3s}
+.footer-links a:hover{color:var(--accent)}
+
+.wa-btn{position:fixed;bottom:24px;right:24px;z-index:9999;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform .3s}
+.wa-btn:hover{transform:scale(1.1)}
+
+@media(max-width:768px){
+  nav .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .about-img img{height:280px}
+  section{padding:60px 5%}
+  .pricing-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+}
+@media(max-width:480px){
+  .bento-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-brand">Virmani Classes Jabalpur</div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <a href="tel:+919893901113" class="nav-cta">📞 Call Now</a>
+  <a href="#" class="logo">Virmani Classes</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#team">Our Faculty</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919893901113" class="nav-cta">Book Now</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#team" onclick="toggleMenu()">Our Faculty</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://wa.me/919893901113" style="color:var(--accent);font-weight:700">Call: +919893901113</a>
+</div>
 
-<section class="hero" style="padding: 0;">
-  <div class="bg-shape bg-shape-1"></div>
-  <div class="bg-shape bg-shape-2"></div>
-  <div class="hero-content" style="padding: 3rem 2rem; padding-top: 120px;">
-    <div class="hero-badge">Coaching Institute · Jabalpur</div>
-    <h1><span>Virmani</span> Classes Jabalpur</h1>
-    <p>Expert guidance to help you crack the toughest exams.</p>
-    <p style="font-family: var(--font1); font-size: 1.3rem; color: var(--accent); margin-bottom: 1.5rem;">"Your Success, Our Mission"</p>
+<section class="hero" id="home">
+  <div class="hero-slide active"><img src="https://images.unsplash.com/photo-1524178232363-d36a1f488312?w=1400&q=80" alt="Virmani Classes"></div>
+  <div class="hero-slide"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1400&q=80" alt="Virmani Classes"></div>
+  <div class="hero-content">
+    <span class="hero-badge">Coaching Institute &bull; Jabalpur</span>
+    <h1>Virmani Classes</h1>
+    <p>Premium Coaching Institute services in Jabalpur. Experience excellence, professionalism, and results that speak for themselves.</p>
     <div class="hero-btns">
-      <a href="tel:+919893901113" class="btn-primary">📞 +919893901113</a>
-      <a href="https://wa.me/919893901113" class="btn-outline">💬 WhatsApp</a>
+      <a href="https://wa.me/919893901113" class="btn-primary">Book Appointment</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <div class="hero-dot active" onclick="goSlide(0)"></div>
+    <div class="hero-dot" onclick="goSlide(1)"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img"><img src="https://images.unsplash.com/photo-1524178232363-d36a1f488312?w=700&q=80" alt="About Virmani Classes"></div>
+    <div class="about-text">
+      <span class="section-tag">About Us</span>
+      <h2>Welcome to <span>Virmani Classes</span></h2>
+      <p>We are Jabalpur's trusted name in Coaching Institute. With years of experience and a passionate team, we deliver services that transform and inspire.</p>
+      <p>Our commitment to quality, customer satisfaction, and continuous improvement sets us apart. Every client is treated with care, respect, and professional expertise.</p>
+      <ul class="about-features">
+        <li>Experienced and certified professionals</li>
+        <li>State-of-the-art facilities in Jabalpur</li>
+        <li>Personalized approach for every client</li>
+        <li>Transparent pricing with no hidden costs</li>
+        <li>Trusted by thousands of satisfied clients</li>
+      </ul>
+      <a href="https://wa.me/919893901113" class="about-cta">Get in Touch</a>
     </div>
   </div>
 </section>
 
-<div style="max-width:1100px; margin: 0 auto; padding: 0 2rem;">
-  <div id="services" style="padding: 5rem 0;">
-    <div class="section-title">
-      <h2>Our <span>Services</span></h2>
-      <div class="divider"></div>
-      <p>Expert solutions tailored for you in Jabalpur</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card" style="animation-delay:0.0s">
-          <div class="svc-icon">💪</div>
-          <h3>IAS/UPSC Coaching</h3>
-          <p>Professional ias/upsc coaching in Jabalpur</p>
-        </div><div class="service-card" style="animation-delay:0.1s">
-          <div class="svc-icon">✨</div>
-          <h3>JEE/NEET Prep</h3>
-          <p>Professional jee/neet prep in Jabalpur</p>
-        </div><div class="service-card" style="animation-delay:0.2s">
-          <div class="svc-icon">🍽️</div>
-          <h3>Board Exam Coaching</h3>
-          <p>Professional board exam coaching in Jabalpur</p>
-        </div><div class="service-card" style="animation-delay:0.30000000000000004s">
-          <div class="svc-icon">📚</div>
-          <h3>Online Classes</h3>
-          <p>Professional online classes in Jabalpur</p>
-        </div><div class="service-card" style="animation-delay:0.4s">
-          <div class="svc-icon">🏥</div>
-          <h3>Test Series</h3>
-          <p>Professional test series in Jabalpur</p>
-        </div><div class="service-card" style="animation-delay:0.5s">
-          <div class="svc-icon">📸</div>
-          <h3>Study Material</h3>
-          <p>Professional study material in Jabalpur</p>
-        </div>
-    </div>
+<section id="services" style="background:rgba(0,0,0,0.2)">
+  <div class="section-header">
+    <span class="section-tag">What We Offer</span>
+    <h2>Our Services</h2>
+    <p>Comprehensive Coaching Institute solutions designed to meet your every need</p>
   </div>
+  <div class="bento-grid">
+    <div class="bento-card"><div class="bento-icon">🏋️</div><h3>Classroom Coaching</h3></div>
+<div class="bento-card"><div class="bento-icon">💪</div><h3>Online Classes</h3></div>
+<div class="bento-card"><div class="bento-icon">🧘</div><h3>Study Material</h3></div>
+<div class="bento-card"><div class="bento-icon">🏃</div><h3>Mock Tests</h3></div>
+<div class="bento-card"><div class="bento-icon">⚡</div><h3>Doubt Sessions</h3></div>
+<div class="bento-card"><div class="bento-icon">🎯</div><h3>Hostel Facility</h3></div>
+<div class="bento-card"><div class="bento-icon">🌟</div><h3>Scholarship Tests</h3></div>
+<div class="bento-card"><div class="bento-icon">✨</div><h3>Result Oriented Batches</h3></div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="section-header">
+    <span class="section-tag">Meet The Team</span>
+    <h2>Our Faculty</h2>
+    <p>Skilled, dedicated professionals committed to your success</p>
+  </div>
+  <div class="team-grid">
+    
+<div class="team-card">
+  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Dr. Anand Tripathi" loading="lazy">
+  <div class="team-info"><h3>Dr. Anand Tripathi</h3><p>Director & Mentor</p></div>
 </div>
 
-<div class="why-section" style="margin: 0 2rem 4rem; max-width: unset;">
-  <div class="section-title" id="about">
-    <h2>Why Choose <span>Us?</span></h2>
-    <div class="divider"></div>
-  </div>
-  <div class="why-grid">
-    <div class="why-item"><div class="num">500+</div><p>Happy Clients</p></div>
-    <div class="why-item"><div class="num">10+</div><p>Years Experience</p></div>
-    <div class="why-item"><div class="num">98%</div><p>Satisfaction Rate</p></div>
-    <div class="why-item"><div class="num">24/7</div><p>Support Available</p></div>
-  </div>
+<div class="team-card">
+  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Prof. Suman Rai" loading="lazy">
+  <div class="team-info"><h3>Prof. Suman Rai</h3><p>Senior Faculty</p></div>
 </div>
 
-<div style="max-width:1100px; margin: 0 auto; padding: 0 2rem 5rem;">
-  <div id="contact">
-    <div class="section-title">
-      <h2>Get In <span>Touch</span></h2>
-      <div class="divider"></div>
+<div class="team-card">
+  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Ravi Shukla" loading="lazy">
+  <div class="team-info"><h3>Ravi Shukla</h3><p>Subject Expert</p></div>
+</div>
+  </div>
+</section>
+
+<section id="schedule" style="background:rgba(0,0,0,0.2)">
+  <div class="section-header">
+    <span class="section-tag">Timings</span>
+    <h2>Batch Schedule</h2>
+    <p>Plan your visit with our convenient schedule</p>
+  </div>
+  <div class="table-wrap">
+    <table class="schedule-table">
+      <thead><tr><th>Day</th><th>Session</th><th>Time</th></tr></thead>
+      <tbody><tr><td>Mon-Sat</td><td>Morning Batch</td><td>7:00 AM - 10:00 AM</td></tr>
+<tr><td>Mon-Sat</td><td>Afternoon Batch</td><td>1:00 PM - 4:00 PM</td></tr>
+<tr><td>Mon-Sat</td><td>Evening Batch</td><td>5:00 PM - 8:00 PM</td></tr>
+<tr><td>Sunday</td><td>Doubt Clearing</td><td>10:00 AM - 1:00 PM</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-header">
+    <span class="section-tag">Our Work</span>
+    <h2>Gallery</h2>
+    <p>A glimpse into our world</p>
+  </div>
+  <div class="gallery-tabs"><button class="tab-btn active" onclick="switchTab(0,this)">Interior</button>
+<button class="tab-btn" onclick="switchTab(1,this)">Team</button>
+<button class="tab-btn" onclick="switchTab(2,this)">Events</button></div>
+  <div class="gallery-panel active" id="panel-0">
+<img src="https://images.unsplash.com/photo-1524178232363-d36a1f488312?w=600&q=80" alt="Interior" loading="lazy">
+<img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80" alt="Interior" loading="lazy">
+<img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Interior" loading="lazy">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Interior" loading="lazy">
+</div>
+<div class="gallery-panel" id="panel-1">
+<img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80" alt="Team" loading="lazy">
+<img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Team" loading="lazy">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Team" loading="lazy">
+<img src="https://images.unsplash.com/photo-1524178232363-d36a1f488312?w=600&q=80" alt="Team" loading="lazy">
+</div>
+<div class="gallery-panel" id="panel-2">
+<img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Events" loading="lazy">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Events" loading="lazy">
+<img src="https://images.unsplash.com/photo-1524178232363-d36a1f488312?w=600&q=80" alt="Events" loading="lazy">
+<img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80" alt="Events" loading="lazy">
+</div>
+</section>
+
+<div class="stats-bar" id="stats">
+  <div class="stats-grid"><div class="stat-item"><div class="stat-num" data-target="10000">0</div><div class="stat-label">Students</div></div>
+<div class="stat-item"><div class="stat-num" data-target="50">0</div><div class="stat-label">Faculty</div></div>
+<div class="stat-item"><div class="stat-num" data-target="15">0</div><div class="stat-label">Years</div></div>
+<div class="stat-item"><div class="stat-num" data-target="95">0</div><div class="stat-label">% Results</div></div></div>
+</div>
+
+<section id="pricing">
+  <div class="section-header">
+    <span class="section-tag">Plans &amp; Pricing</span>
+    <h2>Affordable Packages</h2>
+    <p>Transparent INR pricing with no hidden charges</p>
+  </div>
+  <div class="pricing-grid"><div class="price-card">
+  <div class="price-plan">Foundation</div>
+  <div class="price-amount">Rs.3999/mo</div>
+  <ul><li>&#10003; Daily Classes</li>
+<li>&#10003; Study Material</li>
+<li>&#10003; Monthly Test</li>
+<li>&#10003; Doubt Sessions</li>
+<li>&#10003; Online Access</li></ul>
+  <a href="https://wa.me/919893901113" class="btn-cta">Get Started</a>
+</div>
+<div class="price-card featured">
+  <div class="price-plan">Advanced</div>
+  <div class="price-amount">Rs.5999/mo</div>
+  <ul><li>&#10003; Everything in Foundation</li>
+<li>&#10003; Mock Tests</li>
+<li>&#10003; Previous Papers</li>
+<li>&#10003; Career Guidance</li>
+<li>&#10003; Parent Updates</li></ul>
+  <a href="https://wa.me/919893901113" class="btn-cta">Get Started</a>
+</div>
+<div class="price-card">
+  <div class="price-plan">Elite Batch</div>
+  <div class="price-amount">Rs.8999/mo</div>
+  <ul><li>&#10003; Small Batch (20 students)</li>
+<li>&#10003; 1:1 Mentoring</li>
+<li>&#10003; Full Study Kit</li>
+<li>&#10003; Free Revision</li>
+<li>&#10003; Scholarship Tests</li></ul>
+  <a href="https://wa.me/919893901113" class="btn-cta">Get Started</a>
+</div></div>
+</section>
+
+<section id="testimonials" style="background:rgba(0,0,0,0.2)">
+  <div class="section-header">
+    <span class="section-tag">Reviews</span>
+    <h2>What Our Clients Say</h2>
+    <p>Real experiences from real people</p>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-slide active">
+  <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p class="testi-text">"Absolutely fantastic experience! Highly recommend to everyone in Jabalpur."</p>
+  <p class="testi-author">-- Ramesh Sharma</p>
+</div>
+<div class="testi-slide">
+  <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p class="testi-text">"Professional service, great results. Very happy with the outcome!"</p>
+  <p class="testi-author">-- Priya Singh</p>
+</div>
+<div class="testi-slide">
+  <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p class="testi-text">"Best in Jabalpur. The team is dedicated and the quality is top-notch."</p>
+  <p class="testi-author">-- Amit Kumar</p>
+</div>
+    <div class="testi-nav" id="testiNav"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag">Get In Touch</span>
+    <h2>Contact Us</h2>
+    <p>Book an appointment or ask us anything.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form">
+      <h3 style="margin-bottom:24px;font-size:1.3rem">Send a Message</h3>
+      <form onsubmit="submitForm(event)">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Your phone number" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Service Required</label><select><option value="">Select a service...</option><option>Classroom Coaching</option><option>Online Classes</option><option>Study Material</option><option>Mock Tests</option><option>Doubt Sessions</option><option>Hostel Facility</option><option>Scholarship Tests</option><option>Result Oriented Batches</option></select></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your requirements..."></textarea></div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
     </div>
-    <div class="contact-wrapper">
-      <p style="opacity:0.8; margin-bottom: 1.5rem;">Ready to get started? Reach out to us today!</p>
-      <div class="contact-info">
-        <div class="contact-row"><span>📞</span><a href="tel:+919893901113" style="color:var(--accent); font-weight:600;">+919893901113</a></div>
-        <div class="contact-row"><span>💬</span><a href="https://wa.me/919893901113" style="color:#25d366; font-weight:600;">Chat on WhatsApp</a></div>
-        <div class="contact-row"><span>📍</span><span>Jabalpur, Madhya Pradesh</span></div>
+    <div class="contact-info">
+      <div class="info-card"><span class="info-icon">&#128222;</span><div><h4>Phone</h4><a href="tel:+919893901113">+919893901113</a></div></div>
+      <div class="info-card"><span class="info-icon">&#128172;</span><div><h4>WhatsApp</h4><a href="https://wa.me/919893901113">Chat on WhatsApp</a></div></div>
+      <div class="info-card"><span class="info-icon">&#128205;</span><div><h4>Location</h4><p>Jabalpur, Madhya Pradesh, India</p></div></div>
+      <div class="info-card"><span class="info-icon">&#128336;</span><div><h4>Hours</h4><p>Mon-Sat: 9AM - 8PM<br>Sunday: By Appointment</p></div></div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117964.17!2d79.9864!3d23.1815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981b00c2ca2f4f5%3A0x7fbbff20f1c87c26!2sJabalpur%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin" width="100%" height="220" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
       </div>
-      <a href="tel:+919893901113" class="btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">
-        Call Now — +919893901113
-      </a>
     </div>
   </div>
-</div>
+</section>
 
 <footer>
-  <p>© 2025 <span>Virmani Classes Jabalpur</span> · Jabalpur, MP · All Rights Reserved</p>
-  <p style="margin-top: 0.5rem; font-size: 0.75rem;">Powered by <span>VEDAM Digital</span></p>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a>
+    <a href="#pricing">Pricing</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+  </div>
+  <p>&copy; 2026 Virmani Classes, Jabalpur. All rights reserved. | Built by <a href="https://vedam.in">VEDAM</a></p>
 </footer>
 
-<a href="https://wa.me/919893901113?text=Hi%20Virmani%20Classes%20Jabalpur%2C%20I%20found%20you%20online!" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+<a href="https://wa.me/919893901113" class="wa-btn" title="WhatsApp Us">&#128172;</a>
 
+<script>
+let curSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dot');
+function goSlide(n){slides[curSlide].classList.remove('active');dots[curSlide].classList.remove('active');curSlide=n;slides[curSlide].classList.add('active');dots[curSlide].classList.add('active')}
+setInterval(()=>goSlide((curSlide+1)%slides.length),5000);
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function switchTab(idx,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.gallery-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById('panel-'+idx).classList.add('active')}
+const testiSlides=document.querySelectorAll('.testi-slide');let curTesti=0;
+const tn=document.getElementById('testiNav');
+testiSlides.forEach((_,i)=>{const d=document.createElement('button');d.className='testi-dot'+(i===0?' active':'');d.onclick=()=>goTesti(i);tn.appendChild(d)});
+function goTesti(n){testiSlides[curTesti].classList.remove('active');document.querySelectorAll('.testi-dot')[curTesti].classList.remove('active');curTesti=n;testiSlides[curTesti].classList.add('active');document.querySelectorAll('.testi-dot')[curTesti].classList.add('active')}
+setInterval(()=>goTesti((curTesti+1)%testiSlides.length),4500);
+function animateStats(){document.querySelectorAll('.stat-num').forEach(el=>{const target=+el.dataset.target;let cur=0;const step=Math.max(1,Math.ceil(target/60));const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=cur.toLocaleString();if(cur>=target)clearInterval(t)},30)})}
+const statsObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateStats();statsObs.disconnect()}});
+statsObs.observe(document.getElementById('stats'));
+function submitForm(e){e.preventDefault();alert('Thank you! We will contact you soon on WhatsApp.');e.target.reset()}
+</script>
 </body>
 </html>
