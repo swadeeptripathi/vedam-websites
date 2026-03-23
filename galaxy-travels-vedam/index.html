@@ -64,7 +64,7 @@ section,footer{position:relative;z-index:1}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 .about-img{position:relative;border-radius:20px;overflow:hidden}
 .about-img img{width:100%;height:400px;object-fit:cover;border-radius:20px}
-.about-img::after{content:'🏆 Award Winning';position:absolute;bottom:20px;right:20px;background:linear-gradient(135deg,var(--star),#f59e0b);color:var(--dark);padding:12px 20px;border-radius:12px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px}
+.about-img::after{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M6 9H2V4h4M18 9h4V4h-4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 4h12v8a6 6 0 0 1-12 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/></svg> Award Winning';position:absolute;bottom:20px;right:20px;background:linear-gradient(135deg,var(--star),#f59e0b);color:var(--dark);padding:12px 20px;border-radius:12px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px}
 .about-text h3{font-size:1.5rem;color:var(--purple);margin-bottom:15px;letter-spacing:1px}
 .about-text p{color:var(--gray);line-height:1.8;margin-bottom:15px}
 .about-awards{display:flex;gap:15px;margin-top:20px;flex-wrap:wrap}
@@ -197,7 +197,7 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 
 <nav id="navbar">
 <div class="container">
-<a href="#" class="logo">GALAXY <span>✦</span></a>
+<a href="#" class="logo">GALAXY <span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg></span></a>
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
@@ -210,7 +210,7 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 </div>
 </nav>
 <div class="mobile-menu">
-<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
 <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
 <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
 <a href="#destinations" onclick="this.parentElement.classList.remove('active')">Destinations</a>
@@ -232,8 +232,8 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <h1>GALAXY <span>TRAVELS</span></h1>
 <p class="sub">Award-winning travel company in Satna. Car rental, flight booking, hotel booking & curated tour packages.</p>
 <div class="hero-btns">
-<a href="#booking" class="btn btn-primary">✦ Book Journey</a>
-<a href="tel:9039399152" class="btn btn-outline">📞 Call Now</a>
+<a href="#booking" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg> Book Journey</a>
+<a href="tel:9039399152" class="btn btn-outline"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13 19.79 19.79 0 0 1 1.77 4.4 2 2 0 0 1 3.74 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> Call Now</a>
 </div>
 </div>
 <div class="hero-dots"><span class="active" onclick="goSlide(0)"></span><span onclick="goSlide(1)"></span></div>
@@ -249,9 +249,9 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <p>Galaxy Travels is Satna's premier award-winning travel company, delivering stellar travel experiences for over a decade. From behind Chandni Talkies, we've grown to become the most trusted name in travel.</p>
 <p>We offer comprehensive travel solutions — car rentals, tempo travellers, flight bookings, hotel reservations, and expertly curated tour packages. Every journey with Galaxy is an interstellar experience.</p>
 <div class="about-awards">
-<span class="award">🏆 Best Travel Agency</span>
+<span class="award"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M6 9H2V4h4M18 9h4V4h-4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 4h12v8a6 6 0 0 1-12 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/></svg> Best Travel Agency</span>
 <span class="award">⭐ 4.8 Rating</span>
-<span class="award">🌟 10+ Years</span>
+<span class="award"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/><line x1="12" y1="2" x2="12" y2="0.5" stroke="currentColor" stroke-width="1.5"/><line x1="19" y1="5" x2="20.5" y2="3.5" stroke="currentColor" stroke-width="1.5"/><line x1="22" y1="12" x2="23.5" y2="12" stroke="currentColor" stroke-width="1.5"/></svg> 10+ Years</span>
 </div>
 </div>
 </div>
@@ -262,12 +262,12 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="container">
 <div class="section-title"><h2>OUR SERVICES</h2><p>Complete travel solutions under one roof</p><div class="line"></div></div>
 <div class="services-grid">
-<div class="svc-card"><div class="icon">🚗</div><h3>CAR RENTAL</h3><p>Sedan, SUV, Innova — premium cars for local and outstation travel.</p></div>
-<div class="svc-card"><div class="icon">🚐</div><h3>TEMPO TRAVELLER</h3><p>12-26 seater for group travel, weddings, and corporate events.</p></div>
-<div class="svc-card"><div class="icon">✈️</div><h3>FLIGHT BOOKING</h3><p>Domestic and international flight bookings at best prices.</p></div>
-<div class="svc-card"><div class="icon">🏨</div><h3>HOTEL BOOKING</h3><p>Premium hotel reservations across India. Best deals guaranteed.</p></div>
-<div class="svc-card"><div class="icon">🗺️</div><h3>TOUR PACKAGES</h3><p>Curated packages to top destinations in MP and across India.</p></div>
-<div class="svc-card"><div class="icon">👁️</div><h3>SIGHTSEEING</h3><p>Local sightseeing tours with expert guides and comfortable transport.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14l4 4v4a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>CAR RENTAL</h3><p>Sedan, SUV, Innova — premium cars for local and outstation travel.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="1" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 12h20" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/><path d="M1 9h20" stroke="currentColor" stroke-width="1.2"/></svg></div><h3>TEMPO TRAVELLER</h3><p>12-26 seater for group travel, weddings, and corporate events.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9L2 14v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>️</div><h3>FLIGHT BOOKING</h3><p>Domestic and international flight bookings at best prices.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="3" y="3" width="18" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M9 9v12M9 14h6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div><h3>HOTEL BOOKING</h3><p>Premium hotel reservations across India. Best deals guaranteed.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="18" stroke="currentColor" stroke-width="1.8"/><line x1="16" y1="6" x2="16" y2="22" stroke="currentColor" stroke-width="1.8"/></svg>️</div><h3>TOUR PACKAGES</h3><p>Curated packages to top destinations in MP and across India.</p></div>
+<div class="svc-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>️</div><h3>SIGHTSEEING</h3><p>Local sightseeing tours with expert guides and comfortable transport.</p></div>
 </div>
 </div>
 </section>
@@ -276,12 +276,12 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="container">
 <div class="section-title"><h2>DESTINATIONS</h2><p>Navigate the star map of incredible destinations</p><div class="line"></div></div>
 <div class="dest-grid">
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Varanasi"><div class="info"><h4>VARANASI</h4><p class="meta">📍 350 km · 3 Days</p><div class="price">₹5,500</div></div></div>
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho"><div class="info"><h4>KHAJURAHO</h4><p class="meta">📍 180 km · 2 Days</p><div class="price">₹4,500</div></div></div>
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Pachmarchi"><div class="info"><h4>PACHMARCHI</h4><p class="meta">📍 350 km · 3 Days</p><div class="price">₹6,500</div></div></div>
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Bandhavgarh"><div class="info"><h4>BANDHAVGARH</h4><p class="meta">📍 180 km · 2 Days</p><div class="price">₹7,500</div></div></div>
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Maihar"><div class="info"><h4>MAIHAR DEVI</h4><p class="meta">📍 40 km · 1 Day</p><div class="price">₹1,200</div></div></div>
-<div class="dest-card"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Ujjain"><div class="info"><h4>UJJAIN</h4><p class="meta">📍 640 km · 3 Days</p><div class="price">₹8,000</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Varanasi"><div class="info"><h4>VARANASI</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 350 km · 3 Days</p><div class="price">₹5,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1590766740554-b5e099e16034?w=500&q=80" alt="Khajuraho"><div class="info"><h4>KHAJURAHO</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 180 km · 2 Days</p><div class="price">₹4,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Pachmarchi"><div class="info"><h4>PACHMARCHI</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 350 km · 3 Days</p><div class="price">₹6,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=500&q=80" alt="Bandhavgarh"><div class="info"><h4>BANDHAVGARH</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 180 km · 2 Days</p><div class="price">₹7,500</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=500&q=80" alt="Maihar"><div class="info"><h4>MAIHAR DEVI</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 40 km · 1 Day</p><div class="price">₹1,200</div></div></div>
+<div class="dest-card"><img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80" alt="Ujjain"><div class="info"><h4>UJJAIN</h4><p class="meta"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> 640 km · 3 Days</p><div class="price">₹8,000</div></div></div>
 </div>
 </div>
 </section>
@@ -302,12 +302,12 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="section-title"><h2>FLIGHT & HOTEL</h2><p>Complete travel booking services</p><div class="line"></div></div>
 <div class="travel-grid">
 <div class="travel-card">
-<div class="icon">✈️</div>
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9L2 14v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>️</div>
 <h3>FLIGHT BOOKING</h3>
 <p>Book domestic and international flights at the best prices. We partner with all major airlines to get you the most competitive fares. Group discounts available for 5+ passengers.</p>
 </div>
 <div class="travel-card">
-<div class="icon">🏨</div>
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="3" y="3" width="18" height="18" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M9 9v12M9 14h6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
 <h3>HOTEL BOOKING</h3>
 <p>Premium hotel reservations across India. From budget-friendly stays to luxury resorts — we find the perfect accommodation for your trip. Corporate rates available.</p>
 </div>
@@ -358,7 +358,7 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="form-group"><label>Travel Date</label><input type="date"></div>
 <div class="form-group"><label>Travelers</label><select><option>1-2</option><option>3-4</option><option>5-8</option><option>8+</option></select></div>
 <div class="form-group form-full"><label>Special Requests</label><textarea rows="3" placeholder="Any special requirements..."></textarea></div>
-<button class="submit-btn" type="button" onclick="alert('✦ Thank you! Galaxy Travels will contact you shortly.')">✦ LAUNCH BOOKING</button>
+<button class="submit-btn" type="button" onclick="alert('<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg> Thank you! Galaxy Travels will contact you shortly.')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg> LAUNCH BOOKING</button>
 </div>
 </div>
 </div>
@@ -368,9 +368,9 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="container">
 <div class="section-title"><h2>REVIEWS</h2><div class="line"></div></div>
 <div class="reviews-track">
-<div class="review-card"><div class="stars">★★★★★</div><p>"Galaxy Travels is truly stellar! Best travel agency in Satna. Their flight booking got us amazing deals."</p><div class="author">— Arun Shrivastava</div></div>
-<div class="review-card"><div class="stars">★★★★★</div><p>"Booked a complete tour package — car, hotel, sightseeing. Everything was perfect. Award-winning for a reason!"</p><div class="author">— Neha Jaiswal</div></div>
-<div class="review-card"><div class="stars">★★★★☆</div><p>"Used their tempo traveller for a family trip. Very comfortable and driver was excellent. Will use again."</p><div class="author">— Prakash Yadav</div></div>
+<div class="review-card"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><p>"Galaxy Travels is truly stellar! Best travel agency in Satna. Their flight booking got us amazing deals."</p><div class="author">— Arun Shrivastava</div></div>
+<div class="review-card"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><p>"Booked a complete tour package — car, hotel, sightseeing. Everything was perfect. Award-winning for a reason!"</p><div class="author">— Neha Jaiswal</div></div>
+<div class="review-card"><div class="stars"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><p>"Used their tempo traveller for a family trip. Very comfortable and driver was excellent. Will use again."</p><div class="author">— Prakash Yadav</div></div>
 </div>
 </div>
 </section>
@@ -380,10 +380,10 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <div class="section-title"><h2>CONTACT</h2><div class="line"></div></div>
 <div class="contact-grid">
 <div class="contact-info">
-<div class="contact-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:9039399152">9039399152</a> / <a href="tel:07672233360">07672-233360</a></p></div></div>
-<div class="contact-item"><div class="icon">📍</div><div><h4>Address</h4><p>Behind Chandni Talkies, Near Saheli Boutique, Satna</p></div></div>
+<div class="contact-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13 19.79 19.79 0 0 1 1.77 4.4 2 2 0 0 1 3.74 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Phone</h4><p><a href="tel:9039399152">9039399152</a> / <a href="tel:07672233360">07672-233360</a></p></div></div>
+<div class="contact-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Address</h4><p>Behind Chandni Talkies, Near Saheli Boutique, Satna</p></div></div>
 <div class="contact-item"><div class="icon">⏰</div><div><h4>Working Hours</h4><p>Open 24/7 — 365 Days</p></div></div>
-<div class="contact-item"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/919039399152">Chat on WhatsApp</a></p></div></div>
+<div class="contact-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>WhatsApp</h4><p><a href="https://wa.me/919039399152">Chat on WhatsApp</a></p></div></div>
 </div>
 <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.5!2d80.83!3d24.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSatna!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe></div>
 </div>
@@ -393,7 +393,7 @@ footer{background:rgba(10,8,30,.95);color:var(--white);padding:50px 0 20px;borde
 <footer>
 <div class="container">
 <div class="footer-grid">
-<div class="footer-brand"><a href="#" class="logo">GALAXY <span>✦</span></a><p>Award-winning travel company in Satna. Stellar journeys across the galaxy since over a decade. Car rental, flights, hotels & tours.</p></div>
+<div class="footer-brand"><a href="#" class="logo">GALAXY <span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/></svg></span></a><p>Award-winning travel company in Satna. Stellar journeys across the galaxy since over a decade. Car rental, flights, hotels & tours.</p></div>
 <div class="footer-col"><h4>LINKS</h4><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#destinations">Destinations</a></li><li><a href="#booking">Book Now</a></li></ul></div>
 <div class="footer-col"><h4>SERVICES</h4><ul><li><a href="#">Car Rental</a></li><li><a href="#">Flight Booking</a></li><li><a href="#">Hotel Booking</a></li><li><a href="#">Tour Packages</a></li></ul></div>
 </div>

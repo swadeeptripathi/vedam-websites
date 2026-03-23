@@ -106,13 +106,13 @@ nav.scrolled{background:rgba(10,10,10,0.95)}
 .pricing-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);border-radius:20px;padding:35px 25px;text-align:center;transition:all .3s}
 .pricing-card:hover,.pricing-card.neon{border-color:var(--neon);box-shadow:0 0 40px rgba(0,255,136,0.08)}
 .pricing-card.neon{position:relative}
-.pricing-card.neon::before{content:'⚡ POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--neon);color:var(--black);padding:5px 20px;border-radius:50px;font-size:.75rem;font-weight:700;font-family:'Space Grotesk',sans-serif}
+.pricing-card.neon::before{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg> POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--neon);color:var(--black);padding:5px 20px;border-radius:50px;font-size:.75rem;font-weight:700;font-family:'Space Grotesk',sans-serif}
 .pricing-card h3{font-size:1.2rem;margin-bottom:10px;color:#fff}
 .pricing-card .price{font-size:2.8rem;color:var(--neon);font-family:'Space Grotesk',sans-serif;margin-bottom:5px;text-shadow:var(--glow)}
 .pricing-card .period{color:#666;font-size:.85rem;margin-bottom:20px}
 .pricing-card ul{list-style:none;text-align:left;margin-bottom:25px}
 .pricing-card li{padding:8px 0;color:#aaa;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,0.03)}
-.pricing-card li::before{content:'✓';color:var(--neon);margin-right:8px;font-weight:700}
+.pricing-card li::before{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polyline points="20,6 9,17 4,12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';color:var(--neon);margin-right:8px;font-weight:700}
 
 /* Testimonials */
 .testimonial-slider{max-width:650px;margin:0 auto;overflow:hidden}
@@ -171,7 +171,7 @@ footer p{color:#444;font-size:.82rem}
 <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu">
-<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
 <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
 <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
 <a href="#gallery" onclick="this.parentElement.classList.remove('active')">Gallery</a>
@@ -213,7 +213,7 @@ footer p{color:#444;font-size:.82rem}
 <h2>Meet <span>Meraj Sheikh</span></h2>
 <p>Founder of YFC Gym — Yusuf Fitness Club — in Waidhan, Singrauli. A MIFI Academy certified fitness professional who turned his passion for fitness into Singrauli's premier training facility.</p>
 <p>With cutting-edge equipment and a team of certified trainers, YFC Gym delivers results through science-backed training methods and personalized attention.</p>
-<div class="cert-badge">🏅 MIFI Academy Certified Trainers</div>
+<div class="cert-badge"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="15" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 6l-2-4h12l-2 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><text x="12" y="19" text-anchor="middle" font-size="7" fill="currentColor">1</text></svg> MIFI Academy Certified Trainers</div>
 </div>
 </div>
 </section>
@@ -225,13 +225,13 @@ footer p{color:#444;font-size:.82rem}
 <div class="neon-line"></div>
 <p class="section-sub">Everything you need to level up your fitness game</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">🏋️</div><h3>Gym</h3><p>Full-floor gym with premium machines and free weights.</p></div>
-<div class="service-card"><div class="icon">⚡</div><h3>CrossFit</h3><p>High-intensity functional training for total-body fitness.</p></div>
-<div class="service-card"><div class="icon">❤️‍🔥</div><h3>Cardio</h3><p>Modern cardio zone with treadmills, bikes, and more.</p></div>
-<div class="service-card"><div class="icon">💪</div><h3>Strength Training</h3><p>Progressive overload programs for max gains.</p></div>
-<div class="service-card"><div class="icon">🔥</div><h3>Fat Loss</h3><p>Targeted programs for sustainable fat loss.</p></div>
-<div class="service-card"><div class="icon">📈</div><h3>Muscle Gain</h3><p>Hypertrophy-focused training for size and strength.</p></div>
-<div class="service-card"><div class="icon">🎯</div><h3>Personal Training</h3><p>1-on-1 coaching with MIFI certified trainers.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="5" r="2"/><path d="M7 12h10M9 9v6m6-6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="2" y="10" width="2" height="4" rx="1"/><rect x="20" y="10" width="2" height="4" rx="1"/><rect x="4" y="11" width="3" height="2" rx="0.5"/><rect x="17" y="11" width="3" height="2" rx="0.5"/></svg>️</div><h3>Gym</h3><p>Full-floor gym with premium machines and free weights.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div><h3>CrossFit</h3><p>High-intensity functional training for total-body fitness.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>️‍<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2c0 0-4 4-4 9a4 4 0 0 0 8 0c0-2-1-4-1-4s-1 2-2 2c0-2 1-5-1-7z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Cardio</h3><p>Modern cardio zone with treadmills, bikes, and more.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2c-2 0-4 1-5 3L4 9c-1 2 0 4 2 4h1v5h10v-5h1c2 0 3-2 2-4l-3-4c-1-2-3-3-5-3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Strength Training</h3><p>Progressive overload programs for max gains.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2c0 0-4 4-4 9a4 4 0 0 0 8 0c0-2-1-4-1-4s-1 2-2 2c0-2 1-5-1-7z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Fat Loss</h3><p>Targeted programs for sustainable fat loss.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16,7 22,7 22,13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Muscle Gain</h3><p>Hypertrophy-focused training for size and strength.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Personal Training</h3><p>1-on-1 coaching with MIFI certified trainers.</p></div>
 </div>
 </div>
 </section>
@@ -268,14 +268,14 @@ footer p{color:#444;font-size:.82rem}
 <div class="neon-line"></div>
 <p class="section-sub">Premium equipment for premium results</p>
 <div class="equip-grid">
-<div class="equip-item"><div class="icon">🏋️</div><h4>Power Racks</h4></div>
-<div class="equip-item"><div class="icon">🦵</div><h4>Leg Press</h4></div>
-<div class="equip-item"><div class="icon">🔄</div><h4>Cable Machines</h4></div>
-<div class="equip-item"><div class="icon">🏃</div><h4>Treadmills</h4></div>
-<div class="equip-item"><div class="icon">🚴</div><h4>Exercise Bikes</h4></div>
-<div class="equip-item"><div class="icon">💪</div><h4>Dumbbells</h4></div>
-<div class="equip-item"><div class="icon">⚖️</div><h4>Smith Machine</h4></div>
-<div class="equip-item"><div class="icon">🎯</div><h4>Functional Zone</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="5" r="2"/><path d="M7 12h10M9 9v6m6-6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="2" y="10" width="2" height="4" rx="1"/><rect x="20" y="10" width="2" height="4" rx="1"/><rect x="4" y="11" width="3" height="2" rx="0.5"/><rect x="17" y="11" width="3" height="2" rx="0.5"/></svg>️</div><h4>Power Racks</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 3a4 4 0 0 1 4 4v8a5 5 0 0 1-10 0V7a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="10" y1="12" x2="14" y2="12" stroke="currentColor" stroke-width="1.5"/></svg></div><h4>Leg Press</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polyline points="1,4 1,10 7,10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 .49-4.86L1 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Cable Machines</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="13" cy="4" r="2"/><path d="M9 20l2-5 3 2 2-8M7 11l2-3 3 1 2-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Treadmills</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="5" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="19" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="6" r="2"/><path d="M12 8l-4 4h8M12 8l3 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Exercise Bikes</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2c-2 0-4 1-5 3L4 9c-1 2 0 4 2 4h1v5h10v-5h1c2 0 3-2 2-4l-3-4c-1-2-3-3-5-3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><h4>Dumbbells</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="2"/><path d="M3 6l4 8H3z M21 6l-4 8h4z" fill="currentColor"/><line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.8"/></svg>️</div><h4>Smith Machine</h4></div>
+<div class="equip-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Functional Zone</h4></div>
 </div>
 </div>
 </section>
@@ -394,10 +394,10 @@ footer p{color:#444;font-size:.82rem}
 </form>
 <div>
 <div class="contact-info">
-<div class="contact-info-item"><div class="icon">📍</div><div><h4>Address</h4><p>Waidhan, Singrauli, MP</p></div></div>
-<div class="contact-info-item"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:6265196428">6265196428</a></p></div></div>
-<div class="contact-info-item"><div class="icon">📸</div><div><h4>Instagram</h4><p><a href="https://instagram.com/yfc_gym_waidhan" target="_blank" style="color:var(--neon)">@yfc_gym_waidhan</a></p></div></div>
-<div class="contact-info-item"><div class="icon">👤</div><div><h4>Owner</h4><p><a href="https://instagram.com/meraj_sheikh_007" target="_blank" style="color:var(--neon)">@meraj_sheikh_007</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Address</h4><p>Waidhan, Singrauli, MP</p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13 19.79 19.79 0 0 1 1.77 4.4 2 2 0 0 1 3.74 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Phone</h4><p><a href="tel:6265196428">6265196428</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Instagram</h4><p><a href="https://instagram.com/yfc_gym_waidhan" target="_blank" style="color:var(--neon)">@yfc_gym_waidhan</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>Owner</h4><p><a href="https://instagram.com/meraj_sheikh_007" target="_blank" style="color:var(--neon)">@meraj_sheikh_007</a></p></div></div>
 </div>
 <div class="map-container">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.0!2d82.67!3d24.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA2JzAwLjAiTiA4MsKwNDAnMTIuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
@@ -409,14 +409,14 @@ footer p{color:#444;font-size:.82rem}
 
 <footer>
 <div class="social-links">
-<a href="https://instagram.com/yfc_gym_waidhan" target="_blank">📸</a>
-<a href="tel:6265196428">📞</a>
-<a href="https://wa.me/916265196428" target="_blank">💬</a>
+<a href="https://instagram.com/yfc_gym_waidhan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+<a href="tel:6265196428"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13 19.79 19.79 0 0 1 1.77 4.4 2 2 0 0 1 3.74 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+<a href="https://wa.me/916265196428" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 </div>
 <p>© 2026 YFC Gym — Yusuf Fitness Club, Singrauli. All rights reserved.</p>
 </footer>
 
-<a href="https://wa.me/916265196428" target="_blank" class="whatsapp-btn">💬</a>
+<a href="https://wa.me/916265196428" target="_blank" class="whatsapp-btn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 
 <script>
 let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');

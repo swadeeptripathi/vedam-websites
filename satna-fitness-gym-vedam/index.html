@@ -111,13 +111,13 @@ nav.scrolled{background:rgba(8,8,8,0.95)}
 .pricing-card{background:rgba(255,255,255,0.02);border:1px solid rgba(212,175,55,0.1);padding:40px 25px;text-align:center;transition:all .3s}
 .pricing-card:hover,.pricing-card.gold{border-color:var(--gold)}
 .pricing-card.gold{background:rgba(212,175,55,0.05);position:relative}
-.pricing-card.gold::before{content:'🏆 CHAMPION';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);padding:5px 20px;font-family:'Oswald',sans-serif;letter-spacing:2px;font-size:.8rem;font-weight:700}
+.pricing-card.gold::before{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M6 9H2V4h4M18 9h4V4h-4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 4h12v8a6 6 0 0 1-12 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/></svg> CHAMPION';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);padding:5px 20px;font-family:'Oswald',sans-serif;letter-spacing:2px;font-size:.8rem;font-weight:700}
 .pricing-card h3{font-size:1.3rem;letter-spacing:3px;margin-bottom:10px;color:#fff}
 .pricing-card .price{font-size:2.8rem;color:var(--gold);font-family:'Oswald',sans-serif;margin-bottom:5px;font-weight:700}
 .pricing-card .period{color:#777;font-size:.85rem;margin-bottom:20px}
 .pricing-card ul{list-style:none;text-align:left;margin-bottom:25px}
 .pricing-card li{padding:8px 0;color:#aaa;font-size:.9rem;border-bottom:1px solid rgba(212,175,55,0.06)}
-.pricing-card li::before{content:'★';color:var(--gold);margin-right:8px}
+.pricing-card li::before{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>';color:var(--gold);margin-right:8px}
 
 /* Testimonials */
 .testimonial-slider{max-width:650px;margin:0 auto;overflow:hidden}
@@ -177,7 +177,7 @@ footer p{color:#555;font-size:.82rem}
 <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu">
-<button class="mobile-close" onclick="this.parentElement.classList.remove('active')">✕</button>
+<button class="mobile-close" onclick="this.parentElement.classList.remove('active')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
 <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
 <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
 <a href="#gallery" onclick="this.parentElement.classList.remove('active')">Gallery</a>
@@ -222,7 +222,7 @@ footer p{color:#555;font-size:.82rem}
 <h2>THE <span>LEGACY</span></h2>
 <p>Satna Fitness Gym has been the gold standard of bodybuilding and fitness in Satna since 2015. Located on MG Road near Green Talkies, we've transformed thousands of lives through discipline, dedication, and world-class training.</p>
 <p>With 15+ trainers, 100+ successful transformations, and a community of 5000+ members, we are proud to be Satna's most trusted fitness destination.</p>
-<div class="about-highlight"><p>🏆 9+ YEARS OF BUILDING CHAMPIONS</p></div>
+<div class="about-highlight"><p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M6 9H2V4h4M18 9h4V4h-4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 4h12v8a6 6 0 0 1-12 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/></svg> 9+ YEARS OF BUILDING CHAMPIONS</p></div>
 </div>
 </div>
 </section>
@@ -234,12 +234,12 @@ footer p{color:#555;font-size:.82rem}
 <div class="gold-line"></div>
 <p class="section-sub">Comprehensive training programs for every goal</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">🏆</div><h3>BODYBUILDING</h3><p>Competition-grade bodybuilding training with expert posing guidance and periodized programs.</p></div>
-<div class="service-card"><div class="icon">⚖️</div><h3>WEIGHT CONTROL</h3><p>Scientific approach to weight management — both loss and gain programs tailored to you.</p></div>
-<div class="service-card"><div class="icon">🤸</div><h3>AEROBICS</h3><p>High-energy group aerobic sessions for cardiovascular fitness and calorie burn.</p></div>
-<div class="service-card"><div class="icon">💃</div><h3>ZUMBA</h3><p>Fun dance-fitness classes that make you forget you're working out.</p></div>
-<div class="service-card"><div class="icon">🥗</div><h3>DIET & NUTRITION</h3><p>Personalized meal plans and nutrition coaching for optimal results.</p></div>
-<div class="service-card"><div class="icon">🎯</div><h3>PERSONAL TRAINING</h3><p>Dedicated one-on-one coaching with certified trainers for maximum results.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M6 9H2V4h4M18 9h4V4h-4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 4h12v8a6 6 0 0 1-12 0V4z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>BODYBUILDING</h3><p>Competition-grade bodybuilding training with expert posing guidance and periodized programs.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" stroke-width="2"/><path d="M3 6l4 8H3z M21 6l-4 8h4z" fill="currentColor"/><line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.8"/></svg>️</div><h3>WEIGHT CONTROL</h3><p>Scientific approach to weight management — both loss and gain programs tailored to you.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="4" r="2"/><path d="M9 8l-3 4h6M15 8l3 4h-6M9 12l2 6-3 2M15 12l-2 6 3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>AEROBICS</h3><p>High-energy group aerobic sessions for cardiovascular fitness and calorie burn.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="4" r="2"/><path d="M12 6v6l-3 4 3-1 3 3V6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>ZUMBA</h3><p>Fun dance-fitness classes that make you forget you're working out.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M2 9h20v2a9 9 0 0 1-9 9 9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 4c0 3 2 5 5 5s5-2 5-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div><h3>DIET & NUTRITION</h3><p>Personalized meal plans and nutrition coaching for optimal results.</p></div>
+<div class="service-card"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2"/></svg></div><h3>PERSONAL TRAINING</h3><p>Dedicated one-on-one coaching with certified trainers for maximum results.</p></div>
 </div>
 </div>
 </section>
@@ -254,10 +254,10 @@ footer p{color:#555;font-size:.82rem}
 <p>Whether your goal is muscle gain, fat loss, or overall health — we've got the plan for you.</p>
 </div>
 <div class="diet-features">
-<div class="diet-feature"><div class="icon">📋</div><div><h4>CUSTOM MEAL PLANS</h4><p>Tailored to your body type and goals</p></div></div>
-<div class="diet-feature"><div class="icon">📊</div><div><h4>MACRO TRACKING</h4><p>Precision nutrition guidance</p></div></div>
-<div class="diet-feature"><div class="icon">🔄</div><div><h4>MONTHLY REVISIONS</h4><p>Plans that evolve with your progress</p></div></div>
-<div class="diet-feature"><div class="icon">💊</div><div><h4>SUPPLEMENT ADVICE</h4><p>Safe and effective recommendations</p></div></div>
+<div class="diet-feature"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="8" y="2" width="8" height="4" rx="1" ry="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>CUSTOM MEAL PLANS</h4><p>Tailored to your body type and goals</p></div></div>
+<div class="diet-feature"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div><div><h4>MACRO TRACKING</h4><p>Precision nutrition guidance</p></div></div>
+<div class="diet-feature"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polyline points="1,4 1,10 7,10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.51 15a9 9 0 1 0 .49-4.86L1 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>MONTHLY REVISIONS</h4><p>Plans that evolve with your progress</p></div></div>
+<div class="diet-feature"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="2" y="9" width="20" height="6" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="1.8" transform="rotate(-45 12 12)"/><line x1="8.5" y1="15.5" x2="15.5" y2="8.5" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>SUPPLEMENT ADVICE</h4><p>Safe and effective recommendations</p></div></div>
 </div>
 </div>
 </div>
@@ -412,13 +412,13 @@ footer p{color:#555;font-size:.82rem}
 </form>
 <div>
 <div class="contact-info">
-<div class="contact-info-item"><div class="icon">📍</div><div><h4>ADDRESS</h4><p>MG Road, Agrawal Market, near Green Talkies, Satna 485001</p></div></div>
-<div class="contact-info-item"><div class="icon">📞</div><div><h4>PHONE</h4><p><a href="tel:9752960176">9752960176</a> / <a href="tel:7415437043">7415437043</a></p></div></div>
-<div class="contact-info-item"><div class="icon">✉️</div><div><h4>EMAIL</h4><p><a href="mailto:satnafitness@gmail.com">satnafitness@gmail.com</a></p></div></div>
-<div class="contact-info-item"><div class="icon">📸</div><div><h4>INSTAGRAM</h4><p><a href="https://instagram.com/satnafitness" target="_blank" style="color:var(--gold)">@satnafitness</a></p></div></div>
-<div class="contact-info-item"><div class="icon">📘</div><div><h4>FACEBOOK</h4><p><a href="https://facebook.com/satnafitness" target="_blank" style="color:var(--gold)">Satna Fitness</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>ADDRESS</h4><p>MG Road, Agrawal Market, near Green Talkies, Satna 485001</p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.84 13 19.79 19.79 0 0 1 1.77 4.4 2 2 0 0 1 3.74 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>PHONE</h4><p><a href="tel:9752960176">9752960176</a> / <a href="tel:7415437043">7415437043</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><polyline points="2,4 12,13 22,4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>️</div><div><h4>EMAIL</h4><p><a href="mailto:satnafitness@gmail.com">satnafitness@gmail.com</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>INSTAGRAM</h4><p><a href="https://instagram.com/satnafitness" target="_blank" style="color:var(--gold)">@satnafitness</a></p></div></div>
+<div class="contact-info-item"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></div><div><h4>FACEBOOK</h4><p><a href="https://facebook.com/satnafitness" target="_blank" style="color:var(--gold)">Satna Fitness</a></p></div></div>
 </div>
-<div class="closed-notice">⚠️ CLOSED ON SUNDAYS</div>
+<div class="closed-notice"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>️ CLOSED ON SUNDAYS</div>
 <div class="map-container">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.0!2d80.83!3d24.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDM0JzEyLjAiTiA4MMKwNDknNDguMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy"></iframe>
 </div>
@@ -429,15 +429,15 @@ footer p{color:#555;font-size:.82rem}
 
 <footer>
 <div class="social-links">
-<a href="https://instagram.com/satnafitness" target="_blank">📸</a>
-<a href="https://facebook.com/satnafitness" target="_blank">📘</a>
-<a href="mailto:satnafitness@gmail.com">✉️</a>
-<a href="https://wa.me/919752960176" target="_blank">💬</a>
+<a href="https://instagram.com/satnafitness" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+<a href="https://facebook.com/satnafitness" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+<a href="mailto:satnafitness@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><polyline points="2,4 12,13 22,4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>️</a>
+<a href="https://wa.me/919752960176" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 </div>
 <p>© 2026 Satna Fitness Gym. All rights reserved.</p>
 </footer>
 
-<a href="https://wa.me/919752960176" target="_blank" class="whatsapp-btn">💬</a>
+<a href="https://wa.me/919752960176" target="_blank" class="whatsapp-btn"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 
 <script>
 let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dots span');
