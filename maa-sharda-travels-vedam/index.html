@@ -79,7 +79,7 @@ section{padding:5rem 2rem}
 
 /* PILGRIMAGE */
 .pilgrimage{background:linear-gradient(135deg,var(--primary),#92400E);color:var(--cream);position:relative;overflow:hidden}
-.pilgrimage::before{content:'<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2l-3 7h6l-3-7zM9 9l-5 8h16l-5-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/></svg>';position:absolute;right:-50px;top:-50px;font-size:300px;opacity:.05}
+.pilgrimage::before{content:'🙏';position:absolute;right:-50px;top:-50px;font-size:300px;opacity:.05}
 .pilgrimage .section-label{color:#fbbf24}
 .pilgrimage .section-title{color:var(--cream)}
 .pilgrimage .section-desc{color:rgba(255,251,235,.8)}
@@ -301,7 +301,7 @@ section{padding:3.5rem 1.25rem}
 <div class="price">₹2,500 <span style="font-size:.8rem;font-weight:400">/ person</span></div>
 </div>
 <div class="pilgrim-card">
-<h3>✨ Prayagraj Sangam</h3>
+<h3><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><polygon points="12,2 13.5,10.5 22,12 13.5,13.5 12,22 10.5,13.5 2,12 10.5,10.5"/><line x1="18" y1="4" x2="20" y2="2" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="18" x2="2" y2="20" stroke="currentColor" stroke-width="1.5"/></svg> Prayagraj Sangam</h3>
 <p>Holy dip at the Triveni Sangam. Complete Prayagraj darshan including Hanuman Mandir, Akshay Vat, and Allahabad Fort.</p>
 <div class="price">₹4,000 <span style="font-size:.8rem;font-weight:400">/ person</span></div>
 </div>
@@ -473,7 +473,7 @@ document.querySelectorAll('.fleet-item').forEach(item=>{item.style.display=(cat=
 }
 
 // Form submit
-function submitForm(e){e.preventDefault();const phone='919425394411';const name=e.target.querySelector('input[type=text]').value;window.open('https://wa.me/'+phone+'?text=Namaste! Booking request from '+encodeURIComponent(name),'_blank');alert('<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M12 2l-3 7h6l-3-7zM9 9l-5 8h16l-5-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="21" stroke="currentColor" stroke-width="1.8"/></svg> Thank you! Redirecting to WhatsApp...')}
+function submitForm(e){e.preventDefault();const phone='919425394411';const name=e.target.querySelector('input[type=text]').value;window.open('https://wa.me/'+phone+'?text=Namaste! Booking request from '+encodeURIComponent(name),'_blank');alert('🙏 Thank you! Redirecting to WhatsApp...')}
 </script>
 </body>
 </html>
