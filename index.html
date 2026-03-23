@@ -32,11 +32,11 @@ input{flex:1;min-width:200px}
 .btn-vc:hover{background:#1e1b4b}
 .card h3{font-size:1rem;margin-bottom:12px;line-height:1.4;color:#fff}
 .card-actions{display:flex;flex-direction:column;gap:8px}
-.btn-wa{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#1a3a2a;color:#4ade80;border-radius:8px;text-decoration:none;font-size:.85rem}
-.btn-wa:hover{background:#166534}
+.contact-row{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#1a2a1a;border-radius:8px;font-size:.9rem;color:#4ade80}
+.phone-num{font-weight:600;letter-spacing:.5px;user-select:all}
 .btn-email{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(108,99,255,0.1);color:#a89fff;border-radius:8px;text-decoration:none;font-size:.8rem;word-break:break-all}
 .btn-email:hover{background:rgba(108,99,255,0.2)}
-.no-data{font-size:.8rem;color:#444;padding:4px 0;display:block}
+.no-data{font-size:.8rem;color:#444;padding:4px 0}
 footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px solid #1a1a1a}
 @media(max-width:600px){.grid{grid-template-columns:1fr;padding:15px}}
 </style>
@@ -67,8 +67,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </select>
   <select id='platformFilter' onchange='filterCards()'>
     <option value=''>Both Platforms</option>
-    <option value='vercel'>Vercel Only</option>
-    <option value='github'>GitHub Pages Only</option>
+    <option value='vercel'>Has Vercel</option>
+    <option value='github'>GitHub Only</option>
   </select>
   <span class='count' id='countLabel'>172 sites</span>
 </div>
@@ -80,8 +80,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -90,8 +90,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>A2 Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -100,8 +100,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The contact number for Aahar Tiffin Services in Gwalior</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918770212378' target='_blank' class='btn-wa'>?? +918770212378</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918770212378</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -110,8 +110,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aakash Institute in Indore has phone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800013062' target='_blank' class='btn-wa'>?? +918800013062</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800013062</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -120,8 +120,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aakash Institute in Indore has phone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800013062' target='_blank' class='btn-wa'>?? +918800013062</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800013062</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -130,8 +130,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aakash Institute in Indore has phone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800013062' target='_blank' class='btn-wa'>?? +918800013062</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800013062</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -140,8 +140,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -150,8 +150,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>AdvancedEyeCare</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919109973218' target='_blank' class='btn-wa'>?? +919109973218</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919109973218</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -160,8 +160,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Akhada Right Track</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -170,7 +170,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Alfanzo Restaurant</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:info@alfanzo.in' class='btn-email'>?? info@alfanzo.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
@@ -180,7 +180,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ALLEN Centers</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:indore@allen.in' class='btn-email'>?? indore@allen.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
@@ -190,7 +190,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ALLEN Centers</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:indore@allen.in' class='btn-email'>?? indore@allen.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
@@ -200,7 +200,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ALLEN Centers</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:indore@allen.in' class='btn-email'>?? indore@allen.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
@@ -210,8 +210,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -220,8 +220,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aparajit IAS Academy</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919522147096' target='_blank' class='btn-wa'>?? +919522147096</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919522147096</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -230,8 +230,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Unlock Your UPSC Dreams - Check Out the Top 5 Coaching Centers in Jaba</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919827239801' target='_blank' class='btn-wa'>?? +919827239801</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919827239801</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -240,8 +240,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Near Gokuldas Hospital</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919513731667' target='_blank' class='btn-wa'>?? +919513731667</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919513731667</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -250,8 +250,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Near Gokuldas Hospital</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919513731667' target='_blank' class='btn-wa'>?? +919513731667</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919513731667</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -260,8 +260,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Asha IAS Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919818943583' target='_blank' class='btn-wa'>?? +919818943583</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919818943583</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -270,8 +270,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Asha IAS Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919818943583' target='_blank' class='btn-wa'>?? +919818943583</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919818943583</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='sweet shop & bakery'>
   <div class='card-header'>
@@ -280,8 +280,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Bakeology Bakery is available at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917058892222' target='_blank' class='btn-wa'>?? +917058892222</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917058892222</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -290,8 +290,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>LCH FITNESS - A Family Wellness Centre in Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919406802632' target='_blank' class='btn-wa'>?? +919406802632</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919406802632</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -300,8 +300,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Barbee Unisex</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -310,8 +310,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The Best Fitness Center In Bhopal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917999073722' target='_blank' class='btn-wa'>?? +917999073722</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917999073722</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -320,8 +320,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Seraphic Dental Clinic in Indore can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826092665' target='_blank' class='btn-wa'>?? +919826092665</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826092665</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -330,7 +330,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best Gym in Gwalior</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:manojj984@gmail.com' class='btn-email'>?? manojj984@gmail.com</a>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
@@ -340,8 +340,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>BIOZONE Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919827042252' target='_blank' class='btn-wa'>?? +919827042252</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919827042252</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='spa & salon'>
   <div class='card-header'>
@@ -350,8 +350,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Book Professional Bridal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919610733747' target='_blank' class='btn-wa'>?? +919610733747</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919610733747</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -360,7 +360,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Atmosphere - Premium Lifestyle Cafe</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:cafealabina@yahoo.com' class='btn-email'>?? cafealabina@yahoo.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
@@ -370,7 +370,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ALLEN Career Institute Private Limited</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:indore@allen.in' class='btn-email'>?? indore@allen.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
@@ -380,8 +380,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Welcome to Gold's Gym India</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917869585163' target='_blank' class='btn-wa'>?? +917869585163</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917869585163</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -390,8 +390,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Chaturvedi Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -400,8 +400,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Chauhan Dental Clinic at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919301911999' target='_blank' class='btn-wa'>?? +919301911999</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919301911999</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -410,8 +410,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>LCH FITNESS - A Family Wellness Centre in Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919406802632' target='_blank' class='btn-wa'>?? +919406802632</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919406802632</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='spa & salon'>
   <div class='card-header'>
@@ -420,8 +420,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Cute Look Beauty Salon</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919301819175' target='_blank' class='btn-wa'>?? +919301819175</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919301819175</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -430,8 +430,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>CYNOSURE Civil Services Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918989851047' target='_blank' class='btn-wa'>?? +918989851047</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918989851047</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -440,8 +440,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Dauji Mishthaan Bhandar</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -450,8 +450,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Deepika Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918817511508' target='_blank' class='btn-wa'>?? +918817511508</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918817511508</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -460,8 +460,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Seraphic Dental Clinic in Indore can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826092665' target='_blank' class='btn-wa'>?? +919826092665</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826092665</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='spa & salon'>
   <div class='card-header'>
@@ -470,8 +470,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>At Desire Makeover Salon Jabalpur</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917400595042' target='_blank' class='btn-wa'>?? +917400595042</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917400595042</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -480,8 +480,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Dezy Dental Care offers dental check</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918047362299' target='_blank' class='btn-wa'>?? +918047362299</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918047362299</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -490,8 +490,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Dhuaan Rooftop</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -500,8 +500,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -510,8 +510,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ELITE Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919179168884' target='_blank' class='btn-wa'>?? +919179168884</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919179168884</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -520,8 +520,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Excellence Academy</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918989126309' target='_blank' class='btn-wa'>?? +918989126309</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918989126309</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='sweet shop & bakery'>
   <div class='card-header'>
@@ -530,8 +530,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Fantasy Bakery Shop in Bhopal has</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918448440914' target='_blank' class='btn-wa'>?? +918448440914</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918448440914</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -540,8 +540,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aapke ... Salon - Fashionista Beauty Salon . Address - 59</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918959633244' target='_blank' class='btn-wa'>?? +918959633244</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918959633244</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -550,7 +550,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Plot No 84 Zone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917000405088' target='_blank' class='btn-wa'>?? +917000405088</a>
+    <div class='contact-row'>?? <span class='phone-num'>+917000405088</span></div>
     <a href='mailto:srashtibuildcon2015@gmail.com' class='btn-email'>?? srashtibuildcon2015@gmail.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
@@ -560,8 +560,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -570,8 +570,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Galaxy PAT Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918982382989' target='_blank' class='btn-wa'>?? +918982382989</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918982382989</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -580,8 +580,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Galaxy PAT Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918982382989' target='_blank' class='btn-wa'>?? +918982382989</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918982382989</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -590,8 +590,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The GATE Academy - Indore Science</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919229867353' target='_blank' class='btn-wa'>?? +919229867353</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919229867353</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -600,8 +600,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>GKM Nursing Coaching</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919302168588' target='_blank' class='btn-wa'>?? +919302168588</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919302168588</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='spa & salon'>
   <div class='card-header'>
@@ -610,8 +610,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Book Professional Bridal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919610733747' target='_blank' class='btn-wa'>?? +919610733747</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919610733747</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -620,8 +620,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -630,8 +630,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Golds Gym Bhawarkuan</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -640,8 +640,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The Best Fitness Center In Bhopal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917999073722' target='_blank' class='btn-wa'>?? +917999073722</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917999073722</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -650,8 +650,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>JabalpurSalon</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919009555050' target='_blank' class='btn-wa'>?? +919009555050</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919009555050</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -660,8 +660,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Gold's Gym Vijaynagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993834111' target='_blank' class='btn-wa'>?? +919993834111</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993834111</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -670,7 +670,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Goutam IAS Academy</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:uniqueiasstudycircle@gmail.com' class='btn-email'>?? uniqueiasstudycircle@gmail.com</a>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
@@ -680,7 +680,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best Gym in Gwalior</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:manojj984@gmail.com' class='btn-email'>?? manojj984@gmail.com</a>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
@@ -690,7 +690,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best Gym in Gwalior</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:manojj984@gmail.com' class='btn-email'>?? manojj984@gmail.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='wedding photographer'>
@@ -700,8 +700,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Harsh Studio Photography in Indore offers</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919926681883' target='_blank' class='btn-wa'>?? +919926681883</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919926681883</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -710,8 +710,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Hi-Tech Eye Care & Laser CenterHi-Tech Eye Care & Laser Center</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826044737' target='_blank' class='btn-wa'>?? +919826044737</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826044737</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -720,7 +720,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best Gym in Gwalior</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:manojj984@gmail.com' class='btn-email'>?? manojj984@gmail.com</a>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
@@ -730,7 +730,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Hotel Centre Park</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919685550666' target='_blank' class='btn-wa'>?? +919685550666</a>
+    <div class='contact-row'>?? <span class='phone-num'>+919685550666</span></div>
     <a href='mailto:lordsbho@gmail.com' class='btn-email'>?? lordsbho@gmail.com</a>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='wedding photographer'>
@@ -740,8 +740,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Imagic Production can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919452934357' target='_blank' class='btn-wa'>?? +919452934357</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919452934357</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -750,8 +750,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Indian Agriculture Academy</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917089212222' target='_blank' class='btn-wa'>?? +917089212222</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917089212222</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -760,8 +760,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Seraphic Dental Clinic in Indore can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826092665' target='_blank' class='btn-wa'>?? +919826092665</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826092665</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -770,8 +770,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>City Centre</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919520869722' target='_blank' class='btn-wa'>?? +919520869722</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919520869722</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -780,8 +780,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Ironclad Gym</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -790,8 +790,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>JabalpurSalon</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919009555050' target='_blank' class='btn-wa'>?? +919009555050</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919009555050</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -800,8 +800,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>JabalpurSalon</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919009555050' target='_blank' class='btn-wa'>?? +919009555050</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919009555050</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='sweet shop & bakery'>
   <div class='card-header'>
@@ -810,8 +810,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Omni Bakers and Jai Hind Bakery are popular</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919009500669' target='_blank' class='btn-wa'>?? +919009500669</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919009500669</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -820,8 +820,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Jay Chugh Photography at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917879704040' target='_blank' class='btn-wa'>?? +917879704040</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917879704040</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -830,7 +830,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Atmosphere - Premium Lifestyle Cafe</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:cafealabina@yahoo.com' class='btn-email'>?? cafealabina@yahoo.com</a>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='coaching institute'>
@@ -840,8 +840,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Krishna Institute Tuition Center institute in</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917880243673' target='_blank' class='btn-wa'>?? +917880243673</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917880243673</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -850,8 +850,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Lakme Salon Vijay Nagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993644542' target='_blank' class='btn-wa'>?? +919993644542</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993644542</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -860,8 +860,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Lakme Salon Vijay Nagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993644542' target='_blank' class='btn-wa'>?? +919993644542</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993644542</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -870,8 +870,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Lakme Salon Vijay Nagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993644542' target='_blank' class='btn-wa'>?? +919993644542</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993644542</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -880,8 +880,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Lakshmi Narayan Temple Phone Number</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826634848' target='_blank' class='btn-wa'>?? +919826634848</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826634848</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='spa & salon'>
   <div class='card-header'>
@@ -890,8 +890,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Slide 2 Image of The Ideal Salon Tawa Complex Bittan</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918460283122' target='_blank' class='btn-wa'>?? +918460283122</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918460283122</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -900,8 +900,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Free Eye Test at Chetakpuri</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918929330615' target='_blank' class='btn-wa'>?? +918929330615</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918929330615</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -910,8 +910,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Free Eye Test at DB Mall</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918447907937' target='_blank' class='btn-wa'>?? +918447907937</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918447907937</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -920,7 +920,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best Gym in Gwalior</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:manojj984@gmail.com' class='btn-email'>?? manojj984@gmail.com</a>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='dental & eye clinic'>
@@ -930,8 +930,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Free Eye Test at Kohefiza</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918042300935' target='_blank' class='btn-wa'>?? +918042300935</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918042300935</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -940,8 +940,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Gold's Gym Vijaynagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993834111' target='_blank' class='btn-wa'>?? +919993834111</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993834111</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -950,8 +950,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Free Eye Test at University</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919899409859' target='_blank' class='btn-wa'>?? +919899409859</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919899409859</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -960,8 +960,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Maa Durga Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -970,8 +970,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Maa Sharda Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
   <div class='card-header'>
@@ -980,8 +980,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>MADE EASY Centre Locations</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919021300500' target='_blank' class='btn-wa'>?? +919021300500</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919021300500</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -990,8 +990,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Parvati Institute of Mathematics</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917880291440' target='_blank' class='btn-wa'>?? +917880291440</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917880291440</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -1000,7 +1000,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Candid shoots are also provided by Maya Photo Studio</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:yeesu786@gmail.com' class='btn-email'>?? yeesu786@gmail.com</a>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='real estate agent'>
@@ -1010,7 +1010,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>We Have Over a Million Properties For You</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918109009000' target='_blank' class='btn-wa'>?? +918109009000</a>
+    <div class='contact-row'>?? <span class='phone-num'>+918109009000</span></div>
     <a href='mailto:info@jabalpurmagicproperty.com' class='btn-email'>?? info@jabalpurmagicproperty.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
@@ -1020,8 +1020,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Miraaya Makeup Studio offers services at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919165623089' target='_blank' class='btn-wa'>?? +919165623089</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919165623089</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1030,8 +1030,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Mitesh Rathi Classes at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919755096044' target='_blank' class='btn-wa'>?? +919755096044</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919755096044</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1040,8 +1040,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Bansuriwala Real Estate Agency</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919993933333' target='_blank' class='btn-wa'>?? +919993933333</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919993933333</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1050,8 +1050,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Mp Holiday Tours</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -1060,8 +1060,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Mukul Studio at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918818916222' target='_blank' class='btn-wa'>?? +918818916222</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918818916222</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1070,8 +1070,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Nailash Beauty Studio & Academy in Indore has the</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918889944466' target='_blank' class='btn-wa'>?? +918889944466</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918889944466</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1080,8 +1080,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The Best Fitness Center In Bhopal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917999073722' target='_blank' class='btn-wa'>?? +917999073722</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917999073722</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1090,8 +1090,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Nikky Bawa Beauty Salon at 2nd Floor</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917999503089' target='_blank' class='btn-wa'>?? +917999503089</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917999503089</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1100,7 +1100,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>ALLEN Career Institute Private Limited</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:indore@allen.in' class='btn-email'>?? indore@allen.in</a>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='sweet shop & bakery'>
@@ -1110,8 +1110,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Omni Bakers and Jai Hind Bakery are popular</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919009500669' target='_blank' class='btn-wa'>?? +919009500669</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919009500669</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1120,8 +1120,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>PAATHSHAALA Coaching Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919770187722' target='_blank' class='btn-wa'>?? +919770187722</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919770187722</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1130,8 +1130,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Parvati Institute of Mathematics</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917880291440' target='_blank' class='btn-wa'>?? +917880291440</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917880291440</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1140,8 +1140,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Frequently asked questions about JEE Coaching Institutes in Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800810308' target='_blank' class='btn-wa'>?? +918800810308</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800810308</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1150,8 +1150,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Power Gym in Jabalpur is</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919340822761' target='_blank' class='btn-wa'>?? +919340822761</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919340822761</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1160,8 +1160,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Maharana Pratap Nagar</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917000661262' target='_blank' class='btn-wa'>?? +917000661262</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917000661262</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1170,8 +1170,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Qazi Physics Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919039331333' target='_blank' class='btn-wa'>?? +919039331333</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919039331333</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1180,8 +1180,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Ramanujam Maths Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919893033986' target='_blank' class='btn-wa'>?? +919893033986</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919893033986</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1190,7 +1190,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Ravindra IAS Coaching ravindrasiasdelhi</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919953101176' target='_blank' class='btn-wa'>?? +919953101176</a>
+    <div class='contact-row'>?? <span class='phone-num'>+919953101176</span></div>
     <a href='mailto:ravindrasiasdelhi@gmail.com' class='btn-email'>?? ravindrasiasdelhi@gmail.com</a>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
@@ -1200,8 +1200,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Yours Reliable Institute for 10th class</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919893451294' target='_blank' class='btn-wa'>?? +919893451294</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919893451294</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1210,7 +1210,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Atmosphere - Premium Lifestyle Cafe</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:cafealabina@yahoo.com' class='btn-email'>?? cafealabina@yahoo.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
@@ -1220,8 +1220,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Ribosome Institute's contact is</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919329911449' target='_blank' class='btn-wa'>?? +919329911449</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919329911449</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1230,8 +1230,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Ribosome Institute's contact is</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919329911449' target='_blank' class='btn-wa'>?? +919329911449</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919329911449</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='gwalior' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1240,8 +1240,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Rinaya Properly Dealer</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917490055215' target='_blank' class='btn-wa'>?? +917490055215</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917490055215</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1250,8 +1250,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>This consultant is Rishiraj Realty Consultant. The</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919755029998' target='_blank' class='btn-wa'>?? +919755029998</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919755029998</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1260,8 +1260,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>This consultant is Rishiraj Realty Consultant. The</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919755029998' target='_blank' class='btn-wa'>?? +919755029998</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919755029998</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='sweet shop & bakery'>
   <div class='card-header'>
@@ -1270,7 +1270,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Theobroma Bakery Store in VIJAY</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918182881881' target='_blank' class='btn-wa'>?? +918182881881</a>
+    <div class='contact-row'>?? <span class='phone-num'>+918182881881</span></div>
     <a href='mailto:contact@theobroma.in' class='btn-email'>?? contact@theobroma.in</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
@@ -1280,8 +1280,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Post Property Free</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918929175327' target='_blank' class='btn-wa'>?? +918929175327</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918929175327</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1290,8 +1290,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Darvesh Royale</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919702964444' target='_blank' class='btn-wa'>?? +919702964444</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919702964444</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1300,8 +1300,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Mitesh Rathi Classes at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919755096044' target='_blank' class='btn-wa'>?? +919755096044</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919755096044</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1310,8 +1310,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1320,8 +1320,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sai Focus Academy</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919806148331' target='_blank' class='btn-wa'>?? +919806148331</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919806148331</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1330,8 +1330,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Post Property Free</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918929175327' target='_blank' class='btn-wa'>?? +918929175327</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918929175327</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1340,8 +1340,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Saksham Tours</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -1350,8 +1350,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sam Creation Studio provides services</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918319462741' target='_blank' class='btn-wa'>?? +918319462741</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918319462741</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1360,8 +1360,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sambhav Institute of Education</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918770579978' target='_blank' class='btn-wa'>?? +918770579978</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918770579978</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1370,8 +1370,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1380,8 +1380,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1390,8 +1390,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1400,8 +1400,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Frequently asked questions about JEE Coaching Institutes in Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800810308' target='_blank' class='btn-wa'>?? +918800810308</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800810308</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1410,8 +1410,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sda Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1420,8 +1420,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>SeetaFoods</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919340808278' target='_blank' class='btn-wa'>?? +919340808278</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919340808278</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -1430,8 +1430,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Seraphic Dental Clinic in Indore can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826092665' target='_blank' class='btn-wa'>?? +919826092665</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826092665</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1440,8 +1440,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Shan E Rewa</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='real estate agent'>
   <div class='card-header'>
@@ -1450,7 +1450,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Shree Katariya & Associates</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919977489944' target='_blank' class='btn-wa'>?? +919977489944</a>
+    <div class='contact-row'>?? <span class='phone-num'>+919977489944</span></div>
     <a href='mailto:info@shreekatariya.com' class='btn-email'>?? info@shreekatariya.com</a>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='real estate agent'>
@@ -1460,8 +1460,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Shri Sanskar Rental and Property</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917805801141' target='_blank' class='btn-wa'>?? +917805801141</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917805801141</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1470,8 +1470,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Shriram Travels</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1480,8 +1480,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Shubh Yatra Tours</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1490,8 +1490,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Kaushal Kishore Shukla Manager Contact</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919294551118' target='_blank' class='btn-wa'>?? +919294551118</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919294551118</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1500,8 +1500,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Siddhi Academy</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917869870659' target='_blank' class='btn-wa'>?? +917869870659</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917869870659</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1510,7 +1510,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Atmosphere - Premium Lifestyle Cafe</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
+    <div class='no-data'>No phone</div>
     <a href='mailto:cafealabina@yahoo.com' class='btn-email'>?? cafealabina@yahoo.com</a>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
@@ -1520,8 +1520,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>You can Book An appointment at The Sobo Nail Salon in Indore by</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919136692758' target='_blank' class='btn-wa'>?? +919136692758</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919136692758</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1530,8 +1530,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Top 16 Restaurant near MP nagar in</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919685212929' target='_blank' class='btn-wa'>?? +919685212929</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919685212929</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1540,8 +1540,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Near Satya Sai Square</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918800952602' target='_blank' class='btn-wa'>?? +918800952602</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918800952602</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1550,8 +1550,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Anytime Fitness</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918062689019' target='_blank' class='btn-wa'>?? +918062689019</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918062689019</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1560,8 +1560,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>StudySpace profile</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918287604941' target='_blank' class='btn-wa'>?? +918287604941</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918287604941</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1570,8 +1570,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Sapna Beauty Parlour Haircuts</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917979789767' target='_blank' class='btn-wa'>?? +917979789767</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917979789767</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -1580,8 +1580,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Slide 2 Image of Sunrise Digital Studio Tilak Nagar Indore</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917411949153' target='_blank' class='btn-wa'>?? +917411949153</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+917411949153</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1590,8 +1590,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Why Join Indore'sTathagat IASCoaching Institute</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918448440231' target='_blank' class='btn-wa'>?? +918448440231</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918448440231</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1600,8 +1600,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The 3 Clover</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1610,8 +1610,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>The Tuition Classes in Bhopal can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919074289403' target='_blank' class='btn-wa'>?? +919074289403</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919074289403</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='sweet shop & bakery'>
   <div class='card-header'>
@@ -1620,7 +1620,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Theobroma Bakery Store in VIJAY</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918182881881' target='_blank' class='btn-wa'>?? +918182881881</a>
+    <div class='contact-row'>?? <span class='phone-num'>+918182881881</span></div>
     <a href='mailto:contact@theobroma.in' class='btn-email'>?? contact@theobroma.in</a>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
@@ -1630,8 +1630,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Tiwari Study Zone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919131770389' target='_blank' class='btn-wa'>?? +919131770389</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919131770389</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1640,8 +1640,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Tiwari Study Zone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919131770389' target='_blank' class='btn-wa'>?? +919131770389</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919131770389</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1650,8 +1650,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Toppers Academy can be reached at</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919522200267' target='_blank' class='btn-wa'>?? +919522200267</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919522200267</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1660,8 +1660,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Unlock Your UPSC Dreams - Check Out the Top 5 Coaching Centers in Jaba</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919827239801' target='_blank' class='btn-wa'>?? +919827239801</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919827239801</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1670,8 +1670,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Introducing Vaishnavi Tiffin Service</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/916261560850' target='_blank' class='btn-wa'>?? +916261560850</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+916261560850</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1680,8 +1680,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Aapke ... Salon - Fashionista Beauty Salon . Address - 59</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918959633244' target='_blank' class='btn-wa'>?? +918959633244</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918959633244</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='spa & salon'>
   <div class='card-header'>
@@ -1690,8 +1690,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Makeup Studio & Academy Makeup</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918871608174' target='_blank' class='btn-wa'>?? +918871608174</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918871608174</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -1700,8 +1700,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Seraphic Dental Clinic in Indore can be</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919826092665' target='_blank' class='btn-wa'>?? +919826092665</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919826092665</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1710,8 +1710,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Virmani Classes</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919893901113' target='_blank' class='btn-wa'>?? +919893901113</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919893901113</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='gym & fitness'>
   <div class='card-header'>
@@ -1720,8 +1720,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Vishal Fitness Planet Bhopal</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919425004711' target='_blank' class='btn-wa'>?? +919425004711</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919425004711</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -1730,8 +1730,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Clear Vision Book Your Appointment with Our Eye Doctor</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919594924026' target='_blank' class='btn-wa'>?? +919594924026</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919594924026</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='indore' data-cat='dental & eye clinic'>
   <div class='card-header'>
@@ -1740,8 +1740,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Clear Vision Book Your Appointment with Our Eye Doctor</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919594924026' target='_blank' class='btn-wa'>?? +919594924026</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919594924026</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='wedding photographer'>
   <div class='card-header'>
@@ -1750,8 +1750,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Luxury Wedding Photography</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/919522565555' target='_blank' class='btn-wa'>?? +919522565555</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+919522565555</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1760,8 +1760,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>See more from White kitchen Restaurant & Party Hall</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918818886226' target='_blank' class='btn-wa'>?? +918818886226</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918818886226</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='' data-cat=''>
   <div class='card-header'>
@@ -1770,8 +1770,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Yfc Gym Singrauli</h3>
   <div class='card-actions'>
-    <span class='no-data'>No phone</span>
-    <span class='no-data'>No email</span>
+    <div class='no-data'>No phone</div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='jabalpur' data-cat='coaching institute'>
   <div class='card-header'>
@@ -1780,8 +1780,8 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Best IAS Coaching in Jabalpur - Yojna</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/918595390705' target='_blank' class='btn-wa'>?? +918595390705</a>
-    <span class='no-data'>No email</span>
+    <div class='contact-row'>?? <span class='phone-num'>+918595390705</span></div>
+    <div class='no-data'>No email</div>
   </div>
 </div><div class='card' data-city='bhopal' data-cat='restaurant & dhaba'>
   <div class='card-header'>
@@ -1790,7 +1790,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:.85rem;border-top:1px
   </div>
   <h3>Plot No 84 Zone</h3>
   <div class='card-actions'>
-    <a href='https://wa.me/917000405088' target='_blank' class='btn-wa'>?? +917000405088</a>
+    <div class='contact-row'>?? <span class='phone-num'>+917000405088</span></div>
     <a href='mailto:srashtibuildcon2015@gmail.com' class='btn-email'>?? srashtibuildcon2015@gmail.com</a>
   </div>
 </div>
