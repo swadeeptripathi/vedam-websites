@@ -411,7 +411,62 @@ section{padding:50px 4%}
 </div>
 </section>
 
-<footer>
+
+  <section id="faq" style="padding:80px 0;background:rgba(255,255,255,0.02)">
+    <div class="container" style="max-width:800px;margin:0 auto;padding:0 20px">
+      <h2 style="text-align:center;font-size:2rem;font-weight:800;margin-bottom:12px">Frequently Asked <span style="color:var(--accent)">Questions</span></h2>
+      <p style="text-align:center;opacity:0.65;margin-bottom:48px;font-size:1rem">Everything you need to know — answered</p>
+      <div class="faq-list">
+        
+      <div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,0.1)">
+        <button onclick="(function(btn){var ans=btn.nextElementSibling;var open=ans.style.maxHeight==='none'||ans.style.maxHeight==='';ans.style.maxHeight=open?'0':'none';btn.style.color=open?'var(--accent)':'';btn.querySelector('.faq-arrow').style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:inherit;font-size:1rem;font-weight:600;text-align:left;cursor:pointer">
+          Do I need to book an appointment in advance?
+          <span class="faq-arrow" style="display:inline-block;transition:transform .3s;font-size:1.2rem;min-width:20px;text-align:center">&#8964;</span>
+        </button>
+        <div style="max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 0 0 0">
+          <p style="margin:0 0 20px;opacity:0.75;line-height:1.7;font-size:0.95rem">Appointments are recommended to ensure your preferred time slot. Walk-ins are welcome based on availability.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,0.1)">
+        <button onclick="(function(btn){var ans=btn.nextElementSibling;var open=ans.style.maxHeight==='none'||ans.style.maxHeight==='';ans.style.maxHeight=open?'0':'none';btn.style.color=open?'var(--accent)':'';btn.querySelector('.faq-arrow').style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:inherit;font-size:1rem;font-weight:600;text-align:left;cursor:pointer">
+          What services do you offer?
+          <span class="faq-arrow" style="display:inline-block;transition:transform .3s;font-size:1.2rem;min-width:20px;text-align:center">&#8964;</span>
+        </button>
+        <div style="max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 0 0 0">
+          <p style="margin:0 0 20px;opacity:0.75;line-height:1.7;font-size:0.95rem">We offer haircuts, styling, coloring, facials, body massages, manicure, pedicure, bridal packages, and more.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,0.1)">
+        <button onclick="(function(btn){var ans=btn.nextElementSibling;var open=ans.style.maxHeight==='none'||ans.style.maxHeight==='';ans.style.maxHeight=open?'0':'none';btn.style.color=open?'var(--accent)':'';btn.querySelector('.faq-arrow').style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:inherit;font-size:1rem;font-weight:600;text-align:left;cursor:pointer">
+          Are your products safe for sensitive skin?
+          <span class="faq-arrow" style="display:inline-block;transition:transform .3s;font-size:1.2rem;min-width:20px;text-align:center">&#8964;</span>
+        </button>
+        <div style="max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 0 0 0">
+          <p style="margin:0 0 20px;opacity:0.75;line-height:1.7;font-size:0.95rem">Yes, we use premium, dermatologically tested products suitable for all skin types including sensitive skin.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,0.1)">
+        <button onclick="(function(btn){var ans=btn.nextElementSibling;var open=ans.style.maxHeight==='none'||ans.style.maxHeight==='';ans.style.maxHeight=open?'0':'none';btn.style.color=open?'var(--accent)':'';btn.querySelector('.faq-arrow').style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:inherit;font-size:1rem;font-weight:600;text-align:left;cursor:pointer">
+          How long does a typical session take?
+          <span class="faq-arrow" style="display:inline-block;transition:transform .3s;font-size:1.2rem;min-width:20px;text-align:center">&#8964;</span>
+        </button>
+        <div style="max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 0 0 0">
+          <p style="margin:0 0 20px;opacity:0.75;line-height:1.7;font-size:0.95rem">Sessions range from 30 minutes for express services to 3+ hours for full bridal or spa packages.</p>
+        </div>
+      </div>
+      <div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,0.1)">
+        <button onclick="(function(btn){var ans=btn.nextElementSibling;var open=ans.style.maxHeight==='none'||ans.style.maxHeight==='';ans.style.maxHeight=open?'0':'none';btn.style.color=open?'var(--accent)':'';btn.querySelector('.faq-arrow').style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)" style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:inherit;font-size:1rem;font-weight:600;text-align:left;cursor:pointer">
+          Do you offer home services?
+          <span class="faq-arrow" style="display:inline-block;transition:transform .3s;font-size:1.2rem;min-width:20px;text-align:center">&#8964;</span>
+        </button>
+        <div style="max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 0 0 0">
+          <p style="margin:0 0 20px;opacity:0.75;line-height:1.7;font-size:0.95rem">Yes, we offer doorstep beauty services for special occasions. Please call or WhatsApp to book.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <footer>
 <div class="social-links">
 <a href="https://instagram.com/shubh_yatra_travels_agency" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 <a href="https://facebook.com/shubhyatratours" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
