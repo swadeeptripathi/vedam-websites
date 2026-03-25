@@ -1,0 +1,21 @@
+<section id="pricing">
+  <div class="container">
+    <h2 class="stitle">Our <span>Plans</span></h2>
+    <p class="ssub">{{ pricingDesc | default('Choose the plan that works best for you') }}</p>
+    <div class="pg">
+      {% for plan in pricing %}
+      <div class="pc{% if plan.popular %} pop{% endif %}">
+        <h3>{{ plan.name }}</h3>
+        <div class="amt">{{ plan.price }}</div>
+        <div class="per">{{ plan.period }}</div>
+        <ul>
+          {% for feat in plan.features %}
+          <li>{{ feat }}</li>
+          {% endfor %}
+        </ul>
+        <a href="#contact" class="btn" style="width:100%;text-align:center">{{ plan.cta | default('Get Started') }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

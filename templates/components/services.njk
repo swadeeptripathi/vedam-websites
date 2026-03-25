@@ -1,0 +1,15 @@
+<section id="services">
+  <div class="container">
+    <h2 class="stitle">Our <span>{{ servicesTitle | default('Services') }}</span></h2>
+    <p class="ssub">{{ servicesDesc | default('Comprehensive services designed for your needs') }}</p>
+    <div class="grid">
+      {% for svc in services %}
+      <div class="card">
+        <div class="ci">{{ svc.icon }}</div>
+        <h3>{{ svc.name }}</h3>
+        <p>{{ svc.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

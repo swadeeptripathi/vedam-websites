@@ -1,0 +1,17 @@
+<nav role="navigation" aria-label="Main navigation">
+  <div class="logo-txt">{{ logo | safe }}</div>
+  <ul class="nav-links">
+    {% for link in navLinks %}
+    <li><a href="#{{ link[0] }}">{{ link[1] }}</a></li>
+    {% endfor %}
+  </ul>
+  <button class="hbg" aria-label="Open navigation menu" aria-expanded="false" onclick="document.querySelector('.mm').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mm" role="dialog" aria-label="Mobile navigation">
+  <button class="mm-close" aria-label="Close navigation menu" onclick="this.parentElement.classList.remove('open')">✕</button>
+  {% for link in navLinks %}
+  <a href="#{{ link[0] }}" onclick="this.parentElement.classList.remove('open')">{{ link[1] }}</a>
+  {% endfor %}
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ metaDescription }}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ canonicalUrl }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:url" content="{{ canonicalUrl }}">
+<meta property="og:site_name" content="VEDAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<script type="application/ld+json">{{ jsonLD | safe }}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family={{ fontFamily | urlencode }}&display=swap" rel="stylesheet">
+<style>
+{% include "components/base.css" %}
+{% include "components/responsive.css" %}
+{% include "components/accessibility.css" %}
+{% include "components/print.css" %}
+{% if verticalCSS %}{{ verticalCSS | safe }}{% endif %}
+</style>
+</head>
+<body>
+<a href="#contact" class="skip-link">Skip to Contact</a>
+{% if banner %}{{ banner | safe }}{% endif %}
+
+{% include "components/nav.njk" %}
+
+<main id="main-content">
+{% include "components/hero.njk" %}
+{% include "components/about.njk" %}
+{% include "components/services.njk" %}
+{% include "components/stats.njk" %}
+{% if pricing %}{% include "components/pricing.njk" %}{% endif %}
+{% include "components/testimonials.njk" %}
+{% if widget %}{{ widget | safe }}{% endif %}
+{% include "components/contact.njk" %}
+</main>
+
+{% include "components/footer.njk" %}
+
+<a href="https://wa.me/{{ waNumber }}" class="wa" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">💬</a>
+<a href="tel:{{ phone }}" class="sticky-cta" aria-label="Call {{ businessName }}">
+<svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+Call Now — {{ phone | replace("+91", "+91 ") }}</a>
+
+{% include "components/scripts.njk" %}
+{% if verticalJS %}{{ verticalJS | safe }}{% endif %}
+</body>
+</html>

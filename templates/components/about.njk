@@ -1,0 +1,22 @@
+<section id="about">
+  <div class="container">
+    <div class="ag">
+      <div class="ai">
+        <img src="{{ aboutImage }}" alt="{{ businessName }} - About us" loading="lazy">
+        {% if aboutBadge %}<div class="a-badge">{{ aboutBadge | safe }}</div>{% endif %}
+      </div>
+      <div class="at">
+        <h2>{{ aboutTitle | safe }}</h2>
+        <p>{{ aboutP1 }}</p>
+        <p>{{ aboutP2 }}</p>
+        {% if feats %}
+        <div class="feats">
+          {% for feat in feats %}
+          <div class="feat"><strong>✓</strong> {{ feat }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
