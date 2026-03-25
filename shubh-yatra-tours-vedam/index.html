@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shubh Yatra Tours N Travels — Your Journey Begins Here</title>
+<meta name="description" content="Shubh Yatra Tours N Travels — Your Journey Begins Here in Madhya Pradesh — holiday packages, pilgrimage tours, adventure trips & car rental. Call 9755599785 for appointments & bookings.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://swadeeptripathi.github.io/vedam-websites/shubh-yatra-tours-vedam/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shubh Yatra Tours N Travels — Your Journey Begins Here">
+<meta property="og:description" content="Shubh Yatra Tours N Travels — Your Journey Begins Here in Madhya Pradesh — holiday packages, pilgrimage tours, adventure trips & car rental. Call 9755599785 for appointments & bookings.">
+<meta property="og:url" content="https://swadeeptripathi.github.io/vedam-websites/shubh-yatra-tours-vedam/">
+<meta property="og:site_name" content="VEDAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shubh Yatra Tours N Travels — Your Journey Begins Here">
+<meta name="twitter:description" content="Shubh Yatra Tours N Travels — Your Journey Begins Here in Madhya Pradesh — holiday packages, pilgrimage tours, adventure trips & car rental. Call 9755599785 for appointments & bookings.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TravelAgency","name":"Shubh Yatra Tours N Travels — Your Journey Begins Here","description":"Shubh Yatra Tours N Travels — Your Journey Begins Here in Madhya Pradesh — holiday packages, pilgrimage tours, adventure trips & car rental. Call 9755599785 for appointments.","url":"https://swadeeptripathi.github.io/vedam-websites/shubh-yatra-tours-vedam/","telephone":"9755599785","address":{"@type":"PostalAddress","addressLocality":"Madhya Pradesh","addressRegion":"Madhya Pradesh","addressCountry":"IN"}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -162,11 +174,52 @@ section{padding:50px 4%}
 .services-grid,.why-grid{grid-template-columns:1fr}
 .gallery-grid{grid-template-columns:1fr}
 }
+
+/* ═══ Enhanced Mobile Responsiveness ═══ */
+@media(max-width:480px){
+  section{padding:50px 4%}
+  .h-cnt h1,h1{font-size:clamp(1.8rem,6vw,2.8rem)!important}
+  .h-cnt p{font-size:.88rem}
+  .btn{padding:11px 22px;font-size:.82rem}
+  .stitle{font-size:clamp(1.4rem,5vw,2rem)}
+  .sg{grid-template-columns:1fr 1fr;gap:14px}
+  .sg h3{font-size:1.6rem}
+  .pg{grid-template-columns:1fr!important;gap:14px}
+  .grid{grid-template-columns:1fr!important;gap:12px}
+  .ag,.cg{gap:24px}
+  .ai img{height:260px}
+  .mapbox{height:160px}
+}
+@media(max-width:360px){
+  .sg{grid-template-columns:1fr}
+  .btn-s{margin-left:0;margin-top:8px;display:inline-block}
+}
+/* ═══ Sticky CTA Phone Bar ═══ */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:997;background:var(--a);display:none;align-items:center;justify-content:center;gap:8px;padding:10px 16px;color:#fff;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 -2px 12px rgba(0,0,0,.3);transition:transform .3s}
+.sticky-cta:hover{filter:brightness(1.1)}
+.sticky-cta svg{width:18px;height:18px;fill:#fff}
+@media(max-width:768px){.sticky-cta{display:flex}}
+/* ═══ Accessibility Enhancements ═══ */
+.skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--a);color:#fff;padding:10px 20px;z-index:10000;border-radius:0 0 8px 8px;font-weight:700;text-decoration:none;transition:top .3s}
+.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.hbg:focus-visible,.mm-close:focus-visible,.td:focus-visible,.btn:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* ═══ Form Success Feedback ═══ */
+.form-msg{display:none;padding:14px 18px;border-radius:8px;font-size:.9rem;margin-top:12px;text-align:center;font-weight:600}
+.form-msg.success{display:block;background:rgba(37,211,102,.15);color:#25D366;border:1px solid rgba(37,211,102,.3)}
+.form-msg.error{display:block;background:rgba(233,69,96,.15);color:#e94560;border:1px solid rgba(233,69,96,.3)}
+/* ═══ Print Styles ═══ */
+@media print{nav,.wa,.sticky-cta,.hbg,.mm,footer .soc{display:none!important}body{color:#222!important;background:#fff!important}section{padding:24px 5%}.card,.pc{border:1px solid #ccc!important;background:#f9f9f9!important}a{color:#222!important}}
+/* ═══ Cookie / Hours Banner ═══ */
+.hours-banner{background:var(--a);color:#fff;text-align:center;padding:6px 16px;font-size:.78rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:1001;transform:translateY(-100%);transition:transform .4s}
+.hours-banner.show{transform:translateY(0)}
+nav{transition:top .4s}
 </style>
 </head>
 <body>
 
-<nav id="navbar">
+<nav role="navigation" aria-label="Main navigation" id="navbar">
 <div class="logo">Shubh <span>Yatra</span></div>
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
@@ -176,10 +229,10 @@ section{padding:50px 4%}
 <li><a href="#inquiry">Book Now</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
-<button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
+<button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" onclick="document.querySelector('.mobile-menu').classList.add('active')"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu">
-<button class="mobile-close" onclick="this.parentElement.classList.remove('active')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+<button class="mobile-close" aria-label="Close navigation menu" onclick="this.parentElement.classList.remove('active')"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></button>
 <a href="#about" onclick="this.parentElement.classList.remove('active')">About</a>
 <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
 <a href="#destinations" onclick="this.parentElement.classList.remove('active')">Destinations</a>
@@ -189,6 +242,7 @@ section{padding:50px 4%}
 </div>
 
 <!-- Hero -->
+<main id="main-content">
 <section class="hero">
 <div class="hero-slide active">
 <img src="https://images.pexels.com/photos/35922274/pexels-photo-35922274.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940&w=1400&h=910&fit=crop&auto=compress&cs=tinysrgb" alt="Beach">
@@ -356,7 +410,11 @@ section{padding:50px 4%}
 <h2 class="section-title">Book Your <span>Trip</span></h2>
 <p class="section-sub">Fill in your travel details and we'll craft the perfect itinerary</p>
 <div class="inquiry-grid">
-<form class="inquiry-form" onsubmit="event.preventDefault();alert('Thank you! Our travel expert will contact you within 24 hours.')">
+<form class="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY"> <!-- Replace with your Web3Forms access key -->
+<input type="hidden" name="subject" value="New enquiry from Shubh Yatra Tours N Travels — Your Journey Begins Here website">
+<input type="hidden" name="from_name" value="Shubh Yatra Tours N Travels — Your Journey Begins Here Website">
+<input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
 <h3>Travel Inquiry Form</h3>
 <input type="text" placeholder="Full Name" required>
 <input type="tel" placeholder="Phone Number" required>
@@ -367,6 +425,7 @@ section{padding:50px 4%}
 <select><option>Trip Type</option><option>Family</option><option>Honeymoon</option><option>Group</option><option>Corporate</option><option>Pilgrimage</option><option>Solo</option></select>
 <textarea placeholder="Any special requirements or preferences?"></textarea>
 <button type="submit" class="btn" style="width:100%;cursor:pointer;border-radius:10px">Submit Inquiry</button>
+<div class="form-msg" role="alert" aria-live="polite"></div>
 </form>
 <div style="display:flex;flex-direction:column;justify-content:center;gap:20px">
 <div style="background:var(--cream);padding:30px;border-radius:16px">
@@ -466,7 +525,8 @@ section{padding:50px 4%}
       </div>
     </div>
   </section>
-  <footer>
+  </main>
+<footer>
 <div class="social-links">
 <a href="https://instagram.com/shubh_yatra_travels_agency" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
 <a href="https://facebook.com/shubhyatratours" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:-0.15em"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
@@ -492,6 +552,38 @@ function goTestimonial(n){ct=n;trk.style.transform=`translateX(-${n*100}%)`;td.f
 setInterval(()=>goTestimonial((ct+1)%3),4000);
 
 window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
+</script>
+
+<script>
+/* ═══ Web3Forms Integration ═══ */
+document.querySelectorAll('.cf').forEach(function(f){
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(f);
+    var msgEl=f.querySelector('.form-msg');
+    var btn=f.querySelector('button[type=submit],.btn[type=submit]');
+    if(btn){btn.disabled=true;btn.textContent='Sending...';}
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(msgEl){msgEl.className='form-msg success';msgEl.textContent='Thank you! We will contact you shortly.';msgEl.style.display='block';}
+      else{alert('Thank you! We will contact you shortly.');}
+      f.reset();
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    })
+    .catch(function(){
+      if(msgEl){msgEl.className='form-msg error';msgEl.textContent='Something went wrong. Please call us directly.';msgEl.style.display='block';}
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    });
+  });
+});
+/* ═══ Keyboard Nav for Carousels ═══ */
+document.querySelectorAll('.td').forEach(function(d){d.setAttribute('tabindex','0');d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click();}});});
+/* ═══ Hours Banner (scroll-triggered) ═══ */
+var hb=document.querySelector('.hours-banner');
+if(hb){window.addEventListener('scroll',function(){hb.classList.toggle('show',window.scrollY>300)});}
+/* ═══ Escape key closes mobile menu ═══ */
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var mm=document.querySelector('.mm.open')||document.querySelector('.mobile-menu.active');if(mm){mm.classList.remove('open');mm.classList.remove('active');}}});
 </script>
 </body>
 </html>
