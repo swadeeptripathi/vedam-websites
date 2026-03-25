@@ -214,7 +214,16 @@ footer p{color:#555;font-size:.82rem}
 .hours-banner{background:var(--a);color:#fff;text-align:center;padding:6px 16px;font-size:.78rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:1001;transform:translateY(-100%);transition:transform .4s}
 .hours-banner.show{transform:translateY(0)}
 nav{transition:top .4s}
+
+.bmi-calc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;max-width:400px;margin:30px auto 0}
+.bmi-calc h3{text-align:center;margin-bottom:16px;color:var(--a,#e63946);font-size:1.1rem}
+.bmi-calc label{display:block;color:#aaa;font-size:.82rem;margin-bottom:4px;margin-top:10px}
+.bmi-calc input[type=number]{width:100%;padding:10px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:.9rem}
+.bmi-calc button{width:100%;padding:12px;background:var(--a,#e63946);color:#fff;border:none;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;margin-top:14px;transition:.3s}
+.bmi-calc button:hover{filter:brightness(1.15)}
+.bmi-result{text-align:center;margin-top:12px;font-size:1.1rem;font-weight:700;color:var(--a,#e63946);min-height:28px}
 </style>
+<!-- vertical-enhanced -->
 </head>
 <body>
 
@@ -450,6 +459,16 @@ nav{transition:top .4s}
 </section>
 
 <!-- Contact -->
+
+<div class="bmi-calc">
+<h3>💪 BMI Calculator</h3>
+<label for="bmi-w">Weight (kg)</label>
+<input type="number" id="bmi-w" placeholder="e.g. 70" min="20" max="300" aria-label="Weight in kilograms">
+<label for="bmi-h">Height (cm)</label>
+<input type="number" id="bmi-h" placeholder="e.g. 175" min="100" max="250" aria-label="Height in centimeters">
+<button type="button" onclick="calcBMI()">Calculate BMI</button>
+<div class="bmi-result" id="bmi-r" aria-live="polite"></div>
+</div>
 <section id="contact">
 <div class="container">
 <h2 class="section-title">CONTACT <span>US</span></h2>
@@ -655,6 +674,13 @@ var hb=document.querySelector('.hours-banner');
 if(hb){window.addEventListener('scroll',function(){hb.classList.toggle('show',window.scrollY>300)});}
 /* ═══ Escape key closes mobile menu ═══ */
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){var mm=document.querySelector('.mm.open')||document.querySelector('.mobile-menu.active');if(mm){mm.classList.remove('open');mm.classList.remove('active');}}});
+</script>
+
+<script>
+function calcBMI(){var w=+document.getElementById('bmi-w').value,h=+document.getElementById('bmi-h').value;
+if(!w||!h){document.getElementById('bmi-r').textContent='Please enter weight and height';return;}
+var bmi=(w/((h/100)*(h/100))).toFixed(1);var cat=bmi<18.5?'Underweight':bmi<25?'Normal ✓':bmi<30?'Overweight':'Obese';
+document.getElementById('bmi-r').innerHTML='Your BMI: <strong>'+bmi+'</strong> — '+cat;}
 </script>
 </body>
 </html>
