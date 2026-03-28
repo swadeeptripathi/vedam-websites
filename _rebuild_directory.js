@@ -34,7 +34,26 @@ const catKeywords = {
 };
 
 function inferCategory(slug) {
-  const s = slug.toLowerCase();
+  const s = slug.toLowerCase().replace(/-vedam$/, '');
+  // First pass: check multi-word (hyphenated) keywords and specific slug matches
+  for (const [cat, kws] of Object.entries(catKeywords)) {
+    for (const kw of kws) {
+      if (kw.includes('-') || kw.length > 5) {
+        if (s.includes(kw)) return cat;
+      }
+    }
+  }
+  // Second pass: check single-word keywords with word-boundary matching
+  // (prevents 'spa' from matching inside 'studyspace', etc.)
+  const parts = s.split('-');
+  for (const [cat, kws] of Object.entries(catKeywords)) {
+    for (const kw of kws) {
+      if (!kw.includes('-') && kw.length <= 5) {
+        if (parts.includes(kw)) return cat;
+      }
+    }
+  }
+  // Final fallback: substring match
   for (const [cat, kws] of Object.entries(catKeywords)) {
     for (const kw of kws) { if (s.includes(kw)) return cat; }
   }
