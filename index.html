@@ -47,6 +47,8 @@ a{text-decoration:none;color:inherit}
 .wa-btn:hover{background:#25D366;color:#fff}
 .map-btn{background:rgba(255,255,255,.06);color:var(--muted);border:1px solid var(--border)}
 .map-btn:hover{background:rgba(255,255,255,.12);color:var(--text)}
+.vc-btn{background:rgba(0,0,0,.15);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.vc-btn:hover{background:#000;color:#fff}
 
 /* Table */
 .tbl-wrap{display:none;padding:20px clamp(16px,5%,60px);overflow-x:auto}
@@ -57,8 +59,10 @@ tr:hover td{background:var(--card-hover)}
 .tbl-name{font-weight:600}
 .tbl-cat{font-size:.72rem;background:rgba(108,99,255,.1);color:var(--accent);padding:3px 8px;border-radius:12px;display:inline-block}
 .tbl-city{font-size:.75rem;background:rgba(255,255,255,.06);color:var(--muted);padding:3px 8px;border-radius:12px}
-.tbl-link{font-size:.75rem;padding:5px 12px;border-radius:6px;font-weight:600;display:inline-block;background:rgba(108,99,255,.15);color:var(--accent);transition:.2s}
+.tbl-link{font-size:.75rem;padding:5px 12px;border-radius:6px;font-weight:600;display:inline-block;background:rgba(108,99,255,.15);color:var(--accent);transition:.2s;margin:2px}
 .tbl-link:hover{background:var(--accent);color:#fff}
+.tbl-vc{background:rgba(0,0,0,.3);color:#fff}
+.tbl-vc:hover{background:#000;color:#fff}
 
 /* Empty state */
 .no-results{text-align:center;padding:60px 20px;color:var(--dim);font-size:1rem}
@@ -129,7 +133,7 @@ tr:hover td{background:var(--card-hover)}
 <div class="grid-view" id="gridView"></div>
 <div class="tbl-wrap" id="tableView">
   <table>
-    <thead><tr><th>#</th><th>Business Name</th><th>Category</th><th>City</th><th>Phone</th><th>Website</th></tr></thead>
+    <thead><tr><th>#</th><th>Business Name</th><th>Category</th><th>City</th><th>Phone</th><th>Live Links</th></tr></thead>
     <tbody id="tbody"></tbody>
   </table>
 </div>
@@ -174,7 +178,9 @@ function buildCards(items) {
       html += '<div class="card-meta"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg> ' + esc(d.p) + '</div>';
     }
     html += '<div class="card-btns">';
-    html += '<a href="' + url + '" target="_blank" class="visit-btn gh-btn">🌐 Visit Website</a>';
+    html += '<a href="' + url + '" target="_blank" class="visit-btn gh-btn">🌐 GitHub</a>';
+    var vcUrl = 'https://' + d.s + '.vercel.app';
+    html += '<a href="' + vcUrl + '" target="_blank" class="visit-btn vc-btn">▲ Vercel</a>';
     if (d.p) {
       html += '<a href="https://wa.me/' + d.p.replace('+','') + '" target="_blank" class="visit-btn wa-btn">💬 WhatsApp</a>';
     }
@@ -195,7 +201,8 @@ function buildRows(items) {
     html += '<td><span class="tbl-cat">' + (catIcons[d.c]||'🏢') + ' ' + esc(d.c) + '</span></td>';
     html += '<td>' + (d.t ? '<span class="tbl-city">' + esc(d.t) + '</span>' : '-') + '</td>';
     html += '<td>' + (d.p ? esc(d.p) : '-') + '</td>';
-    html += '<td><a href="' + url + '" target="_blank" class="tbl-link">🌐 Visit</a></td>';
+    var vcUrl2 = 'https://' + d.s + '.vercel.app';
+    html += '<td><a href="' + url + '" target="_blank" class="tbl-link">🌐 GitHub</a> <a href="' + vcUrl2 + '" target="_blank" class="tbl-link tbl-vc">▲ Vercel</a></td>';
     html += '</tr>';
   }
   return html;
