@@ -1,0 +1,24 @@
+{
+  "name": "vedam-websites",
+  "version": "1.0.0",
+  "description": "",
+  "main": "_enhance_all.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swadeeptripathi/vedam-websites.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/swadeeptripathi/vedam-websites/issues"
+  },
+  "homepage": "https://github.com/swadeeptripathi/vedam-websites#readme",
+  "dependencies": {
+    "nunjucks": "^3.2.4"
+  }
+}

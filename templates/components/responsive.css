@@ -1,0 +1,28 @@
+/* ═══ Enhanced Mobile Responsiveness ═══ */
+@media(max-width:1024px){
+  .pg{grid-template-columns:1fr}
+  .sg{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hbg{display:flex}
+  .ag,.cg{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  section{padding:50px 4%}
+  .h-cnt h1,h1{font-size:clamp(1.8rem,6vw,2.8rem)!important}
+  .h-cnt p{font-size:.88rem}
+  .btn{padding:11px 22px;font-size:.82rem}
+  .stitle{font-size:clamp(1.4rem,5vw,2rem)}
+  .sg{grid-template-columns:1fr 1fr;gap:14px}
+  .sg h3{font-size:1.6rem}
+  .pg{grid-template-columns:1fr!important;gap:14px}
+  .grid{grid-template-columns:1fr!important;gap:12px}
+  .ag,.cg{gap:24px}
+  .ai img{height:260px}
+  .mapbox{height:160px}
+}
+@media(max-width:360px){
+  .sg{grid-template-columns:1fr}
+  .btn-s{margin-left:0;margin-top:8px;display:inline-block}
+}

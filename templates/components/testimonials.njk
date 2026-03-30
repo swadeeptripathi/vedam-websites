@@ -1,0 +1,21 @@
+<section class="ts" id="reviews">
+  <div class="container">
+    <h2 class="stitle">Client <span>Stories</span></h2>
+    <div class="tsl">
+      <div class="ttr">
+        {% for t in testimonials %}
+        <div class="ti">
+          <blockquote>"{{ t.quote }}"</blockquote>
+          <cite>{{ t.name }}</cite>
+          <small>{{ t.role }}</small>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="tnav">
+        {% for t in testimonials %}
+        <button class="td{% if loop.first %} on{% endif %}" onclick="goT({{ loop.index0 }})" aria-label="Go to testimonial {{ loop.index }}"></button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

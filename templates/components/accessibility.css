@@ -1,0 +1,6 @@
+/* ═══ Accessibility ═══ */
+.skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--a);color:#fff;padding:10px 20px;z-index:10000;border-radius:0 0 8px 8px;font-weight:700;text-decoration:none;transition:top .3s}
+.skip-link:focus{top:0}
+*:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.hbg:focus-visible,.mm-close:focus-visible,.td:focus-visible,.btn:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

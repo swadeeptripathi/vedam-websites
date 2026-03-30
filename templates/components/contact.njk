@@ -1,0 +1,54 @@
+<section id="contact">
+  <div class="container">
+    <h2 class="stitle">Get In <span>Touch</span></h2>
+    <p class="ssub">{{ contactDesc | default('Ready to get started? Reach out to us today.') }}</p>
+    <div class="cg">
+      <form class="cf" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="New enquiry from {{ businessName }} website">
+        <input type="hidden" name="from_name" value="{{ businessName }} Website">
+        <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="text" name="name" placeholder="Your Name" required aria-label="Your name">
+        <input type="email" name="email" placeholder="Email Address" required aria-label="Email address">
+        <input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone number">
+        {% if contactFields %}
+        {% for field in contactFields %}
+        {% if field.type == 'select' %}
+        <select name="{{ field.name }}" aria-label="{{ field.label }}">
+          <option value="">{{ field.placeholder }}</option>
+          {% for opt in field.options %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+        {% else %}
+        <input type="{{ field.type | default('text') }}" name="{{ field.name }}" placeholder="{{ field.placeholder }}" aria-label="{{ field.label }}">
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <textarea name="message" placeholder="Your Message" aria-label="Your message"></textarea>
+        <button type="submit" class="btn" style="width:100%;text-align:center;cursor:pointer">Send Message</button>
+        <div class="form-msg" role="alert" aria-live="polite"></div>
+      </form>
+      <div class="ci2">
+        {% for item in contactInfo %}
+        <div class="ci-it">
+          <div class="ci-ic">{{ item.icon }}</div>
+          <div>
+            <h4>{{ item.title }}</h4>
+            {% if item.link %}
+            <a href="{{ item.link }}">{{ item.text }}</a>
+            {% else %}
+            <p>{{ item.text }}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        {% if mapEmbed %}
+        <div class="mapbox">
+          <iframe src="{{ mapEmbed }}" loading="lazy" title="Location map for {{ businessName }}"></iframe>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

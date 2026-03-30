@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const b = 'C:\\Users\\tripa\\.openclaw\\workspace\\builds';
+const b = process.env.VEDAM_OUTPUT || path.resolve(__dirname);
 function write(slug, html) {
   fs.writeFileSync(path.join(b, slug, 'index.html'), html, 'utf8');
   console.log('✓ ' + slug + ' (' + html.length + ' chars)');

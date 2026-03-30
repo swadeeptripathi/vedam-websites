@@ -1,0 +1,12 @@
+<section class="ss" id="stats">
+  <div class="container">
+    <div class="sg">
+      {% for stat in stats %}
+      <div>
+        <h3 class="ctr" data-t="{{ stat.value }}">0</h3>
+        <p>{{ stat.label }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

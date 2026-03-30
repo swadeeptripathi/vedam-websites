@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "demo-gym-vedam",
+    "title": "Demo Gym | Indore | VEDAM",
+    "businessName": "Demo Gym",
+    "category": "Gym & Fitness",
+    "city": "Indore",
+    "phone": "+919876543210",
+    "accent": "#e63946",
+    "bg": "#0a0a0a",
+    "logo": "Demo<em>Gym</em>",
+    "navLinks": [["about","About"],["services","Programs"],["pricing","Pricing"],["reviews","Reviews"],["contact","Contact"]],
+    "heroBadge": "PREMIUM FITNESS",
+    "heroTitle": "Transform Your",
+    "heroTitleEm": "Body & Mind",
+    "heroDesc": "Join Indore's most advanced fitness center with world-class equipment and expert trainers.",
+    "heroCTA": "Join Now",
+    "heroImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=75",
+    "aboutImage": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=75",
+    "aboutBadge": "10+<br>Years",
+    "aboutTitle": "About <em>Demo Gym</em>",
+    "aboutP1": "Established in 2014, Demo Gym has been at the forefront of fitness excellence in Indore.",
+    "aboutP2": "Our state-of-the-art facility features imported equipment, certified trainers, and a supportive community.",
+    "feats": ["Certified Trainers", "24/7 Access", "AC Training Hall", "Steam & Sauna", "Parking Available"],
+    "servicesTitle": "Programs",
+    "servicesDesc": "Comprehensive fitness programs for every goal",
+    "services": [
+      {"icon": "🏋️", "name": "Strength Training", "desc": "Build muscle and increase power with our extensive free weights section."},
+      {"icon": "🏃", "name": "Cardio Zone", "desc": "State-of-the-art treadmills, cycles, and cross-trainers for endurance."},
+      {"icon": "👤", "name": "Personal Training", "desc": "One-on-one sessions with certified trainers tailored to your goals."},
+      {"icon": "💃", "name": "Zumba & Aerobics", "desc": "Fun, high-energy group classes to get fit while having a blast."},
+      {"icon": "🧘", "name": "Yoga Classes", "desc": "Find balance and flexibility with expert yoga instruction."},
+      {"icon": "🥗", "name": "Nutrition Plans", "desc": "Customized diet plans to complement your fitness journey."}
+    ],
+    "stats": [
+      {"value": 2000, "label": "Active Members"},
+      {"value": 15, "label": "Expert Trainers"},
+      {"value": 10, "label": "Years Experience"},
+      {"value": 50, "label": "Equipment Stations"}
+    ],
+    "pricing": [
+      {
+        "name": "Basic",
+        "price": "₹1,499",
+        "period": "per month",
+        "features": ["Gym Access", "Locker Room", "Basic Equipment", "Open Gym Hours"],
+        "cta": "Get Started"
+      },
+      {
+        "name": "Pro",
+        "price": "₹3,999",
+        "period": "per quarter",
+        "popular": true,
+        "features": ["All Basic Features", "Personal Trainer", "Diet Consultation", "Steam & Sauna", "Group Classes"],
+        "cta": "Most Popular"
+      },
+      {
+        "name": "Elite",
+        "price": "₹11,999",
+        "period": "per year",
+        "features": ["All Pro Features", "24/7 Access", "Supplements Discount", "Body Composition Analysis", "Priority Booking", "Guest Passes"],
+        "cta": "Best Value"
+      }
+    ],
+    "testimonials": [
+      {"quote": "Demo Gym completely transformed my fitness journey. The trainers are incredible and the equipment is top-notch.", "name": "Rahul Sharma", "role": "Member since 2020"},
+      {"quote": "Best gym in Indore! Clean facility, great community, and the results speak for themselves.", "name": "Priya Patel", "role": "Fitness Enthusiast"},
+      {"quote": "I've tried many gyms but Demo Gym stands out for its personal attention and professional approach.", "name": "Amit Jain", "role": "Member since 2022"}
+    ],
+    "contactDesc": "Ready to start your fitness journey? Reach out to us today.",
+    "contactInfo": [
+      {"icon": "📞", "title": "Phone", "text": "+91 98765 43210", "link": "tel:+919876543210"},
+      {"icon": "📧", "title": "Email", "text": "info@demogym.com"},
+      {"icon": "📍", "title": "Address", "text": "Vijay Nagar, Indore, MP 452010"},
+      {"icon": "🕐", "title": "Hours", "text": "Mon-Sat: 5 AM – 10 PM | Sun: 6 AM – 8 PM"}
+    ]
+  },
+  {
+    "slug": "demo-salon-vedam",
+    "title": "Demo Salon | Bhopal | VEDAM",
+    "businessName": "Demo Salon",
+    "category": "Spa & Salon",
+    "city": "Bhopal",
+    "phone": "+919876543211",
+    "accent": "#C9956C",
+    "bg": "#1a0a0a",
+    "logo": "Demo<em>Salon</em>",
+    "navLinks": [["about","About"],["services","Services"],["pricing","Packages"],["reviews","Reviews"],["contact","Book Now"]],
+    "heroBadge": "LUXURY BEAUTY",
+    "heroTitle": "Discover Your",
+    "heroTitleEm": "True Beauty",
+    "heroDesc": "Bhopal's premier beauty destination for bridal makeup, hair styling, and complete makeovers.",
+    "heroCTA": "Book Appointment",
+    "heroImage": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=75",
+    "aboutImage": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=75",
+    "aboutBadge": "5000+<br>Happy Clients",
+    "aboutTitle": "About <em>Demo Salon</em>",
+    "aboutP1": "At Demo Salon, we believe every person deserves to look and feel their absolute best.",
+    "aboutP2": "Our team of experienced stylists uses premium products and latest techniques to deliver stunning results.",
+    "feats": ["Premium Products", "Trained Stylists", "Hygienic Setup", "AC Lounge", "Home Service Available"],
+    "servicesTitle": "Services",
+    "services": [
+      {"icon": "💄", "name": "Bridal Makeup", "desc": "Complete bridal packages with HD/airbrush makeup for your special day."},
+      {"icon": "✂️", "name": "Hair Styling", "desc": "Trendy cuts, blowouts, and styling for every occasion."},
+      {"icon": "🎨", "name": "Hair Coloring", "desc": "Global, highlights, balayage, and fashion colors by experts."},
+      {"icon": "💅", "name": "Nail Art", "desc": "Gel nails, acrylic extensions, and creative nail art designs."},
+      {"icon": "🧖", "name": "Facial & Cleanup", "desc": "Deep cleansing facials and skin treatments for a radiant glow."},
+      {"icon": "💆", "name": "Spa Treatments", "desc": "Relaxing body massages, scrubs, and aromatherapy sessions."}
+    ],
+    "stats": [
+      {"value": 5000, "label": "Happy Clients"},
+      {"value": 20, "label": "Services"},
+      {"value": 8, "label": "Years Experience"},
+      {"value": 5, "label": "Star Rating"}
+    ],
+    "pricing": [
+      {
+        "name": "Basic",
+        "price": "₹499",
+        "period": "per session",
+        "features": ["Haircut", "Basic Facial", "Threading", "Nail Polish"],
+        "cta": "Book Now"
+      },
+      {
+        "name": "Premium",
+        "price": "₹1,499",
+        "period": "per session",
+        "popular": true,
+        "features": ["Hair Color", "Deep Conditioning", "Manicure & Pedicure", "Cleanup", "Waxing"],
+        "cta": "Most Popular"
+      },
+      {
+        "name": "Bridal",
+        "price": "₹9,999",
+        "period": "complete package",
+        "features": ["HD Bridal Makeup", "Bridal Hairstyling", "Pre-Bridal Package", "Mehendi", "Draping", "Touch-up Kit"],
+        "cta": "Book Bridal"
+      }
+    ],
+    "testimonials": [
+      {"quote": "My bridal makeup was absolutely flawless! Everyone complimented how natural yet stunning I looked.", "name": "Neha Verma", "role": "Bride, December 2024"},
+      {"quote": "Best salon experience in Bhopal. The staff is so professional and the ambiance is amazing.", "name": "Sneha Tiwari", "role": "Regular Client"},
+      {"quote": "I've been coming here for 3 years and the quality never dips. Highly recommended!", "name": "Pooja Singh", "role": "Client since 2022"}
+    ],
+    "contactDesc": "Book your appointment today and let us make you look your best.",
+    "contactInfo": [
+      {"icon": "📞", "title": "Phone", "text": "+91 98765 43211", "link": "tel:+919876543211"},
+      {"icon": "📧", "title": "Email", "text": "hello@demosalon.com"},
+      {"icon": "📍", "title": "Address", "text": "MP Nagar, Bhopal, MP 462011"},
+      {"icon": "🕐", "title": "Hours", "text": "Mon-Sat: 10 AM – 8 PM | Sun: By Appointment"}
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+<script>
+/* ═══ Testimonial Carousel ═══ */
+var tI=0,tT=document.querySelector('.ttr'),tD=document.querySelectorAll('.td');
+function goT(n){tI=n;if(tT)tT.style.transform='translateX(-'+(n*100)+'%)';tD.forEach(function(d,i){d.classList.toggle('on',i===n)});}
+setInterval(function(){goT((tI+1)%{{ testimonials | length }});},4500);
+
+/* ═══ Counter Animation ═══ */
+var cs=document.querySelectorAll('.ctr');
+var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target,t=+el.dataset.t,s=performance.now();function run(now){var p=Math.min((now-s)/2000,1);el.textContent=Math.floor(p*t).toLocaleString()+'+';if(p<1)requestAnimationFrame(run);}requestAnimationFrame(run);ob.unobserve(el);}});},{threshold:0.5});
+cs.forEach(function(c){ob.observe(c);});
+
+/* ═══ Web3Forms Integration ═══ */
+document.querySelectorAll('.cf').forEach(function(f){
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(f);
+    var msgEl=f.querySelector('.form-msg');
+    var btn=f.querySelector('button[type=submit]');
+    if(btn){btn.disabled=true;btn.textContent='Sending...';}
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(msgEl){msgEl.className='form-msg success';msgEl.textContent='Thank you! We will contact you shortly.';msgEl.style.display='block';}
+      f.reset();
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    })
+    .catch(function(){
+      if(msgEl){msgEl.className='form-msg error';msgEl.textContent='Something went wrong. Please call us directly.';msgEl.style.display='block';}
+      if(btn){btn.disabled=false;btn.textContent='Send Message';}
+    });
+  });
+});
+
+/* ═══ Keyboard Navigation ═══ */
+document.querySelectorAll('.td').forEach(function(d){d.setAttribute('tabindex','0');d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();d.click();}});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){var mm=document.querySelector('.mm.open');if(mm)mm.classList.remove('open');}});
+</script>

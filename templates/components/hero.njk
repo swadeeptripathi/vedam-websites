@@ -1,0 +1,11 @@
+<section class="hero">
+  <div class="h-bg" style="background-image:url('{{ heroImage }}')"></div>
+  <div class="h-ov"></div>
+  <div class="h-cnt">
+    <div class="h-badge">{{ heroBadge }}</div>
+    <h1>{{ heroTitle }}<em>{{ heroTitleEm }}</em></h1>
+    <p>{{ heroDesc }}</p>
+    <a href="#contact" class="btn">{{ heroCTA | default('Get Started') }}</a>
+    <a href="tel:{{ phone }}" class="btn btn-s">Call Now</a>
+  </div>
+</section>

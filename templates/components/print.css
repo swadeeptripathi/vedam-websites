@@ -1,0 +1,8 @@
+/* ═══ Print Styles ═══ */
+@media print{
+  nav,.wa,.sticky-cta,.hbg,.mm,footer .soc{display:none!important}
+  body{color:#222!important;background:#fff!important}
+  section{padding:24px 5%}
+  .card,.pc{border:1px solid #ccc!important;background:#f9f9f9!important}
+  a{color:#222!important}
+}
