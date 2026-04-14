@@ -362,6 +362,7 @@ footer {
     <div class="stat"><strong id="statEmail">—</strong>Email</div>
     <div class="stat"><strong id="statInterested">—</strong>Interested</div>
     <div class="stat"><strong id="statConverted">—</strong>Converted</div>
+    <div class="stat"><strong id="statFollowUp">—</strong>Follow Up</div>
   </div>
 </header>
 
@@ -411,11 +412,14 @@ footer {
     <thead>
       <tr>
         <th>Business Name</th>
+        <th>⚡</th>
         <th>City</th>
         <th>Category</th>
         <th>WhatsApp</th>
         <th>Email</th>
         <th>Status</th>
+        <th>Last Contact</th>
+        <th>Notes</th>
         <th>Map</th>
         <th>Live Links</th>
       </tr>
@@ -578,15 +582,41 @@ async function loadFromSupabase() {
     const leads = await res.json();
 
     // Update stats
+    // Compute lead score for each lead
+    leads.forEach(l => {
+      let score = 0;
+      if (l.phone) score += 2;
+      if (l.email) score += 2;
+      if (l.whatsapp_sent || l.email_sent) score += 1;
+      if (l.site_slug) score += 3;
+      if (l.status === 'interested') score += 5;
+      if (l.status === 'converted') score += 10;
+      l._score = score;
+      // Last contacted date
+      const wDate = l.whatsapp_sent_at ? new Date(l.whatsapp_sent_at) : null;
+      const eDate = l.email_sent_at ? new Date(l.email_sent_at) : null;
+      l._lastContacted = wDate && eDate ? (wDate > eDate ? wDate : eDate) : (wDate || eDate || null);
+      // Follow-up flag: contacted 7+ days ago with no status change beyond 'contacted'
+      l._needsFollowUp = false;
+      if (l._lastContacted && (l.status === 'contacted' || l.status === 'new')) {
+        const daysSince = (Date.now() - l._lastContacted.getTime()) / (1000*60*60*24);
+        if (daysSince >= 7) l._needsFollowUp = true;
+      }
+    });
+    // Sort by score descending
+    leads.sort((a, b) => b._score - a._score);
+
     const waCount  = leads.filter(l => l.whatsapp_sent).length;
     const emCount  = leads.filter(l => l.email_sent).length;
-    const intCount = leads.filter(l => l.status === 'Interested').length;
-    const conCount = leads.filter(l => l.status === 'Converted').length;
+    const intCount = leads.filter(l => l.status === 'interested' || l.status === 'Interested').length;
+    const conCount = leads.filter(l => l.status === 'converted' || l.status === 'Converted').length;
+    const fuCount  = leads.filter(l => l._needsFollowUp).length;
     document.getElementById('statTotal').textContent     = leads.length;
     document.getElementById('statWA').textContent        = waCount;
     document.getElementById('statEmail').textContent     = emCount;
     document.getElementById('statInterested').textContent= intCount;
     document.getElementById('statConverted').textContent = conCount;
+    document.getElementById('statFollowUp').textContent  = fuCount;
 
     // Update timestamp
     const now = new Date();
@@ -612,11 +642,14 @@ async function loadFromSupabase() {
 
       // Status badges
       let badges = '';
+      if (l._needsFollowUp) badges += `<span class="badge" style="background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3)">🔔 Follow Up</span>`;
       if (l.whatsapp_sent) badges += `<span class="badge badge-wa">${WA_SVG} WhatsApp</span>`;
       if (l.email_sent)    badges += `<span class="badge badge-em">📧 Email</span>`;
-      if (l.status === 'Interested') badges += `<span class="badge badge-int">⭐ Interested</span>`;
-      if (l.status === 'Converted')  badges += `<span class="badge badge-con">🏆 Converted</span>`;
-      const badgesHtml = badges ? `<div class="status-badges">${badges}</div>` : '';
+      if ((l.status||'').toLowerCase() === 'interested') badges += `<span class="badge badge-int">⭐ Interested</span>`;
+      if ((l.status||'').toLowerCase() === 'converted')  badges += `<span class="badge badge-con">🏆 Converted</span>`;
+      const scoreBadge = `<span class="badge" style="background:rgba(99,102,241,.12);color:#6c63ff;border:1px solid rgba(99,102,241,.25)">⚡ ${l._score}</span>`;
+      badges = scoreBadge + badges;
+      const badgesHtml = `<div class="status-badges">${badges}</div>`;
 
       // Location row
       const locHtml = (city || cat) ? `<div class="ir lc">${PIN_SVG}<span>${l.city ? l.city.charAt(0).toUpperCase()+l.city.slice(1) : ''}${city && cat ? ' · ' : ''}${l.category ? l.category.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ') : ''}</span></div>` : '';
@@ -626,6 +659,11 @@ async function loadFromSupabase() {
 
       // Email row
       const emailHtml = email ? `<div class="ir em"><span>${email}</span></div>` : '';
+
+      // Notes row
+      const notesHtml = l.notes ? `<div style="font-size:.75rem;color:var(--text-muted);margin-top:6px;padding:6px 8px;background:rgba(99,102,241,.06);border-radius:6px;border-left:2px solid var(--accent)">📝 ${l.notes.substring(0,120)}${l.notes.length>120?'...':''}</div>` : '';
+      // Last contacted
+      const lcHtml = l._lastContacted ? `<div style="font-size:.7rem;color:var(--text-dim);margin-top:4px">📅 Last contacted: ${l._lastContacted.toLocaleDateString('en-IN')}</div>` : '';
 
       // Buttons
       const btnHtml = `<div class="btn-row">
@@ -640,20 +678,29 @@ async function loadFromSupabase() {
   ${badgesHtml}
   ${phoneHtml}
   ${emailHtml}
+  ${notesHtml}
+  ${lcHtml}
   <a href="${mapUrl}" target="_blank" class="ir mp">${MAP_SVG}<span>View on Google Maps</span></a>
   ${btnHtml}
 </div>`;
 
       // Table row
       const statusCell = l.status ? `<span class="city-pill">${l.status}</span>` : '<span class="dim">-</span>';
+      const scoreCell = `<span style="font-weight:700;color:#6c63ff">${l._score}</span>`;
+      const lcCell = l._lastContacted ? `<span style="font-size:.75rem">${l._lastContacted.toLocaleDateString('en-IN')}</span>` : '<span class="dim">-</span>';
+      const fuCell = l._needsFollowUp ? '<span style="color:#ef4444;font-weight:700">🔔</span>' : '';
+      const notesCell = l.notes ? `<span style="font-size:.73rem;color:var(--text-muted)" title="${l.notes.replace(/"/g,'&quot;')}">📝 ${l.notes.substring(0,40)}${l.notes.length>40?'...':''}</span>` : '<span class="dim">-</span>';
       rowsHtml += `
 <tr data-city="${city}" data-cat="${cat}" data-phone="${phone?'1':'0'}" data-email="${email?'1':'0'}" data-name="${nameKey}">
   <td><strong>${name}</strong></td>
+  <td>${scoreCell} ${fuCell}</td>
   <td><span class="city-pill">${l.city || '-'}</span></td>
   <td><span class="cat-pill">${l.category || '-'}</span></td>
   <td class="wa-cell">${phone ? `${WA_SVG}<span>${phone}</span>` : '<span class="dim">-</span>'}</td>
   <td class="em-txt">${email || '<span class="dim">-</span>'}</td>
   <td>${statusCell}</td>
+  <td>${lcCell}</td>
+  <td>${notesCell}</td>
   <td><a href="${mapUrl}" target="_blank" class="map-lnk" title="Open in Maps">${MAP_SVG}</a></td>
   <td class="link-cell">
     ${ghUrl ? `<a href="${ghUrl}" target="_blank" class="tbl-btn gh-btn">&#127760; GitHub</a>` : ''}
