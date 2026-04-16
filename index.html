@@ -372,7 +372,6 @@ footer {
 
   <select class="ctrl-select" id="cityFilter" onchange="applyFilters()">
     <option value="">All Cities</option>
-    <option value="bhopal">Bhopal</option><option value="gwalior">Gwalior</option><option value="indore">Indore</option><option value="jabalpur">Jabalpur</option><option value="rewa">Rewa</option><option value="satna">Satna</option><option value="singrauli">Singrauli</option><option value="unknown">Unknown</option>
   </select>
 
   <select class="ctrl-select" id="catFilter" onchange="applyFilters()">
@@ -622,6 +621,13 @@ async function loadFromSupabase() {
     const now = new Date();
     document.getElementById('lastUpdated').textContent =
       'Last refreshed: ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+    // Populate city filter dynamically from live lead data
+    const cityFilter = document.getElementById('cityFilter');
+    const currentCity = cityFilter.value;
+    const cities = [...new Set(leads.map(l => (l.city || '').toLowerCase().trim()).filter(Boolean))].sort();
+    cityFilter.innerHTML = '<option value="">All Cities</option>' + cities.map(c => `<option value="${c}">${c.charAt(0).toUpperCase()+c.slice(1)}</option>`).join('');
+    if (cities.includes(currentCity)) cityFilter.value = currentCity;
 
     // Build HTML
     let cardsHtml = '';

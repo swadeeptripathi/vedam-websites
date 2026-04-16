@@ -281,7 +281,6 @@ input:checked + .slider:before { transform:translateX(15px); }
         </div>
         <select class="filter-select" id="f-city" onchange="applyFilters()">
           <option value="">All Cities</option>
-          <option>Indore</option><option>Bhopal</option><option>Jabalpur</option><option>Gwalior</option><option>Rewa</option><option>Satna</option><option>Singrauli</option>
         </select>
         <select class="filter-select" id="f-cat" onchange="applyFilters()">
           <option value="">All Categories</option>
@@ -638,8 +637,20 @@ async function sb(method,path,body){
 async function loadLeads(){
   try{
     const data=await sb('GET','leads?order=id.asc&limit=1000');
-    leads=data; updateStats(); applyFilters(); toast('Leads loaded ✓','success');
+    leads=data;
+    populateCityFilter();
+    updateStats();
+    applyFilters();
+    toast('Leads loaded ✓','success');
   }catch(e){toast('Load error: '+e.message,'error');}
+}
+
+function populateCityFilter(){
+  const sel=document.getElementById('f-city');
+  const current=sel.value;
+  const cities=[...new Set(leads.map(l=>(l.city||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML='<option value="">All Cities</option>' + cities.map(c=>`<option>${esc(c)}</option>`).join('');
+  if(cities.includes(current)) sel.value=current;
 }
 
 // ── STATS ─────────────────────────────────────────────────────────
